@@ -329,7 +329,7 @@ if(isset($_GET['delid']))
          <a href="../sectionC/Research_Grant.php" class="nav-link">
             <i class="far fa-circle nav-icon"></i>
               <p>C2 Research Grants
-                <!-- <i class="fas fa-angle-left right"></i> -->
+                
              </p>
          </a>  
      </li>
@@ -338,7 +338,7 @@ if(isset($_GET['delid']))
      <a href="../sectionC/Research_Project.php" class="nav-link">
         <i class="far fa-circle nav-icon"></i>
           <p>C3 Research Project <br>Performance</br>
-            <!-- <i class="fas fa-angle-left right"></i> -->
+            
          </p>
      </a>  
  </li>
@@ -360,7 +360,7 @@ if(isset($_GET['delid']))
        <a href="../sectionD/PhDs_Graduated.php" class="nav-link">
          <i class="far fa-circle nav-icon"></i>
          <p>D1 PhDs Graduate
-           <!-- <i class="fas fa-angle-left right"></i> -->
+           
          </p>
        </a>
  </li>
@@ -369,7 +369,7 @@ if(isset($_GET['delid']))
          <a href="../sectionD/Master_Graduated.php" class="nav-link">
             <i class="far fa-circle nav-icon"></i>
               <p>D2 Master Graduated
-                <!-- <i class="fas fa-angle-left right"></i> -->
+                
              </p>
          </a>  
      </li>
@@ -378,7 +378,7 @@ if(isset($_GET['delid']))
          <a href="../sectionD/PhDs_Enrollment.php" class="nav-link">
             <i class="far fa-circle nav-icon"></i>
               <p>D3 PhDs Enrollment
-                <!-- <i class="fas fa-angle-left right"></i> -->
+                
              </p>
          </a>  
      </li>
@@ -387,7 +387,7 @@ if(isset($_GET['delid']))
      <a href="../sectionD/Internal_PhDs.php" class="nav-link">
         <i class="far fa-circle nav-icon"></i>
           <p>D4 International Postgraduate</br>
-            <!-- <i class="fas fa-angle-left right"></i> -->
+            
          </p>
      </a>  
  </li>
@@ -396,7 +396,7 @@ if(isset($_GET['delid']))
    <a href="../sectionD/Qualification_Postgraduate.php" class="nav-link">
       <i class="far fa-circle nav-icon"></i>
         <p>D5 Qualitification Level Postgraduate </br>
-          <!-- <i class="fas fa-angle-left right"></i> -->
+          
        </p>
    </a>  
  </li>
@@ -405,7 +405,7 @@ if(isset($_GET['delid']))
    <a href="../sectionD/Felllowship_Grant.php" class="nav-link">
       <i class="far fa-circle nav-icon"></i>
         <p>D6 Total Fellowship <br>Grant Awards</br>
-          <!-- <i class="fas fa-angle-left right"></i> -->
+          
        </p>
    </a>  
  </li>
@@ -414,7 +414,7 @@ if(isset($_GET['delid']))
    <a href="../sectionD/Post_Doctoral.php" class="nav-link">
       <i class="far fa-circle nav-icon"></i>
         <p>D7 Post-Doctoral Appointments</br>
-          <!-- <i class="fas fa-angle-left right"></i> -->
+          
        </p>
    </a>  
  </li>
@@ -436,7 +436,7 @@ if(isset($_GET['delid']))
        <a href="../sectionE/Patent.php" class="nav-link">
          <i class="far fa-circle nav-icon"></i>
          <p>E1 Patent
-           <!-- <i class="fas fa-angle-left right"></i> -->
+           
          </p>
        </a>
  </li>
@@ -445,7 +445,7 @@ if(isset($_GET['delid']))
          <a href="../sectionE/Commercial.php" class="nav-link">
             <i class="far fa-circle nav-icon"></i>
               <p>E2 Commercial
-                <!-- <i class="fas fa-angle-left right"></i> -->
+                
              </p>
          </a>  
      </li>
@@ -454,7 +454,7 @@ if(isset($_GET['delid']))
      <a href="../sectionE/Technology.php" class="nav-link">
         <i class="far fa-circle nav-icon"></i>
           <p>E3 Technology</br>
-            <!-- <i class="fas fa-angle-left right"></i> -->
+            
          </p>
      </a>  
  </li>
@@ -463,7 +463,7 @@ if(isset($_GET['delid']))
    <a href="../sectionE/IPRs.php" class="nav-link">
       <i class="far fa-circle nav-icon"></i>
         <p>E4 IPRs</br>
-          <!-- <i class="fas fa-angle-left right"></i> -->
+          
        </p>
    </a>  
  </li>
@@ -472,7 +472,7 @@ if(isset($_GET['delid']))
    <a href="../sectionE/Startup.php" class="nav-link">
       <i class="far fa-circle nav-icon"></i>
         <p>E5 Startup</br>
-          <!-- <i class="fas fa-angle-left right"></i> -->
+          
        </p>
    </a>  
  </li>
@@ -526,7 +526,7 @@ if(isset($_GET['delid']))
      <a href="../sectionF/Product_Technology.php" class="nav-link">
         <i class="far fa-circle nav-icon"></i>
           <p>F3 Gross products commercialization/technology know-how licensing/outright
-          <!-- <i class="fas fa-angle-left right"></i> -->
+          
          </p>
      </a>  
  </li>
@@ -614,7 +614,7 @@ if(isset($_GET['delid']))
          <a href="../sectionG/Abroad.php" class="nav-link">
             <i class="far fa-circle nav-icon"></i>
               <p>G2 Staff Sent Abroad For Research Activities
-                <!-- <i class="fas fa-angle-left right"></i> -->
+                
              </p>
          </a>  
      </li>
@@ -678,7 +678,7 @@ if(isset($_GET['delid']))
        <a href="../sectionH/Laboratory.php" class="nav-link">
          <i class="far fa-circle nav-icon"></i>
          <p>H1 Laboratory/Research facilities
-           <!-- <i class="fas fa-angle-left right"></i> -->
+           
          </p>
        </a>
  </li>

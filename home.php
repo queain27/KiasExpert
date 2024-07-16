@@ -322,7 +322,7 @@
           <a href="pages/sectionC/Research_Grant.php" class="nav-link">
              <i class="far fa-circle nav-icon"></i>
                <p>C2 Research Grants
-                 <!-- <i class="fas fa-angle-left right"></i> -->
+                 
               </p>
           </a>  
       </li>
@@ -331,7 +331,7 @@
       <a href="pages/sectionC/Research_Project.php" class="nav-link">
          <i class="far fa-circle nav-icon"></i>
            <p>C3 Research Project <br>Performance</br>
-             <!-- <i class="fas fa-angle-left right"></i> -->
+             
           </p>
       </a>  
   </li>
@@ -353,7 +353,7 @@
         <a href="pages/sectionD/PhDs_Graduated.php" class="nav-link">
           <i class="far fa-circle nav-icon"></i>
           <p>D1 PhDs Graduate
-            <!-- <i class="fas fa-angle-left right"></i> -->
+            
           </p>
         </a>
   </li>
@@ -362,7 +362,7 @@
           <a href="pages/sectionD/Master_Graduated.php" class="nav-link">
              <i class="far fa-circle nav-icon"></i>
                <p>D2 Master Graduated
-                 <!-- <i class="fas fa-angle-left right"></i> -->
+                 
               </p>
           </a>  
       </li>
@@ -371,7 +371,7 @@
       <a href="pages/sectionD/PhDs_Enrollment.php" class="nav-link">
          <i class="far fa-circle nav-icon"></i>
            <p>D3 PhDs Enrollment</br>
-             <!-- <i class="fas fa-angle-left right"></i> -->
+             
           </p>
       </a>  
   </li>
@@ -380,7 +380,7 @@
       <a href="pages/sectionD/Internal_PhDs.php" class="nav-link">
          <i class="far fa-circle nav-icon"></i>
            <p>D4 International Postgraduate</br>
-             <!-- <i class="fas fa-angle-left right"></i> -->
+             
           </p>
       </a>  
   </li>
@@ -389,7 +389,7 @@
     <a href="pages/sectionD/Qualification_Postgraduate.php" class="nav-link">
        <i class="far fa-circle nav-icon"></i>
          <p>D5 Qualitification Level Postgraduate </br>
-           <!-- <i class="fas fa-angle-left right"></i> -->
+           
         </p>
     </a>  
   </li>
@@ -398,7 +398,7 @@
     <a href="pages/sectionD/Felllowship_Grant.php" class="nav-link">
        <i class="far fa-circle nav-icon"></i>
          <p>D6 Total Fellowship <br>Grant Awards</br>
-           <!-- <i class="fas fa-angle-left right"></i> -->
+           
         </p>
     </a>  
   </li>
@@ -407,7 +407,7 @@
     <a href="pages/sectionD/Post_Doctoral.php" class="nav-link">
        <i class="far fa-circle nav-icon"></i>
          <p>D7 Post-Doctoral Appointments</br>
-           <!-- <i class="fas fa-angle-left right"></i> -->
+           
         </p>
     </a>  
   </li>
@@ -429,7 +429,7 @@
         <a href="pages/sectionE/Patent.php" class="nav-link">
           <i class="far fa-circle nav-icon"></i>
           <p>E1 Patent
-            <!-- <i class="fas fa-angle-left right"></i> -->
+            
           </p>
         </a>
   </li>
@@ -438,7 +438,7 @@
           <a href="pages/sectionE/Commercial.php" class="nav-link">
              <i class="far fa-circle nav-icon"></i>
                <p>E2 Commercial
-                 <!-- <i class="fas fa-angle-left right"></i> -->
+                 
               </p>
           </a>  
       </li>
@@ -447,7 +447,7 @@
       <a href="pages/sectionE/Technology.php" class="nav-link">
          <i class="far fa-circle nav-icon"></i>
            <p>E3 Technology</br>
-             <!-- <i class="fas fa-angle-left right"></i> -->
+             
           </p>
       </a>  
   </li>
@@ -456,7 +456,7 @@
     <a href="pages/sectionE/IPRs.php" class="nav-link">
        <i class="far fa-circle nav-icon"></i>
          <p>E4 IPRs</br>
-           <!-- <i class="fas fa-angle-left right"></i> -->
+           
         </p>
     </a>  
   </li>
@@ -465,7 +465,7 @@
     <a href="pages/sectionE/Startup.php" class="nav-link">
        <i class="far fa-circle nav-icon"></i>
          <p>E5 Startup</br>
-           <!-- <i class="fas fa-angle-left right"></i> -->
+           
         </p>
     </a>  
   </li>
@@ -519,7 +519,7 @@
       <a href="pages/sectionF/Product_Technology.php" class="nav-link">
          <i class="far fa-circle nav-icon"></i>
            <p>F3 Gross products commercialization/technology know-how licensing/outright
-           <!-- <i class="fas fa-angle-left right"></i> -->
+           
           </p>
       </a>  
   </li>
@@ -607,7 +607,7 @@
           <a href="pages/sectionG/Abroad.php" class="nav-link">
              <i class="far fa-circle nav-icon"></i>
                <p>G2 Staff Sent Abroad For Research Activities
-                 <!-- <i class="fas fa-angle-left right"></i> -->
+                 
               </p>
           </a>  
       </li>
@@ -670,7 +670,7 @@
         <a href="pages/sectionH/Laboratory.php" class="nav-link">
           <i class="far fa-circle nav-icon"></i>
           <p>H1 Laboratory/Research facilities
-            <!-- <i class="fas fa-angle-left right"></i> -->
+            
           </p>
         </a>
   </li>
