@@ -795,7 +795,9 @@ if(isset($_GET['delid']))
                 <td style="text-align: center"><?php echo $row['status_time']; ?></td>
                 <td style="text-align: center"><?php echo $row['citizen']; ?></td>
                 <td style="text-align: center"><?php echo $row['country']; ?></td>
-                <td style="text-align: center"><?php echo $row['link_evidence']; ?></td>
+                <td style="text-align: center"><a href="<?php echo $row['link_evidence']; ?>" target="_blank"><?php echo $row['link_evidence']; ?>
+    </a>
+</td>
                 <td style="text-align: center"><?php echo $row['remarks']; ?></td>
               
                 <td style="text-align: center;">
