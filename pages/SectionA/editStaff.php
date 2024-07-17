@@ -5,20 +5,32 @@ $staff_id =$_GET['ID'];
 if(isset($_POST ['submit']))
 {
 
-   $staff_name = $_POST['staff_name']; 
-   $grade = $_POST['grade'];
-   $position = $_POST['position'];
-   $first_appointment = $_POST['first_appointment'];
-   $current_appointment = $_POST['current_appointment']; 
-   $status = $_POST['status'];
-   $status_contract= $_POST['status_contract'];
-   $status_time = $_POST['status_time'];
-   $citizen = $_POST['citizen'];
-   $country = $_POST['country'];
+  $staff_name = $_POST['staff_name']; 
+  $grade = $_POST['grade'];
+  $position = $_POST['position'];
+  $first_appointment = $_POST['first_appointment'];
+  $current_appointment = $_POST['current_appointment']; 
+  $serve_date = $_POST['serve_date'];
+  $dob= $_POST['dob'];
+  $age = $_POST['age'];
+  $cohort = $_POST['cohort'];
+  $aca_qua = $_POST['aca_qua'];
+  $name_prof = $_POST['name_prof'];
+  $prof_qual = $_POST['prof_qual'];
+  $regis_prof = $_POST['regis_prof'];
+  $faculty = $_POST['faculty'];
+  $st = $_POST['st'];
+  $status = $_POST['status'];
+  $status_contract= $_POST['status_contract'];
+  $status_time = $_POST['status_time'];
+  $citizen = $_POST['citizen'];
+  $country = $_POST['country'];
+  $link_evidence = $_POST['link_evidence'];
+  $remarks = $_POST['remarks'];
 
    $sql = mysqli_query($conn, "UPDATE `staff` SET `staff_name`='$staff_name',`grade`='$grade',`position`='$position',
-   `first_appointment`='$first_appointment' ,`current_appointment`='$current_appointment',`status`='$status',`status_contract`='$status_contract',
-   `status_time`='$status_time',`citizen`='$citizen',`country`='$country' WHERE staff_id=$staff_id");
+   `first_appointment`='$first_appointment' ,`current_appointment`='$current_appointment',`serve_date`='$serve_date',`dob`='$dob',`age`='$age',`cohort`='$cohort',`aca_qua`='$aca_qua',`name_prof`='$name_prof',`prof_qual`='$prof_qual',`regis_prof`='$regis_prof',`faculty`='$faculty',`st`='$st',`status`='$status',`status_contract`='$status_contract',
+   `status_time`='$status_time',`citizen`='$citizen',`country`='$country',`link_evidence`='$link_evidence',`remarks`='$remarks' WHERE staff_id=$staff_id");
 
       
    if($sql){
@@ -75,7 +87,7 @@ if(isset($_POST ['submit']))
           
         <div class ="row">
         
-         <!--Staff ID-->
+           <!--Staff ID-->
              <div class="col">
                <label class ="form-label">STAFF ID:</label>
                <input type="text" class="form-control" name="staff_id" value="<?php echo $row['staff_id']?>"> 
@@ -117,6 +129,82 @@ if(isset($_POST ['submit']))
             <div class="col-md-6 mb-3">
               <label class="form-label text-end">CURRENT APPOINTMENT:</label>
               <input type="date" class="form-control" name="current_appointment" value="<?php echo $row['current_appointment']?>">
+            </div>
+
+         <!--service date-->
+          <div class="col-md-6 mb-3">
+              <label class="form-label text-end">SERVICE END DATE:</label>
+              <input type="date" class="form-control" name="serve_date" value="<?php echo $row['serve_date']?>">
+            </div>
+            
+
+            <!--dob-->
+            <div class="col-md-6 mb-3">
+              <label class="form-label text-end">DATE OF BIRTH:</label>
+              <input type="date" class="form-control" name="dob" value="<?php echo $row['dob']?>">
+            </div>
+
+             <!--age-->
+             <div class="col-md-6 mb-3">
+              <label class="form-label text-end">AGE:</label>
+              <input type="text" class="form-control" name="age" value="<?php echo $row['age']?>">
+            </div>
+
+            <!--cohort-->
+            <div class="col-md-6 mb-3">
+              <label class="form-label text-end">COHORT:</label>
+              <input type="text" class="form-control" name="cohort" value="<?php echo $row['cohort']?>">
+            </div>
+
+            <!--aca_qua-->
+            <div class="col-md-6 mb-3">
+              <label class="form-label text-end">ACADEMIC QUALIFICATION:</label>
+              <input type="text" class="form-control" name="aca_qua" value="<?php echo $row['aca_qua']?>">
+            </div>
+
+            <!--name_prof-->
+            <div class="col-md-6 mb-3">
+              <label class="form-label text-end">NAME OF PROFESSIONAL QUALIFICATION/AWARDING BODY:</label>
+              <input type="text" class="form-control" name="name_prof" value="<?php echo $row['name_prof']?>">
+            </div>
+
+            <!--prof_qual-->
+            <div class="col-md-6 mb-3">
+              <label class="form-label text-end">PROFESSIONAL QUALIFICATION:</label>
+              <input type="text" class="form-control" name="prof_qual" value="<?php echo $row['prof_qual']?>">
+            </div>
+
+            <!--regis_prof-->
+            <div class="col-md-6 mb-3">
+              <label class="form-label text-end">REGISTRATION NUMBER FOR PROFESSIONAL MEMBERSHIP:</label>
+              <input type="text" class="form-control" name="regis_prof" value="<?php echo $row['regis_prof']?>">
+            </div>
+ 
+            <!--Faculty Staff-->
+            <div class="col-md-6 mb-3">
+                  <label class="form-label text-end">FACULTY :</label>
+                <select class="form-control" name="faculty">
+                   <option value=" " disabled>Choose Status</option>
+                   <option value='Al-Quran & Hadis' <?php if ($row['faculty'] == 'Al-Quran & Hadis') echo 'selected'; ?>>Al-Quran & Hadis</option>
+                   <option value='Dakwah & Pembangunan Insan' <?php if ($row['faculty'] == 'Dakwah & Pembangunan Insan') echo 'selected'; ?>>Dakwah & Pembangunan Insan</option>
+                   <option value='Pengurusan Al-Syariah' <?php if ($row['faculty'] == 'Pengurusan Al-Syariah') echo 'selected'; ?>>Pengurusan Al-Syariah</option>
+                   <option value='Pengajian Bahasa Arab' <?php if ($row['faculty'] == 'Pengajian Bahasa Arab') echo 'selected'; ?>>Pengajian Bahasa Arab</option>
+                   <option value='Pengajian Muamalat' <?php if ($row['faculty'] == 'Pengajian Muamalat') echo 'selected'; ?>>Pengajian Muamalat</option>
+                   <option value='Pengajian Pendidikan Islam' <?php if ($row['faculty'] == 'Pengajian Pendidikan Islam') echo 'selected'; ?>>Pengajian Pendidikan Islam</option>
+                   <option value='Pusat Pengajian Teras' <?php if ($row['faculty'] == 'Pusat Pengajian Teras') echo 'selected'; ?>>Pusat Pengajian Teras</option>
+                   <option value='Pengurusan Usuluddin' <?php if ($row['faculty'] == 'Pengurusan Usuluddin') echo 'selected'; ?>>Pengurusan Usuluddin</option>
+                   <option value='Teknologi Maklumat & Multimedia' <?php if ($row['faculty'] == 'Teknologi Maklumat & Multimedia') echo 'selected'; ?>>Teknologi Maklumat & Multimedia</option>
+                </select>
+          </div>
+
+           <!--st-->
+            <div class="col-md-6 mb-3">
+              <label class="form-label text-end">S&T/ NO S&T:</label>
+              <select class="form-control" name="st" required>
+                <option value="" disabled selected>Choose</option>
+                <option value="S&T"<?php if ($row['st'] == 'S&T') echo 'selected'; ?>>S&T</option>
+                <option value="NON S&T"<?php if ($row['st'] == 'NON S&T') echo 'selected'; ?>>NON S&T</option>
+              </select>
             </div>
 
             <!--Status Active-->
@@ -169,7 +257,19 @@ if(isset($_POST ['submit']))
              <div class="col-md-6 mb-3">
              <label class="form-label text-end">COUNTRY:</label>
              <input type="text" class="form-control" name="country" value="<?php echo $row['country']?>">
-            </div>           
+            </div>       
+
+            <!--link_evidence-->
+            <div class="col-md-6 mb-3">
+              <label class="form-label text-end">LINK EVIDENCE:</label>
+              <input type="text" class="form-control" name="link_evidence"value="<?php echo $row['link_evidence']?>">
+            </div>
+
+            <!--Remarks-->
+            <div class="col-md-6 mb-3">
+              <label class="form-label text-end">REMARKS:</label>
+              <input type="text" class="form-control" name="remarks" value="<?php echo $row['remarks']?>">
+            </div>
 <!--Button-->
 
       <div>

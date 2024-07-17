@@ -8,14 +8,26 @@ if(isset($_POST ['submit']))
    $position = $_POST['position'];
    $first_appointment = $_POST['first_appointment'];
    $current_appointment = $_POST['current_appointment']; 
+   $serve_date = $_POST['serve_date'];
+   $dob= $_POST['dob'];
+   $age = $_POST['age'];
+   $cohort  = $_POST['cohort'];
+   $aca_qua  = $_POST['aca_qua'];
+   $name_prof = $_POST['name_prof'];
+   $prof_qual = $_POST['prof_qual'];
+   $regis_prof  = $_POST['regis_prof'];
+   $faculty  = $_POST['faculty'];
+   $st  = $_POST['st'];
    $status = $_POST['status'];
    $status_contract= $_POST['status_contract'];
    $status_time = $_POST['status_time'];
    $citizen = $_POST['citizen'];
    $country = $_POST['country'];
+   $link_evidence = $_POST['link_evidence'];
+   $remarks = $_POST['remarks'];
 
- $sql = mysqli_query($conn, "INSERT INTO `staff` (`staff_id`, `staff_name`, `grade`, `position`, `first_appointment`, `current_appointment`, `status`, `status_contract`, `status_time`, `citizen`, `country`)
-        VALUES ('$staff_id', '$staff_name', '$grade', '$position', '$first_appointment', '$current_appointment', '$status', '$status_contract', '$status_time', '$citizen', '$country')");
+ $sql = mysqli_query($conn, "INSERT INTO `staff` (`staff_id`, `staff_name`, `grade`, `position`, `first_appointment`, `current_appointment`,`serve_date`,`dob`,`age`,`cohort`,`aca_qua`,`name_prof`,`prof_qual`,`regis_prof`,`faculty`,`st`, `status`, `status_contract`, `status_time`, `citizen`, `country`,`link_evidence`,`remarks`)
+        VALUES ('$staff_id', '$staff_name', '$grade', '$position', '$first_appointment', '$current_appointment','$serve_date','$dob','$age','$cohort','$aca_qua','$name_prof','$prof_qual','$regis_prof','$faculty','$st', '$status', '$status_contract', '$status_time', '$citizen', '$country','$link_evidence','$remarks')");
     
     if($sql)
     
@@ -114,6 +126,82 @@ if(isset($_POST ['submit']))
               <input type="date" class="form-control" name="current_appointment" required>
             </div>
 
+            <!--service date-->
+            <div class="col-md-6 mb-3">
+              <label class="form-label text-end">SERVICE END DATE:</label>
+              <input type="date" class="form-control" name="serve_date" required>
+            </div>
+            
+
+            <!--dob-->
+            <div class="col-md-6 mb-3">
+              <label class="form-label text-end">DATE OF BIRTH:</label>
+              <input type="date" class="form-control" name="dob" required>
+            </div>
+
+             <!--age-->
+             <div class="col-md-6 mb-3">
+              <label class="form-label text-end">AGE:</label>
+              <input type="text" class="form-control" name="age" id="age" placeholder="AGE" required>
+            </div>
+
+            <!--cohort-->
+            <div class="col-md-6 mb-3">
+              <label class="form-label text-end">COHORT:</label>
+              <input type="text" class="form-control" name="cohort" id="cohort" placeholder="COHORT" required>
+            </div>
+
+            <!--aca_qua-->
+            <div class="col-md-6 mb-3">
+              <label class="form-label text-end">ACADEMIC QUALIFICATION:</label>
+              <input type="text" class="form-control" name="aca_qua" id="aca_qua" placeholder="ACADEMIC QUALIFICATION" required>
+            </div>
+
+            <!--name_prof-->
+            <div class="col-md-6 mb-3">
+              <label class="form-label text-end">NAME OF PROFESSIONAL QUALIFICATION/AWARDING BODY:</label>
+              <input type="text" class="form-control" name="name_prof" id="name_prof" placeholder="NAME OF PROFESSIONAL QUALIFICATION" required>
+            </div>
+
+            <!--prof_qual-->
+            <div class="col-md-6 mb-3">
+              <label class="form-label text-end">PROFESSIONAL QUALIFICATION:</label>
+              <input type="text" class="form-control" name="prof_qual" id="prof_qual" placeholder="PROFESSIONAL QUALIFICATION" required>
+            </div>
+
+            <!--regis_prof-->
+            <div class="col-md-6 mb-3">
+              <label class="form-label text-end">REGISTRATION NUMBER FOR PROFESSIONAL MEMBERSHIP:</label>
+              <input type="text" class="form-control" name="regis_prof" id="regis_prof" placeholder="REGISTRATION NUMBER " required>
+            </div>
+ 
+            <!--Faculty-->
+            <div class="col-md-6 mb-3">
+              <label class="form-label text-end">FACULTY:</label>
+              <select class="form-control" name="faculty" required>
+                <option value=" " disabled selected>Choose Status</option>
+                <option value='Al-Quran & Hadis'>Al-Quran & Hadis</option>
+                <option value='Dakwah & Pembangunan Insan'>Dakwah & Pembangunan Insan</option>
+                <option value='Pengurusan Al-Syariah'>Pengurusan Al-Syariah</option>
+                <option value='Pengajian Bahasa Arab'>Pengajian Bahasa Arab</option>
+                <option value='Pengajian Muamalat'>Pengajian Muamalat</option>
+                <option value='Pengajian Pendidikan Islam'>Pengajian Pendidikan Islam</option>
+                <option value='Pusat Pengajian Teras'>Pusat Pengajian Teras</option>
+                <option value='Pengurusan Usuluddin'>Pengurusan Usuluddin</option>
+                <option value='Teknologi Maklumat & Multimedia'>Teknologi Maklumat & Multimedia</option>   
+              </select>
+            </div> 
+
+           <!--st-->
+            <div class="col-md-6 mb-3">
+              <label class="form-label text-end">S&T/ NO S&T:</label>
+              <select class="form-control" name="st" required>
+                <option value="" disabled selected>Choose</option>
+                <option value="S&T">S&T</option>
+                <option value="NON S&T">NO S&T</option>
+              </select>
+            </div>
+
             <!--Status Active-->
             <div class="col-md-6 mb-3">
               <label class="form-label text-end">STATUS:</label>
@@ -166,7 +254,18 @@ if(isset($_POST ['submit']))
              <label class="form-label text-end">COUNTRY:</label>
              <input type="text" class="form-control" name="country" placeholder="Country" required>
             </div>
-            
+
+            <!--link_evidence-->
+            <div class="col-md-6 mb-3">
+              <label class="form-label text-end">LINK EVIDENCE:</label>
+              <input type="text" class="form-control" name="link_evidence" id="link_evidence" placeholder="Attach Link" required>
+            </div>
+
+            <!--Remarks-->
+            <div class="col-md-6 mb-3">
+              <label class="form-label text-end">REMARKS:</label>
+              <input type="text" class="form-control" name="remarks" id="remarks" placeholder="REMARKS" required>
+            </div>
 <!--Button-->
 <div class="col-md-12 mb-3">
   <center>

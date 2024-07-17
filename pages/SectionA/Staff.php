@@ -780,12 +780,24 @@ if(isset($_GET['delid']))
                 <td style="text-align: center"><?php echo $row['position']; ?></td>
                 <td style="text-align: center"><?php echo $row['first_appointment']; ?></td>
                 <td style="text-align: center"><?php echo $row['current_appointment']; ?></td>
+                <td style="text-align: center"><?php echo $row['serve_date']; ?></td>
+                <td style="text-align: center"><?php echo $row['dob']; ?></td>
+                <td style="text-align: center"><?php echo $row['age']; ?></td>
+                <td style="text-align: center"><?php echo $row['cohort']; ?></td>
+                <td style="text-align: center"><?php echo $row['aca_qua']; ?></td>
+                <td style="text-align: center"><?php echo $row['name_prof']; ?></td>
+                <td style="text-align: center"><?php echo $row['prof_qual']; ?></td>
+                <td style="text-align: center"><?php echo $row['regis_prof']; ?></td>
+                <td style="text-align: center"><?php echo $row['faculty']; ?></td>
+                <td style="text-align: center"><?php echo $row['st']; ?></td>
                 <td style="text-align: center"><?php echo $row['status']; ?></td>
                 <td style="text-align: center"><?php echo $row['status_contract']; ?></td>
                 <td style="text-align: center"><?php echo $row['status_time']; ?></td>
                 <td style="text-align: center"><?php echo $row['citizen']; ?></td>
                 <td style="text-align: center"><?php echo $row['country']; ?></td>
-
+                <td style="text-align: center"><?php echo $row['link_evidence']; ?></td>
+                <td style="text-align: center"><?php echo $row['remarks']; ?></td>
+              
                 <td style="text-align: center;">
                     <a href="editstaff.php?ID=<?php echo $row['staff_id']; ?>" class="btn btn-primary btn-sm">
                         <i class="fa-solid fa-pen-to-square fs-5 me-3"></i>
