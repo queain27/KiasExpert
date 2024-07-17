@@ -734,18 +734,30 @@ if(isset($_GET['delid']))
         <table id="example" class="table table-striped" style="width:200%">
             <thead>
                 <tr>
-                    <th style="text-align: center">No.</th>
+                <th style="text-align: center">No.</th>
                     <th style="text-align: center">Staff ID</th>
                     <th style="text-align: center">Staff Name</th>
                     <th style="text-align: center">Grade</th>
                     <th style="text-align: center">Position</th>
                     <th style="text-align: center">First Appointment Date</th>
                     <th style="text-align: center">Appointment Date <br>Current Position</th>
+                    <th style="text-align: center">Service End Date</th>
+                    <th style="text-align: center">Date of Birth</th>
+                    <th style="text-align: center">Age</th>
+                    <th style="text-align: center">Cohort</th>
+                    <th style="text-align: center">Academic Qualification</th>
+                    <th style="text-align: center">Name Of Professional qualification/Awarding Body</th>
+                    <th style="text-align: center">Professional Qualification <br> (IR,AR,FRCP,SR,ACCA,MMED)</th>
+                    <th style="text-align: center">Registration Number For Professional Membership</th>
+                    <th style="text-align: center">Department/Faculty </th>
+                    <th style="text-align: center">S&T/Non S&T</th>
                     <th style="text-align: center">Status Active</th>
                     <th style="text-align: center">Status Contract</th>
                     <th style="text-align: center">Status Time</th>
                     <th style="text-align: center">Citizenship</th>
                     <th style="text-align: center">Country</th>
+                    <th style="text-align: center">Link To Evidence</th>
+                    <th style="text-align: center">Remarks</th>
                     <th style="text-align: center">Action</th>
                 </tr>
             </thead>
@@ -806,11 +818,23 @@ if(isset($_GET['delid']))
                     <th style="text-align: center">Position</th>
                     <th style="text-align: center">First Appointment Date</th>
                     <th style="text-align: center">Appointment Date <br>Current Position</th>
+                    <th style="text-align: center">Service End Date</th>
+                    <th style="text-align: center">Date of Birth</th>
+                    <th style="text-align: center">Age</th>
+                    <th style="text-align: center">Cohort</th>
+                    <th style="text-align: center">Academic Qualification</th>
+                    <th style="text-align: center">Name Of Professional qualification/Awarding Body</th>
+                    <th style="text-align: center">Professional Qualification <br> (IR,AR,FRCP,SR,ACCA,MMED)</th>
+                    <th style="text-align: center">Registration Number For Professional Membership</th>
+                    <th style="text-align: center">Department/Faculty </th>
+                    <th style="text-align: center">S&T/Non S&T</th>
                     <th style="text-align: center">Status Active</th>
                     <th style="text-align: center">Status Contract</th>
                     <th style="text-align: center">Status Time</th>
                     <th style="text-align: center">Citizenship</th>
                     <th style="text-align: center">Country</th>
+                    <th style="text-align: center">Link To Evidence</th>
+                    <th style="text-align: center">Remarks</th>
                     <th style="text-align: center">Action</th>
                 </tr>
             </tfoot>
