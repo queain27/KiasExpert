@@ -152,8 +152,14 @@ if(isset($_POST ['submit']))
 
             <!--cohort-->
             <div class="col-md-6 mb-3">
-              <label class="form-label text-end">COHORT:</label>
-              <input type="text" class="form-control" name="cohort" value="<?php echo $row['cohort']?>">
+              <label class="form-label text-end">COHORT (A More 50, B= 40-50, C: Less 40):</label>
+              <select class="form-control" name="cohort" required>
+                <option value="" disabled selected>Choose</option>
+                <option value="A"<?php if ($row['cohort'] == 'A') echo 'selected'; ?>>A</option>
+                <option value="B"<?php if ($row['cohort'] == 'B') echo 'selected'; ?>>B</option>
+                <option value="C"<?php if ($row['cohort'] == 'C') echo 'selected'; ?>>C</option>
+              </select>
+            </div>
             </div>
 
             <!--aca_qua-->
@@ -171,9 +177,19 @@ if(isset($_POST ['submit']))
             <!--prof_qual-->
             <div class="col-md-6 mb-3">
               <label class="form-label text-end">PROFESSIONAL QUALIFICATION:</label>
-              <input type="text" class="form-control" name="prof_qual" value="<?php echo $row['prof_qual']?>">
+            
+              <select class="form-control" name="prof_qual" required>
+                <option value="" disabled selected>Choose</option>
+                <option value="IR"<?php if ($row['prof_qual'] == 'IR') echo 'selected'; ?>>IR</option>
+                <option value="AR"<?php if ($row['prof_qual'] == 'AR') echo 'selected'; ?>>AR</option>
+                <option value="FRCP"<?php if ($row['prof_qual'] == 'FRCP') echo 'selected';?>>FRCP</option>
+                <option value="SR"<?php if ($row['prof_qual'] == 'SR') echo 'selected'; ?>>SR</option>
+                <option value="ACCA"<?php if ($row['prof_qual'] == 'ACCA') echo 'selected'; ?>>ACCA</option>
+                <option value="MMED"<?php if ($row['prof_qual'] == 'MMED') echo 'selected'; ?>>MMED</option>
+                <option value="ETC"<?php if ($row['prof_qual'] == 'ETC') echo 'selected'; ?>>ETC</option>
+              </select>
             </div>
-
+            
             <!--regis_prof-->
             <div class="col-md-6 mb-3">
               <label class="form-label text-end">REGISTRATION NUMBER FOR PROFESSIONAL MEMBERSHIP:</label>

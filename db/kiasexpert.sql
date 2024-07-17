@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 17, 2024 at 05:22 AM
+-- Generation Time: Jul 17, 2024 at 08:28 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -112,10 +112,10 @@ CREATE TABLE `staff` (
   `staff_name` varchar(255) NOT NULL,
   `grade` varchar(255) NOT NULL,
   `position` varchar(255) NOT NULL,
-  `first_appointment` date NOT NULL,
-  `current_appointment` date NOT NULL,
-  `serve_date` date NOT NULL,
-  `dob` date NOT NULL,
+  `first_appointment` varchar(255) NOT NULL,
+  `current_appointment` varchar(255) NOT NULL,
+  `serve_date` varchar(255) NOT NULL,
+  `dob` varchar(255) NOT NULL,
   `age` int(11) NOT NULL,
   `cohort` char(1) NOT NULL,
   `aca_qua` varchar(255) NOT NULL,
@@ -138,8 +138,13 @@ CREATE TABLE `staff` (
 --
 
 INSERT INTO `staff` (`staff_id`, `staff_name`, `grade`, `position`, `first_appointment`, `current_appointment`, `serve_date`, `dob`, `age`, `cohort`, `aca_qua`, `name_prof`, `prof_qual`, `regis_prof`, `faculty`, `st`, `status`, `status_contract`, `status_time`, `citizen`, `country`, `link_evidence`, `remarks`) VALUES
-(743, 'Ali Bin Ahmad', 'VK06', 'Professor', '1974-11-01', '2024-06-23', '2016-10-10', '1952-10-09', 66, 'A', 'Master', '', 'IR', 'BEM 123', 'J23-Fakulti Kejuruteraan Elektrik', 'S&T', 'Active', 'Contract', 'Full-Time', 'Local', 'Malaysia', 'Hyperlink', 'Staff'),
-(958, 'Ali Bin Omar', 'DS52', 'Senior Lecturer', '2024-07-03', '2024-07-04', '2024-07-10', '2024-07-18', 44, 'B', 'PHD', 'A', 'IR', 'BEM 123', 'Pengurusan Al-Syariah', 'S&T', 'Study', 'Permanent', 'Full-Time', 'Local', 'Malaysia', 'LINK', 'STAFF');
+(743, 'ALI BIN AHMAD                   ', 'VK06', '', '2024-07-10', '2024-07-24', '2024-07-10', '2024-07-10', 56, 'A', 'MASTER', 'A', 'IR', 'BEM 123', 'Al-Quran & Hadis', 'S&T', 'Active', 'Permanent', 'Full-Time', 'Local', 'MALAYSIA', 'HYPERLINK', 'STAFF'),
+(958, 'JALIL BIN OMAR                          ', 'DS52', 'SENIOR LECTURER', '26-APR-76', '', '12-JUL-15', '12-Jul-55', 3, 'A', 'PHD', '', '', '', 'J22-FAKULTI KEJURUTERAAN AWAM ', '', 'ACTIVE', 'PERMANENT', 'FULL TIME', 'LOCAL', 'MALAYSIA', 'HYPERLINK', ''),
+(992, 'ANIE BTE ATTAN                          ', 'KQ54', 'RESEARCH FELLOW', '02-Jul-76', '01-Jan-16', '12-Nov-16', '27-Jul-52', 0, 'A', 'PHD', '', '', '', 'K41-AKADEMI BAHASA ', '', 'ACTIVE', 'CONTRACT', 'FULL TIME', 'LOCAL', 'MALAYSIA', 'HYPERLINK', 'STAF DILANTIK SEMULA'),
+(1067, 'AMRAN BIN AYOB                          ', 'DS53', 'ASSOCIATE PROFESSOR', '03-Sep-76', '', '10-Oct-16', '11-Oct-52', 0, 'A', 'PHD', '', '', '', 'J24-FAKULTI KEJURUTERAAN MEKANIKAL ', '', 'ACTIVE', 'CONTRACT', 'FULL TIME', 'LOCAL', 'MALAYSIA', 'HYPERLINK', ''),
+(1274, 'HAMDANI BIN AHMAD                       ', 'VK05', 'PROFESSOR', '09-Nov-97', '', '06-Feb-16', '28-Jan-70', 17, 'A', 'PHD', '', '', '', 'J46-FAKULTI KEJURUTERAAN KIMIA DAN KEJURUTERAAN TENAGA', '', 'ACTIVE', 'CONTRACT', 'FULL TIME', 'LOCAL', 'MALAYSIA', 'HYPERLINK', ''),
+(11234, 'ROBERT', 'VK06', 'PROFESSOR', '01-Nov-74', '', '10-Oct-16', '09-Oct-52', 0, 'A', 'PHD', '', 'IR', 'BEM 123', 'J23-FAKULTI KEJURUTERAAN ELEKTRIK ', 'S&T', 'ACTIVE', 'CONTRACT', 'FULL TIME', 'FOREIGN', 'INDIA', 'HYPERLINK', ''),
+(12345, 'Hannan Binti Zulkafli', 'VK09', 'Professor', '2024-07-04', '2024-07-18', '2024-07-11', '2024-07-17', 55, 'A', 'PHD', 'u', 'ACCA', 'BEM 123', 'Pengajian Muamalat', 'S&T', 'Leaves', 'Permanent', 'Full-Time', 'Foreign', 'Indonesia', 'LINK', 'STAFF');
 
 -- --------------------------------------------------------
 
@@ -225,7 +230,7 @@ ALTER TABLE `pg_student`
 -- AUTO_INCREMENT for table `staff`
 --
 ALTER TABLE `staff`
-  MODIFY `staff_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11235;
+  MODIFY `staff_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12346;
 
 --
 -- AUTO_INCREMENT for table `ug_student`

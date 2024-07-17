@@ -37,7 +37,7 @@ if(isset($_POST ['submit']))
     }
 
     else
-    { echo "<script>alert('Something Wrong');</script>";
+    { echo "<script>alert('Staff ID Already Have');</script>";
     }
 }
 
@@ -147,8 +147,13 @@ if(isset($_POST ['submit']))
 
             <!--cohort-->
             <div class="col-md-6 mb-3">
-              <label class="form-label text-end">COHORT:</label>
-              <input type="text" class="form-control" name="cohort" id="cohort" placeholder="COHORT" required>
+              <label class="form-label text-end">COHORT (A More 50, B= 40-50, C Less 40) </label>
+              <select class="form-control" name="cohort" required>
+                <option value="" disabled selected>Choose</option>
+                <option value="A">A</option>
+                <option value="B">B</option>
+                <option value="C">C</option>
+              </select>
             </div>
 
             <!--aca_qua-->
@@ -165,9 +170,19 @@ if(isset($_POST ['submit']))
 
             <!--prof_qual-->
             <div class="col-md-6 mb-3">
-              <label class="form-label text-end">PROFESSIONAL QUALIFICATION:</label>
-              <input type="text" class="form-control" name="prof_qual" id="prof_qual" placeholder="PROFESSIONAL QUALIFICATION" required>
+              <label class="form-label text-end">PROFESSIONAL QUALIFICATION:</label>  
+              <select class="form-control" name="prof_qual" required>
+                <option value="" disabled selected>Choose</option>
+                <option value="IR">IR</option>
+                <option value="AR">AR</option>
+                <option value="FRCP">FRCP</option>
+                <option value="SR">SR</option>
+                <option value="ACCA">ACCA</option>
+                <option value="MMED">MMED</option>
+                <option value="ETC">ETC</option>
+              </select>
             </div>
+
 
             <!--regis_prof-->
             <div class="col-md-6 mb-3">
