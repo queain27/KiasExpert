@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 15, 2024 at 09:31 AM
+-- Generation Time: Jul 17, 2024 at 05:22 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -114,20 +114,32 @@ CREATE TABLE `staff` (
   `position` varchar(255) NOT NULL,
   `first_appointment` date NOT NULL,
   `current_appointment` date NOT NULL,
+  `serve_date` date NOT NULL,
+  `dob` date NOT NULL,
+  `age` int(11) NOT NULL,
+  `cohort` char(1) NOT NULL,
+  `aca_qua` varchar(255) NOT NULL,
+  `name_prof` varchar(255) NOT NULL,
+  `prof_qual` varchar(255) NOT NULL,
+  `regis_prof` varchar(255) NOT NULL,
+  `faculty` varchar(255) NOT NULL,
+  `st` varchar(255) NOT NULL,
   `status` varchar(255) NOT NULL,
   `status_contract` varchar(255) NOT NULL,
   `status_time` varchar(255) NOT NULL,
   `citizen` varchar(255) NOT NULL,
-  `country` varchar(255) NOT NULL
+  `country` varchar(255) NOT NULL,
+  `link_evidence` varchar(255) NOT NULL,
+  `remarks` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `staff`
 --
 
-INSERT INTO `staff` (`staff_id`, `staff_name`, `grade`, `position`, `first_appointment`, `current_appointment`, `status`, `status_contract`, `status_time`, `citizen`, `country`) VALUES
-(743, 'Ali Bin Ahmad', 'VK06', 'Professor', '1974-11-01', '2024-06-23', 'Active', 'Contract', 'Full-Time', 'Local', 'Malaysia'),
-(11234, 'Robert', 'VK09', 'Professor', '1974-11-01', '2024-06-01', 'Active', 'Permanent', 'Full-Time', 'Foreign', 'India');
+INSERT INTO `staff` (`staff_id`, `staff_name`, `grade`, `position`, `first_appointment`, `current_appointment`, `serve_date`, `dob`, `age`, `cohort`, `aca_qua`, `name_prof`, `prof_qual`, `regis_prof`, `faculty`, `st`, `status`, `status_contract`, `status_time`, `citizen`, `country`, `link_evidence`, `remarks`) VALUES
+(743, 'Ali Bin Ahmad', 'VK06', 'Professor', '1974-11-01', '2024-06-23', '2016-10-10', '1952-10-09', 66, 'A', 'Master', '', 'IR', 'BEM 123', 'J23-Fakulti Kejuruteraan Elektrik', 'S&T', 'Active', 'Contract', 'Full-Time', 'Local', 'Malaysia', 'Hyperlink', 'Staff'),
+(958, 'Ali Bin Omar', 'DS52', 'Senior Lecturer', '2024-07-03', '2024-07-04', '2024-07-10', '2024-07-18', 44, 'B', 'PHD', 'A', 'IR', 'BEM 123', 'Pengurusan Al-Syariah', 'S&T', 'Study', 'Permanent', 'Full-Time', 'Local', 'Malaysia', 'LINK', 'STAFF');
 
 -- --------------------------------------------------------
 
