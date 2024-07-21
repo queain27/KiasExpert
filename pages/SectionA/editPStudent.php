@@ -69,30 +69,30 @@ if(isset($_POST ['submit']))
         </div>
 
         <?php 
-        $sql = "SELECT * FROM `pg_student` WHERE matric_no = $matric_no LIMIT 1";
-        $result = mysqli_query($conn, $sql);
-        $row = mysqli_fetch_assoc($result);
+           $sql = "SELECT * FROM `pg_student` WHERE matric_no = $matric_no LIMIT 1";
+           $result = mysqli_query($conn, $sql);
+           $row = mysqli_fetch_assoc($result);
         ?>
 
     <div class ="container d-flex justify-contetnt-">
         <form action =" " method="post" style="width:50vw; min-width:300px;">
         <div class ="row">
            
-           <!--NO MATRCI-->
+           <!--NO MATRIC-->
              <div class="col">
                <label class ="form-label">NO MATRIC:</label>
                <input type="text" class="form-control" name="matric_no" value="<?php echo $row['matric_no']?>"> 
             </div>
 
-             <!--Name-->
+             <!--STUDENT NAME-->
              <div class="col-md-6 mb-3">
-               <label class="form-label text-end">STUDENT NAME:</label>
+               <label class="form-label text-end">STUDENT NAMEE:</label>
                <input type="text" class="form-control" name="student_name"value="<?php echo $row['student_name']?>">
             </div>
             
-            <!--Faculty Staff-->
+            <!--FACULTY STUDENT-->
             <div class="col-md-6 mb-3">
-                  <label class="form-label text-end">FACULTY :</label>
+                <label class="form-label text-end">FACULTY :</label>
                 <select class="form-control" name="faculty">
                    <option value=" " disabled>Choose Status</option>
                    <option value='Al-Quran & Hadis' <?php if ($row['faculty'] == 'Al-Quran & Hadis') echo 'selected'; ?>>Al-Quran & Hadis</option>
@@ -106,6 +106,7 @@ if(isset($_POST ['submit']))
                    <option value='Teknologi Maklumat & Multimedia' <?php if ($row['faculty'] == 'Teknologi Maklumat & Multimedia') echo 'selected'; ?>>Teknologi Maklumat & Multimedia</option>
                 </select>
           </div>
+
             <!--CGPA Degree-->
             <div class="col">
                <label class ="form-label">CGPA Degree:</label>
