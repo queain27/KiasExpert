@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 21, 2024 at 07:40 AM
+-- Generation Time: Jul 21, 2024 at 09:14 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -113,7 +113,7 @@ CREATE TABLE `pg_student` (
 --
 
 INSERT INTO `pg_student` (`matric_no`, `student_name`, `faculty`, `cgpa`, `cgpa_degree`, `cgpa_deg_actual`, `cgpa_master`, `cgpa_phd`, `university_degree`, `university_master`, `degree_registered`, `mixedmode_ratio`, `st`, `area`, `sponsor`, `intake_year`, `aca_year`, `numsem`, `student_time`, `study_mode`, `citizen`, `country`, `entry_date`, `senate`, `duration`, `got`, `link`, `remarks`, `status_active`) VALUES
-(2021156055, 'AFIFAH BINTI HASSAN', 'Al-Quran & Hadis', 'Yes', 2.96, '2.96', 'Yes', 'Yes', 'Usim', 'UiTM', 'PhD', '70:30', 'NON S&T', 'DAKWAH', 'SELF-FINANCE', '2015', '2016/2017', '4', 'Full-Time', 'Mix Mode', 'Local', 'Malaysia', '2024-07-21', '2024-07-21', 2, 'Yes', 'https://github.com/queain27', 'Active', 'Graduate'),
+(2021156055, 'AFIFAH BINTI HASSAN', 'Al-Quran & Hadis', 'Yes', 2.96, '2.96', 'Yes', 'Yes', 'Usim', 'UiTM', 'Master', '70:30', 'NON S&T', 'DAKWAH', 'SELF-FINANCE', '2015', '2016/2017', '4', 'Full-Time', 'Mix Mode', 'Local', 'Malaysia', '2024-07-21', '2024-07-21', 2, 'Yes', 'https://github.com/queain27', 'Active', 'Graduate'),
 (2021156056, 'ABBAS SANI DAHIRU', 'Al-Quran & Hadis', 'Yes', 3.33, '10', 'Yes', 'Yes', 'Université De Toulouse', 'USMANU DANFODIYO UNIVERSITY SOKOTO', 'PhD', '70:30', 'NON S&T', 'DAKWAH', 'SELF-FINANCE', '2015', '2016/2017', '4', 'Part-Time', 'Research', 'Foreign', 'Nigeria', '2015-11-02', '2017-12-30', 4, 'NO', 'https://github.com/queain27', 'Active', 'Active');
 
 -- --------------------------------------------------------
