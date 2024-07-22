@@ -162,8 +162,8 @@ if(isset($_GET['delid']))
                 <p>Profile</p>
               </a>
             </li> 
- <!--Seksyen A Start-->
- <li class="nav-header">Section MyRA</li>
+  <!--Seksyen A Start-->
+  <li class="nav-header">Section MyRA</li>
  <li class="nav-item">
    <a href="#" class="nav-link">
      <i class="nav-icon fas fa-info-circle icon"></i>
