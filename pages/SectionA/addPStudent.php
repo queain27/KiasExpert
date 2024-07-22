@@ -162,7 +162,7 @@ if(isset($_POST ['submit']))
     <option value="" disabled selected>Choose Degree</option>
     <option value="PhD">PhD</option>
     <option value="Master">Master</option>
-    <option value="Doctoral">Doctoral</option>
+    <option value="Post-Doctoral">Post-Doctoral</option>
   </select>
 </div>
 
