@@ -745,7 +745,7 @@
   </aside>
   <!-- Paste the content of sidebar.php here -->
 <body>
-<h3><center><font color="" face="Cambria Math">Postgraduated Student<font><br></center></h3>
+<h3><center><font color="" face="Cambria Math">PhDs Graduated<font><br></center></h3>
 <br><br>
 <div class="container pt-50">
     <div class="table-responsive">
@@ -788,7 +788,7 @@
     <tbody id="myTable">
     <?php
         require_once "../examples/config.php";
-        $query = "SELECT * FROM pg_student where degree_registered ='PHD'"; 
+         $query = "SELECT * FROM pg_student WHERE degree_registered = 'PHD' AND status_active = 'Graduate'";
          $count =1;
          $result = mysqli_query($conn, $query);
 
