@@ -15,7 +15,7 @@ if(isset($_GET['delid']))
 <head> 
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Staff Academic</title>
+  <title>Staff Foreign</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">  
   <!-- Font Awesome -->
   <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
@@ -161,8 +161,8 @@ if(isset($_GET['delid']))
                 <p>Profile</p>
               </a>
             </li>
- <!--Seksyen A Start-->
- <li class="nav-header">Section MyRA</li>
+  <!--Seksyen A Start-->
+  <li class="nav-header">Section MyRA</li>
  <li class="nav-item">
    <a href="#" class="nav-link">
      <i class="nav-icon fas fa-info-circle icon"></i>
@@ -757,14 +757,10 @@ if(isset($_GET['delid']))
   <!-- Paste the content of sidebar.php here -->
 <body>
 <!--Main Content-->
-<h3><center><font color="" face="Cambria Math">Staff Academic<font><br></center></h3>
+<h3><center><font color="" face="Cambria Math">Staff Foreign<font><br></center></h3>
 <!--TableStart-->  
   <div class="container pt-50">
    <div class="row">
-     <div class="text-right mb-3">
-        <a href="../sectionA/addStaff.php" class="btn btn-success">+Add New Staff</a>
-      </div>
-
     <div class="table-responsive">
         <table id="example" class="table table-striped" style="width:200%">
             <thead>
@@ -800,7 +796,7 @@ if(isset($_GET['delid']))
             <tbody id="myTable">
     <?php
     require_once "../examples/config.php";
-    $query = "SELECT * FROM staff";
+    $query = "SELECT * FROM staff where citizen ='foreign'";
     $count =1;
     $result = mysqli_query($conn, $query);
 
