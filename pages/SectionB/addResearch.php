@@ -130,7 +130,7 @@ if(isset($_POST['submit'])) {
           <!--Button-->
           <div class="col-md-12 mb-3 text-center">
             <button type="submit" class="btn btn-primary" name="submit">ADD</button>
-            <a href="Staff.php" class="btn btn-success">View Staff</a>
+            <a href="Staff.php" class="btn btn-success">View Research</a>
           </div>
         </div>
       </form>
