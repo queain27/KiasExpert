@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">  
   <!-- Font Awesome -->
   <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <!-- Ionicons -->
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <!-- Tempusdominus Bootstrap 4 -->
@@ -29,6 +30,8 @@
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
   <script defer src="https://cdn.datatables.net/2.0.3/js/dataTables.js"></script>
   <script defer src="https://cdn.datatables.net/2.0.3/js/dataTables.bootstrap5.js"></script>
+  <script defer src="script.js"></script>
+  <!--Icon Image--> 
   <link rel="shortcut icon" href="../../images/Logo2.png" type="image/x-icon">
   <script defer src="script.js"></script>
 
@@ -763,26 +766,49 @@
             <th>PhD Awarding Institution</th>
             <th>Year PhD Awarded</th>
             <th>Link Evidence</th>
-            <th>Remarks</th>
-            </tr>
-            </thead>
-            <tbody>
-            
+            <th style="text-align: center">Remarks</th>
+            <th style="text-align: center">Action</th>
+        </tr>
+    </thead>
+    <tbody id="myTable">
+    <?php
+        require_once "../examples/config.php";
+         $query = "SELECT * FROM pg_student WHERE degree_registered = 'PHD'";
+         $count =1;
+         $result = mysqli_query($conn, $query);
+
+    if ($result) {
+        while ($row = mysqli_fetch_assoc($result)) {
+    ?>
             <tr>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
+              <td style="text-align: center"><?php echo $count;?></td>
+              <td style="text-align: center"><?php echo $row['matric_no']; ?></td>
+              <td style="text-align: center"><?php echo $row['student_name']; ?></td>
+              <td style="text-align: center"><?php echo $row['citizen']; ?></td>
+              <td style="text-align: center"><?php echo $row['country']; ?></td>
               <td></td>
               <td></td> 
               <td></td>
               <td></td>
               <td></td>
-              <td></td>
-              <td></td>
+              <td style="text-align: center"><a href="<?php echo $row['link']; ?>" target="_blank"><?php echo $row['link']; ?></a>
+                <td style="text-align: center"><?php echo $row['remarks']; ?></td>
+                <td style="text-align: center;">
+                    <a href="../sectionA/editPStudent.php?ID=<?php echo $row['matric_no']; ?>" class="btn btn-primary btn-sm"><i class="fa-solid fa-pen-to-square fs-5 me-3"></i></a>
+                    <a href="PostgraduategraduatedStud.php?delid=<?php echo htmlentities($row['matric_no']); ?>" onClick="return confirm('Do you really want to remove this Record?');" class="btn btn-danger btn-sm"><i class="fa-solid fa-trash fs-5 me-3"></i></a>
+                </td>
             </tr>
-               
+        <?php
+          
+          $count = $count+1;
+              }
+            } 
+            else 
+            
+            {
+              echo "Error: " . mysqli_error($conn);
+             }
+          ?>
             </tbody>
             <tfoot>
                 <tr>

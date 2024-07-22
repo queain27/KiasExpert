@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Master Graduated</title>
+    <title>Master Graduated</title> 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">  
   <!-- Font Awesome -->
   <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <!-- Ionicons -->
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <!-- Tempusdominus Bootstrap 4 -->
@@ -29,9 +30,10 @@
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
   <script defer src="https://cdn.datatables.net/2.0.3/js/dataTables.js"></script>
   <script defer src="https://cdn.datatables.net/2.0.3/js/dataTables.bootstrap5.js"></script>
+  <script defer src="script.js"></script>
+  <!--Icon Image--> 
   <link rel="shortcut icon" href="../../images/Logo2.png" type="image/x-icon">
   <script defer src="script.js"></script>
-  
     <script>
         $(document).ready(function(){
             $('#example').DataTable();
@@ -744,7 +746,7 @@
   <!-- Paste the content of sidebar.php here -->
 <body>
 <!--Main Content-->
-<!--TableStart-->  
+<!--TableStart--> 
 <h3><center><font color="" face="Cambria Math">Number of Master Graduated<font><br></center></h3>
 <br><br>
 <div class="container pt-50">
@@ -793,8 +795,9 @@
          $result = mysqli_query($conn, $query);
 
     if ($result) {
-        while ($row = mysqli_fetch_assoc($result)) {
-    ?>
+        while ($row = mysqli_fetch_assoc($result))    
+        {
+            ?>
             <tr>
                 <td style="text-align: center"><?php echo $count;?></td>
                 <td style="text-align: center"><?php echo $row['matric_no']; ?></td>
@@ -881,7 +884,6 @@
         </table>
     </div>
 </div> 
-<!--Main Content-->
 <script>
     $(document).ready(function() {
         $('#example').DataTable({
