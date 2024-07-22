@@ -141,8 +141,13 @@ if(isset($_POST ['submit']))
 
 <!--DEGREE REGISTERED-->
 <div class="col-md-6 mb-3">
-    <label class="form-label">DEGREE REGISTERED:</label>
-    <input type="text" class="form-control" name="degree_registered" value="<?php echo $row['degree_registered']?>">
+  <label class="form-label">Degree Registered:</label>
+  <select class="form-control" name="degree_registered" required>
+    <option value="" disabled selected>Choose Degree</option>
+    <option value="PhD" <?php if ($row['degree_registered'] == 'PhD') echo 'selected'; ?>>PhD</option>
+    <option value="Master" <?php if ($row['degree_registered'] == 'Master') echo 'selected'; ?>>Master</option>
+   <option value="post-Doctoral" <?php if ($row['degree_registered'] == 'Post-Doctoral') echo 'selected'; ?>>Post-Doctoral</option>
+  </select>
 </div>
 
 <!--CGPA MASTER > 3.00-->
