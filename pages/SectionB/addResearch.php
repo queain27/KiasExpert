@@ -1,4 +1,4 @@
-2<?php
+<?php
 include "../examples/config.php";
 if(isset($_POST['submit'])) {
   $project_id = $_POST['project_id'];
@@ -43,10 +43,7 @@ if(isset($_POST['submit'])) {
 
 <div class="container-fluid">
   <div class="container">
-    <?php
-    require "../header.php";
-    createHeader('fa fa-briefcase', 'Add New Staff', 'Add Staff Academic');
-    ?>
+    
     <div class="container">
       <div class="row">
         <div class="col-sm-12">
