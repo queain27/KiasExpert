@@ -86,13 +86,13 @@ if(isset($_POST ['submit']))
 
              <!--STUDENT NAME-->
              <div class="col-md-6 mb-3">
-               <label class="form-label text-end">STUDENT NAMEE:</label>
+               <label class="form-label text-end">STUDENT NAME:</label>
                <input type="text" class="form-control" name="student_name"value="<?php echo $row['student_name']?>">
             </div>
             
             <!--FACULTY STUDENT-->
             <div class="col-md-6 mb-3">
-                <label class="form-label text-end">FACULTY :</label>
+                <label class="form-label text-end">FACULTY:</label>
                 <select class="form-control" name="faculty">
                    <option value=" " disabled>Choose Status</option>
                    <option value='Al-Quran & Hadis' <?php if ($row['faculty'] == 'Al-Quran & Hadis') echo 'selected'; ?>>Al-Quran & Hadis</option>
@@ -135,7 +135,7 @@ if(isset($_POST ['submit']))
 
             <!--CGPA  > 3.00-->
             <div class="col-md-6 mb-3">
-              <label class="form-label text-end">CGPA  > 3.00</label>
+              <label class="form-label text-end">CGPA >3.00</label>
               <select class="form-control" name="cgpa">
                   <option value="" disabled>Choose</option>
                   <option value="Yes" <?php if ($row['cgpa'] == 'Yes') echo 'selected'; ?>>Yes</option>
@@ -194,7 +194,7 @@ if(isset($_POST ['submit']))
 
             <!--citizenship-->
             <div class="col-md-6 mb-3">
-              <label class="form-label text-end">CITIZENSHIP</label>
+              <label class="form-label text-end">CITIZENSHIP:</label>
               <select class="form-control" name="citizen">
                   <option value="" disabled>Choose Citizenship</option>
                   <option value="Local" <?php if ($row['citizen'] == 'Local') echo 'selected'; ?>>Local</option>
