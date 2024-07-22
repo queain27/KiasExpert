@@ -158,12 +158,47 @@
      </p>
    </a>
    <ul class="nav nav-treeview">
-     <li class="nav-item">
-       <a href="../sectionA/Staff.php" class="nav-link">
+   <li class="nav-item">
+       <a href="#" class="nav-link">
          <i class="far fa-circle nav-icon"></i>
-         <p>A1 Staff Academic</p>
-       </a> 
+         <p>A1 Staff Information
+           <i class="fas fa-angle-left right"></i>
+         </p>
+       </a>
+       <ul class="nav nav-treeview">
+         <li class="nav-item">
+           <a href="../sectionA/Staff.php" class="nav-link">
+             <i class="far fa-circle nav-icon"></i>
+             <p>Staff</p>
+           </a>
+         </li>
+         <li class="nav-item">
+         <a href="../sectionA/Staff_Active.php" class="nav-link">
+             <i class="far fa-circle nav-icon"></i>
+             <p>Staff Active</p>
+           </a>
+         </li>
+         <li class="nav-item">
+         <a href="../sectionA/Staff_Foreign.php" class="nav-link">
+             <i class="far fa-circle nav-icon"></i>
+             <p>Staff Foreign</p>
+           </a>
+         </li>
+         <li class="nav-item">
+         <a href="../sectionA/Staff_ST.php" class="nav-link">
+             <i class="far fa-circle nav-icon"></i>
+             <p>Staff S&T</p>
+           </a>
+         </li>
+         <li class="nav-item">
+         <a href="../sectionA/Staff_NONST.php" class="nav-link">
+             <i class="far fa-circle nav-icon"></i>
+             <p>Staff Non S&T</p>
+           </a>
+         </li>
+       </ul>
      </li>
+
      <li class="nav-item">
        <a href="#" class="nav-link">
          <i class="far fa-circle nav-icon"></i>

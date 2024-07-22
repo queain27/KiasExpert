@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 15, 2024 at 09:31 AM
+-- Generation Time: Jul 21, 2024 at 09:14 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -82,15 +82,29 @@ CREATE TABLE `pg_student` (
   `faculty` varchar(255) NOT NULL,
   `cgpa` varchar(255) NOT NULL,
   `cgpa_degree` double NOT NULL,
+  `cgpa_deg_actual` varchar(255) NOT NULL,
   `cgpa_master` varchar(255) NOT NULL,
   `cgpa_phd` varchar(255) NOT NULL,
   `university_degree` varchar(255) NOT NULL,
   `university_master` varchar(255) NOT NULL,
   `degree_registered` varchar(255) NOT NULL,
+  `mixedmode_ratio` varchar(255) NOT NULL,
+  `st` varchar(255) NOT NULL,
+  `area` varchar(255) NOT NULL,
+  `sponsor` varchar(255) NOT NULL,
+  `intake_year` varchar(255) NOT NULL,
+  `aca_year` varchar(255) NOT NULL,
+  `numsem` varchar(255) NOT NULL,
   `student_time` varchar(255) NOT NULL,
   `study_mode` varchar(255) NOT NULL,
   `citizen` varchar(255) NOT NULL,
   `country` varchar(255) NOT NULL,
+  `entry_date` date NOT NULL,
+  `senate` date NOT NULL,
+  `duration` int(5) NOT NULL,
+  `got` varchar(255) NOT NULL,
+  `link` varchar(255) NOT NULL,
+  `remarks` varchar(255) NOT NULL,
   `status_active` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -98,8 +112,9 @@ CREATE TABLE `pg_student` (
 -- Dumping data for table `pg_student`
 --
 
-INSERT INTO `pg_student` (`matric_no`, `student_name`, `faculty`, `cgpa`, `cgpa_degree`, `cgpa_master`, `cgpa_phd`, `university_degree`, `university_master`, `degree_registered`, `student_time`, `study_mode`, `citizen`, `country`, `status_active`) VALUES
-(2021156055, 'Mohammad Ali Bin Mohammad Bakar', 'Al-Quran & Hadis', 'Yes', 3.55, 'Yes', 'Yes', '', 'UiTM', 'PhD', '', 'Research', 'Local', 'Malaysia', 'Active');
+INSERT INTO `pg_student` (`matric_no`, `student_name`, `faculty`, `cgpa`, `cgpa_degree`, `cgpa_deg_actual`, `cgpa_master`, `cgpa_phd`, `university_degree`, `university_master`, `degree_registered`, `mixedmode_ratio`, `st`, `area`, `sponsor`, `intake_year`, `aca_year`, `numsem`, `student_time`, `study_mode`, `citizen`, `country`, `entry_date`, `senate`, `duration`, `got`, `link`, `remarks`, `status_active`) VALUES
+(2021156055, 'AFIFAH BINTI HASSAN', 'Al-Quran & Hadis', 'Yes', 2.96, '2.96', 'Yes', 'Yes', 'Usim', 'UiTM', 'Master', '70:30', 'NON S&T', 'DAKWAH', 'SELF-FINANCE', '2015', '2016/2017', '4', 'Full-Time', 'Mix Mode', 'Local', 'Malaysia', '2024-07-21', '2024-07-21', 2, 'Yes', 'https://github.com/queain27', 'Active', 'Graduate'),
+(2021156056, 'ABBAS SANI DAHIRU', 'Al-Quran & Hadis', 'Yes', 3.33, '10', 'Yes', 'Yes', 'Université De Toulouse', 'USMANU DANFODIYO UNIVERSITY SOKOTO', 'PhD', '70:30', 'NON S&T', 'DAKWAH', 'SELF-FINANCE', '2015', '2016/2017', '4', 'Part-Time', 'Research', 'Foreign', 'Nigeria', '2015-11-02', '2017-12-30', 4, 'NO', 'https://github.com/queain27', 'Active', 'Active');
 
 -- --------------------------------------------------------
 
@@ -112,22 +127,39 @@ CREATE TABLE `staff` (
   `staff_name` varchar(255) NOT NULL,
   `grade` varchar(255) NOT NULL,
   `position` varchar(255) NOT NULL,
-  `first_appointment` date NOT NULL,
-  `current_appointment` date NOT NULL,
+  `first_appointment` varchar(255) NOT NULL,
+  `current_appointment` varchar(255) NOT NULL,
+  `serve_date` varchar(255) NOT NULL,
+  `dob` varchar(255) NOT NULL,
+  `age` int(11) NOT NULL,
+  `cohort` char(1) NOT NULL,
+  `aca_qua` varchar(255) NOT NULL,
+  `name_prof` varchar(255) NOT NULL,
+  `prof_qual` varchar(255) NOT NULL,
+  `regis_prof` varchar(255) NOT NULL,
+  `faculty` varchar(255) NOT NULL,
+  `st` varchar(255) NOT NULL,
   `status` varchar(255) NOT NULL,
   `status_contract` varchar(255) NOT NULL,
   `status_time` varchar(255) NOT NULL,
   `citizen` varchar(255) NOT NULL,
-  `country` varchar(255) NOT NULL
+  `country` varchar(255) NOT NULL,
+  `link_evidence` varchar(255) NOT NULL,
+  `remarks` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `staff`
 --
 
-INSERT INTO `staff` (`staff_id`, `staff_name`, `grade`, `position`, `first_appointment`, `current_appointment`, `status`, `status_contract`, `status_time`, `citizen`, `country`) VALUES
-(743, 'Ali Bin Ahmad', 'VK06', 'Professor', '1974-11-01', '2024-06-23', 'Active', 'Contract', 'Full-Time', 'Local', 'Malaysia'),
-(11234, 'Robert', 'VK09', 'Professor', '1974-11-01', '2024-06-01', 'Active', 'Permanent', 'Full-Time', 'Foreign', 'India');
+INSERT INTO `staff` (`staff_id`, `staff_name`, `grade`, `position`, `first_appointment`, `current_appointment`, `serve_date`, `dob`, `age`, `cohort`, `aca_qua`, `name_prof`, `prof_qual`, `regis_prof`, `faculty`, `st`, `status`, `status_contract`, `status_time`, `citizen`, `country`, `link_evidence`, `remarks`) VALUES
+(743, 'ALI BIN AHMAD                   ', 'VK06', '', '2024-07-10', '2024-07-24', '2024-07-10', '2024-07-10', 56, 'A', 'MASTER', 'Askar', 'IR', 'BEM 123', 'Al-Quran & Hadis', 'S&T', 'Study', 'Permanent', 'Full-Time', 'Local', 'MALAYSIA', 'https://rgbacolorpicker.com/', 'Staff'),
+(958, 'JALIL BIN OMAR                          ', 'DS52', 'SENIOR LECTURER', '26-APR-76', '', '12-JUL-15', '12-Jul-55', 3, 'A', 'PHD', '', '', '', 'J22-FAKULTI KEJURUTERAAN AWAM ', '', 'ACTIVE', 'PERMANENT', 'FULL TIME', 'LOCAL', 'MALAYSIA', 'HYPERLINK', ''),
+(992, 'ANIE BTE ATTAN                          ', 'KQ54', 'Professor', '2024-07-04', '2024-07-10', '2024-07-04', '2024-07-10', 55, 'A', 'PHD', '', 'ETC', '', 'Al-Quran & Hadis', 'NON S&T', 'Sabbatical', 'Contract', 'Full-Time', 'Local', 'MALAYSIA', 'HYPERLINK', 'STAF DILANTIK SEMULA'),
+(1067, 'AMRAN BIN AYOB                          ', 'DS53', 'ASSOCIATE PROFESSOR', '03-Sep-76', '', '10-Oct-16', '11-Oct-52', 0, 'A', 'PHD', '', '', '', 'J24-FAKULTI KEJURUTERAAN MEKANIKAL ', '', 'ACTIVE', 'CONTRACT', 'FULL TIME', 'LOCAL', 'MALAYSIA', 'HYPERLINK', ''),
+(1274, 'HAMDANI BIN AHMAD                       ', 'VK05', 'PROFESSOR', '09-Nov-97', '', '06-Feb-16', '28-Jan-70', 17, 'A', 'PHD', '', '', '', 'J46-FAKULTI KEJURUTERAAN KIMIA DAN KEJURUTERAAN TENAGA', '', 'ACTIVE', 'CONTRACT', 'FULL TIME', 'LOCAL', 'MALAYSIA', 'HYPERLINK', ''),
+(11234, 'ROBERT', 'VK06', 'PROFESSOR', '01-Nov-74', '', '10-Oct-16', '09-Oct-52', 0, 'A', 'PHD', '', 'IR', 'BEM 123', 'J23-FAKULTI KEJURUTERAAN ELEKTRIK ', 'S&T', 'ACTIVE', 'CONTRACT', 'FULL TIME', 'FOREIGN', 'INDIA', 'HYPERLINK', ''),
+(12345, 'Hannan Binti Zulkafli', 'VK09', 'Professor', '2024-07-04', '2024-07-18', '2024-07-11', '2024-07-17', 55, 'A', 'PHD', 'u', 'ACCA', 'BEM 123', 'Pengajian Muamalat', 'S&T', 'Leaves', 'Permanent', 'Full-Time', 'Foreign', 'Indonesia', 'LINK', 'STAFF');
 
 -- --------------------------------------------------------
 
@@ -207,13 +239,13 @@ ALTER TABLE `lect_form`
 -- AUTO_INCREMENT for table `pg_student`
 --
 ALTER TABLE `pg_student`
-  MODIFY `matric_no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2021156056;
+  MODIFY `matric_no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2021156057;
 
 --
 -- AUTO_INCREMENT for table `staff`
 --
 ALTER TABLE `staff`
-  MODIFY `staff_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11235;
+  MODIFY `staff_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12346;
 
 --
 -- AUTO_INCREMENT for table `ug_student`
