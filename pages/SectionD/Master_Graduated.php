@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Master Graduated</title>
+    <title>Master Graduated</title> 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">  
   <!-- Font Awesome -->
   <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
@@ -34,7 +34,6 @@
   <!--Icon Image--> 
   <link rel="shortcut icon" href="../../images/Logo2.png" type="image/x-icon">
   <script defer src="script.js"></script>
-  
     <script>
         $(document).ready(function(){
             $('#example').DataTable();
@@ -747,7 +746,7 @@
   <!-- Paste the content of sidebar.php here -->
 <body>
 <!--Main Content-->
-<!--TableStart-->  
+<!--TableStart--> 
 <h3><center><font color="" face="Cambria Math">Number of Master Graduated<font><br></center></h3>
 <br><br>
 <div class="container pt-50">
@@ -885,7 +884,6 @@
         </table>
     </div>
 </div> 
-<!--Main Content-->
 <script>
     $(document).ready(function() {
         $('#example').DataTable({
