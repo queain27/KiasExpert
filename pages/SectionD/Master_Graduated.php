@@ -749,95 +749,134 @@
 <br><br>
 <div class="container pt-50">
     <div class="table-responsive">
-        <table id="example" class="table table-striped" style="width:250%">
+        <table id="example" class="table table-striped" style="width:200%">
             <thead>
-                <tr>            
-            <th>No.</th>
-            <th>Matric No.</th>
-            <th>Student Name</th>
-            <th>Level Cgpa</th>
-            <th>level degree Cgpa</th>
-            <th>Cgpa >=3.00 (Yes/No)</th>
-            <th>Cgpa Degree >=3.00</th>
-            <th>University Bachelor Level</th>
-            <th>University Master Level</th>
-            <th>Degree Registered (Phd/Master/Doctoral)</th>
-            <th>Status Time</th>
-            <th>Study Mode (Research/Mix Mode/ Course Work)</th>
-            <th>Study Field</th>
-            <th>Faculty</th>
-            <th>Area Study</th>
-            <th>Sponsorship</th>
-            <th>Intake Year</th>
-            <th>Academic Year</th>
-            <th>Number Semester</th>
-            <th>Citizenship</th>
-            <th>Country</th>
-            <th>Entry Date</th>
-            <th>Senate Date</th>
-            <th>Duration Semester</th>
-            <th> GOT </th>
-            <th>Status Active</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td> 
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-                </tr>
-               
-            </tbody>
-            <tfoot>
-                <tr>
-            <th></th>
-            <th>Matric No.</th>
-            <th>Student Name</th>
-            <th>Level Cgpa</th>
-            <th>level degree Cgpa</th>
-            <th>Cgpa >=3.00 (Yes/No)</th>
-            <th>Cgpa Degree >=3.00</th>
-            <th>University Bachelor Level</th>
-            <th>University Master Level</th>
-            <th>Degree Registered (Phd/Master/Doctoral)</th>
-            <th>Status Time</th>
-            <th>Study Mode (Research/Mix Mode/ Course Work)</th>
-            <th>Study Field</th>
-            <th>Faculty</th>
-            <th>Area Study</th>
-            <th>Sponsorship</th>
-            <th>Intake Year</th>
-            <th>Academic Year</th>
-            <th>Number Semester</th>
-            <th>Citizenship</th>
-            <th>Country</th>
-            <th>Entry Date</th>
-            <th>Senate Date</th>
-            <th>Duration Semester</th>
-            <th> GOT </th>
-            <th>Status Active</th>
-                </tr>
+            <tr>
+            <th style="text-align: center">No.</th>
+            <th style="text-align: center">Matric No.</th>
+            <th style="text-align: center">Student Name</th>
+            <th style="text-align: center">Cgpa At Bachelor Level(Actual)</th>
+            <th style="text-align: center">Cgpa At Bachelor Level (Equivalent =4.00)</th>
+            <th style="text-align: center">Cgpa >=3.00 (Yes/No)</th>
+            <th style="text-align: center">University Bachelor Level</th>
+            <th style="text-align: center">University Master Level</th>
+            <th style="text-align: center">Master Cgpa >=3.00 (Yes/No)</th>
+            <th style="text-align: center">Phd Cgpa >=3.00 (Yes/No)</th>
+            <th style="text-align: center">Degree Registered (Phd/Master/Doctoral)</th>
+            <th style="text-align: center">Status Time</th>
+            <th style="text-align: center">Study Mode (Research/Mix Mode/ Course Work)</th>
+            <th style="text-align: center">Mixed Mode Ratio (Research:Coursework)</th>
+            <th style="text-align: center">S&T/Non S&T</th>
+            <th style="text-align: center">Faculty</th>
+            <th style="text-align: center">Area Of Study</th>
+            <th style="text-align: center">Sponsorship</th>
+            <th style="text-align: center">Intake Year</th>
+            <th style="text-align: center">Academic Year</th>
+            <th style="text-align: center">No Of Semester</th>
+            <th style="text-align: center">Citizenship</th>
+            <th style="text-align: center">Country</th>
+            <th style="text-align: center">Entry Date</th>
+            <th style="text-align: center">Senate Approval</th>
+            <th style="text-align: center">Duration Of Study (No Of Semester/Month)</th>
+            <th style="text-align: center">GOT (Yes/No)</th>
+            <th style="text-align: center">Status Active</th>
+            <th style="text-align: center">Link Evidence</th>
+            <th style="text-align: center">Remarks</th>
+            <th style="text-align: center">Action</th>
+        </tr>
+    </thead>
+    <tbody id="myTable">
+    <?php
+        require_once "../examples/config.php";
+         $query = "SELECT * FROM pg_student WHERE degree_registered = 'Master' AND status_active = 'Graduate'";
+         $count =1;
+         $result = mysqli_query($conn, $query);
+
+    if ($result) {
+        while ($row = mysqli_fetch_assoc($result)) {
+    ?>
+            <tr>
+                <td style="text-align: center"><?php echo $count;?></td>
+                <td style="text-align: center"><?php echo $row['matric_no']; ?></td>
+                <td style="text-align: center"><?php echo $row['student_name']; ?></td>
+                <td style="text-align: center"><?php echo $row['cgpa_deg_actual']; ?></td>
+                <td style="text-align: center"><?php echo $row['cgpa_degree']; ?></td>
+                <td style="text-align: center"><?php echo $row['cgpa']; ?></td>
+                <td style="text-align: center"><?php echo $row['university_degree']; ?></td>
+                <td style="text-align: center"><?php echo $row['university_master']; ?></td>
+                <td style="text-align: center"><?php echo $row['cgpa_master']; ?></td>
+                <td style="text-align: center"><?php echo $row['cgpa_phd']; ?></td>
+                <td style="text-align: center"><?php echo $row['degree_registered']; ?></td>
+                <td style="text-align: center"><?php echo $row['student_time']; ?></td>
+                <td style="text-align: center"><?php echo $row['study_mode']; ?></td>
+                <td style="text-align: center"><?php echo $row['mixedmode_ratio']; ?></td>
+                <td style="text-align: center"><?php echo $row['st']; ?></td>
+                <td style="text-align: center"><?php echo $row['faculty']; ?></td>
+                <td style="text-align: center"><?php echo $row['area']; ?></td>
+                <td style="text-align: center"><?php echo $row['sponsor']; ?></td>
+                <td style="text-align: center"><?php echo $row['intake_year']; ?></td>
+                <td style="text-align: center"><?php echo $row['aca_year']; ?></td>
+                <td style="text-align: center"><?php echo $row['numsem']; ?></td>
+                <td style="text-align: center"><?php echo $row['citizen']; ?></td>
+                <td style="text-align: center"><?php echo $row['country']; ?></td>
+                <td style="text-align: center"><?php echo $row['entry_date']; ?></td>
+                <td style="text-align: center"><?php echo $row['senate']; ?></td>
+                <td style="text-align: center"><?php echo $row['duration']; ?></td>
+                <td style="text-align: center"><?php echo $row['got']; ?></td>
+                <td style="text-align: center"><?php echo $row['status_active']; ?></td>
+                <td style="text-align: center"><a href="<?php echo $row['link']; ?>" target="_blank"><?php echo $row['link']; ?></a>
+                <td style="text-align: center"><?php echo $row['remarks']; ?></td>
+                <td style="text-align: center;">
+                    <a href="../sectionA/editPStudent.php?ID=<?php echo $row['matric_no']; ?>" class="btn btn-primary btn-sm"><i class="fa-solid fa-pen-to-square fs-5 me-3"></i></a>
+                    <a href="PostgraduategraduatedStud.php?delid=<?php echo htmlentities($row['matric_no']); ?>" onClick="return confirm('Do you really want to remove this Record?');" class="btn btn-danger btn-sm"><i class="fa-solid fa-trash fs-5 me-3"></i></a>
+                </td>
+            </tr>
+        <?php
+          
+          $count = $count+1;
+              }
+            } 
+            else 
+            
+            {
+              echo "Error: " . mysqli_error($conn);
+             }
+          ?>
+</tbody>
+    <tfoot>
+    <tr>
+            <th style="text-align: center">No.</th>
+            <th style="text-align: center">Matric No.</th>
+            <th style="text-align: center">Student Name</th>
+            <th style="text-align: center">Cgpa At Bachelor Level(Actual)</th>
+            <th style="text-align: center">Cgpa At Bachelor Level (Equivalent =4.00)</th>
+            <th style="text-align: center">Cgpa >=3.00 (Yes/No)</th>
+            <th style="text-align: center">University Bachelor Level</th>
+            <th style="text-align: center">University Master Level</th>
+            <th style="text-align: center">Master Cgpa >=3.00 (Yes/No)</th>
+            <th style="text-align: center">Phd Cgpa >=3.00 (Yes/No)</th>
+            <th style="text-align: center">Degree Registered (Phd/Master/Doctoral)</th>
+            <th style="text-align: center">Status Time</th>
+            <th style="text-align: center">Study Mode (Research/Mix Mode/ Course Work)</th>
+            <th style="text-align: center">Mixed Mode Ratio (Research:Coursework)</th>
+            <th style="text-align: center">S&T/Non S&T</th>
+            <th style="text-align: center">Faculty</th>
+            <th style="text-align: center">Area Of Study</th>
+            <th style="text-align: center">Sponsorship</th>
+            <th style="text-align: center">Intake Year</th>
+            <th style="text-align: center">Academic Year</th>
+            <th style="text-align: center">No Of Semester</th>
+            <th style="text-align: center">Citizenship</th>
+            <th style="text-align: center">Country</th>
+            <th style="text-align: center">Entry Date</th>
+            <th style="text-align: center">Senate Approval</th>
+            <th style="text-align: center">Duration Of Study (No Of Semester/Month)</th>
+            <th style="text-align: center">GOT (Yes/No)</th>
+            <th style="text-align: center">Status Active</th>
+            <th style="text-align: center">Link Evidence</th>
+            <th style="text-align: center">Remarks</th>
+            <th style="text-align: center">Action</th>
+        </tr>
             </tfoot>
         </table>
     </div>
