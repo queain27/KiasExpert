@@ -56,7 +56,7 @@ if(isset($_POST['submit'])) {
         if(staff_id) {
           $.ajax({
             type: 'POST',
-            url: './fetchstaffname.php',
+            url: 'fetchstaffname.php',
             data: {staff_id: staff_id},
             success: function(response) {
               console.log("Response from server:", response);
