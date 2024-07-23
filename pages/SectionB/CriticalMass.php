@@ -734,6 +734,7 @@
                     <th>Amount Pledged (Approved) New Project This Year</th>
                     <th>Amount Received</th>
                     <th>Remarks</th>
+                    <th>Action</th>
                 </tr>
             </thead>
             <tbody id="myTable">
@@ -761,7 +762,16 @@
                 <td style="text-align: center"><?php echo $row['amtpled_new']; ?></td>
                 <td style="text-align: center"><?php echo $row['amt_rec']; ?></td>
                 <td style="text-align: center"><?php echo $row['remarks']; ?></td>
-               
+                <td style="text-align: center;">
+                    <a href="editstaff.php?ID=<?php echo $row['staff_id']; ?>" class="btn btn-primary btn-sm">
+                        <i class="fa-solid fa-pen-to-square fs-5 me-3"></i>
+                    </a>
+                    <a href="Staff.php?delid=<?php echo htmlentities($row['staff_id']); ?>" 
+                       onClick="return confirm('Do you really want to remove this Record?');" 
+                       class="btn btn-danger btn-sm">
+                        <i class="fa-solid fa-trash fs-5 me-3"></i>
+                    </a>
+                </td>
             </tr>
         <?php
           
@@ -791,6 +801,7 @@
                     <th>Amount Pledged (Approved) New Project This Year</th>
                     <th>Amount Received</th>
                     <th>Remarks</th>
+                    <th>Action</th>
                 </tr>
             </tfoot>
         </table>
