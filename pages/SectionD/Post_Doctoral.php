@@ -785,12 +785,13 @@
               <td style="text-align: center"><?php echo $row['matric_no']; ?></td>
               <td style="text-align: center"><?php echo $row['student_name']; ?></td>
               <td style="text-align: center"><?php echo $row['citizen']; ?></td>
-              <td style="text-align: center"><?php echo $row['country']; ?></td>
-              <td></td>
-              <td></td> 
-              <td></td>
-              <td></td>
-              <td></td>
+              <td style="text-align: center"><?php echo $row['first_appointment']; ?></td>
+              <td style="text-align: center"><?php echo $row['current_appointment']; ?></td>
+              <td style="text-align: center"><?php echo $row['serve_date']; ?></td>
+              <td style="text-align: center"><?php echo $row['app_dur']; ?></td>
+              <td style="text-align: center"><?php echo $row['awd_inst']; ?></td>
+              <td style="text-align: center"><?php echo $row['year_awd']; ?></td>
+
               <td style="text-align: center"><a href="<?php echo $row['link']; ?>" target="_blank"><?php echo $row['link']; ?></a>
                 <td style="text-align: center"><?php echo $row['remarks']; ?></td>
                 <td style="text-align: center;">

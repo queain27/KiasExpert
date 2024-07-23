@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 22, 2024 at 07:49 AM
+-- Generation Time: Jul 23, 2024 at 03:54 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -77,7 +77,7 @@ INSERT INTO `lect_form` (`id`, `name`, `staffid`, `password`, `image`) VALUES
 --
 
 CREATE TABLE `pg_student` (
-  `matric_no` int(11) NOT NULL,
+  `matric_no` varchar(255) NOT NULL,
   `student_name` varchar(255) NOT NULL,
   `faculty` varchar(255) NOT NULL,
   `cgpa` varchar(255) NOT NULL,
@@ -99,6 +99,12 @@ CREATE TABLE `pg_student` (
   `study_mode` varchar(255) NOT NULL,
   `citizen` varchar(255) NOT NULL,
   `country` varchar(255) NOT NULL,
+  `first_appointment` date NOT NULL,
+  `current_appointment` date NOT NULL,
+  `serve_date` date NOT NULL,
+  `app_dur` int(10) NOT NULL,
+  `year_awd` varchar(10) NOT NULL,
+  `awd_inst` varchar(255) NOT NULL,
   `entry_date` date NOT NULL,
   `senate` date NOT NULL,
   `duration` int(5) NOT NULL,
@@ -112,10 +118,12 @@ CREATE TABLE `pg_student` (
 -- Dumping data for table `pg_student`
 --
 
-INSERT INTO `pg_student` (`matric_no`, `student_name`, `faculty`, `cgpa`, `cgpa_degree`, `cgpa_deg_actual`, `cgpa_master`, `cgpa_phd`, `university_degree`, `university_master`, `degree_registered`, `mixedmode_ratio`, `st`, `area`, `sponsor`, `intake_year`, `aca_year`, `numsem`, `student_time`, `study_mode`, `citizen`, `country`, `entry_date`, `senate`, `duration`, `got`, `link`, `remarks`, `status_active`) VALUES
-(2021156055, 'AFIFAH BINTI HASSAN', 'Al-Quran & Hadis', 'No', 2.96, '2.96', 'No', 'No', 'Usim', 'UiTM', 'post-Doctoral', '70:30', 'NON S&T', 'DAKWAH', 'SELF-FINANCE', '2015', '2016/2017', '4', 'Full-Time', 'Mix Mode', 'Local', 'Malaysia', '2024-07-21', '2024-07-21', 2, 'Yes', 'https://github.com/queain27', 'Active', 'Graduate'),
-(2021156056, 'ABBAS SANI DAHIRU', 'Al-Quran & Hadis', 'Yes', 3.33, '10', 'Yes', 'Yes', 'Université De Toulouse', 'USMANU DANFODIYO UNIVERSITY SOKOTO', 'PhD', '70:30', 'NON S&T', 'DAKWAH', 'SELF-FINANCE', '2015', '2016/2017', '4', 'Part-Time', 'Research', 'Foreign', 'Nigeria', '2015-11-02', '2017-12-30', 4, 'Yes', 'https://github.com/queain27', 'Active', 'Graduate'),
-(2021156057, 'Nur Athirah Binti Mohammad', 'Al-Quran & Hadis', 'Yes', 3.33, '3.33', 'Yes', 'Yes', 'Usim', 'UiTM', 'Master', '70:30', 'NON S&T', 'al-quran', 'SELF-FINANCE', '2015', '2016/2017', '4', 'Full-Time', 'Research', 'Local', 'Malaysia', '2024-07-15', '2024-07-23', 2, 'Yes', 'https://github.com/queain27', 'Active', 'Graduate');
+INSERT INTO `pg_student` (`matric_no`, `student_name`, `faculty`, `cgpa`, `cgpa_degree`, `cgpa_deg_actual`, `cgpa_master`, `cgpa_phd`, `university_degree`, `university_master`, `degree_registered`, `mixedmode_ratio`, `st`, `area`, `sponsor`, `intake_year`, `aca_year`, `numsem`, `student_time`, `study_mode`, `citizen`, `country`, `first_appointment`, `current_appointment`, `serve_date`, `app_dur`, `year_awd`, `awd_inst`, `entry_date`, `senate`, `duration`, `got`, `link`, `remarks`, `status_active`) VALUES
+('GS35697', 'AFIFAH BINTI HASSAN', 'Al-Quran & Hadis', 'No', 2.96, '2.96', 'No', 'No', 'Usim', 'UiTM', 'PhD', '70:30', 'NON S&T', 'DAKWAH', 'SELF-FINANCE', '2015', '2016/2017', '4', 'Full-Time', 'Mix Mode', 'Local', 'Malaysia', '0000-00-00', '0000-00-00', '0000-00-00', 0, '2015', '', '2024-07-21', '2024-07-21', 2, 'No', 'https://github.com/queain27', '-', 'Active'),
+('GS38336', 'ABBAS SANI DAHIRU', 'Al-Quran & Hadis', 'Yes', 3.33, '10', 'Yes', 'Yes', 'Université De Toulouse', 'USMANU DANFODIYO UNIVERSITY SOKOTO', 'PhD', '70:30', 'NON S&T', 'DAKWAH', 'SELF-FINANCE', '2015', '2016/2017', '4', 'Part-Time', 'Research', 'Foreign', 'Nigeria', '0000-00-00', '0000-00-00', '0000-00-00', 0, '', '', '2015-11-02', '2017-12-30', 4, 'Yes', 'https://github.com/queain27', 'Active', 'Graduate'),
+('GS44903', 'Nur Athirah Binti Mohammad', 'Al-Quran & Hadis', 'Yes', 3.33, '3.33', 'Yes', 'Yes', 'Usim', 'UiTM', 'Master', '70:30', 'NON S&T', 'al-quran', 'SELF-FINANCE', '2015', '2016/2017', '4', 'Full-Time', 'Research', 'Local', 'Malaysia', '0000-00-00', '0000-00-00', '0000-00-00', 0, '', '', '2024-07-15', '2024-07-23', 2, 'Yes', 'https://github.com/queain27', 'Active', 'Graduate'),
+('PD123', 'Mohammad', 'Teknologi Maklumat & Multimedia', 'No', 2.96, '2.96', 'Yes', 'No', 'uitm', 'UiTM', 'Doctoral', '70:30', 'S&T', 'it', 'no', '2023', '2023/2024', '1', 'Full-Time', 'Mix Mode', 'Local', 'Malaysia', '0000-00-00', '0000-00-00', '0000-00-00', 0, '', '', '2024-07-01', '2024-07-10', 0, 'YES', 'https://github.com/queain27', '-', 'Complete'),
+('PLA143007', 'Ahmad Ali', 'Teknologi Maklumat & Multimedia', 'Yes', 3.58, '3.58', 'Yes', 'Yes', 'UNIVERSITI SELANGOR', '- ', 'Doctoral', '-', 'S&T', 'FKM', 'PERSENDIRIAN/SELF SPONSORED', '2015', '1', '2', 'Part-Time', 'Mix Mode', 'Local', 'Malaysia', '2015-12-31', '2015-06-30', '2016-12-31', 12, '', '', '2015-03-16', '2016-08-23', 42, 'YES', '-', '-', 'Complete');
 
 -- --------------------------------------------------------
 
@@ -235,12 +243,6 @@ ALTER TABLE `admin_form`
 --
 ALTER TABLE `lect_form`
   MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
-
---
--- AUTO_INCREMENT for table `pg_student`
---
-ALTER TABLE `pg_student`
-  MODIFY `matric_no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2021156058;
 
 --
 -- AUTO_INCREMENT for table `staff`
