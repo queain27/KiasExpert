@@ -19,7 +19,7 @@ if(isset($_POST['submit'])) {
 
    if($sql) {
        echo "<script>alert('New record successfully added');</script>";
-       echo "<script>document.location='Staff.php';</script>";
+       echo "<script>document.location='CriticalMass.php';</script>";
    } else {
        echo "<script>alert('Staff ID Already Exists');</script>";
    }
