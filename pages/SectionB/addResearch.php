@@ -64,7 +64,7 @@ if(isset($_POST['submit'])) {
         if(staff_id) {
           $.ajax({
             type: 'POST',
-            url: 'check_staff.php',
+            url: 'fetchstaffname.php',
             data: {staff_id: staff_id},
             success: function(response) {
               if(response === "Not Active") {
