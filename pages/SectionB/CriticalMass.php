@@ -720,21 +720,21 @@
         <table id="example" class="table table-striped" style="width:200%">
             <thead>
                 <tr>
-                    <th>No.</th>
-                    <th>Project ID</th>
-                    <th>Staff ID</th>
-                    <th>Staff Name</th>
-                    <th>Research Title</th>
-                    <th>Start Date</th>
-                    <th>End Date</th>
-                    <th>Sponsor</th>
-                    <th>Sponsor Category</th>
-                    <th>Grant Name</th>
-                    <th>Amount Pledged (Approved) Active This Year</th>
-                    <th>Amount Pledged (Approved) New Project This Year</th>
-                    <th>Amount Received</th>
-                    <th>Remarks</th>
-                    <th>Action</th>
+                <th style="text-align: center">No.</th>
+                <th style="text-align: center">Project ID</th>
+                <th style="text-align: center">Staff ID</th>
+                <th style="text-align: center">Staff Name</th>
+                <th style="text-align: center">Research Title</th>
+                <th style="text-align: center">Start Date</th>
+                <th style="text-align: center">End Date</th>
+                <th style="text-align: center">Sponsor</th>
+                <th style="text-align: center">Sponsor Category</th>
+                <th style="text-align: center">Grant Name</th>
+                <th style="text-align: center">Amount Pledged (Approved) Active This Year</th>
+                <th style="text-align: center">Amount Pledged (Approved) New Project This Year</th>
+                <th style="text-align: center">Amount Received</th>
+                <th style="text-align: center">Remarks</th>
+                <th style="text-align: center">Action</th>
                 </tr>
             </thead>
             <tbody id="myTable">
@@ -787,21 +787,21 @@
 </tbody>
             <tfoot>
                 <tr>
-                   <th>No.</th>
-                    <th>Project ID</th>
-                    <th>Staff ID</th>
-                    <th>Staff Name</th>
-                    <th>Research Title</th>
-                    <th>Start Date</th>
-                    <th>End Date</th>
-                    <th>Sponsor</th>
-                    <th>Sponsor Category</th>
-                    <th>Grant Name</th>
-                    <th>Amount Pledged (Approved) Active This Year</th>
-                    <th>Amount Pledged (Approved) New Project This Year</th>
-                    <th>Amount Received</th>
-                    <th>Remarks</th>
-                    <th>Action</th>
+                <th style="text-align: center">No.</th>
+                <th style="text-align: center">Project ID</th>
+                <th style="text-align: center">Staff ID</th>
+                <th style="text-align: center">Staff Name</th>
+                <th style="text-align: center">Research Title</th>
+                <th style="text-align: center">Start Date</th>
+                <th style="text-align: center">End Date</th>
+                <th style="text-align: center">Sponsor</th>
+                <th style="text-align: center">Sponsor Category</th>
+                <th style="text-align: center">Grant Name</th>
+                <th style="text-align: center">Amount Pledged (Approved) Active This Year</th>
+                <th style="text-align: center">Amount Pledged (Approved) New Project This Year</th>
+                <th style="text-align: center">Amount Received</th>
+                <th style="text-align: center">Remarks</th>
+                <th style="text-align: center">Action</th>
                 </tr>
             </tfoot>
         </table>
