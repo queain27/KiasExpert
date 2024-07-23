@@ -148,7 +148,7 @@ if (isset($_POST['submit'])) {
                         <option value="" disabled selected>Choose Degree</option>
                         <option value="PhD" <?php if ($row['degree_registered'] == 'PhD') echo 'selected'; ?>>PhD</option>
                         <option value="Master" <?php if ($row['degree_registered'] == 'Master') echo 'selected'; ?>>Master</option>
-                        <option value="post-Doctoral" <?php if ($row['degree_registered'] == 'Post-Doctoral') echo 'selected'; ?>>Doctoral</option>
+                        <option value="Doctoral" <?php if ($row['degree_registered'] == 'Doctoral') echo 'selected'; ?>>Doctoral</option>
                     </select>
                 </div>
 

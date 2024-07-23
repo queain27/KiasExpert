@@ -773,7 +773,7 @@
     <tbody id="myTable">
     <?php
         require_once "../examples/config.php";
-         $query = "SELECT * FROM pg_student WHERE degree_registered = 'PHD'";
+         $query = "SELECT * FROM pg_student WHERE degree_registered = 'doctoral'";
          $count =1;
          $result = mysqli_query($conn, $query);
 
@@ -823,7 +823,7 @@
                 <th>Appointment</th>
                 <th>PhD Awarding Institution</th>
                 <th>Year PhD Awarded</th>
-                <th>SLink Evidence</th>
+                <th>Link Evidence</th>
                 <th>Remarks</th>
                 </tr>
             </tfoot>
