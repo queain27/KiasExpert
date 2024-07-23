@@ -786,19 +786,20 @@
 </tbody>
             <tfoot>
                 <tr>
-                    <th style="text-align: center">No.</th>
-                    <th style="text-align: center">Staff ID</th>
-                    <th style="text-align: center">Staff Name</th>
-                    <th style="text-align: center">Grade</th>
-                    <th style="text-align: center">Position</th>
-                    <th style="text-align: center">First Appointment Date</th>
-                    <th style="text-align: center">Appointment Date <br>Current Position</th>
-                    <th style="text-align: center">Status Active</th>
-                    <th style="text-align: center">Status Contract</th>
-                    <th style="text-align: center">Status Time</th>
-                    <th style="text-align: center">Citizenship</th>
-                    <th style="text-align: center">Country</th>
-                    <th style="text-align: center">Action</th>
+                <th>No.</th>
+                    <th>Project ID</th>
+                    <th>Staff ID</th>
+                    <th>Staff Name</th>
+                    <th>Research Title</th>
+                    <th>Start Date</th>
+                    <th>End Date</th>
+                    <th>Sponsor</th>
+                    <th>Sponsor Category</th>
+                    <th>Grant Name</th>
+                    <th>Amount Pledged (Approved) Active This Year</th>
+                    <th>Amount Pledged (Approved) New Project This Year</th>
+                    <th>Amount Received</th>
+                    <th>Remarks</th>
                 </tr>
             </tfoot>
         </table>
