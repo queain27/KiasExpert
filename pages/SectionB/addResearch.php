@@ -49,29 +49,34 @@ if(isset($_POST['submit'])) {
   <link rel="stylesheet" href="../../css/navbar.css">
   <link rel="shortcut icon" href="../../images/Logo2.png" type="image/x-icon">
   <script>
-    $(document).ready(function(){
-      $('input[name="staff_id"]').on('change', function(){
-        var staff_id = $(this).val();
-        if(staff_id) {
-          $.ajax({
-            type: 'POST',
-            url: 'fetchstaffname.php',
-            data: {staff_id: staff_id},
-            success: function(response) {
-              if(response === "Not Active") {
-                alert("Staff ID is not active or does not exist");
-                $('input[name="staff_name"]').val('');
-              } else {
-                $('input[name="staff_name"]').val(response);
-              }
-            }
-          });
-        } else {
-          $('input[name="staff_name"]').val('');
+$(document).ready(function(){
+  $('input[name="staff_id"]').on('change', function(){
+    var staff_id = $(this).val();
+    if(staff_id) {
+      $.ajax({
+        type: 'POST',
+        url: 'fetchstaffname.php',
+        data: {staff_id: staff_id},
+        success: function(response) {
+          console.log("Response from server:", response);
+          if(response === "Not Active") {
+            alert("Staff ID is not active or does not exist");
+            $('input[name="staff_name"]').val('');
+          } else {
+            $('input[name="staff_name"]').val(response);
+          }
+        },
+        error: function(xhr, status, error) {
+          console.error("AJAX Error:", status, error);
         }
       });
-    });
-  </script>
+    } else {
+      $('input[name="staff_name"]').val('');
+    }
+  });
+});
+</script>
+
 </head>
 <body>
 

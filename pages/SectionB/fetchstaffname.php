@@ -11,5 +11,7 @@ if(isset($_POST['staff_id'])) {
   } else {
     echo "Not Active";
   }
+} else {
+  echo "No Staff ID Provided";
 }
 ?>
