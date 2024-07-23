@@ -57,38 +57,41 @@ if(isset($_POST['submit'])) {
   <link rel="stylesheet" href="../../css/navbar.css">
   <link rel="shortcut icon" href="../../images/Logo2.png" type="image/x-icon">
   
-  <script>
-    $(document).ready(function(){
-      $('input[name="staff_id"]').on('change', function(){
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(document).ready(function() {
+    $('input[name="staff_id"]').on('change', function() {
         var staff_id = $(this).val();
-        if(staff_id) {
-          $.ajax({
-            type: 'POST',
-            url: 'fetchstaffname.php',
-            data: {staff_id: staff_id},
-            success: function(response) {
-              if(response === "Not Active") {
-                $('#staff-id-error').text("Staff ID is not active or does not exist").show();
-                $('input[name="staff_name"]').val('');
-                $('button[name="submit"]').prop('disabled', true);
-              } else {
-                $('#staff-id-error').hide();
-                $('input[name="staff_name"]').val(response);
-                $('button[name="submit"]').prop('disabled', false);
-              }
-            },
-            error: function(xhr, status, error) {
-              console.error("AJAX Error:", status, error);
-            }
-          });
+        if (staff_id) {
+            $.ajax({
+                type: 'POST',
+                url: 'fetchstaffname.php', // Update the URL to your server-side script
+                data: { staff_id: staff_id },
+                success: function(response) {
+                    if (response.error) {
+                        $('#staff-id-error').text(response.message).show();
+                        $('input[name="staff_name"]').val('');
+                        $('button[name="submit"]').prop('disabled', true);
+                    } else {
+                        $('#staff-id-error').hide();
+                        $('input[name="staff_name"]').val(response.staff_name);
+                        $('button[name="submit"]').prop('disabled', false);
+                    }
+                },
+                error: function(xhr, status, error) {
+                    console.error("AJAX Error:", status, error);
+                    // Optionally handle AJAX errors
+                }
+            });
         } else {
-          $('input[name="staff_name"]').val('');
-          $('#staff-id-error').hide();
-          $('button[name="submit"]').prop('disabled', false);
+            $('input[name="staff_name"]').val('');
+            $('#staff-id-error').hide();
+            $('button[name="submit"]').prop('disabled', false);
         }
-      });
     });
-  </script>
+});
+</script>
+
 </head>
 <body>
 <div class="container-fluid">
