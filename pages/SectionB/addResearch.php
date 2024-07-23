@@ -58,37 +58,43 @@ if(isset($_POST['submit'])) {
   <link rel="shortcut icon" href="../../images/Logo2.png" type="image/x-icon">
   
   <script>
-    $(document).ready(function(){
-      $('input[name="staff_id"]').on('change', function(){
+$(document).ready(function() {
+    $('input[name="staff_id"]').on('change', function() {
         var staff_id = $(this).val();
-        if(staff_id) {
-          $.ajax({
-            type: 'POST',
-            url: 'fetchstaffname.php',
-            data: {staff_id: staff_id},
-            success: function(response) {
-              if(response === "Not Active") {
-                $('#staff-id-error').text("Staff ID is not active or does not exist").show();
-                $('input[name="staff_name"]').val('');
-                $('button[name="submit"]').prop('disabled', true);
-              } else {
-                $('#staff-id-error').hide();
-                $('input[name="staff_name"]').val(response);
-                $('button[name="submit"]').prop('disabled', false);
-              }
-            },
-            error: function(xhr, status, error) {
-              console.error("AJAX Error:", status, error);
-            }
-          });
+        if (staff_id) {
+            $.ajax({
+                type: 'POST',
+                url: 'fetchstaffname.php',
+                data: { staff_id: staff_id },
+                success: function(response) {
+                    if (response === "Not Active") {
+                        $('#staff-id-error').text("Staff ID is not active or does not exist").show();
+                        $('input[name="staff_name"]').val('');
+                        $('button[name="submit"]').prop('disabled', true);
+                    } else {
+                        $('#staff-id-error').hide();
+                        $('input[name="staff_name"]').val(response); // Update the staff_name input field
+                        $('button[name="submit"]').prop('disabled', false);
+                    }
+                },
+                error: function(xhr, status, error) {
+                    console.error("AJAX Error:", status, error);
+                }
+            });
         } else {
-          $('input[name="staff_name"]').val('');
-          $('#staff-id-error').hide();
-          $('button[name="submit"]').prop('disabled', false);
+            $('input[name="staff_name"]').val('');
+            $('#staff-id-error').hide();
+            $('button[name="submit"]').prop('disabled', false);
         }
-      });
     });
-  </script>
+
+    // Optionally, you can also disable the submit button initially if staff_id is empty
+    if (!$('input[name="staff_id"]').val()) {
+        $('button[name="submit"]').prop('disabled', true);
+    }
+});
+</script>
+
 </head>
 <body>
 <div class="container-fluid">
