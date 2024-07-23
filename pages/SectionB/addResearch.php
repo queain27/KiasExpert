@@ -1,28 +1,38 @@
 <?php
 include "../examples/config.php";
+
 if(isset($_POST['submit'])) {
   $project_id = $_POST['project_id'];
-   $staff_id = $_POST['staff_id'];
-   $staff_name = $_POST['staff_name'];
-   $research_title = $_POST['research_title'];
-   $start_date = $_POST['start_date'];
-   $end_date = $_POST['end_date'];
-   $sponsor = $_POST['sponsor'];
-   $sponsor_cat = $_POST['sponsor_cat'];
-   $grant_name = $_POST['grant_name'];
-   $amtpled_act = $_POST['amtpled_act'];
-   $amtpled_new = $_POST['amtpled_new'];
-   $amt_rec = $_POST['amt_rec'];
-   $remarks = $_POST['remarks'];
+  $staff_id = $_POST['staff_id'];
+  $staff_name = $_POST['staff_name'];
+  $research_title = $_POST['research_title'];
+  $start_date = $_POST['start_date'];
+  $end_date = $_POST['end_date'];
+  $sponsor = $_POST['sponsor'];
+  $sponsor_cat = $_POST['sponsor_cat'];
+  $grant_name = $_POST['grant_name'];
+  $amtpled_act = $_POST['amtpled_act'];
+  $amtpled_new = $_POST['amtpled_new'];
+  $amt_rec = $_POST['amt_rec'];
+  $remarks = $_POST['remarks'];
 
-   $sql = mysqli_query($conn, "INSERT INTO `research` ('project_id','staff_id','staff_name','research_title','start_date','end_date','sponsor','sponsor_cat','grant_name','amtpled_act','amtpled_new','amt_rec','remarks')");
+  // Check if staff_id is active
+  $check_staff_sql = mysqli_query($conn, "SELECT * FROM `staff` WHERE `staff_id` = '$staff_id' AND `status` = 'active'");
+  
+  if(mysqli_num_rows($check_staff_sql) > 0) {
+    // Staff is active, proceed with the insertion
+    $sql = mysqli_query($conn, "INSERT INTO `research` (`project_id`, `staff_id`, `staff_name`, `research_title`, `start_date`, `end_date`, `sponsor`, `sponsor_cat`, `grant_name`, `amtpled_act`, `amtpled_new`, `amt_rec`, `remarks`) VALUES ('$project_id', '$staff_id', '$staff_name', '$research_title', '$start_date', '$end_date', '$sponsor', '$sponsor_cat', '$grant_name', '$amtpled_act', '$amtpled_new', '$amt_rec', '$remarks')");
 
-   if($sql) {
-       echo "<script>alert('New record successfully added');</script>";
-       echo "<script>document.location='CriticalMass.php';</script>";
-   } else {
-       echo "<script>alert('Staff ID Already Exists');</script>";
-   }
+    if($sql) {
+      echo "<script>alert('New record successfully added');</script>";
+      echo "<script>document.location='CriticalMass.php';</script>";
+    } else {
+      echo "<script>alert('Failed to add new record');</script>";
+    }
+  } else {
+    // Staff is not active
+    echo "<script>alert('Staff ID is not active or does not exist');</script>";
+  }
 }
 ?>
 
@@ -38,16 +48,39 @@ if(isset($_POST['submit'])) {
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="../../css/navbar.css">
   <link rel="shortcut icon" href="../../images/Logo2.png" type="image/x-icon">
+  <script>
+    $(document).ready(function(){
+      $('input[name="staff_id"]').on('change', function(){
+        var staff_id = $(this).val();
+        if(staff_id) {
+          $.ajax({
+            type: 'POST',
+            url: 'fetchstaffname.php',
+            data: {staff_id: staff_id},
+            success: function(response) {
+              if(response === "Not Active") {
+                alert("Staff ID is not active or does not exist");
+                $('input[name="staff_name"]').val('');
+              } else {
+                $('input[name="staff_name"]').val(response);
+              }
+            }
+          });
+        } else {
+          $('input[name="staff_name"]').val('');
+        }
+      });
+    });
+  </script>
 </head>
 <body>
 
 <div class="container-fluid">
   <div class="container">
-    
     <div class="container">
       <div class="row">
         <div class="col-sm-12">
-          <h1 class="border-bottom text-center pb-3 mb-4">Add New Research </h1>
+          <h1 class="border-bottom text-center pb-3 mb-4">Add New Research</h1>
         </div>
       </div>
       <form action="" method="post">
@@ -55,19 +88,19 @@ if(isset($_POST['submit'])) {
           <!--Project ID-->
           <div class="col-md-6 mb-3">
             <label class="form-label">PROJECT ID:</label>
-            <input type ="text"  class="form-control" name="project_id" placeholder="Project ID" required>
-</div>
+            <input type="text" class="form-control" name="project_id" placeholder="Project ID" required>
+          </div>
           <!--Staff ID-->
           <div class="col-md-6 mb-3">
             <label class="form-label">STAFF ID:</label>
             <input type="text" class="form-control" name="staff_id" placeholder="Staff ID" required>
           </div>
-          <!--Name-->
+          <!--Staff Name-->
           <div class="col-md-6 mb-3">
             <label class="form-label">STAFF NAME:</label>
-            <input type="text" class="form-control" name="staff_name" placeholder="Staff Name" required>
+            <input type="text" class="form-control" name="staff_name" placeholder="Staff Name" readonly required>
           </div>
-          <!--Grade-->
+          <!--Research Title-->
           <div class="col-md-6 mb-3">
             <label class="form-label">RESEARCH TITLE:</label>
             <input type="text" class="form-control" name="research_title" placeholder="Research Title" required>
@@ -77,7 +110,7 @@ if(isset($_POST['submit'])) {
             <label class="form-label">START DATE:</label>
             <input type="date" class="form-control" name="start_date" required>
           </div>
-          <!--End Of date -->
+          <!--End Of Date-->
           <div class="col-md-6 mb-3">
             <label class="form-label">END OF DATE:</label>
             <input type="date" class="form-control" name="end_date" required>
@@ -87,7 +120,7 @@ if(isset($_POST['submit'])) {
             <label class="form-label">SPONSOR:</label>
             <input type="text" class="form-control" name="sponsor" placeholder="Sponsor" required>
           </div>
-          <!--Sponsor Category -->
+          <!--Sponsor Category-->
           <div class="col-md-6 mb-3">
             <label class="form-label">SPONSOR CATEGORY:</label>
             <select class="form-control" name="sponsor_cat" required>
@@ -97,28 +130,26 @@ if(isset($_POST['submit'])) {
               <option value="International">International</option>
             </select>
           </div>
-          <!--Academic Qualification-->
+          <!--Grant Name-->
           <div class="col-md-6 mb-3">
             <label class="form-label">GRANT NAME:</label>
             <input type="text" class="form-control" name="grant_name" placeholder="Grant Name" required>
           </div>
-          <!--Professional Qualification-->
+          <!--Amount Pledged (Approved) For Active Project In This Year-->
           <div class="col-md-6 mb-3">
             <label class="form-label">AMOUNT PLEDGED (APPROVED) FOR ACTIVE PROJECT IN THIS YEAR:</label>
             <input type="text" class="form-control" name="amtpled_act" placeholder="Amount Pledged (Approved) For Active Project In This Year" required>
-         </div>
-          <!--Registratio Number-->
+          </div>
+          <!--Amount Pledged (Approved) For New Project In The Year-->
           <div class="col-md-6 mb-3">
-            <label class="form-label">AMOUNT PLEDGED (APPROVED) FOR NEW PROJECT IN THE YEAR</label>
+            <label class="form-label">AMOUNT PLEDGED (APPROVED) FOR NEW PROJECT IN THE YEAR:</label>
             <input type="text" class="form-control" name="amtpled_new" placeholder="Amount Pledged (Approved) For New Project In The Year" required>
           </div>
-       
           <!--Amount Received-->
           <div class="col-md-6 mb-3">
-            <label class="form-label">AMOUNT RECEIVED:"</label>
+            <label class="form-label">AMOUNT RECEIVED:</label>
             <input type="text" class="form-control" name="amt_rec" placeholder="Amount Received" required>
           </div>
-         
           <!--Remarks-->
           <div class="col-md-6 mb-3">
             <label class="form-label">REMARKS:</label>
