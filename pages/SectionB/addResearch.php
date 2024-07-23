@@ -20,14 +20,22 @@ if(isset($_POST['submit'])) {
   $check_staff_sql = mysqli_query($conn, "SELECT * FROM `staff` WHERE `staff_id` = '$staff_id' AND `status` = 'active'");
   
   if(mysqli_num_rows($check_staff_sql) > 0) {
-    // Staff is active, proceed with the insertion
-    $sql = mysqli_query($conn, "INSERT INTO `research` (`project_id`, `staff_id`, `staff_name`, `research_title`, `start_date`, `end_date`, `sponsor`, `sponsor_cat`, `grant_name`, `amtpled_act`, `amtpled_new`, `amt_rec`, `remarks`) VALUES ('$project_id', '$staff_id', '$staff_name', '$research_title', '$start_date', '$end_date', '$sponsor', '$sponsor_cat', '$grant_name', '$amtpled_act', '$amtpled_new', '$amt_rec', '$remarks')");
+    // Staff is active, check for duplicates
+    $check_duplicate_sql = mysqli_query($conn, "SELECT * FROM `research` WHERE `project_id` = '$project_id' AND `staff_id` = '$staff_id'");
+    
+    if(mysqli_num_rows($check_duplicate_sql) == 0) {
+      // No duplicates, proceed with the insertion
+      $sql = mysqli_query($conn, "INSERT INTO `research` (`project_id`, `staff_id`, `staff_name`, `research_title`, `start_date`, `end_date`, `sponsor`, `sponsor_cat`, `grant_name`, `amtpled_act`, `amtpled_new`, `amt_rec`, `remarks`) VALUES ('$project_id', '$staff_id', '$staff_name', '$research_title', '$start_date', '$end_date', '$sponsor', '$sponsor_cat', '$grant_name', '$amtpled_act', '$amtpled_new', '$amt_rec', '$remarks')");
 
-    if($sql) {
-      echo "<script>alert('New record successfully added');</script>";
-      echo "<script>document.location='CriticalMass.php';</script>";
+      if($sql) {
+        echo "<script>alert('New record successfully added');</script>";
+        echo "<script>document.location='CriticalMass.php';</script>";
+      } else {
+        echo "<script>alert('Failed to add new record');</script>";
+      }
     } else {
-      echo "<script>alert('Failed to add new record');</script>";
+      // Duplicate entry found
+      echo "<script>alert('Duplicate entry found for the given Staff ID and Project ID');</script>";
     }
   } else {
     // Staff is not active
@@ -56,16 +64,17 @@ if(isset($_POST['submit'])) {
         if(staff_id) {
           $.ajax({
             type: 'POST',
-            url: 'fetchstaffname.php',
+            url: 'check_staff.php',
             data: {staff_id: staff_id},
             success: function(response) {
-              console.log("Response from server:", response);
               if(response === "Not Active") {
                 $('#staff-id-error').text("Staff ID is not active or does not exist").show();
                 $('input[name="staff_name"]').val('');
+                $('button[name="submit"]').prop('disabled', true);
               } else {
                 $('#staff-id-error').hide();
                 $('input[name="staff_name"]').val(response);
+                $('button[name="submit"]').prop('disabled', false);
               }
             },
             error: function(xhr, status, error) {
@@ -74,6 +83,8 @@ if(isset($_POST['submit'])) {
           });
         } else {
           $('input[name="staff_name"]').val('');
+          $('#staff-id-error').hide();
+          $('button[name="submit"]').prop('disabled', false);
         }
       });
     });
