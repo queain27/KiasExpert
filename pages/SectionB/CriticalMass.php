@@ -158,47 +158,12 @@
      </p>
    </a>
    <ul class="nav nav-treeview">
-   <li class="nav-item">
-       <a href="#" class="nav-link">
+     <li class="nav-item">
+       <a href="../sectionA/Staff.php" class="nav-link">
          <i class="far fa-circle nav-icon"></i>
-         <p>A1 Staff Information
-           <i class="fas fa-angle-left right"></i>
-         </p>
-       </a>
-       <ul class="nav nav-treeview">
-         <li class="nav-item">
-           <a href="../sectionA/Staff.php" class="nav-link">
-             <i class="far fa-circle nav-icon"></i>
-             <p>Staff</p>
-           </a>
-         </li>
-         <li class="nav-item">
-         <a href="../sectionA/Staff_Active.php" class="nav-link">
-             <i class="far fa-circle nav-icon"></i>
-             <p>Staff Active</p>
-           </a>
-         </li>
-         <li class="nav-item">
-         <a href="../sectionA/Staff_Foreign.php" class="nav-link">
-             <i class="far fa-circle nav-icon"></i>
-             <p>Staff Foreign</p>
-           </a>
-         </li>
-         <li class="nav-item">
-         <a href="../sectionA/Staff_ST.php" class="nav-link">
-             <i class="far fa-circle nav-icon"></i>
-             <p>Staff S&T</p>
-           </a>
-         </li>
-         <li class="nav-item">
-         <a href="../sectionA/Staff_NONST.php" class="nav-link">
-             <i class="far fa-circle nav-icon"></i>
-             <p>Staff Non S&T</p>
-           </a>
-         </li>
-       </ul>
+         <p>A1 Staff Academic</p>
+       </a> 
      </li>
-
      <li class="nav-item">
        <a href="#" class="nav-link">
          <i class="far fa-circle nav-icon"></i>
@@ -748,65 +713,101 @@
 <h3><center><font color="" face="Cambria Math">Critical Mass<font><br></center></h3>
 <br><br>
 <div class="container pt-50">
+     <div class="text-right mb-3">
+        <a href="../sectionB/addResearch.php" class="btn btn-success">+Add New Research</a>
+      </div>
     <div class="table-responsive">
         <table id="example" class="table table-striped" style="width:200%">
             <thead>
                 <tr>
-                    <th>No.</th>
-                    <th>Project ID</th>
-                    <th>Staff ID</th>
-                    <th>Staff Name</th>
-                    <th>Research Title</th>
-                    <th>Start Date</th>
-                    <th>End Date</th>
-                    <th>Sponsor</th>
-                    <th>Sponsor Category</th>
-                    <th>Grant Name</th>
-                    <th>Amount Pledged (Approved) Active This Year</th>
-                    <th>Amount Pledged (Approved) New Project This Year</th>
-                    <th>Amount Received</th>
-                    <th>Remarks</th>
+                <th style="text-align: center">No.</th>
+                <th style="text-align: center">Project ID</th>
+                <th style="text-align: center">Staff ID</th>
+                <th style="text-align: center">Staff Name</th>
+                <th style="text-align: center">Research Title</th>
+                <th style="text-align: center">Start Date</th>
+                <th style="text-align: center">End Date</th>
+                <th style="text-align: center">Sponsor</th>
+                <th style="text-align: center">Sponsor Category</th>
+                <th style="text-align: center">Grant Name</th>
+                <th style="text-align: center">Amount Pledged (Approved) Active This Year</th>
+                <th style="text-align: center">Amount Pledged (Approved) New Project This Year</th>
+                <th style="text-align: center">Amount Received</th>
+                <th style="text-align: center">Remarks</th>
+                <th style="text-align: center">Action</th>
                 </tr>
             </thead>
-            <tbody>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-            </tbody>
+            <tbody id="myTable">
+    <?php
+    require_once "../examples/config.php";
+    $query = "SELECT * FROM research";
+    $count =1;
+    $result = mysqli_query($conn, $query);
+
+    if ($result) {
+        while ($row = mysqli_fetch_assoc($result)) {
+    ?>
+            <tr>
+                <td style="text-align: center"><?php echo $count;?></td>
+                <td style="text-align: center"><?php echo $row['project_id']; ?></td>
+                <td style="text-align: center"><?php echo $row['staff_id']; ?></td>
+                <td style="text-align: center"><?php echo $row['staff_name']; ?></td>
+                <td style="text-align: center"><?php echo $row['research_title']; ?></td>
+                <td style="text-align: center"><?php echo $row['start_date']; ?></td>
+                <td style="text-align: center"><?php echo $row['end_date']; ?></td>
+                <td style="text-align: center"><?php echo $row['sponsor']; ?></td>
+                <td style="text-align: center"><?php echo $row['sponsor_cat']; ?></td>
+                <td style="text-align: center"><?php echo $row['grant_name']; ?></td>
+                <td style="text-align: center"><?php echo $row['amtpled_act']; ?></td>
+                <td style="text-align: center"><?php echo $row['amtpled_new']; ?></td>
+                <td style="text-align: center"><?php echo $row['amt_rec']; ?></td>
+                <td style="text-align: center"><?php echo $row['remarks']; ?></td>
+                <td style="text-align: center;">
+                    <a href="editstaff.php?ID=<?php echo $row['staff_id']; ?>" class="btn btn-primary btn-sm">
+                        <i class="fa-solid fa-pen-to-square fs-5 me-3"></i>
+                    </a>
+                    <a href="Staff.php?delid=<?php echo htmlentities($row['staff_id']); ?>" 
+                       onClick="return confirm('Do you really want to remove this Record?');" 
+                       class="btn btn-danger btn-sm">
+                        <i class="fa-solid fa-trash fs-5 me-3"></i>
+                    </a>
+                </td>
+            </tr>
+        <?php
+          
+          $count = $count+1;
+              }
+            } 
+            else 
+            
+            {
+              echo "Error: " . mysqli_error($conn);
+             }
+          ?>
+</tbody>
             <tfoot>
                 <tr>
-                    <th>No.</th>
-                    <th>Project ID</th>
-                    <th>Staff ID</th>
-                    <th>Staff Name</th>
-                    <th>Research Title</th>
-                    <th>Start Date</th>
-                    <th>End Date</th>
-                    <th>Sponsor</th>
-                    <th>Sponsor Category</th>
-                    <th>Grant Name</th>
-                    <th>Amount Pledged (Approved) Active This Year</th>
-                    <th>Amount Pledged (Approved) New Project This Year</th>
-                    <th>Amount Received</th>
-                    <th>Remarks</th>
+                <th style="text-align: center">No.</th>
+                <th style="text-align: center">Project ID</th>
+                <th style="text-align: center">Staff ID</th>
+                <th style="text-align: center">Staff Name</th>
+                <th style="text-align: center">Research Title</th>
+                <th style="text-align: center">Start Date</th>
+                <th style="text-align: center">End Date</th>
+                <th style="text-align: center">Sponsor</th>
+                <th style="text-align: center">Sponsor Category</th>
+                <th style="text-align: center">Grant Name</th>
+                <th style="text-align: center">Amount Pledged (Approved) Active This Year</th>
+                <th style="text-align: center">Amount Pledged (Approved) New Project This Year</th>
+                <th style="text-align: center">Amount Received</th>
+                <th style="text-align: center">Remarks</th>
+                <th style="text-align: center">Action</th>
                 </tr>
             </tfoot>
         </table>
+      </div>
     </div>
-</div> 
+</div>
 <!--Main Content-->
 <!-- Add this script to initialize the DataTable and adjust its properties -->
 <script>
