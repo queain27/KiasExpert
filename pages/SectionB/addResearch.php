@@ -48,38 +48,38 @@ if(isset($_POST['submit'])) {
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="../../css/navbar.css">
   <link rel="shortcut icon" href="../../images/Logo2.png" type="image/x-icon">
+  
   <script>
-$(document).ready(function(){
-  $('input[name="staff_id"]').on('change', function(){
-    var staff_id = $(this).val();
-    if(staff_id) {
-      $.ajax({
-        type: 'POST',
-        url: 'fetchstaffname.php',
-        data: {staff_id: staff_id},
-        success: function(response) {
-          console.log("Response from server:", response);
-          if(response === "Not Active") {
-            alert("Staff ID is not active or does not exist");
-            $('input[name="staff_name"]').val('');
-          } else {
-            $('input[name="staff_name"]').val(response);
-          }
-        },
-        error: function(xhr, status, error) {
-          console.error("AJAX Error:", status, error);
+    $(document).ready(function(){
+      $('input[name="staff_id"]').on('change', function(){
+        var staff_id = $(this).val();
+        if(staff_id) {
+          $.ajax({
+            type: 'POST',
+            url: './fetchstaffname.php',
+            data: {staff_id: staff_id},
+            success: function(response) {
+              console.log("Response from server:", response);
+              if(response === "Not Active") {
+                $('#staff-id-error').text("Staff ID is not active or does not exist").show();
+                $('input[name="staff_name"]').val('');
+              } else {
+                $('#staff-id-error').hide();
+                $('input[name="staff_name"]').val(response);
+              }
+            },
+            error: function(xhr, status, error) {
+              console.error("AJAX Error:", status, error);
+            }
+          });
+        } else {
+          $('input[name="staff_name"]').val('');
         }
       });
-    } else {
-      $('input[name="staff_name"]').val('');
-    }
-  });
-});
-</script>
-
+    });
+  </script>
 </head>
 <body>
-
 <div class="container-fluid">
   <div class="container">
     <div class="container">
@@ -99,6 +99,7 @@ $(document).ready(function(){
           <div class="col-md-6 mb-3">
             <label class="form-label">STAFF ID:</label>
             <input type="text" class="form-control" name="staff_id" placeholder="Staff ID" required>
+            <div id="staff-id-error" class="text-danger mt-1" style="display:none;"></div>
           </div>
           <!--Staff Name-->
           <div class="col-md-6 mb-3">
@@ -170,6 +171,5 @@ $(document).ready(function(){
     </div>
   </div>
 </div>
-
 </body>
 </html>
