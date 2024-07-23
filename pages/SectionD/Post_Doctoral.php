@@ -773,7 +773,7 @@
     <tbody id="myTable">
     <?php
         require_once "../examples/config.php";
-         $query = "SELECT * FROM pg_student WHERE degree_registered = 'PHD'";
+         $query = "SELECT * FROM pg_student WHERE degree_registered = 'doctoral'";
          $count =1;
          $result = mysqli_query($conn, $query);
 
@@ -785,12 +785,13 @@
               <td style="text-align: center"><?php echo $row['matric_no']; ?></td>
               <td style="text-align: center"><?php echo $row['student_name']; ?></td>
               <td style="text-align: center"><?php echo $row['citizen']; ?></td>
-              <td style="text-align: center"><?php echo $row['country']; ?></td>
-              <td></td>
-              <td></td> 
-              <td></td>
-              <td></td>
-              <td></td>
+              <td style="text-align: center"><?php echo $row['first_appointment']; ?></td>
+              <td style="text-align: center"><?php echo $row['current_appointment']; ?></td>
+              <td style="text-align: center"><?php echo $row['serve_date']; ?></td>
+              <td style="text-align: center"><?php echo $row['app_dur']; ?></td>
+              <td style="text-align: center"><?php echo $row['awd_inst']; ?></td>
+              <td style="text-align: center"><?php echo $row['year_awd']; ?></td>
+
               <td style="text-align: center"><a href="<?php echo $row['link']; ?>" target="_blank"><?php echo $row['link']; ?></a>
                 <td style="text-align: center"><?php echo $row['remarks']; ?></td>
                 <td style="text-align: center;">
@@ -822,7 +823,7 @@
                 <th>Appointment</th>
                 <th>PhD Awarding Institution</th>
                 <th>Year PhD Awarded</th>
-                <th>SLink Evidence</th>
+                <th>Link Evidence</th>
                 <th>Remarks</th>
                 </tr>
             </tfoot>

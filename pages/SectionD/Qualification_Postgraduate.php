@@ -885,7 +885,6 @@
     </div>
 </div> 
 <!--Main Content-->
-<!--Main Content-->
 <script>
     $(document).ready(function() {
         $('#example').DataTable({

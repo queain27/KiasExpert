@@ -25,6 +25,12 @@ if(isset($_POST ['submit']))
    $numsem = $_POST['numsem'];
    $citizen = $_POST['citizen'];
    $country = $_POST['country'];
+   $first_appointment = $_POST['first_appointment'];
+   $current_appointment = $_POST['current_appointment'];
+   $serve_date = $_POST['serve_date'];
+   $app_dur = $_POST['app_dur'];
+   $awd_inst = $_POST['awd_inst'];
+   $year_awd= $_POST['year_awd'];
    $entry_date = $_POST['entry_date'];
    $senate = $_POST['senate'];
    $duration = $_POST['duration'];
@@ -34,8 +40,8 @@ if(isset($_POST ['submit']))
    $remarks = $_POST['remarks'];
 
 
- $sql = mysqli_query($conn, "INSERT INTO pg_student (matric_no, student_name, cgpa_deg_actual, cgpa_degree, cgpa, cgpa_master, cgpa_phd, university_degree, university_master, degree_registered, student_time, study_mode, mixedmode_ratio, faculty, st, area, sponsor, intake_year, aca_year,numsem, citizen, country, entry_date, senate, duration, got, link,remarks, status_active)
-        VALUES ('$matric_no','$student_name','$cgpa_deg_actual','$cgpa_degree', '$cgpa','$cgpa_master','$cgpa_phd','$university_degree','$university_master','$degree_registered','$student_time','$study_mode','$mixedmode_ratio', '$faculty','$st','$area','$sponsor','$intake_year','$aca_year','$numsem', '$citizen', '$country','$entry_date','$senate','$duration','$got','$link','$remarks', '$status_active')");
+ $sql = mysqli_query($conn, "INSERT INTO pg_student (matric_no, student_name, cgpa_deg_actual, cgpa_degree, cgpa, cgpa_master, cgpa_phd, university_degree, university_master, degree_registered, student_time, study_mode, mixedmode_ratio, faculty, st, area, sponsor, intake_year, aca_year, numsem, citizen, country, first_appointment, current_appointment, serve_date, app_dur, awd_inst, year_awd, entry_date, senate, duration, got, link,remarks, status_active)
+        VALUES ('$matric_no','$student_name','$cgpa_deg_actual','$cgpa_degree', '$cgpa','$cgpa_master','$cgpa_phd','$university_degree','$university_master','$degree_registered','$student_time','$study_mode','$mixedmode_ratio', '$faculty','$st','$area','$sponsor','$intake_year','$aca_year','$numsem', '$citizen', '$country','$first_appointment', '$current_appointment', '$serve_date', '$app_dur', '$awd_inst', '$year_awd', '$entry_date','$senate','$duration','$got','$link','$remarks', '$status_active')");
     
     if($sql)
     {
@@ -162,7 +168,7 @@ if(isset($_POST ['submit']))
     <option value="" disabled selected>Choose Degree</option>
     <option value="PhD">PhD</option>
     <option value="Master">Master</option>
-    <option value="Post-Doctoral">Post-Doctoral</option>
+    <option value="Doctoral">Doctoral</option>
   </select>
 </div>
 
@@ -247,7 +253,7 @@ if(isset($_POST ['submit']))
 <!--Number of Semesters-->
 <div class="col-md-6 mb-3">
   <label class="form-label">Number of Semesters:</label>
-  <input type="text" class="form-control" name="numsem" id="numsem" placeholder="Number of Semesters" required>
+  <input type="number" class="form-control" name="numsem" id="numsem" placeholder="Number of Semesters" required>
 </div>
 
 <!--Citizenship-->
@@ -281,9 +287,44 @@ if(isset($_POST ['submit']))
 <!--Duration-->
 <div class="col-md-6 mb-3">
   <label class="form-label">Duration:</label>
-  <input type="text" class="form-control" name="duration" id="duration" placeholder="Duration" required>
+  <input type="number" class="form-control" name="duration" id="duration" placeholder="Duration" required>
 </div>
 
+<!--First Appointment-->
+<div class="col-md-6 mb-3">
+    <label class="form-label">First Appointment:</label>
+    <input type="date" class="form-control" name="first_appointment" required>
+</div>
+
+<!--Current Appointment-->
+  <div class="col-md-6 mb-3">
+    <label class="form-label">Current Appointment:</label>
+    <input type="date" class="form-control" name="current_appointment" required>
+</div>
+
+<!--Service Date-->
+ <div class="col-md-6 mb-3">
+    <label class="form-label">End Date:</label>
+    <input type="date" class="form-control" name="serve_date" required>
+</div>
+
+<!--App Duration-->
+<div class="col-md-6 mb-3">
+  <label class="form-label">Appointment Duration:</label>
+  <input type="number" class="form-control" name="app_dur" id="app_dur" placeholder="App Duration" required>
+</div>
+
+<!--award inst-->
+<div class="col-md-6 mb-3">
+    <label class="form-label">PHD AWARDING INSTITUTION:</label>
+    <input type="text" class="form-control" name="awd_inst" id="awd_inst" placeholder="Award institustion" required>
+</div>
+
+<!--year awr-->
+<div class="col-md-6 mb-3">
+    <label class="form-label">YEAR PHD AWARDED:</label>
+    <input type="text" class="form-control" name="year_awd" id="year_awd" placeholder="Year Award PHD" required>
+</div>
 <!--GOT-->
 <div class="col-md-6 mb-3">
   <label class="form-label">GOT:</label>
