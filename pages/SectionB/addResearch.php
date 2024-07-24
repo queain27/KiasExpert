@@ -25,7 +25,8 @@ if(isset($_POST['submit'])) {
     
     if(mysqli_num_rows($check_duplicate_sql) == 0) {
       // No duplicates, proceed with the insertion
-      $sql = mysqli_query($conn, "INSERT INTO `research` (`project_id`, `staff_id`, `staff_name`, `research_title`, `start_date`, `end_date`, `sponsor`, `sponsor_cat`, `grant_name`, `amtpled_act`, `amtpled_new`, `amt_rec`, `remarks`) VALUES ('$project_id', '$staff_id', '$staff_name', '$research_title', '$start_date', '$end_date', '$sponsor', '$sponsor_cat', '$grant_name', '$amtpled_act', '$amtpled_new', '$amt_rec', '$remarks')");
+      $sql = mysqli_query($conn, "INSERT INTO `research` (`project_id`, `staff_id`, `staff_name`, `research_title`, `start_date`, `end_date`, `sponsor`, `sponsor_cat`, `grant_name`, `amtpled_act`, `amtpled_new`, `amt_rec`, `remarks`) 
+      VALUES ('$project_id', '$staff_id', '$staff_name', '$research_title', '$start_date', '$end_date', '$sponsor', '$sponsor_cat', '$grant_name', '$amtpled_act', '$amtpled_new', '$amt_rec', '$remarks')");
 
       if($sql) {
         echo "<script>alert('New record successfully added');</script>";
@@ -94,9 +95,6 @@ $(document).ready(function() {
     }
 });
 </script>
-
-
-
 </head>
 <body>
 <div class="container-fluid">

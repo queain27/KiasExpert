@@ -469,9 +469,7 @@ if(isset($_GET['delid']))
      <li class="nav-item">
        <a href="../sectionE/Patent.php" class="nav-link">
          <i class="far fa-circle nav-icon"></i>
-         <p>E1 Patent
-           
-         </p>
+         <p>E1 Patent</p>
        </a>
  </li>
  <!--E2-->
