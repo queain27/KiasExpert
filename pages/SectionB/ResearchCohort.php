@@ -769,28 +769,51 @@
                     <th>Faculty</th>
                     <th>Field (S&T/Non S&T)</th>
                     <th>Status Active</th>
+                   
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
+            <?php
+                require_once "../examples/config.php";
+                $query = "SELECT * FROM staff where status ='active'";
+                $count =1;
+               $result = mysqli_query($conn, $query);
+
+                if ($result) {
+               while ($row = mysqli_fetch_assoc($result)) {
+              ?>
+            <tr>
+                <td style="text-align: center"><?php echo $count;?></td>
+                <td style="text-align: center"><?php echo $row['staff_id']; ?></td>
+                <td style="text-align: center"><?php echo $row['staff_name']; ?></td>
+                <td style="text-align: center"><?php echo $row['grade']; ?></td>
+                <td style="text-align: center"><?php echo $row['position']; ?></td>
+                <td style="text-align: center"><?php echo $row['first_appointment']; ?></td>
+                <td style="text-align: center"><?php echo $row['current_appointment']; ?></td>
+                <td style="text-align: center"><?php echo $row['serve_date']; ?></td>
+                <td style="text-align: center"><?php echo $row['dob']; ?></td>
+                <td style="text-align: center"><?php echo $row['age']; ?></td>
+                <td style="text-align: center"><?php echo $row['cohort']; ?></td>
+                <td style="text-align: center"><?php echo $row['aca_qua']; ?></td>
+                <td style="text-align: center"><?php echo $row['prof_qual']; ?></td>
+                <td style="text-align: center"><?php echo $row['regis_prof']; ?></td>
+                <td style="text-align: center"><?php echo $row['faculty']; ?></td>
+                <td style="text-align: center"><?php echo $row['st']; ?></td>
+                <td style="text-align: center"><?php echo $row['status']; ?></td>
+               
+            </tr>
+        <?php
+          
+          $count = $count+1;
+              }
+            } 
+            else 
+            
+            {
+              echo "Error: " . mysqli_error($conn);
+             }
+          ?>
+              
                
             </tbody>
             <tfoot>
@@ -812,6 +835,7 @@
                     <th>Faculty</th>
                     <th>Field (S&T/Non S&T)</th>
                     <th>Status Active</th>
+              
                 </tr>
             </tfoot>
         </table>
