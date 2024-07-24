@@ -770,6 +770,7 @@
                     <th>Faculty</th>
                     <th>Field (S&T/Non S&T)</th>
                     <th>Status Active</th>
+                    <th>Action</th>
                 </tr>
             </thead>
 
@@ -846,6 +847,7 @@
                     <th>Faculty</th>
                     <th>Field (S&T/Non S&T)</th>
                     <th>Status Active</th>
+                    <th>Action</th>
                 </tr>
             </tfoot>
         </table>
