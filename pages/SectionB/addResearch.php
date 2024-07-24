@@ -23,20 +23,20 @@ if(isset($_POST['submit'])) {
     // Staff is active, check for duplicates
     $check_duplicate_sql = mysqli_query($conn, "SELECT * FROM `research` WHERE `project_id` = '$project_id' AND `staff_id` = '$staff_id'");
     
-    if(mysqli_num_rows($check_duplicate_sql) == 0) {
+      if(mysqli_num_rows($check_duplicate_sql) == 0) {
       // No duplicates, proceed with the insertion
       $sql = mysqli_query($conn, "INSERT INTO `research` (`project_id`, `staff_id`, `staff_name`, `research_title`, `start_date`, `end_date`, `sponsor`, `sponsor_cat`, `grant_name`, `amtpled_act`, `amtpled_new`, `amt_rec`, `remarks`) VALUES ('$project_id', '$staff_id', '$staff_name', '$research_title', '$start_date', '$end_date', '$sponsor', '$sponsor_cat', '$grant_name', '$amtpled_act', '$amtpled_new', '$amt_rec', '$remarks')");
 
-      if($sql) {
+        if($sql) {
         echo "<script>alert('New record successfully added');</script>";
         echo "<script>document.location='CriticalMass.php';</script>";
-      } else {
+        } else {
         echo "<script>alert('Failed to add new record');</script>";
-      }
-    } else {
+        }
+       } else {
       // Duplicate entry found
       echo "<script>alert('Duplicate entry found for the given Staff ID and Project ID');</script>";
-    }
+     }
   } else {
     // Staff is not active
     echo "<script>alert('Staff ID is not active or does not exist');</script>";
@@ -57,6 +57,7 @@ if(isset($_POST['submit'])) {
   <link rel="stylesheet" href="../../css/navbar.css">
   <link rel="shortcut icon" href="../../images/Logo2.png" type="image/x-icon">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  
   <script>
 $(document).ready(function() {
     $('input[name="staff_id"]').on('change', function() {
