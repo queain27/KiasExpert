@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 23, 2024 at 10:55 AM
+-- Generation Time: Jul 24, 2024 at 08:34 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -69,6 +69,34 @@ INSERT INTO `lect_form` (`id`, `name`, `staffid`, `password`, `image`) VALUES
 (4, 'Nur Anis Bin Khalid', '1233', '1233', 'user.jpg'),
 (5, 'Siti Nor Binti Halim', '1222', '1222', ''),
 (6, 'Alif Bin Abu', '1223', '1233', 'user1.jpg');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `patent`
+--
+
+CREATE TABLE `patent` (
+  `staff_id` int(11) NOT NULL,
+  `staff_name` varchar(255) NOT NULL,
+  `patent_id` varchar(255) NOT NULL,
+  `patent_name` varchar(255) NOT NULL,
+  `date_filed` date NOT NULL,
+  `date_granted` date NOT NULL,
+  `faculty` varchar(255) NOT NULL,
+  `country` varchar(255) NOT NULL,
+  `expiry_date` date NOT NULL,
+  `link` varchar(255) NOT NULL,
+  `remarks` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `patent`
+--
+
+INSERT INTO `patent` (`staff_id`, `staff_name`, `patent_id`, `patent_name`, `date_filed`, `date_granted`, `faculty`, `country`, `expiry_date`, `link`, `remarks`) VALUES
+(1274, 'HAMDANI BIN AHMAD                       ', 'EU999', 'PRODUK AAA', '2015-01-01', '2016-02-04', 'Dakwah & Pembangunan Insan', 'MALAYSIA', '2030-01-30', 'no', 'no'),
+(1274, 'HAMDANI BIN AHMAD                       ', 'MY2016-001', 'PRODUK AAA', '2009-02-02', '2016-06-30', 'Dakwah & Pembangunan Insan', 'MALAYSIA', '2020-05-20', '- ', '- ');
 
 -- --------------------------------------------------------
 
@@ -198,7 +226,7 @@ INSERT INTO `staff` (`staff_id`, `staff_name`, `grade`, `position`, `first_appoi
 (958, 'JALIL BIN OMAR                          ', 'DS52', 'SENIOR LECTURER', '26-APR-76', '', '12-JUL-15', '12-Jul-55', 3, 'A', 'PHD', '', '', '', 'J22-FAKULTI KEJURUTERAAN AWAM ', '', 'ACTIVE', 'PERMANENT', 'FULL TIME', 'LOCAL', 'MALAYSIA', 'HYPERLINK', ''),
 (992, 'ANIE BTE ATTAN                          ', 'KQ54', 'Professor', '2024-07-04', '2024-07-10', '2024-07-04', '2024-07-10', 55, 'A', 'PHD', '', 'ETC', '', 'Al-Quran & Hadis', 'NON S&T', 'Sabbatical', 'Contract', 'Full-Time', 'Local', 'MALAYSIA', 'HYPERLINK', 'STAF DILANTIK SEMULA'),
 (1067, 'AMRAN BIN AYOB                          ', 'DS53', 'ASSOCIATE PROFESSOR', '03-Sep-76', '', '10-Oct-16', '11-Oct-52', 0, 'A', 'PHD', '', '', '', 'J24-FAKULTI KEJURUTERAAN MEKANIKAL ', '', 'ACTIVE', 'CONTRACT', 'FULL TIME', 'LOCAL', 'MALAYSIA', 'HYPERLINK', ''),
-(1274, 'HAMDANI BIN AHMAD                       ', 'VK05', 'PROFESSOR', '09-Nov-97', '', '06-Feb-16', '28-Jan-70', 17, 'A', 'PHD', '', '', '', 'J46-FAKULTI KEJURUTERAAN KIMIA DAN KEJURUTERAAN TENAGA', '', 'ACTIVE', 'CONTRACT', 'FULL TIME', 'LOCAL', 'MALAYSIA', 'HYPERLINK', ''),
+(1274, 'HAMDANI BIN AHMAD                       ', 'VK05', 'PROFESSOR', '09-Nov-97', '', '06-Feb-16', '28-Jan-70', 17, 'A', 'PHD', '', '', '', 'Dakwah & Pembangunan Insan', '', 'ACTIVE', 'CONTRACT', 'FULL TIME', 'LOCAL', 'MALAYSIA', 'HYPERLINK', ''),
 (11234, 'ROBERT', 'VK06', 'PROFESSOR', '01-Nov-74', '', '10-Oct-16', '09-Oct-52', 0, 'A', 'PHD', '', 'IR', 'BEM 123', 'J23-FAKULTI KEJURUTERAAN ELEKTRIK ', 'S&T', 'ACTIVE', 'CONTRACT', 'FULL TIME', 'FOREIGN', 'INDIA', 'HYPERLINK', ''),
 (12345, 'Hannan Binti Zulkafli', 'VK09', 'Professor', '2024-07-04', '2024-07-18', '2024-07-11', '2024-07-17', 55, 'A', 'PHD', 'u', 'ACCA', 'BEM 123', 'Pengajian Muamalat', 'S&T', 'Leaves', 'Permanent', 'Full-Time', 'Foreign', 'Indonesia', 'LINK', 'STAFF');
 
@@ -241,6 +269,12 @@ ALTER TABLE `admin_form`
 --
 ALTER TABLE `lect_form`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `patent`
+--
+ALTER TABLE `patent`
+  ADD PRIMARY KEY (`patent_id`);
 
 --
 -- Indexes for table `pg_student`

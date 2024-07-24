@@ -196,7 +196,7 @@
          <li class="nav-item">
          <a href="../sectionA/Staff_NONST.php" class="nav-link">
              <i class="far fa-circle nav-icon"></i>
-             <p>Staff Non S&T</p>
+             <p>(e)Staff Non S&T</p>
            </a>
          </li>
        </ul>
@@ -791,17 +791,17 @@
         <table id="example" class="table table-striped" style="width:250%">
           <thead>
            <tr>            
-            <th>No.</th>
-            <th>PostDoc ID</th>
-            <th>Name</th>
-            <th>Citizenship</th>
-            <th>First Appointment Date</th>
-            <th>Current Appointment Date</th>
-            <th>End Date</th>
-            <th>Appointment</th>
-            <th>PhD Awarding Institution</th>
-            <th>Year PhD Awarded</th>
-            <th>Link Evidence</th>
+            <th style="text-align: center">No.</th>
+            <th style="text-align: center">PostDoc ID</th>
+            <th style="text-align: center">Name</th>
+            <th style="text-align: center">Citizenship</th>
+            <th style="text-align: center">First Appointment Date</th>
+            <th style="text-align: center">Current Appointment Date</th>
+            <th style="text-align: center">End Date</th>
+            <th style="text-align: center">Appointment</th>
+            <th style="text-align: center">PhD Awarding Institution</th>
+            <th style="text-align: center">Year PhD Awarded</th>
+            <th style="text-align: center">Link Evidence</th>
             <th style="text-align: center">Remarks</th>
             <th style="text-align: center">Action</th>
         </tr>
@@ -849,18 +849,19 @@
             </tbody>
             <tfoot>
                 <tr>
-            <th></th>
-                <th>PostDoc ID</th>
-                <th>Name</th>
-                <th>Citizenship</th>
-                <th>First Appointment Date</th>
-                <th>Current Appointment Date</th>
-                <th>End Date</th>
-                <th>Appointment</th>
-                <th>PhD Awarding Institution</th>
-                <th>Year PhD Awarded</th>
-                <th>Link Evidence</th>
-                <th>Remarks</th>
+                <th style="text-align: center">No.</th>
+                <th style="text-align: center">PostDoc ID</th>
+                <th style="text-align: center">Name</th>
+                <th style="text-align: center">Citizenship</th>
+                <th style="text-align: center">First Appointment Date</th>
+                <th style="text-align: center">Current Appointment Date</th>
+                <th style="text-align: center">End Date</th>
+                <th style="text-align: center">Appointment</th>
+                <th style="text-align: center">PhD Awarding Institution</th>
+                <th style="text-align: center">Year PhD Awarded</th>
+                <th style="text-align: center">Link Evidence</th>
+                <th style="text-align: center">Remarks</th>
+                <th style="text-align: center">Action</th>
                 </tr>
             </tfoot>
         </table>

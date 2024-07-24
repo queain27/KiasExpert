@@ -206,7 +206,7 @@ if(isset($_GET['delid']))
          <li class="nav-item">
          <a href="../sectionA/Staff_NONST.php" class="nav-link">
              <i class="far fa-circle nav-icon"></i>
-             <p>Staff Non S&T</p>
+             <p>(e)Staff Non S&T</p>
            </a>
          </li>
        </ul>
