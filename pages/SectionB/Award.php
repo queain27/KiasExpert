@@ -747,55 +747,110 @@
 <h3><center><font color="" face="Cambria Math">Award or Stewardships<font><br></center></h3>
 <br><br>
 <div class="container pt-50">
+<div class="text-right mb-3">
+        <a href="../sectionB/addAward.php" class="btn btn-success">+Add New Awards</a>
+      </div>
     <div class="table-responsive">
         <table id="example" class="table table-striped" style="width:250%">
             <thead>
                 <tr>
-                    <th>No.</th>
-                    <th>Staff ID</th>
-                    <th>Staff Name</th>
-                    <th>Faculty</th>
-                    <th>Name Award</th>
-                    <th>Type Award</th>
-                    <th>Level</th>
-                    <th>Conferring Body</th>
-                    <th>Tittle Innvention</th>
-                    <th>Event</th>
-                    <th>Date</th>
-                    <th>Link</th>
+                <th style="text-align: center">No.</th>
+                <th style="text-align: center">Staff ID</th>
+                <th style="text-align: center">Staff Name</th>
+                <th style="text-align: center">Faculty</th>
+                <th style="text-align: center">Name Award</th>
+                <th style="text-align: center">Type Award</th>
+                <th style="text-align: center">Level</th>
+                <th style="text-align: center">Conferring Body</th>
+                <th style="text-align: center">Tittle Invention</th>
+                <th style="text-align: center">Event</th>
+                <th style="text-align: center">Date</th>
+                <th style="text-align: center">Link</th>
+                <th style="text-align: center">Action</th>
+
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></th>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+            <?php
+            require_once "../examples/config.php"; // Ensure this path is correct
 
-                </tr>
+           if (isset($_GET['delid'])) {
+           $id = mysqli_real_escape_string($conn, $_GET['delid']);
+           $query = "DELETE FROM awarding WHERE staff_id = '$id'";
+           $result = mysqli_query($conn, $query);
+
+           if ($result) {
+            echo "<script>alert('Record deleted successfully');</script>";
+            echo "<script>window.location.href='Award.php';</script>"; // Redirect to avoid resubmission
+           } else {
+           echo "<script>alert('Error deleting record');</script>";
+          }
+        } 
+       ?>
+
+    <?php
+    require_once "../examples/config.php";
+    $query = "SELECT * FROM awarding";
+    $count =1;
+    $result = mysqli_query($conn, $query);
+
+    if ($result) {
+        while ($row = mysqli_fetch_assoc($result)) {
+    ?>
+            <tr>
+                <td style="text-align: center"><?php echo $count;?></td>
+                <td style="text-align: center"><?php echo $row['staff_id']; ?></td>
+                <td style="text-align: center"><?php echo $row['staff_name']; ?></td>
+                <td style="text-align: center"><?php echo $row['faculty']; ?></td>
+                <td style="text-align: center"><?php echo $row['name_awd']; ?></td>
+                <td style="text-align: center"><?php echo $row['type']; ?></td>
+                <td style="text-align: center"><?php echo $row['level']; ?></td>
+                <td style="text-align: center"><?php echo $row['conferring']; ?></td>
+                <td style="text-align: center"><?php echo $row['title_invention']; ?></td>
+                <td style="text-align: center"><?php echo $row['event']; ?></td>
+                <td style="text-align: center"><?php echo $row['date']; ?></td>
+                <td style="text-align: center"><a href="<?php echo $row['link_award']; ?>" target="_blank"><?php echo $row['link_award']; ?>
+                <td style="text-align: center;">
+                    <a href="editaward.php?ID=<?php echo $row['staff_id']; ?>" class="btn btn-primary btn-sm">
+                        <i class="fa-solid fa-pen-to-square fs-5 me-3"></i>
+                    </a>
+                    <a href="Award.php?delid=<?php echo urlencode($row['staff_id']); ?>" 
+                    onClick="return confirm('Do you really want to remove this Record?');" 
+                    class="btn btn-danger btn-sm">
+                     <i class="fa-solid fa-trash fs-5 me-3"></i>
+    </a>
+
+
+                </td>
+            </tr>
+        <?php
+          
+          $count = $count+1;
+              }
+            } 
+            else 
+            
+            {
+              echo "Error: " . mysqli_error($conn);
+             }
+          ?>
             </tbody>
             <tfoot>
                 <tr>
-                   <th></th>
-                   <th>Staff ID</th>
-                    <th>Staff Name</th>
-                    <th>Faculty</th>
-                    <th>Name Award</th>
-                    <th>Type Award</th>
-                    <th>Level</th>
-                    <th>Conferring Body</th>
-                    <th>Tittle Innvention</th>
-                    <th>Event</th>
-                    <th>Date</th>
-                    <th>Link</th>
+                <th style="text-align: center">No.</th>
+                <th style="text-align: center">Staff ID</th>
+                <th style="text-align: center">Staff Name</th>
+                <th style="text-align: center">Faculty</th>
+                <th style="text-align: center">Name Award</th>
+                <th style="text-align: center">Type Award</th>
+                <th style="text-align: center">Level</th>
+                <th style="text-align: center">Conferring Body</th>
+                <th style="text-align: center">Tittle Invention</th>
+                <th style="text-align: center">Event</th>
+                <th style="text-align: center">Date</th>
+                <th style="text-align: center">Link</th>
+                <th style="text-align: center">Action</th>
+
 
                 </tr>
             </tfoot>

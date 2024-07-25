@@ -2,34 +2,32 @@
 include "../examples/config.php";
 
 if(isset($_POST['submit'])) {
-  $project_id = $_POST['project_id'];
   $staff_id = $_POST['staff_id'];
   $staff_name = $_POST['staff_name'];
-  $research_title = $_POST['research_title'];
-  $start_date = $_POST['start_date'];
-  $end_date = $_POST['end_date'];
-  $sponsor = $_POST['sponsor'];
-  $sponsor_cat = $_POST['sponsor_cat'];
-  $grant_name = $_POST['grant_name'];
-  $amtpled_act = $_POST['amtpled_act'];
-  $amtpled_new = $_POST['amtpled_new'];
-  $amt_rec = $_POST['amt_rec'];
-  $remarks = $_POST['remarks'];
+  $faculty= $_POST['faculty'];
+  $name_awd = $_POST['name_awd'];
+  $type = $_POST['type'];
+  $level = $_POST['level'];
+  $conferring = $_POST['conferring'];
+  $title_invention = $_POST['title_invention'];
+  $event = $_POST['event'];
+  $date = $_POST['date'];
+  $link_award = $_POST['link_award'];
 
   // Check if staff_id is active
   $check_staff_sql = mysqli_query($conn, "SELECT * FROM `staff` WHERE `staff_id` = '$staff_id' AND `status` = 'active'");
   
   if(mysqli_num_rows($check_staff_sql) > 0) {
     // Staff is active, check for duplicates
-    $check_duplicate_sql = mysqli_query($conn, "SELECT * FROM `research` WHERE `project_id` = '$project_id' AND `staff_id` = '$staff_id'");
+    $check_duplicate_sql = mysqli_query($conn, "SELECT * FROM `awarding` WHERE `staff_id` = '$staff_id'");
     
       if(mysqli_num_rows($check_duplicate_sql) == 0) {
-      // No duplicates, proceed with the insertion
-      $sql = mysqli_query($conn, "INSERT INTO `research` (`project_id`, `staff_id`, `staff_name`, `research_title`, `start_date`, `end_date`, `sponsor`, `sponsor_cat`, `grant_name`, `amtpled_act`, `amtpled_new`, `amt_rec`, `remarks`) VALUES ('$project_id', '$staff_id', '$staff_name', '$research_title', '$start_date', '$end_date', '$sponsor', '$sponsor_cat', '$grant_name', '$amtpled_act', '$amtpled_new', '$amt_rec', '$remarks')");
-
+    
+ // No duplicates, proceed with the insertion
+ $sql = mysqli_query($conn, "INSERT INTO `awarding` (`staff_id`, `staff_name`, `faculty`, `name_awd`, `type`, `level`, `conferring`, `title_invention`, `event`, `date`, `link_award`) VALUES ('$staff_id', '$staff_name', '$faculty', '$name_awd', '$type', '$level', '$conferring', '$title_invention', '$event', '$date', '$link_award')");
         if($sql) {
         echo "<script>alert('New record successfully added');</script>";
-        echo "<script>document.location='CriticalMass.php';</script>";
+        echo "<script>document.location='Award.php';</script>";
         } else {
         echo "<script>alert('Failed to add new record');</script>";
         }
@@ -48,7 +46,7 @@ if(isset($_POST['submit'])) {
 <html lang="en" dir="ltr">
 <head>
   <meta charset="utf-8">
-  <title>Add New Research</title>
+  <title>Add New Award</title>
   <link rel="stylesheet" href="../../bootstrap/css/bootstrap.min.css">
   <script src="../../bootstrap/js/jquery.min.js"></script>
   <script src="../../bootstrap/js/bootstrap.min.js"></script>
@@ -69,12 +67,12 @@ $(document).ready(function() {
                 data: { staff_id: staff_id },
                 success: function(response) {
                     if (response === "Not Active") {
-                      $('#staff-id-error').text("Staff ID is not active or does not exist").show();
+                        $('#staff-id-error').text("Staff ID is not active or does not exist").show();
                         $('input[name="staff_name"]').val('');
                         $('input[name="faculty"]').val('');
                         $('button[name="submit"]').prop('disabled', true);
                     } else {
-                      var data = JSON.parse(response);
+                        var data = JSON.parse(response);
                         $('input[name="staff_name"]').val(data.staff_name); // Update the staff_name input field
                         $('input[name="faculty"]').val(data.faculty); // Update the faculty input field
                         $('button[name="submit"]').prop('disabled', false);
@@ -85,7 +83,7 @@ $(document).ready(function() {
                 }
             });
         } else {
-          $('input[name="staff_name"]').val('');
+            $('input[name="staff_name"]').val('');
             $('input[name="faculty"]').val('');
             $('#staff-id-error').hide();
             $('button[name="submit"]').prop('disabled', false);
@@ -108,16 +106,12 @@ $(document).ready(function() {
     <div class="container">
       <div class="row">
         <div class="col-sm-12">
-          <h1 class="border-bottom text-center pb-3 mb-4">Add New Research</h1>
+          <h1 class="border-bottom text-center pb-3 mb-4">Add New Award</h1>
         </div>
       </div>
       <form action="" method="post">
         <div class="row">
-          <!--Project ID-->
-          <div class="col-md-6 mb-3">
-            <label class="form-label">PROJECT ID:</label>
-            <input type="text" class="form-control" name="project_id" placeholder="Project ID" required>
-          </div>
+       
           <!--Staff ID-->
           <div class="col-md-6 mb-3">
             <label class="form-label">STAFF ID:</label>
@@ -131,28 +125,25 @@ $(document).ready(function() {
           </div>
           <!--Research Title-->
           <div class="col-md-6 mb-3">
-            <label class="form-label">RESEARCH TITLE:</label>
-            <input type="text" class="form-control" name="research_title" placeholder="Research Title" required>
+            <label class="form-label">FACULTY:</label>
+            <input type="text" class="form-control" name="faculty" placeholder="Faculty" required>
           </div>
           <!--Start Date-->
           <div class="col-md-6 mb-3">
-            <label class="form-label">START DATE:</label>
-            <input type="date" class="form-control" name="start_date" required>
+            <label class="form-label">NAME OF AWARD:</label>
+            <input type="text" class="form-control" name="name_awd" required>
           </div>
-          <!--End Of Date-->
-          <div class="col-md-6 mb-3">
-            <label class="form-label">END OF DATE:</label>
-            <input type="date" class="form-control" name="end_date" required>
+   
+         <!--Start Date-->
+         <div class="col-md-6 mb-3">
+            <label class="form-label">TYPE:</label>
+            <input type="text" class="form-control" name="type" placeholder="Type" required>
           </div>
-          <!--Sponsor-->
-          <div class="col-md-6 mb-3">
-            <label class="form-label">SPONSOR:</label>
-            <input type="text" class="form-control" name="sponsor" placeholder="Sponsor" required>
-          </div>
+   
           <!--Sponsor Category-->
           <div class="col-md-6 mb-3">
-            <label class="form-label">SPONSOR CATEGORY:</label>
-            <select class="form-control" name="sponsor_cat" required>
+            <label class="form-label">LEVEL:</label>
+            <select class="form-control" name="level" required>
               <option value="" disabled selected>Choose</option>
               <option value="University">University</option>
               <option value="National">National</option>
@@ -161,33 +152,33 @@ $(document).ready(function() {
           </div>
           <!--Grant Name-->
           <div class="col-md-6 mb-3">
-            <label class="form-label">GRANT NAME:</label>
-            <input type="text" class="form-control" name="grant_name" placeholder="Grant Name" required>
+            <label class="form-label">CONFERRING BODY:</label>
+            <input type="text" class="form-control" name="conferring" placeholder="Conferring Body" required>
           </div>
-          <!--Amount Pledged (Approved) For Active Project In This Year-->
+          <!--Title Of Invention-->
           <div class="col-md-6 mb-3">
-            <label class="form-label">AMOUNT PLEDGED (APPROVED) FOR ACTIVE PROJECT IN THIS YEAR:</label>
-            <input type="text" class="form-control" name="amtpled_act" placeholder="Amount Pledged (Approved) For Active Project In This Year" required>
+            <label class="form-label">TITLE OF INVENTION:</label>
+            <input type="text" class="form-control" name="title_invention" placeholder="Title of Invention" required>
           </div>
           <!--Amount Pledged (Approved) For New Project In The Year-->
           <div class="col-md-6 mb-3">
-            <label class="form-label">AMOUNT PLEDGED (APPROVED) FOR NEW PROJECT IN THE YEAR:</label>
-            <input type="text" class="form-control" name="amtpled_new" placeholder="Amount Pledged (Approved) For New Project In The Year" required>
+            <label class="form-label">EVENT:</label>
+            <input type="text" class="form-control" name="event" placeholder="Event" required>
           </div>
           <!--Amount Received-->
           <div class="col-md-6 mb-3">
-            <label class="form-label">AMOUNT RECEIVED:</label>
-            <input type="text" class="form-control" name="amt_rec" placeholder="Amount Received" required>
+            <label class="form-label">DATE:</label>
+            <input type="date" class="form-control" name="date" placeholder="Date" required>
           </div>
           <!--Remarks-->
           <div class="col-md-6 mb-3">
-            <label class="form-label">REMARKS:</label>
-            <input type="text" class="form-control" name="remarks" placeholder="Remarks" required>
+            <label class="form-label">LINK:</label>
+            <input type="text" class="form-control" name="link_award" placeholder="link_award" required>
           </div>
           <!--Button-->
           <div class="col-md-12 mb-3 text-center">
             <button type="submit" class="btn btn-primary" name="submit">ADD</button>
-            <a href="CriticalMass.php" class="btn btn-success">View Research</a>
+            <a href="Award.php" class="btn btn-success">View Award</a>
           </div>
         </div>
       </form>
