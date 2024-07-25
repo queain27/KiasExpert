@@ -835,8 +835,8 @@
                 <td style="text-align: center"><a href="<?php echo $row['link']; ?>" target="_blank"><?php echo $row['link']; ?></a>
                 <td style="text-align: center"><?php echo $row['remarks']; ?></td>
                 <td style="text-align: center;">
-                    <a href="../sectionE/editGranted.php?ID=<?php echo $row['staff_id']; ?>" class="btn btn-primary btn-sm"><i class="fa-solid fa-pen-to-square fs-5 me-3"></i></a>
-                    <a href="Patent.php?delid=<?php echo htmlentities($row['staff_id']); ?>" onClick="return confirm('Do you really want to remove this Record?');" class="btn btn-danger btn-sm"><i class="fa-solid fa-trash fs-5 me-3"></i></a>
+                    <a href="../sectionE/editGranted.php?ID=<?php echo $row['patent_id']; ?>" class="btn btn-primary btn-sm"><i class="fa-solid fa-pen-to-square fs-5 me-3"></i></a>
+                    <a href="Patent.php?delid=<?php echo htmlentities($row['patent_id']); ?>" onClick="return confirm('Do you really want to remove this Record?');" class="btn btn-danger btn-sm"><i class="fa-solid fa-trash fs-5 me-3"></i></a>
                 </td>
             </tr>
         <?php

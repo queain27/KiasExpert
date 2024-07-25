@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Patent</title>
-  
+  <title>Patent Filed</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">  
   <!-- Font Awesome -->
   <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <!-- Ionicons -->
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <!-- Tempusdominus Bootstrap 4 -->
@@ -31,9 +30,10 @@
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
   <script defer src="https://cdn.datatables.net/2.0.3/js/dataTables.js"></script>
   <script defer src="https://cdn.datatables.net/2.0.3/js/dataTables.bootstrap5.js"></script>
+  <script defer src="script.js"></script>
+  <!--Icon Image--> 
   <link rel="shortcut icon" href="../../images/Logo2.png" type="image/x-icon">
   <script defer src="script.js"></script>
-  
   <script>
         $(document).ready(function(){
             $('#example').DataTable();
@@ -783,9 +783,12 @@
 <body>
 <!--Main Content-->
 <!--TableStart-->  
-<h3><center><font color="" face="Cambria Math">Patents<font><br></center></h3>
+<h3><center><font color="" face="Cambria Math">Patents Filed<font><br></center></h3>
 <br><br>
 <div class="container pt-50">
+<div class="text-right mb-3">
+        <a href="../sectionE/addPatentFill.php" class="btn btn-success">+Add New Patent Filled</a>
+      </div>
     <div class="table-responsive">
         <table id="example" class="table table-striped" style="width:200%">
             <thead>
@@ -793,51 +796,75 @@
             <th>No.</th>
             <th>Staff ID</th>
             <th>Staff Name</th>
-            <th>List Investor</th>
-            <th>Patent ID</th>
-            <th>Patent Name</th>
-            <th>Date Granted</th>
+            <th>Filing ID / NO.</th>
+            <th>Filling Name</th>
+            <th>Date Filled</th>
             <th>Faculty</th>
             <th>Country</th>
-            <th>Expiry Date</th>
             <th>Link Evidence</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
+            <th>Remarks</th>
+            <th>Action</th>
+          </tr>
+        </thead>
 
+<tbody id="myTable">
+<?php
+require_once "../examples/config.php";
+
+    $query = "SELECT * FROM patent_filed";
+    $count =1;
+    $result = mysqli_query($conn, $query);
+
+    $result = mysqli_query($conn, $query);
+
+    if ($result) {
+        $count = 1;
+        while ($row = mysqli_fetch_assoc($result)) {
+            ?>
+            <tr>
+                <td style="text-align: center"><?php echo $count; ?></td>
+                <td style="text-align: center"><?php echo $row['staff_id']; ?></td>
+                <td style="text-align: center"><?php echo $row['staff_name']; ?></td>
+                <td style="text-align: center"><?php echo $row['fill_id']; ?></td>
+                <td style="text-align: center"><?php echo $row['fill_name']; ?></td>
+                <td style="text-align: center"><?php echo $row['date_filed']; ?></td>
+                <td style="text-align: center"><?php echo $row['faculty']; ?></td>
+                <td style="text-align: center"><?php echo $row['country']; ?></td>
+                <td style="text-align: center"><a href="<?php echo $row['link']; ?>" target="_blank"><?php echo $row['link']; ?></a></td>
+                <td style="text-align: center"><?php echo $row['remarks']; ?></td>
+                <td style="text-align: center;">
+                    <a href="../sectionE/editFill.php?ID=<?php echo $row['fill_id']; ?>" class="btn btn-primary btn-sm"><i class="fa-solid fa-pen-to-square fs-5 me-3"></i></a>
+                    <a href="Patent_Filled.php?delid=<?php echo htmlentities($row['fill_id']); ?>" onClick="return confirm('Do you really want to remove this Record?');" class="btn btn-danger btn-sm"><i class="fa-solid fa-trash fs-5 me-3"></i></a>
+                </td>
+            </tr>
+            <?php
+            $count++;
+        }
+    } else {
+        echo "Error: " . mysqli_error($conn);
+    }
+    ?>
+    
     </tbody>
-    <tfoot>
-        <tr>
-            <th></th>
-            <th>Staff ID</th>
-            <th>Staff Name</th>
-            <th>List Investor</th>
-            <th>Patent ID</th>
-            <th>Patent Name</th>
-            <th>Date Granted</th>
-            <th>Faculty</th>
-            <th>Country</th>
-            <th>Expiry Date</th>
-            <th>Link Evidence</th>
-        </tr>
-            </tfoot>
-        </table>
-    </div>
-</div> 
-<!--Main Content-->
+        <tfoot>
+            <tr>
+                <th>No.</th>
+                <th>Staff ID</th>
+                <th>Staff Name</th>
+                <th>Filing ID / NO.</th>
+                <th>Filling Name</th>
+                <th>Date Filled</th>
+                <th>Faculty</th>
+                <th>Country</th>
+                <th>Link Evidence</th>
+                <th>Remarks</th>
+                <th>Action</th>
+            </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div> 
+    <!--Main Content-->
 <script>
     $(document).ready(function() {
         $('#example').DataTable({

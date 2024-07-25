@@ -199,12 +199,22 @@ if (isset($_POST['submit'])) {
                     <input type="text" class="form-control" name="mixedmode_ratio" value="<?php echo $row['mixedmode_ratio']?>">
                 </div>
 
-                <!--Faculty-->
-                <div class="col-md-6 mb-3">
-                    <label class="form-label">FACULTY:</label>
-                    <input type="text" class="form-control" name="faculty" value="<?php echo $row['faculty']?>">
-                </div>
-
+                    <!-- Faculty -->
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">FACULTY:</label>
+                        <select class="form-control" name="faculty">
+                            <option value="" disabled selected>Choose Faculty</option>
+                            <option value="Al-Quran & Hadis" <?php if ($row['faculty'] == 'Al-Quran & Hadis') echo 'selected'; ?>>Al-Quran & Hadis</option>
+                            <option value="Dakwah & Pembangunan Insan" <?php if ($row['faculty'] == 'Dakwah & Pembangunan Insan') echo 'selected'; ?>>Dakwah & Pembangunan Insan</option>
+                            <option value="Pengurusan Al-Syariah" <?php if ($row['faculty'] == 'Pengurusan Al-Syariah') echo 'selected'; ?>>Pengurusan Al-Syariah</option>
+                            <option value="Pengajian Bahasa Arab" <?php if ($row['faculty'] == 'Pengajian Bahasa Arab') echo 'selected'; ?>>Pengajian Bahasa Arab</option>
+                            <option value="Pengajian Muamalat" <?php if ($row['faculty'] == 'Pengajian Muamalat') echo 'selected'; ?>>Pengajian Muamalat</option>
+                            <option value="Pengajian Pendidikan Islam" <?php if ($row['faculty'] == 'Pengajian Pendidikan Islam') echo 'selected'; ?>>Pengajian Pendidikan Islam</option>
+                            <option value="Pusat Pengajian Teras" <?php if ($row['faculty'] == 'Pusat Pengajian Teras') echo 'selected'; ?>>Pusat Pengajian Teras</option>
+                            <option value="Pengurusan Usuluddin" <?php if ($row['faculty'] == 'Pengurusan Usuluddin') echo 'selected'; ?>>Pengurusan Usuluddin</option>
+                            <option value="Teknologi Maklumat & Multimedia" <?php if ($row['faculty'] == 'Teknologi Maklumat & Multimedia') echo 'selected'; ?>>Teknologi Maklumat & Multimedia</option>
+                        </select>
+                    </div>
                 <!--Special Title (ST)-->
                 <div class="col-md-6 mb-3">
                     <label class="form-label">SPECIAL TITLE (ST):</label>
