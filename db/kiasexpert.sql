@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 25, 2024 at 07:15 AM
+-- Generation Time: Jul 25, 2024 at 04:09 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -95,8 +95,7 @@ CREATE TABLE `patent` (
 --
 
 INSERT INTO `patent` (`staff_id`, `staff_name`, `patent_id`, `patent_name`, `date_filed`, `date_granted`, `faculty`, `country`, `expiry_date`, `link`, `remarks`) VALUES
-(1274, 'HAMDANI BIN AHMAD                       ', 'EU999', 'PRODUK AAA', '2015-01-01', '2016-02-04', 'Dakwah & Pembangunan Insan', 'MALAYSIA', '2030-01-30', 'no', 'done'),
-(1274, 'HAMDANI BIN AHMAD                       ', 'MY2016-001', 'PRODUK AAA', '2009-02-02', '2016-06-30', 'Dakwah & Pembangunan Insan', 'MALAYSIA', '2020-05-20', '- ', '- ');
+(1274, 'HAMDANI BIN AHMAD                       ', 'EU999', 'PRODUK AAA', '2015-01-01', '2016-02-04', 'Dakwah & Pembangunan Insan', 'MALAYSIA', '2030-01-30', 'no', 'done');
 
 -- --------------------------------------------------------
 
@@ -176,8 +175,7 @@ INSERT INTO `pg_student` (`matric_no`, `student_name`, `faculty`, `cgpa`, `cgpa_
 ('GS35697', 'AFIFAH BINTI HASSAN', 'Al-Quran & Hadis', 'No', 2.96, '2.96', 'No', 'No', 'Usim', 'UiTM', 'PhD', '70:30', 'NON S&T', 'DAKWAH', 'SELF-FINANCE', '2015', '2016/2017', '4', 'Full-Time', 'Mix Mode', 'Local', 'Malaysia', '0000-00-00', '0000-00-00', '0000-00-00', 0, '2015', '', '2024-07-21', '2024-07-21', 2, 'No', 'https://github.com/queain27', '-', 'Active'),
 ('GS38336', 'ABBAS SANI DAHIRU', 'Al-Quran & Hadis', 'Yes', 3.33, '10', 'Yes', 'Yes', 'Université De Toulouse', 'USMANU DANFODIYO UNIVERSITY SOKOTO', 'PhD', '70:30', 'NON S&T', 'DAKWAH', 'SELF-FINANCE', '2015', '2016/2017', '4', 'Part-Time', 'Research', 'Foreign', 'Nigeria', '0000-00-00', '0000-00-00', '0000-00-00', 0, '', '', '2015-11-02', '2017-12-30', 4, 'Yes', 'https://github.com/queain27', 'Active', 'Graduate'),
 ('GS44903', 'Nur Athirah Binti Mohammad', 'Al-Quran & Hadis', 'Yes', 3.33, '3.33', 'Yes', 'Yes', 'Usim', 'UiTM', 'Master', '70:30', 'NON S&T', 'al-quran', 'SELF-FINANCE', '2015', '2016/2017', '4', 'Full-Time', 'Research', 'Local', 'Malaysia', '0000-00-00', '0000-00-00', '0000-00-00', 0, '', '', '2024-07-15', '2024-07-23', 2, 'Yes', 'https://github.com/queain27', 'Active', 'Graduate'),
-('PD123', 'Mohammad', 'Teknologi Maklumat & Multimedia', 'No', 2.96, '2.96', 'Yes', 'No', 'uitm', 'UiTM', 'Doctoral', '60:40', 'S&T', 'IT', 'No', '2023', '2023/2024', '5', 'Full-Time', 'Mix Mode', 'Local', 'Malaysia', '2015-01-01', '2016-06-30', '2016-12-31', 12, '2012', 'UNIVERSITI TEKNOLOGI MALAYSIA', '2015-01-01', '2016-12-31', 12, 'Yes', 'https://github.com/queain27', '-', 'Complete'),
-('PLA143007', 'Ahmad Ali', 'Teknologi Maklumat & Multimedia', 'Yes', 3.58, '3.58', 'Yes', 'Yes', 'UNIVERSITI SELANGOR', '- ', 'Doctoral', '-', 'S&T', 'FKM', 'PERSENDIRIAN/SELF SPONSORED', '2015', '1', '2', 'Part-Time', 'Mix Mode', 'Local', 'Malaysia', '2015-12-31', '2015-06-30', '2016-12-31', 12, '2013', 'UNIVERSITI MALAYSIA SABAH', '2015-03-16', '2016-08-23', 42, 'Yes', '-', '-', 'Complete');
+('PD123', 'Mohammad', 'Teknologi Maklumat & Multimedia', 'No', 2.96, '2.96', 'Yes', 'No', 'uitm', 'UiTM', 'Doctoral', '60:40', 'S&T', 'IT', 'No', '2023', '2023/2024', '5', 'Full-Time', 'Mix Mode', 'Local', 'Malaysia', '2015-01-01', '2016-06-30', '2016-12-31', 12, '2012', 'UNIVERSITI TEKNOLOGI MALAYSIA', '2015-01-01', '2016-12-31', 12, 'Yes', 'https://github.com/queain27', '-', 'Complete');
 
 -- --------------------------------------------------------
 

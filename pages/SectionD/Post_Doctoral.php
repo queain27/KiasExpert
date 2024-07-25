@@ -1,3 +1,22 @@
+<?php
+include "../examples/config.php";
+
+if (isset($_GET['delid'])) {
+    $matric_no = $_GET['delid'];
+    $stmt = $conn->prepare("DELETE FROM pg_student WHERE matric_no = ?");
+    $stmt->bind_param("s", $matric_no);
+
+    if ($stmt->execute()) {
+        echo "<script>alert('Record successfully deleted');</script>";
+        echo "<script>document.location='Post_Doctoral.php';</script>";
+    } else {
+        echo "<script>alert('Something went wrong');</script>";
+    }
+
+    $stmt->close();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -832,7 +851,7 @@
                 <td style="text-align: center"><?php echo $row['remarks']; ?></td>
                 <td style="text-align: center;">
                     <a href="../sectionA/editPStudent.php?ID=<?php echo $row['matric_no']; ?>" class="btn btn-primary btn-sm"><i class="fa-solid fa-pen-to-square fs-5 me-3"></i></a>
-                    <a href="PostgraduategraduatedStud.php?delid=<?php echo htmlentities($row['matric_no']); ?>" onClick="return confirm('Do you really want to remove this Record?');" class="btn btn-danger btn-sm"><i class="fa-solid fa-trash fs-5 me-3"></i></a>
+                    <a href="Post_Doctoral.php?delid=<?php echo htmlentities($row['matric_no']); ?>" onClick="return confirm('Do you really want to remove this Record?');" class="btn btn-danger btn-sm"><i class="fa-solid fa-trash fs-5 me-3"></i></a>
                 </td>
             </tr>
         <?php

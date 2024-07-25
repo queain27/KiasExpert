@@ -1,3 +1,22 @@
+<?php
+include "../examples/config.php";
+
+if (isset($_GET['delid'])) {
+    $fill_id = $_GET['delid'];
+    $stmt = $conn->prepare("DELETE FROM patent_filed WHERE fill_id = ?");
+    $stmt->bind_param("s", $fill_id);
+
+    if ($stmt->execute()) {
+        echo "<script>alert('Record successfully deleted');</script>";
+        echo "<script>document.location='Patent_Filled.php';</script>";
+    } else {
+        echo "<script>alert('Something went wrong');</script>";
+    }
+
+    $stmt->close();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
