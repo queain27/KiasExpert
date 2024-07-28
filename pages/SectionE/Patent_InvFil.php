@@ -1,12 +1,33 @@
+<?php
+include "../examples/config.php";
+
+if (isset($_GET['delid'])) {
+    $fill_id = $_GET['delid'];
+    $stmt = $conn->prepare("DELETE FROM patent_filed WHERE fill_id = ?");
+    $stmt->bind_param("s", $fill_id);
+
+    if ($stmt->execute()) {
+        echo "<script>alert('Record successfully deleted');</script>";
+        echo "<script>document.location='Patent_Filled.php';</script>";
+    } else {
+        echo "<script>alert('Something went wrong');</script>";
+    }
+
+    $stmt->close();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Online Book</title> 
+  <title>Inventions Granted Patents</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">  
   <!-- Font Awesome -->
   <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <!-- Ionicons -->
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <!-- Tempusdominus Bootstrap 4 -->
@@ -32,18 +53,18 @@
   <script defer src="script.js"></script>
   <!--Icon Image--> 
   <link rel="shortcut icon" href="../../images/Logo2.png" type="image/x-icon">
-    <script defer src="script.js"></script>
-    <script>
+  <script defer src="script.js"></script>
+  <script>
         $(document).ready(function(){
             $('#example').DataTable();
         });
        </script>
-</head>
+  </head>
+
  <!-- Paste the content of sidebar.php here -->
  <body class="hold-transition sidebar-mini layout-fixed">
-<div class="wrapper">
-
-<body class="hold-transition sidebar-mini layout-fixed">
+ <div class="wrapper">
+ <body class="hold-transition sidebar-mini layout-fixed">
   <div class="wrapper">
   <div class="preloader flex-column justify-content-center align-items-center">
   </div> 
@@ -537,8 +558,8 @@
     </ul>  
  </li>
  <!--Seksyen E End-->
+
  <!--Seksyen F Start-->
- <!-- <li class="nav-header">Section F</li> -->
  <li class="nav-item">
    <a href="#" class="nav-link">
      <i class="nav-icon fas fa-handshake icon"></i>
@@ -782,44 +803,94 @@
 <body>
 <!--Main Content-->
 <!--TableStart-->  
-<h3><center><font color="" face="Cambria Math">Total Online Book<font><br></center></h3>
+<h3><center><font color="" face="Cambria Math"> Inventions Filled Patents<font><br></center></h3>
 <br><br>
 <div class="container pt-50">
     <div class="table-responsive">
         <table id="example" class="table table-striped" style="width:200%">
             <thead>
-            <tr>
-            <th>Type</th>
-            <th>Collection Name</th>
-            <th>Total Title</th>
-            <th>Total Volume</th>
+          <tr>
+            <th>No.</th>
+            <th>Staff ID</th>
+            <th>Staff Name</th>
+            <th>Filing ID / NO.</th>
+            <th>Filling Name</th>
+            <th>Date Filled</th>
+            <th>Faculty</th>
+            <th>Country</th>
             <th>Link Evidence</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
+            <th>Remarks</th>
+            <th>Action</th>
+          </tr>
+        </thead>
 
-    </tbody>
-    <!-- <tfoot>
+<tbody id="myTable">
+<?php
+require_once "../examples/config.php";
+
+// Query to get the most recent  patent_filed for each staff member
+$query = "
+    SELECT p.*, s.staff_name, s.faculty, s.country
+    FROM  patent_filed p
+    JOIN (
+        SELECT staff_id, MAX(date_filed) AS latest_filed
+        FROM  patent_filed
+        GROUP BY staff_id
+    ) latest_p ON p.staff_id = latest_p.staff_id AND p.date_filed = latest_p.latest_filed
+    JOIN staff s ON p.staff_id = s.staff_id
+";
+
+// Execute the query
+$result = mysqli_query($conn, $query);
+
+if ($result) {
+    $count = 1;
+    while ($row = mysqli_fetch_assoc($result)) {
+        ?>
         <tr>
-            <th></th>
-            <th>Faculty/Institute</th>
-            <th>Laboratory</th>
-            <th>Reference No.|Vot No.</th>
-            <th>Gross Income Generated</th>
+            <td style="text-align: center"><?php echo $count; ?></td>
+            <td style="text-align: center"><?php echo $row['staff_id']; ?></td>
+            <td style="text-align: center"><?php echo $row['staff_name']; ?></td>
+            <td style="text-align: center"><?php echo $row['fill_id']; ?></td>
+            <td style="text-align: center"><?php echo $row['fill_name']; ?></td>
+            <td style="text-align: center"><?php echo $row['date_filed']; ?></td>
+            <td style="text-align: center"><?php echo $row['faculty']; ?></td>
+            <td style="text-align: center"><?php echo $row['country']; ?></td>
+            <td style="text-align: center"><a href="<?php echo $row['link']; ?>" target="_blank"><?php echo $row['link']; ?></a></td>
+            <td style="text-align: center"><?php echo $row['remarks']; ?></td>
+            <td style="text-align: center;">
+                <a href="../sectionE/editFill.php?ID=<?php echo $row['fill_id']; ?>" class="btn btn-primary btn-sm"><i class="fa-solid fa-pen-to-square fs-5 me-3"></i></a>
+                <a href="Patent_Filled.php?delid=<?php echo htmlentities($row['fill_id']); ?>" onClick="return confirm('Do you really want to remove this Record?');" class="btn btn-danger btn-sm"><i class="fa-solid fa-trash fs-5 me-3"></i></a>
+            </td>
         </tr>
-            </tfoot> -->
+        <?php
+        $count++;
+    }
+} else {
+    echo "Error: " . mysqli_error($conn);
+}
+?>
+
+</tbody>
+    <tfoot>
+        <tr>
+            <th>No.</th>
+            <th>Staff ID</th>
+            <th>Staff Name</th>
+            <th>Filing ID / NO.</th>
+            <th>Filling Name</th>
+            <th>Date Filled</th>
+            <th>Faculty</th>
+            <th>Country</th>
+            <th>Link Evidence</th>
+            <th>Remarks</th>
+            <th>Action</th>
+        </tr>
+            </tfoot>
         </table>
     </div>
 </div> 
 <!--Main Content-->
-<!-- Add this script to initialize the DataTable and adjust its properties -->
 <script>
     $(document).ready(function() {
         $('#example').DataTable({
@@ -839,7 +910,6 @@
         });
     });
 </script>
-
 <!--TableEnd --> 
 <script src="../../plugins/jquery/jquery.min.js"></script>
 <script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>

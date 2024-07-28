@@ -3,10 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Critical Mass</title>  <!--Link CSS-->
+  <title>Critical Mass</title> 
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">  
   <!-- Font Awesome -->
   <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <!-- Ionicons -->
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <!-- Tempusdominus Bootstrap 4 -->
@@ -29,6 +30,8 @@
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
   <script defer src="https://cdn.datatables.net/2.0.3/js/dataTables.js"></script>
   <script defer src="https://cdn.datatables.net/2.0.3/js/dataTables.bootstrap5.js"></script>
+  <script defer src="script.js"></script>
+  <!--Icon Image--> 
   <link rel="shortcut icon" href="../../images/Logo2.png" type="image/x-icon">
   <script defer src="script.js"></script>
     <script>
@@ -148,8 +151,8 @@
                 <p>Profile</p>
               </a>
             </li>
- <!--Seksyen A Start-->
- <li class="nav-header">Section MyRA</li>
+<!--Seksyen A Start-->
+<li class="nav-header">Section MyRA</li>
  <li class="nav-item">
    <a href="#" class="nav-link">
      <i class="nav-icon fas fa-info-circle icon"></i>
@@ -158,12 +161,47 @@
      </p>
    </a>
    <ul class="nav nav-treeview">
-     <li class="nav-item">
-       <a href="../sectionA/Staff.php" class="nav-link">
+   <li class="nav-item">
+       <a href="#" class="nav-link">
          <i class="far fa-circle nav-icon"></i>
-         <p>A1 Staff Academic</p>
-       </a> 
+         <p>A1 Staff Information
+           <i class="fas fa-angle-left right"></i>
+         </p>
+       </a>
+       <ul class="nav nav-treeview">
+         <li class="nav-item">
+           <a href="../sectionA/Staff.php" class="nav-link">
+             <i class="far fa-circle nav-icon"></i>
+             <p>(a)Staff</p>
+           </a>
+         </li>
+         <li class="nav-item">
+         <a href="../sectionA/Staff_Active.php" class="nav-link">
+             <i class="far fa-circle nav-icon"></i>
+             <p>(b) Staff Active</p>
+           </a>
+         </li>
+         <li class="nav-item">
+         <a href="../sectionA/Staff_Foreign.php" class="nav-link">
+             <i class="far fa-circle nav-icon"></i>
+             <p>(c) Staff Foreign</p>
+           </a>
+         </li>
+         <li class="nav-item">
+         <a href="../sectionA/Staff_ST.php" class="nav-link">
+             <i class="far fa-circle nav-icon"></i>
+             <p>(d) Staff S&T</p>
+           </a>
+         </li>
+         <li class="nav-item">
+         <a href="../sectionA/Staff_NONST.php" class="nav-link">
+             <i class="far fa-circle nav-icon"></i>
+             <p>(e)Staff Non S&T</p>
+           </a>
+         </li>
+       </ul>
      </li>
+
      <li class="nav-item">
        <a href="#" class="nav-link">
          <i class="far fa-circle nav-icon"></i>
@@ -419,29 +457,51 @@
    <ul class="nav nav-treeview">
      </li>
      <li class="nav-item">
-       <a href="../sectionE/Patent.php" class="nav-link">
+     <a href="#" class="nav-link">
          <i class="far fa-circle nav-icon"></i>
          <p>E1 Patent
-           
+           <i class="fas fa-angle-left right"></i>
          </p>
        </a>
- </li>
+       <ul class="nav nav-treeview">
+         <li class="nav-item">
+           <a href="../sectionE/Patent.php" class="nav-link">
+             <i class="far fa-circle nav-icon"></i>
+             <p>(a) patent Granted</p>
+           </a>
+         </li>
+         <li class="nav-item">
+         <a href="../sectionE/Patent_Filled.php" class="nav-link">
+             <i class="far fa-circle nav-icon"></i>
+             <p>(b) Patent Filed</p>
+           </a>
+         </li>
+         <li class="nav-item">
+         <a href="../sectionE/Patent_InvGrant.php" class="nav-link">
+             <i class="far fa-circle nav-icon"></i>
+             <p>(c) Invention Granted</p>
+           </a>
+         </li>
+         <li class="nav-item">
+         <a href="../sectionE/Patent_InvFil.php" class="nav-link">
+             <i class="far fa-circle nav-icon"></i>
+             <p>(d) Invention Filed</p>
+           </a>
+         </li>
+       </ul>
+     </li>
  <!--E2-->
     <li class="nav-item">
          <a href="../sectionE/Commercial.php" class="nav-link">
             <i class="far fa-circle nav-icon"></i>
-              <p>E2 Commercial
-                
-             </p>
+              <p>E2 Commercial</p>
          </a>  
      </li>
    <!--E3-->
    <li class="nav-item">
      <a href="../sectionE/Technology.php" class="nav-link">
         <i class="far fa-circle nav-icon"></i>
-          <p>E3 Technology</br>
-            
-         </p>
+          <p>E3 Technology</br></p>
      </a>  
  </li>
  <!--E4-->
@@ -455,13 +515,27 @@
  </li>
  <!--E5-->
  <li class="nav-item">
-   <a href="../sectionE/Startup.php" class="nav-link">
-      <i class="far fa-circle nav-icon"></i>
-        <p>E5 Startup</br>
-          
-       </p>
-   </a>  
- </li>
+ <a href="#" class="nav-link">
+         <i class="far fa-circle nav-icon"></i>
+         <p>E5 Startup
+           <i class="fas fa-angle-left right"></i>
+         </p>
+       </a>
+       <ul class="nav nav-treeview">
+         <li class="nav-item">
+           <a href="../sectionE/Startup.php" class="nav-link">
+             <i class="far fa-circle nav-icon"></i>
+             <p>(a) Spinn off Companies</p>
+           </a>
+         </li>
+         <li class="nav-item">
+         <a href="./sectionE/StartupNew.php" class="nav-link">
+             <i class="far fa-circle nav-icon"></i>
+             <p>(b) New Spin Off Companies</p>
+           </a>
+         </li>     
+       </ul>
+     </li>
     </ul>  
  </li>
  <!--Seksyen E End-->
