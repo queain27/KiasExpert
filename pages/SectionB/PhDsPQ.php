@@ -802,39 +802,72 @@
                     <th>Age</th>
                     <th>Cohort</th>
                     <th>Academic Qualification</th>
-                    <th>Professional</th>
+                    <th>Professional Qualification</th>
                     <th>Registrational Number </th>
                     <th>Faculty</th>
                     <th>Field (S&T/Non S&T)</th>
                     <th>Status Active</th>
+                    <th>Action</th>
                 </tr>
             </thead>
 
             <tbody>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
+                
+               <?php
+                require_once "../examples/config.php";
+                $query = "SELECT * FROM staff where aca_qua ='phd'";
+                $count =1;
+               $result = mysqli_query($conn, $query);
+
+                if ($result) {
+               while ($row = mysqli_fetch_assoc($result)) {
+              ?>
+            <tr>
+                <td style="text-align: center"><?php echo $count;?></td>
+                <td style="text-align: center"><?php echo $row['staff_id']; ?></td>
+                <td style="text-align: center"><?php echo $row['staff_name']; ?></td>
+                <td style="text-align: center"><?php echo $row['grade']; ?></td>
+                <td style="text-align: center"><?php echo $row['position']; ?></td>
+                <td style="text-align: center"><?php echo $row['first_appointment']; ?></td>
+                <td style="text-align: center"><?php echo $row['current_appointment']; ?></td>
+                <td style="text-align: center"><?php echo $row['serve_date']; ?></td>
+                <td style="text-align: center"><?php echo $row['dob']; ?></td>
+                <td style="text-align: center"><?php echo $row['age']; ?></td>
+                <td style="text-align: center"><?php echo $row['cohort']; ?></td>
+                <td style="text-align: center"><?php echo $row['aca_qua']; ?></td>
+                <td style="text-align: center"><?php echo $row['prof_qual']; ?></td>
+                <td style="text-align: center"><?php echo $row['regis_prof']; ?></td>
+                <td style="text-align: center"><?php echo $row['faculty']; ?></td>
+                <td style="text-align: center"><?php echo $row['st']; ?></td>
+                <td style="text-align: center"><?php echo $row['status']; ?></td>
+                <td style="text-align: center;">
+                    <a href="editstaff.php?ID=<?php echo $row['staff_id']; ?>" class="btn btn-primary btn-sm">
+                        <i class="fa-solid fa-pen-to-square fs-5 me-3"></i>
+                    </a>
+                    <a href="Staff.php?delid=<?php echo htmlentities($row['staff_id']); ?>" 
+                       onClick="return confirm('Do you really want to remove this Record?');" 
+                       class="btn btn-danger btn-sm">
+                        <i class="fa-solid fa-trash fs-5 me-3"></i>
+                    </a>
+                </td>
+            </tr>
+        <?php
+          
+          $count = $count+1;
+              }
+            } 
+            else 
+            
+            {
+              echo "Error: " . mysqli_error($conn);
+             }
+          ?>
+              
             </tbody>
 
             <tfoot>
-                <tr>
-                   <th></th>
+            <tr>
+                    <th>No.</th>
                     <th>Staff ID</th>
                     <th>Staff Name</th>
                     <th>Position</th>
@@ -846,11 +879,12 @@
                     <th>Age</th>
                     <th>Cohort</th>
                     <th>Academic Qualification</th>
-                    <th>Professional</th>
+                    <th>Professional Qualification</th>
                     <th>Registrational Number </th>
                     <th>Faculty</th>
                     <th>Field (S&T/Non S&T)</th>
                     <th>Status Active</th>
+                    <th>Action</th>
                 </tr>
             </tfoot>
         </table>

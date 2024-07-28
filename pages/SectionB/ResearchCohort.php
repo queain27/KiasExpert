@@ -788,66 +788,90 @@
         <table id="example" class="table table-striped" style="width:250%">
             <thead>
                 <tr>
-                    <th>No.</th>
-                    <th>Staff ID</th>
-                    <th>Staff Name</th>
-                    <th>Position</th>
-                    <th>Grade</th>
-                    <th>First Appointment</th>
-                    <th>Current Appointment</th>
-                    <th>Service End Date</th>
-                    <th>Date Of Birth</th>
-                    <th>Age</th>
-                    <th>Cohort</th>
-                    <th>Academic Qualification</th>
-                    <th>Professional</th>
-                    <th>Registrational Number </th>
-                    <th>Faculty</th>
-                    <th>Field (S&T/Non S&T)</th>
-                    <th>Status Active</th>
+                <th style="text-align: center">No.</th>
+                <th style="text-align: center">Staff ID</th>
+                <th style="text-align: center">Staff Name</th>
+                <th style="text-align: center">Position</th>
+                <th style="text-align: center">Grade</th>
+                <th style="text-align: center">First Appointment</th>
+                <th style="text-align: center">Current Appointment</th>
+                <th style="text-align: center">Service End Date</th>
+                <th style="text-align: center">Date Of Birth</th>
+                <th style="text-align: center">Age</th>
+                <th style="text-align: center">Cohort</th>
+                <th style="text-align: center">Academic Qualification</th>
+                <th style="text-align: center">Professional</th>
+                <th style="text-align: center">Registrational Number </th>
+                <th style="text-align: center">Faculty</th>
+                <th style="text-align: center">Field (S&T/Non S&T)</th>
+                <th style="text-align: center">Status Active</th>
+                   
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
+            <?php
+                require_once "../examples/config.php";
+                $query = "SELECT * FROM staff where status ='active'";
+                $count =1;
+               $result = mysqli_query($conn, $query);
+
+                if ($result) {
+               while ($row = mysqli_fetch_assoc($result)) {
+              ?>
+            <tr>
+                <td style="text-align: center"><?php echo $count;?></td>
+                <td style="text-align: center"><?php echo $row['staff_id']; ?></td>
+                <td style="text-align: center"><?php echo $row['staff_name']; ?></td>
+                <td style="text-align: center"><?php echo $row['grade']; ?></td>
+                <td style="text-align: center"><?php echo $row['position']; ?></td>
+                <td style="text-align: center"><?php echo $row['first_appointment']; ?></td>
+                <td style="text-align: center"><?php echo $row['current_appointment']; ?></td>
+                <td style="text-align: center"><?php echo $row['serve_date']; ?></td>
+                <td style="text-align: center"><?php echo $row['dob']; ?></td>
+                <td style="text-align: center"><?php echo $row['age']; ?></td>
+                <td style="text-align: center"><?php echo $row['cohort']; ?></td>
+                <td style="text-align: center"><?php echo $row['aca_qua']; ?></td>
+                <td style="text-align: center"><?php echo $row['prof_qual']; ?></td>
+                <td style="text-align: center"><?php echo $row['regis_prof']; ?></td>
+                <td style="text-align: center"><?php echo $row['faculty']; ?></td>
+                <td style="text-align: center"><?php echo $row['st']; ?></td>
+                <td style="text-align: center"><?php echo $row['status']; ?></td>
+               
+            </tr>
+        <?php
+          
+          $count = $count+1;
+              }
+            } 
+            else 
+            
+            {
+              echo "Error: " . mysqli_error($conn);
+             }
+          ?>
+              
                
             </tbody>
             <tfoot>
                 <tr>
-                   <th></th>
-                    <th>Staff ID</th>
-                    <th>Staff Name</th>
-                    <th>Position</th>
-                    <th>Grade</th>
-                    <th>First Appointment</th>
-                    <th>Current Appointment</th>
-                    <th>Service End Date</th>
-                    <th>Date Of Birth</th>
-                    <th>Age</th>
-                    <th>Cohort</th>
-                    <th>Academic Qualification</th>
-                    <th>Professional</th>
-                    <th>Registrational Number </th>
-                    <th>Faculty</th>
-                    <th>Field (S&T/Non S&T)</th>
-                    <th>Status Active</th>
+                <th style="text-align: center">No.</th>
+                <th style="text-align: center">Staff ID</th>
+                <th style="text-align: center">Staff Name</th>
+                <th style="text-align: center">Position</th>
+                <th style="text-align: center">Grade</th>
+                <th style="text-align: center">First Appointment</th>
+                <th style="text-align: center">Current Appointment</th>
+                <th style="text-align: center">Service End Date</th>
+                <th style="text-align: center">Date Of Birth</th>
+                <th style="text-align: center">Age</th>
+                <th style="text-align: center">Cohort</th>
+                <th style="text-align: center">Academic Qualification</th>
+                <th style="text-align: center">Professional</th>
+                <th style="text-align: center">Registrational Number </th>
+                <th style="text-align: center">Faculty</th>
+                <th style="text-align: center">Field (S&T/Non S&T)</th>
+                <th style="text-align: center">Status Active</th>
+              
                 </tr>
             </tfoot>
         </table>
