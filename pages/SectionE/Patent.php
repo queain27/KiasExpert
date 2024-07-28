@@ -813,19 +813,19 @@ if (isset($_GET['delid'])) {
         <table id="example" class="table table-striped" style="width:200%">
             <thead>
           <tr>
-            <th>No.</th>
-            <th>Staff ID</th>
-            <th>Staff Name</th>
-            <th>Patent ID</th>
-            <th>Patent Name</th>
-            <th>Date Filled</th>
-            <th>Date Granted</th>
-            <th>Faculty</th>
-            <th>Country</th>
-            <th>Expiry Date</th>
-            <th>Link Evidence</th>
-            <th>Remarks</th>
-            <th>Action</th>
+            <th style="text-align: center">No.</th>
+            <th style="text-align: center">Staff ID</th>
+            <th style="text-align: center">Staff Name</th>
+            <th style="text-align: center">Patent ID</th>
+            <th style="text-align: center">Patent Name</th>
+            <th style="text-align: center">Date Filled</th>
+            <th style="text-align: center">Date Granted</th>
+            <th style="text-align: center">Faculty</>
+            <th style="text-align: center">Country</>
+            <th style="text-align: center">Expiry Date</>
+            <th style="text-align: center">Link Evidence</th>
+            <th style="text-align: center">Remarks</th>
+            <th style="text-align: center">Action</th>
           </tr>
         </thead>
 

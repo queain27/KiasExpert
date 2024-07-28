@@ -2,16 +2,16 @@
 include "../examples/config.php";
 
 if(isset($_POST['submit'])) {
-  $patent_id = $_POST['patent_id'];
+  $product_id = $_POST['product_id'];
   $staff_id = $_POST['staff_id'];
   $staff_name = $_POST['staff_name'];
-  $patent_name = $_POST['patent_name'];
-  $date_filed = $_POST['date_filed'];
-  $date_granted = $_POST['date_granted'];
-  $country = $_POST['country'];
-  $faculty = $_POST['faculty'];
-  $expiry_date = $_POST['expiry_date'];
-  $link = $_POST['link'];
+  $product_name = $_POST['product_name'];
+  $date_com = $_POST['date_com'];
+  $date_ach = $_POST['date_ach'];
+  $comp_name = $_POST['comp_name'];
+  $gross_income = $_POST['gross_income'];
+  $link_licen = $_POST['link_licen'];
+  $link_com = $_POST['link_com'];
   $remarks = $_POST['remarks'];
 
   // Check if staff_id is active
@@ -19,22 +19,22 @@ if(isset($_POST['submit'])) {
   
   if(mysqli_num_rows($check_staff_sql) > 0) {
     // Staff is active, check for duplicates
-    $check_duplicate_sql = mysqli_query($conn, "SELECT * FROM `patent` WHERE `patent_id` = '$patent_id' AND `staff_id` = '$staff_id'");
+    $check_duplicate_sql = mysqli_query($conn, "SELECT * FROM `commercial` WHERE `product_id` = '$product_id' AND `staff_id` = '$staff_id'");
     
     if(mysqli_num_rows($check_duplicate_sql) == 0) {
       // No duplicates, proceed with the insertion
-      $sql = mysqli_query($conn, "INSERT INTO `patent` (`patent_id`, `staff_id`, `staff_name`, `patent_name`, `date_filed`, `date_granted`, `country`, `faculty`, `expiry_date`, `link`,`remarks`) 
-      VALUES ('$patent_id', '$staff_id', '$staff_name', '$patent_name', '$date_filed', '$date_granted', '$country', '$faculty', '$expiry_date', '$link', '$remarks')");
+      $sql = mysqli_query($conn, "INSERT INTO `commercial` (`product_id`, `staff_id`, `staff_name`, `product_name`, `date_com`, `date_ach`, `comp_name`, `gross_income`, `link_licen`, `link_com`,`remarks`) 
+      VALUES ('$product_id', '$staff_id', '$staff_name', '$product_name', '$date_com', '$date_ach', '$comp_name', '$gross_income', '$link_licen', '$link_com', '$remarks')");
 
       if($sql) {
         echo "<script>alert('New record successfully added');</script>";
-        echo "<script>document.location='Patent.php';</script>";
+        echo "<script>document.location='Commercial.php';</script>";
       } else {
         echo "<script>alert('Failed to add new record');</script>";
       }
     } else {
       // Duplicate entry found
-      echo "<script>alert('Duplicate entry found for the given Staff ID and Patent ID');</script>";
+      echo "<script>alert('Duplicate entry found for the given Staff ID and commercial ID');</script>";
     }
   } else {
     // Staff is not active
@@ -47,7 +47,7 @@ if(isset($_POST['submit'])) {
 <html lang="en" dir="ltr">
 <head>
   <meta charset="utf-8">
-  <title>Add New Patent Granted</title>
+  <title>Add New commercial Granted</title>
   <link rel="stylesheet" href="../../bootstrap/css/bootstrap.min.css">
   <script src="../../bootstrap/js/jquery.min.js"></script>
   <script src="../../bootstrap/js/bootstrap.min.js"></script>
@@ -70,14 +70,10 @@ $(document).ready(function() {
                     if (response.error) {
                         $('#staff-id-error').text(response.error).show();
                         $('input[name="staff_name"]').val('');
-                        $('input[name="country"]').val('');
-                        $('select[name="faculty"]').val('');
                         $('button[name="submit"]').prop('disabled', true);
                     } else {
                         $('#staff-id-error').hide();
                         $('input[name="staff_name"]').val(response.staff_name);
-                        $('input[name="country"]').val(response.country);
-                        $('select[name="faculty"]').val(response.faculty);
                         $('button[name="submit"]').prop('disabled', false);
                     }
                 },
@@ -87,8 +83,6 @@ $(document).ready(function() {
             });
         } else {
             $('input[name="staff_name"]').val('');
-            $('input[name="country"]').val('');
-            $('select[name="faculty"]').val('');
             $('#staff-id-error').hide();
             $('button[name="submit"]').prop('disabled', false);
         }
@@ -107,15 +101,15 @@ $(document).ready(function() {
     <div class="container">
       <div class="row">
         <div class="col-sm-12">
-          <h1 class="border-bottom text-center pb-3 mb-4">Add New patent</h1>
+          <h1 class="border-bottom text-center pb-3 mb-4">Add New commercial</h1>
         </div>
       </div>
       <form action="" method="post">
         <div class="row">
-          <!--Patent ID-->
+          <!--commercial ID-->
           <div class="col-md-6 mb-3">
-            <label class="form-label">PATENT ID:</label>
-            <input type="text" class="form-control" name="patent_id" placeholder="Patent ID" required>
+            <label class="form-label">COMMERCIAL ID:</label>
+            <input type="text" class="form-control" name="product_id" placeholder="Commercial ID" required>
           </div>
           <!--Staff ID-->
           <div class="col-md-6 mb-3">
@@ -128,51 +122,41 @@ $(document).ready(function() {
             <label class="form-label">STAFF NAME:</label>
             <input type="text" class="form-control" name="staff_name" placeholder="Staff Name" readonly required>
           </div>
-          <!--Patent Name-->
+          <!--Commercial Name-->
           <div class="col-md-6 mb-3">
-            <label class="form-label">PATENT NAME:</label>
-            <input type="text" class="form-control" name="patent_name" placeholder="Patent Name" required>
+            <label class="form-label">COMMERCIAL NAME:</label>
+            <input type="text" class="form-control" name="product_name" placeholder="Commercial Name" required>
           </div>
           <!--Date Filled-->
           <div class="col-md-6 mb-3">
-            <label class="form-label">DATE FILLED:</label>
-            <input type="date" class="form-control" name="date_filed" required>
+            <label class="form-label">DATE COMMERCIALIZED :</label>
+            <input type="date" class="form-control" name="date_com" required>
           </div>
           <!--Date Granted-->
           <div class="col-md-6 mb-3">
-            <label class="form-label">DATE GRANTED:</label>
-            <input type="date" class="form-control" name="date_granted" required>
+            <label class="form-label">DATE THRESHOLD ACHIEVED (RM 20,000):</label>
+            <input type="date" class="form-control" name="date_ach" required>
           </div>
-          <!--Country-->
+          <!--comp_name-->
           <div class="col-md-6 mb-3">
-            <label class="form-label">COUNTRY:</label>
-            <input type="text" class="form-control" name="country" placeholder="Country"  readonly required>
+            <label class="form-label">COMPANY NAME:</label>
+            <input type="text" class="form-control" name="comp_name" placeholder="Company Name" required>
           </div>
-        <!--Faculty-->
+        <!--gross_income-->
           <div class="col-md-6 mb-3">
-            <label class="form-label">FACULTY:</label>
-            <select class="form-control" name="faculty"  readonly required>
-              <option value="" disabled selected>Choose Faculty</option>
-              <option value='Al-Quran & Hadis'>Al-Quran & Hadis</option>
-              <option value='Dakwah & Pembangunan Insan'>Dakwah & Pembangunan Insan</option>
-              <option value='Pengurusan Al-Syariah'>Pengurusan Al-Syariah</option>
-              <option value='Pengajian Bahasa Arab'>Pengajian Bahasa Arab</option>
-              <option value='Pengajian Muamalat'>Pengajian Muamalat</option>
-              <option value='Pengajian Pendidikan Islam'>Pengajian Pendidikan Islam</option>
-              <option value='Pusat Pengajian Teras'>Pusat Pengajian Teras</option>
-              <option value='Pengurusan Usuluddin'>Pengurusan Usuluddin</option>
-              <option value='Teknologi Maklumat & Multimedia'>Teknologi Maklumat & Multimedia</option>
+            <label class="form-label">GROSS INCOME (RM) :</label>
+            <input type="number" class="form-control" name="gross_income" placeholder="Gross Income" required>
             </select>
           </div>
-          <!--Expiry Date-->
+          <!--Link Licen-->
           <div class="col-md-6 mb-3">
-            <label class="form-label">EXPIRY DATE:</label>
-            <input type="date" class="form-control" name="expiry_date" placeholder="Expiry Date" required>
+            <label class="form-label">LINK TO EVIDENCE OF LICENSING AGREEMENT:</label>
+            <input type="text" class="form-control" name="link_licen" placeholder="Link Agreement" required>
           </div>
-          <!--Link-->
+          <!--link_com-->
           <div class="col-md-6 mb-3">
-            <label class="form-label">HYPERLINK:</label>
-            <input type="text" class="form-control" name="link" placeholder="Hyperlink" required>
+            <label class="form-label">LINK TO EVIDENCE OF COMMERCIALIZED PRODUCT:</label>
+            <input type="text" class="form-control" name="link_com" placeholder="Link Commercial" required>
           </div>
           <!--Remarks-->
           <div class="col-md-6 mb-3">
@@ -182,7 +166,7 @@ $(document).ready(function() {
           <!--Button-->
           <div class="col-md-12 mb-3 text-center">
             <button type="submit" class="btn btn-primary" name="submit">ADD</button>
-            <a href="Patent.php" class="btn btn-success">View Patent Granted</a>
+            <a href="Commercial.php" class="btn btn-success">View commercial Granted</a>
           </div>
         </div>
       </form>

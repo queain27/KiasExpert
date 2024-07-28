@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 25, 2024 at 04:09 PM
+-- Generation Time: Jul 28, 2024 at 04:31 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -43,6 +43,70 @@ INSERT INTO `admin_form` (`id`, `name`, `adminid`, `password`, `image`) VALUES
 (1, 'Admin', '111', '1111', 'user3.jpg'),
 (2, 'Admin', '123', '123', 'Logo2.png'),
 (3, 'Admin', '1234', '1234', 'photo_2020-03-03_21-41-31.jpg');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `commercial`
+--
+
+CREATE TABLE `commercial` (
+  `product_id` varchar(255) NOT NULL,
+  `staff_id` int(11) NOT NULL,
+  `staff_name` varchar(255) NOT NULL,
+  `product_name` varchar(255) NOT NULL,
+  `date_com` date NOT NULL,
+  `date_ach` date NOT NULL,
+  `comp_name` varchar(255) NOT NULL,
+  `gross_income` decimal(11,0) NOT NULL,
+  `link_licen` varchar(255) NOT NULL,
+  `link_com` varchar(255) NOT NULL,
+  `remarks` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `commercial`
+--
+
+INSERT INTO `commercial` (`product_id`, `staff_id`, `staff_name`, `product_name`, `date_com`, `date_ach`, `comp_name`, `gross_income`, `link_licen`, `link_com`, `remarks`) VALUES
+('P001', 11234, 'ROBERT', 'PRODUCT X', '2014-07-07', '2016-09-15', 'SYKT ABC', '24000', 'Hyperlink', 'Hyperlink', 'No');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `iprs`
+--
+
+CREATE TABLE `iprs` (
+  `ip_id` varchar(255) NOT NULL,
+  `staff_id` int(11) NOT NULL,
+  `staff_name` varchar(255) NOT NULL,
+  `ip_name` varchar(255) NOT NULL,
+  `type` varchar(255) NOT NULL,
+  `link` varchar(255) NOT NULL,
+  `remark` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `know_licen`
+--
+
+CREATE TABLE `know_licen` (
+  `tech_id` varchar(255) NOT NULL,
+  `staff_id` int(11) NOT NULL,
+  `staff_name` varchar(255) NOT NULL,
+  `tech_name` varchar(255) NOT NULL,
+  `type` varchar(255) NOT NULL,
+  `start_date` date NOT NULL,
+  `end_date` date NOT NULL,
+  `date_achv` date NOT NULL,
+  `licensing` varchar(255) NOT NULL,
+  `gross_incom` decimal(11,0) NOT NULL,
+  `link` varchar(255) NOT NULL,
+  `remarks` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -212,6 +276,25 @@ INSERT INTO `research` (`project_id`, `staff_id`, `staff_name`, `research_title`
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `spinn_off`
+--
+
+CREATE TABLE `spinn_off` (
+  `project_id` varchar(255) NOT NULL,
+  `staff_id` int(11) NOT NULL,
+  `staff_name` varchar(255) NOT NULL,
+  `regis_comp` varchar(255) NOT NULL,
+  `comp_name` varchar(255) NOT NULL,
+  `date_corp` date NOT NULL,
+  `equity` int(11) NOT NULL,
+  `desc_research` varchar(255) NOT NULL,
+  `link` varchar(255) NOT NULL,
+  `remarks` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `staff`
 --
 
@@ -289,6 +372,24 @@ ALTER TABLE `admin_form`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `commercial`
+--
+ALTER TABLE `commercial`
+  ADD PRIMARY KEY (`product_id`);
+
+--
+-- Indexes for table `iprs`
+--
+ALTER TABLE `iprs`
+  ADD PRIMARY KEY (`ip_id`);
+
+--
+-- Indexes for table `know_licen`
+--
+ALTER TABLE `know_licen`
+  ADD PRIMARY KEY (`tech_id`);
+
+--
 -- Indexes for table `lect_form`
 --
 ALTER TABLE `lect_form`
@@ -311,6 +412,12 @@ ALTER TABLE `patent_filed`
 --
 ALTER TABLE `pg_student`
   ADD PRIMARY KEY (`matric_no`);
+
+--
+-- Indexes for table `spinn_off`
+--
+ALTER TABLE `spinn_off`
+  ADD PRIMARY KEY (`project_id`);
 
 --
 -- Indexes for table `staff`
