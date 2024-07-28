@@ -60,7 +60,7 @@ if(isset($_POST ['submit']))
 
 <head>
   <meta charset="utf-8">
-  <title>Add New Undergraduate Student</title>
+  <title>Add New Postgraduated Student</title>
   <style>
     * body {
       background-repeat: no-repeat;
@@ -362,10 +362,6 @@ if(isset($_POST ['submit']))
   <label class="form-label">Remarks:</label>
   <input type="text" class="form-control" name="remarks" id="remarks" placeholder="Remarks" required>
 </div>
-
-</div>
-
-
             <!--Buttons-->
             <div class="col-md-12 mb-3">
               <center>

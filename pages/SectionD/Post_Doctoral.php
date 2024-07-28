@@ -1,3 +1,22 @@
+<?php
+include "../examples/config.php";
+
+if (isset($_GET['delid'])) {
+    $matric_no = $_GET['delid'];
+    $stmt = $conn->prepare("DELETE FROM pg_student WHERE matric_no = ?");
+    $stmt->bind_param("s", $matric_no);
+
+    if ($stmt->execute()) {
+        echo "<script>alert('Record successfully deleted');</script>";
+        echo "<script>document.location='Post_Doctoral.php';</script>";
+    } else {
+        echo "<script>alert('Something went wrong');</script>";
+    }
+
+    $stmt->close();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -172,31 +191,31 @@
          <li class="nav-item">
            <a href="../sectionA/Staff.php" class="nav-link">
              <i class="far fa-circle nav-icon"></i>
-             <p>Staff</p>
+             <p>(a)Staff</p>
            </a>
          </li>
          <li class="nav-item">
          <a href="../sectionA/Staff_Active.php" class="nav-link">
              <i class="far fa-circle nav-icon"></i>
-             <p>Staff Active</p>
+             <p>(b) Staff Active</p>
            </a>
          </li>
          <li class="nav-item">
          <a href="../sectionA/Staff_Foreign.php" class="nav-link">
              <i class="far fa-circle nav-icon"></i>
-             <p>Staff Foreign</p>
+             <p>(c) Staff Foreign</p>
            </a>
          </li>
          <li class="nav-item">
          <a href="../sectionA/Staff_ST.php" class="nav-link">
              <i class="far fa-circle nav-icon"></i>
-             <p>Staff S&T</p>
+             <p>(d) Staff S&T</p>
            </a>
          </li>
          <li class="nav-item">
          <a href="../sectionA/Staff_NONST.php" class="nav-link">
              <i class="far fa-circle nav-icon"></i>
-             <p>Staff Non S&T</p>
+             <p>(e)Staff Non S&T</p>
            </a>
          </li>
        </ul>
@@ -457,29 +476,51 @@
    <ul class="nav nav-treeview">
      </li>
      <li class="nav-item">
-       <a href="../sectionE/Patent.php" class="nav-link">
+     <a href="#" class="nav-link">
          <i class="far fa-circle nav-icon"></i>
          <p>E1 Patent
-           
+           <i class="fas fa-angle-left right"></i>
          </p>
        </a>
- </li>
+       <ul class="nav nav-treeview">
+         <li class="nav-item">
+           <a href="../sectionE/Patent.php" class="nav-link">
+             <i class="far fa-circle nav-icon"></i>
+             <p>(a) patent Granted</p>
+           </a>
+         </li>
+         <li class="nav-item">
+         <a href="../sectionE/Patent_Filled.php" class="nav-link">
+             <i class="far fa-circle nav-icon"></i>
+             <p>(b) Patent Filed</p>
+           </a>
+         </li>
+         <li class="nav-item">
+         <a href="../sectionE/Patent_InvGrant.php" class="nav-link">
+             <i class="far fa-circle nav-icon"></i>
+             <p>(c) Invention Granted</p>
+           </a>
+         </li>
+         <li class="nav-item">
+         <a href="../sectionE/Patent_InvFil.php" class="nav-link">
+             <i class="far fa-circle nav-icon"></i>
+             <p>(d) Invention Filed</p>
+           </a>
+         </li>
+       </ul>
+     </li>
  <!--E2-->
     <li class="nav-item">
          <a href="../sectionE/Commercial.php" class="nav-link">
             <i class="far fa-circle nav-icon"></i>
-              <p>E2 Commercial
-                
-             </p>
+              <p>E2 Commercial</p>
          </a>  
      </li>
    <!--E3-->
    <li class="nav-item">
      <a href="../sectionE/Technology.php" class="nav-link">
         <i class="far fa-circle nav-icon"></i>
-          <p>E3 Technology</br>
-            
-         </p>
+          <p>E3 Technology</br></p>
      </a>  
  </li>
  <!--E4-->
@@ -493,13 +534,27 @@
  </li>
  <!--E5-->
  <li class="nav-item">
-   <a href="../sectionE/Startup.php" class="nav-link">
-      <i class="far fa-circle nav-icon"></i>
-        <p>E5 Startup</br>
-          
-       </p>
-   </a>  
- </li>
+ <a href="#" class="nav-link">
+         <i class="far fa-circle nav-icon"></i>
+         <p>E5 Startup
+           <i class="fas fa-angle-left right"></i>
+         </p>
+       </a>
+       <ul class="nav nav-treeview">
+         <li class="nav-item">
+           <a href="../sectionE/Startup.php" class="nav-link">
+             <i class="far fa-circle nav-icon"></i>
+             <p>(a) Spinn off Companies</p>
+           </a>
+         </li>
+         <li class="nav-item">
+         <a href="./sectionE/StartupNew.php" class="nav-link">
+             <i class="far fa-circle nav-icon"></i>
+             <p>(b) New Spin Off Companies</p>
+           </a>
+         </li>     
+       </ul>
+     </li>
     </ul>  
  </li>
  <!--Seksyen E End-->
@@ -755,17 +810,17 @@
         <table id="example" class="table table-striped" style="width:250%">
           <thead>
            <tr>            
-            <th>No.</th>
-            <th>PostDoc ID</th>
-            <th>Name</th>
-            <th>Citizenship</th>
-            <th>First Appointment Date</th>
-            <th>Current Appointment Date</th>
-            <th>End Date</th>
-            <th>Appointment</th>
-            <th>PhD Awarding Institution</th>
-            <th>Year PhD Awarded</th>
-            <th>Link Evidence</th>
+            <th style="text-align: center">No.</th>
+            <th style="text-align: center">PostDoc ID</th>
+            <th style="text-align: center">Name</th>
+            <th style="text-align: center">Citizenship</th>
+            <th style="text-align: center">First Appointment Date</th>
+            <th style="text-align: center">Current Appointment Date</th>
+            <th style="text-align: center">End Date</th>
+            <th style="text-align: center">Appointment</th>
+            <th style="text-align: center">PhD Awarding Institution</th>
+            <th style="text-align: center">Year PhD Awarded</th>
+            <th style="text-align: center">Link Evidence</th>
             <th style="text-align: center">Remarks</th>
             <th style="text-align: center">Action</th>
         </tr>
@@ -796,7 +851,7 @@
                 <td style="text-align: center"><?php echo $row['remarks']; ?></td>
                 <td style="text-align: center;">
                     <a href="../sectionA/editPStudent.php?ID=<?php echo $row['matric_no']; ?>" class="btn btn-primary btn-sm"><i class="fa-solid fa-pen-to-square fs-5 me-3"></i></a>
-                    <a href="PostgraduategraduatedStud.php?delid=<?php echo htmlentities($row['matric_no']); ?>" onClick="return confirm('Do you really want to remove this Record?');" class="btn btn-danger btn-sm"><i class="fa-solid fa-trash fs-5 me-3"></i></a>
+                    <a href="Post_Doctoral.php?delid=<?php echo htmlentities($row['matric_no']); ?>" onClick="return confirm('Do you really want to remove this Record?');" class="btn btn-danger btn-sm"><i class="fa-solid fa-trash fs-5 me-3"></i></a>
                 </td>
             </tr>
         <?php
@@ -813,18 +868,19 @@
             </tbody>
             <tfoot>
                 <tr>
-            <th></th>
-                <th>PostDoc ID</th>
-                <th>Name</th>
-                <th>Citizenship</th>
-                <th>First Appointment Date</th>
-                <th>Current Appointment Date</th>
-                <th>End Date</th>
-                <th>Appointment</th>
-                <th>PhD Awarding Institution</th>
-                <th>Year PhD Awarded</th>
-                <th>Link Evidence</th>
-                <th>Remarks</th>
+                <th style="text-align: center">No.</th>
+                <th style="text-align: center">PostDoc ID</th>
+                <th style="text-align: center">Name</th>
+                <th style="text-align: center">Citizenship</th>
+                <th style="text-align: center">First Appointment Date</th>
+                <th style="text-align: center">Current Appointment Date</th>
+                <th style="text-align: center">End Date</th>
+                <th style="text-align: center">Appointment</th>
+                <th style="text-align: center">PhD Awarding Institution</th>
+                <th style="text-align: center">Year PhD Awarded</th>
+                <th style="text-align: center">Link Evidence</th>
+                <th style="text-align: center">Remarks</th>
+                <th style="text-align: center">Action</th>
                 </tr>
             </tfoot>
         </table>

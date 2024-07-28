@@ -1,3 +1,22 @@
+<?php
+include "../examples/config.php";
+
+if (isset($_GET['delid'])) {
+    $product_id = $_GET['delid'];
+    $stmt = $conn->prepare("DELETE FROM commercial WHERE product_id = ?");
+    $stmt->bind_param("s", $product_id);
+
+    if ($stmt->execute()) {
+        echo "<script>alert('Record successfully deleted');</script>";
+        echo "<script>document.location='Commercial.php';</script>";
+    } else {
+        echo "<script>alert('Something went wrong');</script>";
+    }
+
+    $stmt->close();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,6 +26,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">  
   <!-- Font Awesome -->
   <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <!-- Ionicons -->
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <!-- Tempusdominus Bootstrap 4 -->
@@ -29,6 +49,8 @@
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
   <script defer src="https://cdn.datatables.net/2.0.3/js/dataTables.js"></script>
   <script defer src="https://cdn.datatables.net/2.0.3/js/dataTables.bootstrap5.js"></script>
+  <script defer src="script.js"></script>
+  <!--Icon Image--> 
   <link rel="shortcut icon" href="../../images/Logo2.png" type="image/x-icon">
   <script defer src="script.js"></script>
   <script>
@@ -168,31 +190,31 @@
          <li class="nav-item">
            <a href="../sectionA/Staff.php" class="nav-link">
              <i class="far fa-circle nav-icon"></i>
-             <p>Staff</p>
+             <p>(a)Staff</p>
            </a>
          </li>
          <li class="nav-item">
          <a href="../sectionA/Staff_Active.php" class="nav-link">
              <i class="far fa-circle nav-icon"></i>
-             <p>Staff Active</p>
+             <p>(b) Staff Active</p>
            </a>
          </li>
          <li class="nav-item">
          <a href="../sectionA/Staff_Foreign.php" class="nav-link">
              <i class="far fa-circle nav-icon"></i>
-             <p>Staff Foreign</p>
+             <p>(c) Staff Foreign</p>
            </a>
          </li>
          <li class="nav-item">
          <a href="../sectionA/Staff_ST.php" class="nav-link">
              <i class="far fa-circle nav-icon"></i>
-             <p>Staff S&T</p>
+             <p>(d) Staff S&T</p>
            </a>
          </li>
          <li class="nav-item">
          <a href="../sectionA/Staff_NONST.php" class="nav-link">
              <i class="far fa-circle nav-icon"></i>
-             <p>Staff Non S&T</p>
+             <p>(e)Staff Non S&T</p>
            </a>
          </li>
        </ul>
@@ -453,29 +475,51 @@
    <ul class="nav nav-treeview">
      </li>
      <li class="nav-item">
-       <a href="../sectionE/Patent.php" class="nav-link">
+     <a href="#" class="nav-link">
          <i class="far fa-circle nav-icon"></i>
          <p>E1 Patent
-           
+           <i class="fas fa-angle-left right"></i>
          </p>
        </a>
- </li>
+       <ul class="nav nav-treeview">
+         <li class="nav-item">
+           <a href="../sectionE/Patent.php" class="nav-link">
+             <i class="far fa-circle nav-icon"></i>
+             <p>(a) patent Granted</p>
+           </a>
+         </li>
+         <li class="nav-item">
+         <a href="../sectionE/Patent_Filled.php" class="nav-link">
+             <i class="far fa-circle nav-icon"></i>
+             <p>(b) Patent Filed</p>
+           </a>
+         </li>
+         <li class="nav-item">
+         <a href="../sectionE/Patent_InvGrant.php" class="nav-link">
+             <i class="far fa-circle nav-icon"></i>
+             <p>(c) Invention Granted</p>
+           </a>
+         </li>
+         <li class="nav-item">
+         <a href="../sectionE/Patent_InvFil.php" class="nav-link">
+             <i class="far fa-circle nav-icon"></i>
+             <p>(d) Invention Filed</p>
+           </a>
+         </li>
+       </ul>
+     </li>
  <!--E2-->
     <li class="nav-item">
          <a href="../sectionE/Commercial.php" class="nav-link">
             <i class="far fa-circle nav-icon"></i>
-              <p>E2 Commercial
-                
-             </p>
+              <p>E2 Commercial</p>
          </a>  
      </li>
    <!--E3-->
    <li class="nav-item">
      <a href="../sectionE/Technology.php" class="nav-link">
         <i class="far fa-circle nav-icon"></i>
-          <p>E3 Technology</br>
-            
-         </p>
+          <p>E3 Technology</br></p>
      </a>  
  </li>
  <!--E4-->
@@ -489,13 +533,27 @@
  </li>
  <!--E5-->
  <li class="nav-item">
-   <a href="../sectionE/Startup.php" class="nav-link">
-      <i class="far fa-circle nav-icon"></i>
-        <p>E5 Startup</br>
-          
-       </p>
-   </a>  
- </li>
+ <a href="#" class="nav-link">
+         <i class="far fa-circle nav-icon"></i>
+         <p>E5 Startup
+           <i class="fas fa-angle-left right"></i>
+         </p>
+       </a>
+       <ul class="nav nav-treeview">
+         <li class="nav-item">
+           <a href="../sectionE/Startup.php" class="nav-link">
+             <i class="far fa-circle nav-icon"></i>
+             <p>(a) Spinn off Companies</p>
+           </a>
+         </li>
+         <li class="nav-item">
+         <a href="./sectionE/StartupNew.php" class="nav-link">
+             <i class="far fa-circle nav-icon"></i>
+             <p>(b) New Spin Off Companies</p>
+           </a>
+         </li>     
+       </ul>
+     </li>
     </ul>  
  </li>
  <!--Seksyen E End-->
@@ -747,49 +805,84 @@
 <h3><center><font color="" face="Cambria Math">Commercial Product<font><br></center></h3>
 <br><br>
 <div class="container pt-50">
+     <div class="text-right mb-3">
+        <a href="../sectionE/addCommercial.php" class="btn btn-success">+Add New Commercial</a>
+      </div>
     <div class="table-responsive">
         <table id="example" class="table table-striped" style="width:200%">
             <thead>
             <tr>
-            <th>No.</th>
-            <th>Staff ID</th>
-            <th>Staff Name</th>
-            <th>Product ID</th>
-            <th>Product Name</th>
-            <th>Date Commercial</th>
-            <th>Date Achieved</th>
-            <th>Company Name</th>
-            <th>Gross Income</th>
-            <th>Link Evidence</th>
+            <th style="text-align: center">No.</th>
+            <th style="text-align: center">STAFF ID</th>
+            <th style="text-align: center">STAFF NAME</th>
+            <th style="text-align: center">PRODUCT ID / NO. </th>
+            <th style="text-align: center">PRODUCT NAME</th>
+            <th style="text-align: center">DATE COMMERCIALIZED </th>
+            <th style="text-align: center">DATE THRESHOLD ACHIEVED (RM 20,000)</th>
+            <th style="text-align: center">COMPANY NAME</th>
+            <th style="text-align: center">GROSS INCOME (RM)</th>
+            <th style="text-align: center">LINK TO EVIDENCE OF LICENSING AGREEMENT</th>
+            <th style="text-align: center">LINK TO EVIDENCE OF COMMERCIALIZED PRODUCT</th>
+            <th style="text-align: center">Remarks</th>
+            <th style="text-align: center">ACTION</th>
         </tr>
     </thead>
-    <tbody>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
+    <tbody id="myTable">
 
+       <?php
+           require_once "../examples/config.php";
+           $query = "SELECT * FROM commercial";
+           $count =1;
+           $result = mysqli_query($conn, $query);
+
+         if ($result) 
+         {
+              while ($row = mysqli_fetch_assoc($result)) 
+              {
+      ?>
+        <tr>
+               <td style="text-align: center"><?php echo $count;?></td>
+                <td style="text-align: center"><?php echo $row['staff_id']; ?></td>
+                <td style="text-align: center"><?php echo $row['staff_name']; ?></td>
+                <td style="text-align: center"><?php echo $row['product_id']; ?></td>
+                <td style="text-align: center"><?php echo $row['product_name']; ?></td>
+                <td style="text-align: center"><?php echo $row['date_com']; ?></td>
+                <td style="text-align: center"><?php echo $row['date_ach']; ?></td>
+                <td style="text-align: center"><?php echo $row['comp_name']; ?></td>
+                <td style="text-align: center"><?php echo $row['gross_income']; ?></td>
+                <td style="text-align: center"><a href="<?php echo $row['link_licen']; ?>" target="_blank"><?php echo $row['link_licen']; ?></a>
+                <td style="text-align: center"><a href="<?php echo $row['link_com']; ?>" target="_blank"><?php echo $row['link_com']; ?></a>
+                <td style="text-align: center"><?php echo $row['remarks']; ?></td>
+                <td style="text-align: center;"><a href="../sectionE/editComm.php?ID=<?php echo $row['product_id']; ?>" class="btn btn-primary btn-sm"><i class="fa-solid fa-pen-to-square fs-5 me-3"></i></a>
+                                                <a href="Commerical.php?delid=<?php echo htmlentities($row['product_id']); ?>" onClick="return confirm('Do you really want to remove this Record?');" class="btn btn-danger btn-sm"><i class="fa-solid fa-trash fs-5 me-3"></i></a>
+                </td>
+        </tr>
+        <?php 
+          $count = $count+1;
+              }
+            } 
+            else 
+            
+            {
+              echo "Error: " . mysqli_error($conn);
+            }
+        ?>
     </tbody>
     <tfoot>
         <tr>
-            <th></th>
-            <th>Staff ID</th>
-            <th>Staff Name</th>
-            <th>Product ID</th>
-            <th>Product Name</th>
-            <th>Date Commercial</th>
-            <th>Date Achieved</th>
-            <th>Company Name</th>
-            <th>Gross Income</th>
-            <th>Link Evidence</th>
+            <th style="text-align: center">No.</th>
+            <th style="text-align: center">STAFF ID</th>
+            <th style="text-align: center">STAFF NAME</th>
+            <th style="text-align: center">PRODUCT ID / NO. </th>
+            <th style="text-align: center">PRODUCT NAME</th>
+            <th style="text-align: center">DATE COMMERCIALIZED </th>
+            <th style="text-align: center">DATE THRESHOLD ACHIEVED (RM 20,000)</th>
+            <th style="text-align: center">COMPANY NAME</th>
+            <th style="text-align: center">GROSS INCOME (RM)</th>
+            <th style="text-align: center">LINK TO EVIDENCE OF LICENSING AGREEMENT</th>
+            <th style="text-align: center">LINK TO EVIDENCE OF COMMERCIALIZED PRODUCT</th>
+            <th style="text-align: center">Remarks</th>
+            <th style="text-align: center">ACTION</th>
         </tr>
             </tfoot>
         </table>
