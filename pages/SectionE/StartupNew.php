@@ -831,16 +831,7 @@ if (isset($_GET['delid'])) {
 require_once "../examples/config.php";
 
 // Query to get the most recent  spinn_off for each staff member
-$query = "
-    SELECT p.*, s.staff_name
-    FROM  spinn_off p
-    JOIN (
-        SELECT staff_id, MAX(date_corp) AS latest_corp
-        FROM  spinn_off
-        GROUP BY staff_id
-    ) latest_p ON p.staff_id = latest_p.staff_id AND p.date_corp = latest_p.latest_corp
-    JOIN staff s ON p.staff_id = s.staff_id
-";
+$query = " SELECT * FROM spinn_off WHERE date (date_corp) = (SELECT MAX(date(date_corp)) FROM spinn_off )ORDER BY date_corp DESC; ";
 
 // Execute the query
 $result = mysqli_query($conn, $query);

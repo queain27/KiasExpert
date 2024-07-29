@@ -829,16 +829,7 @@ if (isset($_GET['delid'])) {
 require_once "../examples/config.php";
 
 // Query to get the most recent  patent_filed for each staff member
-$query = "
-    SELECT p.*, s.staff_name, s.faculty, s.country
-    FROM  patent_filed p
-    JOIN (
-        SELECT staff_id, MAX(date_filed) AS latest_filed
-        FROM  patent_filed
-        GROUP BY staff_id
-    ) latest_p ON p.staff_id = latest_p.staff_id AND p.date_filed = latest_p.latest_filed
-    JOIN staff s ON p.staff_id = s.staff_id
-";
+$query = " SELECT * FROM patent_filed WHERE date (date_filed) = (SELECT MAX(date(date_filed)) FROM patent_filed )ORDER BY date_filed DESC; ";
 
 // Execute the query
 $result = mysqli_query($conn, $query);
