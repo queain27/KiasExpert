@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 28, 2024 at 04:31 AM
+-- Generation Time: Jul 29, 2024 at 07:04 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -84,8 +84,15 @@ CREATE TABLE `iprs` (
   `ip_name` varchar(255) NOT NULL,
   `type` varchar(255) NOT NULL,
   `link` varchar(255) NOT NULL,
-  `remark` varchar(255) NOT NULL
+  `remarks` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `iprs`
+--
+
+INSERT INTO `iprs` (`ip_id`, `staff_id`, `staff_name`, `ip_name`, `type`, `link`, `remarks`) VALUES
+('IP/CR/2016/0001', 11234, 'ROBERT', 'Documents and guideline of the implementation of Iskandar Malaysia Ecolife Challenge', 'Copyright', 'HYPERLINK', 'No');
 
 -- --------------------------------------------------------
 
@@ -107,6 +114,13 @@ CREATE TABLE `know_licen` (
   `link` varchar(255) NOT NULL,
   `remarks` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `know_licen`
+--
+
+INSERT INTO `know_licen` (`tech_id`, `staff_id`, `staff_name`, `tech_name`, `type`, `start_date`, `end_date`, `date_achv`, `licensing`, `gross_incom`, `link`, `remarks`) VALUES
+('C002', 11234, 'ROBERT', 'TECHNOLOGY A', 'Outright', '2016-10-22', '2017-10-22', '2016-10-22', 'UTM HOLDING', '15', 'HYPERLINK', 'No');
 
 -- --------------------------------------------------------
 
@@ -159,7 +173,8 @@ CREATE TABLE `patent` (
 --
 
 INSERT INTO `patent` (`staff_id`, `staff_name`, `patent_id`, `patent_name`, `date_filed`, `date_granted`, `faculty`, `country`, `expiry_date`, `link`, `remarks`) VALUES
-(1274, 'HAMDANI BIN AHMAD                       ', 'EU999', 'PRODUK AAA', '2015-01-01', '2016-02-04', 'Dakwah & Pembangunan Insan', 'MALAYSIA', '2030-01-30', 'no', 'done');
+(1274, 'HAMDANI BIN AHMAD                       ', 'EU999', 'PRODUK AAA', '2015-01-01', '2024-02-04', 'Dakwah & Pembangunan Insan', 'MALAYSIA', '2030-01-30', 'no', 'done'),
+(11234, 'ROBERT', 'MY2016-001', 'PRODUK AAA', '2009-02-02', '2016-12-30', 'Pengurusan Al-Syariah', 'INDIA', '2020-05-20', 'HYPERLINK', 'no');
 
 -- --------------------------------------------------------
 
@@ -291,6 +306,14 @@ CREATE TABLE `spinn_off` (
   `link` varchar(255) NOT NULL,
   `remarks` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `spinn_off`
+--
+
+INSERT INTO `spinn_off` (`project_id`, `staff_id`, `staff_name`, `regis_comp`, `comp_name`, `date_corp`, `equity`, `desc_research`, `link`, `remarks`) VALUES
+('1J192', 1274, 'HAMDANI BIN AHMAD                       ', 'RE566', 'SHE EMPIRES SDN BHD', '2016-12-01', 2, 'Providing cosmestic natural product and service', 'HYPERLINK', 'No'),
+('4H300', 11234, 'ROBERT', 'MX123', 'CSNANO TECHNOLOGIES SDN. BHD.', '2016-05-04', 1, 'Providing lab equipment service and maintenance', 'HYPERLINK', 'no');
 
 -- --------------------------------------------------------
 

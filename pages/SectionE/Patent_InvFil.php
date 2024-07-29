@@ -870,7 +870,6 @@ if ($result) {
     echo "Error: " . mysqli_error($conn);
 }
 ?>
-
 </tbody>
     <tfoot>
         <tr>
