@@ -1,30 +1,78 @@
 <?php
 include "../examples/config.php";
-$project_id =$_GET['ID'];
+$article_no =$_GET['ID'];
 
 if(isset($_POST ['submit']))
 { 
-    $staff_id = $_POST['staff_id']; 
-  $staff_name = $_POST['staff_name']; 
-  $research_title = $_POST['research_title'];
-  $start_date = $_POST['start_date'];
-  $end_date= $_POST['end_date'];
-  $sponsor = $_POST['sponsor'];
-  $sponsor_cat = $_POST['sponsor_cat'];
-  $grant_name = $_POST['grant_name'];
-  $amtpled_act = $_POST['amtpled_act'];
-  $amtpled_new = $_POST['amtpled_new'];
-  $amt_rec = $_POST['amt_rec'];
-  $remarks= $_POST['remarks'];
+  $article_no = $_POST['article_no'];
+  $staff_id = $_POST['staff_id'];
+  $staff_name = $_POST['staff_name'];
+  $authors = $_POST['authors'];
+  $industrial= $_POST['industrial'];
+  $international = $_POST['international'];
+  $national = $_POST['national'];
+  $document_title = $_POST['document_title'];
+  $source_title= $_POST['source_title'];
+  $document_type= $_POST['document_type'];
+  $volume= $_POST['volume'];
+  $issue = $_POST['issue'];
+  $page_start = $_POST['page_start'];
+  $page_end = $_POST['page_end'];
+  $year = $_POST['year'];
+  $issn_isbn= $_POST['issn_isbn'];
+  $link_evidence = $_POST['link_evidence'];
+  $remarks = $_POST['remarks'];
+ // Prepare the SQL statement
+$stmt = $conn->prepare("UPDATE publication SET 
+article_no = ?, 
+staff_id = ?, 
+staff_name = ?, 
+authors = ?, 
+industrial = ?, 
+international = ?, 
+national = ?, 
+document_title = ?, 
+source_title = ?, 
+document_type = ?, 
+volume = ?, 
+issue = ?, 
+page_start = ?, 
+page_end = ?, 
+year = ?, 
+issn_isbn = ?, 
+link_evidence = ?, 
+remarks = ? 
+WHERE article_no = ?");
 
- 
-    // Use prepared statements to avoid SQL injection
-    $stmt = $conn->prepare("UPDATE research SET staff_id = ?, staff_name = ?, research_title = ?, start_date = ?, end_date = ?, sponsor = ?, sponsor_cat = ?, grant_name = ?, amtpled_act = ?, amtpled_new = ?, amt_rec = ?, remarks = ? WHERE project_id = ?");
-    $stmt->bind_param("isssssssssssi", $staff_id, $staff_name, $research_title, $start_date, $end_date, $sponsor, $sponsor_cat, $grant_name, $amtpled_act, $amtpled_new, $amt_rec, $remarks, $project_id);
+// Bind the parameters
+$stmt->bind_param(
+"iisssssssssiiiiissi", 
+$article_no, 
+$staff_id, 
+$staff_name, 
+$authors, 
+$industrial, 
+$international, 
+$national, 
+$document_title, 
+$source_title, 
+$document_type, 
+$volume, 
+$issue, 
+$page_start, 
+$page_end, 
+$year, 
+$issn_isbn, 
+$link_evidence, 
+$remarks, 
+$article_no
+);
+
+
 
     if($stmt->execute()) {
         echo "<script>alert('New record successfully updated');</script>";
-        echo "<script>document.location='CriticalMass.php';</script>";
+        echo "<script>document.location='IndexJournalArticle.php';</script>";
     } else {
         echo "<script>alert('Something went wrong');</script>";
     }
@@ -38,7 +86,7 @@ if(isset($_POST ['submit']))
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Update Research Information</title>
+    <title>Update Journal Information</title>
     <style>
         body {
             background-repeat:            no-repeat;
@@ -63,7 +111,7 @@ if(isset($_POST ['submit']))
 
        
         <?php 
-        $sql = "SELECT * FROM `research` WHERE project_id = $project_id LIMIT 1";
+        $sql = "SELECT * FROM `publication` WHERE article_no= $article_no LIMIT 1";
         $result = mysqli_query($conn, $sql);
         $row = mysqli_fetch_assoc($result);
         ?>
@@ -71,11 +119,12 @@ if(isset($_POST ['submit']))
         <div class="container d-flex justify-content-center">
             <form action="" method="post" style="width:50vw; min-width:300px;">
                 <div class="row">
-                      <!-- Staff ID -->
-                      <div class="col-md-6 mb-3">
-                        <label class="form-label">PROJECT ID:</label>
-                        <input type="text" class="form-control" name="project_id" value="<?php echo $row['project_id']?>" readonly>
+                        <!-- Staff ID -->
+                        <div class="col-md-6 mb-3">
+                        <label class="form-label">ARTICLE NO:</label>
+                        <input type="text" class="form-control" name="article_no" value="<?php echo $row['article_no']?>" readonly>
                     </div>
+                  
                     <!-- Staff ID -->
                     <div class="col-md-6 mb-3">
                         <label class="form-label">STAFF ID:</label>
@@ -90,71 +139,92 @@ if(isset($_POST ['submit']))
 
                  <!-- Name -->
                  <div class="col-md-6 mb-3">
-                        <label class="form-label">RESEARCH TITLE:</label>
-                        <input type="text" class="form-control" name="research_title" value="<?php echo $row['research_title']?>">
+                        <label class="form-label">AUTHORS:</label>
+                        <input type="text" class="form-control" name="authors" value="<?php echo $row['authors']?>">
                     </div>
 
 
-                    <!-- First Appointment -->
                     <div class="col-md-6 mb-3">
-                        <label class="form-label">START DATE:</label>
-                        <input type="date" class="form-control" name="start_date" value="<?php echo $row['start_date']?>">
-                    </div>
-                  <!-- First Appointment -->
-                    <div class="col-md-6 mb-3">
-                        <label class="form-label">END DATE:</label>
-                        <input type="date" class="form-control" name="end_date" value="<?php echo $row['end_date']?>">
-                    </div>
-                     <!-- First Appointment -->
-                    <div class="col-md-6 mb-3">
-                        <label class="form-label">SPONSOR:</label>
-                        <input type="text" class="form-control" name="sponsor" value="<?php echo $row['sponsor']?>">
-                    </div>
-
-
-
-                    <!-- Cohort -->
-                    <div class="col-md-6 mb-3">
-                        <label class="form-label">SPONSOR CATEGORY :</label>
-                        <select class="form-control" name="sponsor_cat" required>
+                    <label class="form-label">INDUSTRIAL:</label>
+                    <select class="form-control" name="industrial" required>
                             <option value="" disabled selected>Choose</option>
-                            <option value="University" <?php if ($row['sponsor_cat'] == 'University') echo 'selected'; ?>>University</option>
-                            <option value="National" <?php if ($row['sponsor_cat'] == 'National') echo 'selected'; ?>>National</option>
-                            <option value="International" <?php if ($row['sponsor_cat'] == 'International') echo 'selected'; ?>>International</option>
-                        </select>
+                            <option value="Y" <?php if ($row['industrial'] == 'Y') echo 'selected'; ?>>YES</option>
+                            <option value="N" <?php if ($row['industrial'] == 'N') echo 'selected'; ?>>NO</option>
+                    </select>
+                    </div>
+
+                 
+                    <div class="col-md-6 mb-3">
+                    <label class="form-label">INTERNATIONAL:</label>
+                    <select class="form-control" name="international" required>
+                            <option value="" disabled selected>Choose</option>
+                            <option value="Y" <?php if ($row['international'] == 'Y') echo 'selected'; ?>>YES</option>
+                            <option value="N" <?php if ($row['international'] == 'N') echo 'selected'; ?>>NO</option>
+                    </select>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                    <label class="form-label">NATIONAL:</label>
+                    <select class="form-control" name="national" required>
+                            <option value="" disabled selected>Choose</option>
+                            <option value="Y" <?php if ($row['national'] == 'Y') echo 'selected'; ?>>YES</option>
+                            <option value="N" <?php if ($row['national'] == 'N') echo 'selected'; ?>>NO</option>
+                    </select>
                     </div>
 
                     <!-- Academic Qualification -->
                     <div class="col-md-6 mb-3">
-                        <label class="form-label">GRANT NAME:</label>
-                        <input type="text" class="form-control" name="grant_name" value="<?php echo $row['grant_name']?>">
+                        <label class="form-label">DOCUMENT TITLE:</label>
+                        <input type="text" class="form-control" name="document_title" value="<?php echo $row['document_title']?>">
                     </div>
 
                     <!-- Name of Professional Qualification/Awarding Body -->
                     <div class="col-md-6 mb-3">
-                        <label class="form-label">AMOUNT PLEDGED (APPROVED)ACTIVE THIS YEAR:</label>
-                        <input type="text" class="form-control" name="amtpled_act" value="<?php echo $row['amtpled_act']?>">
+                        <label class="form-label">SOURCE TITLE:</label>
+                        <input type="text" class="form-control" name="source_title" value="<?php echo $row['source_title']?>">
                     </div>
                     <div class="col-md-6 mb-3">
-                        <label class="form-label">AMOUNT PLEDGED (APPROVED)NEW PROJECT THIS YEAR:</label>
-                        <input type="text" class="form-control" name="amtpled_new" value="<?php echo $row['amtpled_new']?>">
+                        <label class="form-label">DOCUMENT TYPE:</label>
+                        <input type="text" class="form-control" name="document_type" value="<?php echo $row['document_type']?>">
                     </div>
 
                     <!-- Registration Number for Professional Membership -->
                     <div class="col-md-6 mb-3">
-                        <label class="form-label">AMOUNT RECEIVED :</label>
-                        <input type="text" class="form-control" name="amt_rec" value="<?php echo $row['amt_rec']?>">
+                        <label class="form-label">VOLUME:</label>
+                        <input type="text" class="form-control" name="volume" value="<?php echo $row['volume']?>">
                     </div>
-
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">ISSUE :</label>
+                        <input type="text" class="form-control" name="issue" value="<?php echo $row['issue']?>">
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">PAGE START:</label>
+                        <input type="text" class="form-control" name="page_start" value="<?php echo $row['page_start']?>">
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">PAGE END:</label>
+                        <input type="text" class="form-control" name="page_end" value="<?php echo $row['page_end']?>">
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">YEAR:</label>
+                        <input type="text" class="form-control" name="year" value="<?php echo $row['year']?>">
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">ISSN/ISBN:</label>
+                        <input type="text" class="form-control" name="issn_isbn" value="<?php echo $row['issn_isbn']?>">
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">LINK EVIDENCE:</label>
+                        <input type="text" class="form-control" name="link_evidence" value="<?php echo $row['link_evidence']?>">
+                    </div>
                     <!-- Remarks -->
                     <div class="col-md-6 mb-3">
                         <label class="form-label">REMARKS:</label>
                         <input type="text" class="form-control" name="remarks" value="<?php echo $row['remarks']?>">
                     </div>         
                <div>
-                  <center>
+               <center>
                        <button type ="submit" class="btn btn-success" name="submit">UPDATE</button>
-                       <a href="CriticalMass.php" class="btn btn-danger">Cancel</a>
+                       <a href="IndexJournalArticle.php" class="btn btn-danger">Cancel</a>
               </div>
                  </center>
           </form>

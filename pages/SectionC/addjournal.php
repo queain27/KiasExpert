@@ -193,12 +193,12 @@ $(document).ready(function() {
           <!--Start Date-->
           <div class="col-md-6 mb-3">
             <label class="form-label">PAGE START:</label>
-            <input type="date" class="form-control" name="page_start" required>
+            <input type="text" class="form-control" name="page_start" required>
           </div>
           <!--End Of Date-->
           <div class="col-md-6 mb-3">
             <label class="form-label">PAGE END:</label>
-            <input type="date" class="form-control" name="page_end" required>
+            <input type="text" class="form-control" name="page_end" required>
           </div>
          
         

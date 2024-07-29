@@ -816,7 +816,26 @@
                 <th style="text-align: center">Action</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody>  
+         
+            <?php
+            require_once "../examples/config.php"; // Ensure this path is correct
+
+           if (isset($_GET['delid'])) {
+           $id = mysqli_real_escape_string($conn, $_GET['delid']);
+           $query = "DELETE FROM publication WHERE article_no = '$id'";
+           $result = mysqli_query($conn, $query);
+
+           if ($result) {
+            echo "<script>alert('Record deleted successfully');</script>";
+            echo "<script>window.location.href='IndexJournalArticle.php';</script>"; // Redirect to avoid resubmission
+           } else {
+           echo "<script>alert('Error deleting record');</script>";
+          }
+        } 
+       ?>
+
+
             <?php
     require_once "../examples/config.php";
     $query = "SELECT * FROM publication";
