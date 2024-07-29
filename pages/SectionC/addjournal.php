@@ -1,55 +1,66 @@
 <?php
 include "../examples/config.php";
 
-if(isset($_POST['submit'])) {
-  $article_no = $_POST['article_no'];
-  $staff_id = $_POST['staff_id'];
-  $staff_name = $_POST['staff_name'];
-  $authors = $_POST['authors'];
-  $industrial= $_POST['industrial'];
-  $international = $_POST['international'];
-  $national = $_POST['national'];
-  $document_title = $_POST['document_title'];
-  $source_title= $_POST['source_title'];
-  $document_type= $_POST['document_type'];
-  $volume= $_POST['volume'];
-  $issue = $_POST['issue'];
-  $page_start = $_POST['page_start'];
-  $page_end = $_POST['page_end'];
-  $year = $_POST['year'];
-  $issn_isbn= $_POST['issn_isbn'];
-  $link_evidence = $_POST['link_evidence'];
-  $remarks = $_POST['remarks'];
+if (isset($_POST['submit'])) {
+    $article_no = $_POST['article_no'];
+    $staff_id = $_POST['staff_id'];
+    $staff_name = $_POST['staff_name'];
+    $authors = $_POST['authors'];
+    $industrial = $_POST['industrial'];
+    $international = $_POST['international'];
+    $national = $_POST['national'];
+    $document_title = $_POST['document_title'];
+    $source_title = $_POST['source_title'];
+    $document_type = $_POST['document_type'];
+    $volume = $_POST['volume'];
+    $issue = $_POST['issue'];
+    $page_start = $_POST['page_start'];
+    $page_end = $_POST['page_end'];
+    $year = $_POST['year'];
+    $issn_isbn = $_POST['issn_isbn'];
+    $link_evidence = $_POST['link_evidence'];
+    $remarks = $_POST['remarks'];
 
-  // Check if staff_id is active
-  $check_staff_sql = mysqli_query($conn, "SELECT * FROM `staff` WHERE `staff_id` = '$staff_id' AND `status` = 'active'");
-  
-  if(mysqli_num_rows($check_staff_sql) > 0) {
-    // Staff is active, check for duplicates
-    $check_duplicate_sql = mysqli_query($conn, "SELECT * FROM `publication` WHERE `article_no` = $article_no'");
-    
-      if(mysqli_num_rows($check_duplicate_sql) == 0) {
-      // No duplicates, proceed with the insertion
-      $sql = mysqli_query($conn, "INSERT INTO `publication` (`article_no`, `staff_id`, `staff_name`, `authors`, `industrial`, `international`, `national`, `document_title`, `source_title`, `document_type`, `volume`, `issue`, `page_start`, `page_end`, `year`, `issn_isbn`, `link_evidence`, `remarks`) 
+    // Check if staff_id is active
+    $check_staff_sql = $conn->prepare("SELECT * FROM `staff` WHERE `staff_id` = ? AND `status` = 'active'");
+    $check_staff_sql->bind_param('s', $staff_id);
+    $check_staff_sql->execute();
+    $check_staff_result = $check_staff_sql->get_result();
+
+    if ($check_staff_result->num_rows > 0) {
+        // Staff is active, check for duplicates
+        $check_duplicate_sql = $conn->prepare("SELECT * FROM `publication` WHERE `article_no` = ?");
+        $check_duplicate_sql->bind_param('s', $article_no);
+        $check_duplicate_sql->execute();
+        $check_duplicate_result = $check_duplicate_sql->get_result();
+
+        if ($check_duplicate_result->num_rows == 0) {
+            // No duplicates, proceed with the insertion
+            $sql = mysqli_query($conn, "INSERT INTO `publication` (`article_no`, `staff_id`, `staff_name`, `authors`, `industrial`, `international`, `national`, `document_title`, `source_title`, `document_type`, `volume`, `issue`, `page_start`, `page_end`, `year`, `issn_isbn`, `link_evidence`, `remarks`) 
       VALUES ('$article_no', '$staff_id', '$staff_name', '$authors', '$industrial', '$international', '$national', '$document_title', '$source_title', '$document_type', '$volume', '$issue', '$page_start', '$page_end', '$year', '$issn_isbn', '$link_evidence', '$remarks')");
       
-
-        if($sql) {
-        echo "<script>alert('New record successfully added');</script>";
-        echo "<script>document.location='IndexJournalArticle.php';</script>";
+            if ($sql) {
+                echo "<script>alert('New record successfully added');</script>";
+                echo "<script>document.location='IndexJournalArticle.php';</script>";
+            } else {
+                echo "<script>alert('Failed to add new record');</script>";
+            }
         } else {
-        echo "<script>alert('Failed to add new record');</script>";
+            // Duplicate entry found
+            echo "<script>alert('Duplicate entry found for the given Article Number');</script>";
         }
-       } else {
-      // Duplicate entry found
-      echo "<script>alert('Duplicate entry found for the given Staff ID and Project ID');</script>";
-     }
-  } else {
-    // Staff is not active
-    echo "<script>alert('Staff ID is not active or does not exist');</script>";
-  }
+    } else {
+        // Staff is not active
+        echo "<script>alert('Staff ID is not active or does not exist');</script>";
+    }
+
+    // Close the prepared statements and the database connection
+    $check_staff_sql->close();
+    $check_duplicate_sql->close();
+    $conn->close();
 }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -75,16 +86,22 @@ $(document).ready(function() {
                 url: '../SectionB/fetchstaffname.php',
                 data: { staff_id: staff_id },
                 success: function(response) {
-                    if (response === "Not Active") {
-                      $('#staff-id-error').text("Staff ID is not active or does not exist").show();
-                        $('input[name="staff_name"]').val('');
-                        $('input[name="faculty"]').val('');
-                        $('button[name="submit"]').prop('disabled', true);
-                    } else {
-                      var data = JSON.parse(response);
-                        $('input[name="staff_name"]').val(data.staff_name); // Update the staff_name input field
-                        $('input[name="faculty"]').val(data.faculty); // Update the faculty input field
-                        $('button[name="submit"]').prop('disabled', false);
+                    try {
+                        var data = JSON.parse(response);
+                        if (data.status === "Active") {
+                            $('input[name="staff_name"]').val(data.staff_name);
+                            $('input[name="faculty"]').val(data.faculty);
+                            $('#staff-id-error').hide();
+                            $('button[name="submit"]').prop('disabled', false);
+                        } else {
+                            $('#staff-id-error').text("Staff ID is not active or does not exist").show();
+                            $('input[name="staff_name"]').val('');
+                            $('input[name="faculty"]').val('');
+                            $('button[name="submit"]').prop('disabled', true);
+                        }
+                    } catch (e) {
+                        console.error("Parsing error:", e);
+                        $('#staff-id-error').text("An error occurred while fetching staff information").show();
                     }
                 },
                 error: function(xhr, status, error) {
@@ -92,7 +109,7 @@ $(document).ready(function() {
                 }
             });
         } else {
-          $('input[name="staff_name"]').val('');
+            $('input[name="staff_name"]').val('');
             $('input[name="faculty"]').val('');
             $('#staff-id-error').hide();
             $('button[name="submit"]').prop('disabled', false);
@@ -105,6 +122,7 @@ $(document).ready(function() {
     }
 });
 </script>
+
 
 
 
@@ -193,12 +211,12 @@ $(document).ready(function() {
           <!--Start Date-->
           <div class="col-md-6 mb-3">
             <label class="form-label">PAGE START:</label>
-            <input type="text" class="form-control" name="page_start" required>
+            <input type="text" class="form-control" name="page_start"placeholder="Page Start"  required>
           </div>
           <!--End Of Date-->
           <div class="col-md-6 mb-3">
             <label class="form-label">PAGE END:</label>
-            <input type="text" class="form-control" name="page_end" required>
+            <input type="text" class="form-control" name="page_end" placeholder="Page End" required>
           </div>
          
         

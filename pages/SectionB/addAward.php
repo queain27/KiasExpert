@@ -63,19 +63,25 @@ $(document).ready(function() {
         if (staff_id) {
             $.ajax({
                 type: 'POST',
-                url: 'fetchstaffname.php',
+                url: '../SectionB/fetchstaffname.php',
                 data: { staff_id: staff_id },
                 success: function(response) {
-                    if (response === "Not Active") {
-                        $('#staff-id-error').text("Staff ID is not active or does not exist").show();
-                        $('input[name="staff_name"]').val('');
-                        $('input[name="faculty"]').val('');
-                        $('button[name="submit"]').prop('disabled', true);
-                    } else {
+                    try {
                         var data = JSON.parse(response);
-                        $('input[name="staff_name"]').val(data.staff_name); // Update the staff_name input field
-                        $('input[name="faculty"]').val(data.faculty); // Update the faculty input field
-                        $('button[name="submit"]').prop('disabled', false);
+                        if (data.status === "Active") {
+                            $('input[name="staff_name"]').val(data.staff_name);
+                            $('input[name="faculty"]').val(data.faculty);
+                            $('#staff-id-error').hide();
+                            $('button[name="submit"]').prop('disabled', false);
+                        } else {
+                            $('#staff-id-error').text("Staff ID is not active or does not exist").show();
+                            $('input[name="staff_name"]').val('');
+                            $('input[name="faculty"]').val('');
+                            $('button[name="submit"]').prop('disabled', true);
+                        }
+                    } catch (e) {
+                        console.error("Parsing error:", e);
+                        $('#staff-id-error').text("An error occurred while fetching staff information").show();
                     }
                 },
                 error: function(xhr, status, error) {
@@ -96,6 +102,9 @@ $(document).ready(function() {
     }
 });
 </script>
+
+
+
 
 
 
