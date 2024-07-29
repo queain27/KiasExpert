@@ -290,7 +290,7 @@
        <ul class="nav nav-treeview">
  <!--Indexed (Articel)-->
          <li class="nav-item">
-           <a href="../sectionC/IndexJournalArticel.php" class="nav-link">
+           <a href="../sectionC/IndexJournalArticle.php" class="nav-link">
              <i class="far fa-circle nav-icon"></i>
              <p>(a) Total Number Publication Indexed Journal</p>
            </a>
@@ -813,6 +813,7 @@
                 <th style="text-align: center">ISBN / ISSN</th>
                 <th style="text-align: center">Link Evidence</th>
                 <th style="text-align: center">Remarks</th>
+                <th style="text-align: center">Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -845,9 +846,19 @@
                 <td style="text-align: center"><?php echo $row['issn_isbn']; ?></td>
                 <td style="text-align: center"><a href="<?php echo $row['link_evidence']; ?>" target="_blank"><?php echo $row['link_evidence']; ?>
                 <td style="text-align: center"><?php echo $row['remarks']; ?></td>
-                 
-    </a>
+               </a>
+               <td style="text-align: center;">
+                    <a href="editjournal.php?ID=<?php echo $row['article_no']; ?>" class="btn btn-primary btn-sm">
+                        <i class="fa-solid fa-pen-to-square fs-5 me-3"></i>
+                    </a>
+                    <a href="IndexJournalArticle.php?delid=<?php echo urlencode($row['article_no']); ?>" 
+                    onClick="return confirm('Do you really want to remove this Record?');" 
+                    class="btn btn-danger btn-sm">
+                     <i class="fa-solid fa-trash fs-5 me-3"></i>
+               </a>
 
+
+                </td>
 
                 </td>
             </tr>
@@ -885,6 +896,7 @@
                 <th style="text-align: center">ISBN / ISSN</th>
                 <th style="text-align: center">Link Evidence</th>
                 <th style="text-align: center">Remarks</th>
+                <th style="text-align: center">Action</th>
                 </tr>
             </tfoot>
         </table>
