@@ -789,64 +789,89 @@
         <table id="example" class="table table-striped" style="width:250%">
             <thead>
                 <tr>
-                    <th>No.</th>
-                    <th>Article No.</th>
-                    <th>Staff ID</th>
-                    <th>Staff Name</th>     
-                    <th>Document Type</th>              
-                    <th>Authors</th>
-                    <th>Document Tittle</th>
-                    <th>Source Code</th>
-                    <th>Volume</th>
-                    <th>Issue</th>
-                    <th>Page End</th>
-                    <th>Year</th>
-                    <th>Faculty</th>
-                    <th>ISBN / ISSN</th>
-                    <th>Link Device</th>
-                    <th>Remarks</th>    
+                <th style="text-align: center">No.</th>
+                <th style="text-align: center">Article No.</th>
+                <th style="text-align: center">Staff ID</th>   
+                <th style="text-align: center">Staff Name</th>     
+                <th style="text-align: center">Document Type</th>              
+                <th style="text-align: center">Authors</th>
+                <th style="text-align: center">Document Tittle</th>
+                <th style="text-align: center">Source Title</th>
+                <th style="text-align: center">Volume</th>
+                <th style="text-align: center">Issue</th>
+                <th style="text-align: center">Page End</th>
+                <th style="text-align: center">Year</th>
+                <th style="text-align: center">Faculty</th>
+                <th style="text-align: center">ISBN / ISSN</th>
+                <th style="text-align: center">Link Device</th>
+                <th style="text-align: center">Remarks</th>    
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+            <?php
+    require_once "../examples/config.php";
+    $query = "SELECT * FROM publication";
+    $count =1;
+    $result = mysqli_query($conn, $query);
 
-                </tr>
+    if ($result) {
+        while ($row = mysqli_fetch_assoc($result)) {
+    ?>
+            <tr>
+                <td style="text-align: center"><?php echo $count;?></td>
+                <td style="text-align: center"><?php echo $row['article_no']; ?></td>
+                <td style="text-align: center"><?php echo $row['staff_id']; ?></td>
+                <td style="text-align: center"><?php echo $row['staff_name']; ?></td>
+                <td style="text-align: center"><?php echo $row['authors']; ?></td>
+                <td style="text-align: center"><?php echo $row['document_title']; ?></td>
+                <td style="text-align: center"><?php echo $row['source_title']; ?></td>
+                <td style="text-align: center"><?php echo $row['document_type']; ?></td>
+                <td style="text-align: center"><?php echo $row['volume']; ?></td>
+                <td style="text-align: center"><?php echo $row['issue']; ?></td>
+                <td style="text-align: center"><?php echo $row['page_start']; ?></td>
+                <td style="text-align: center"><?php echo $row['page_end']; ?></td>
+                <td style="text-align: center"><?php echo $row['year']; ?></td>
+                <td style="text-align: center"><?php echo $row['issn_isbn']; ?></td>
+                <td style="text-align: center"><a href="<?php echo $row['link_evidence']; ?>" target="_blank"><?php echo $row['link_evidence']; ?>
+                <td style="text-align: center"><?php echo $row['remarks']; ?></td>
+           
+              
+
+           
+
+                </td>
+            </tr>
+        <?php
+          
+          $count = $count+1;
+              }
+            } 
+            else 
+            
+            {
+              echo "Error: " . mysqli_error($conn);
+             }
+          ?>
                
             </tbody>
             <tfoot>
-                <tr>
-                   <th></th>
-                   <th>Article No.</th>
-                    <th>Staff ID</th>
-                    <th>Staff Name</th>     
-                    <th>Document Type</th>              
-                    <th>Authors</th>
-                    <th>Document Tittle</th>
-                    <th>Source Code</th>
-                    <th>Volume</th>
-                    <th>Issue</th>
-                    <th>Page End</th>
-                    <th>Year</th>
-                    <th>Faculty</th>
-                    <th>ISBN / ISSN</th>
-                    <th>Link Device</th>
-                    <th>Remarks</th>   
+            <tr>
+                <th style="text-align: center">No.</th>
+                <th style="text-align: center">Article No.</th>
+                <th style="text-align: center">Staff ID</th>   
+                <th style="text-align: center">Staff Name</th>     
+                <th style="text-align: center">Document Type</th>              
+                <th style="text-align: center">Authors</th>
+                <th style="text-align: center">Document Tittle</th>
+                <th style="text-align: center">Source Title</th>
+                <th style="text-align: center">Volume</th>
+                <th style="text-align: center">Issue</th>
+                <th style="text-align: center">Page End</th>
+                <th style="text-align: center">Year</th>
+                <th style="text-align: center">Faculty</th>
+                <th style="text-align: center">ISBN / ISSN</th>
+                <th style="text-align: center">Link Device</th>
+                <th style="text-align: center">Remarks</th>    
                 </tr>
             </tfoot>
         </table>
