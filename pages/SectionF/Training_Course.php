@@ -1,3 +1,22 @@
+<?php
+include "../examples/config.php";
+
+if (isset($_GET['delid'])) {
+    $reference_no = $_GET['delid'];
+    $stmt = $conn->prepare("DELETE FROM training_courses WHERE reference_no = ?");
+    $stmt->bind_param("s", $reference_no);
+
+    if ($stmt->execute()) {
+        echo "<script>alert('Record successfully deleted');</script>";
+        echo "<script>document.location='Training_Course.php';</script>";
+    } else {
+        echo "<script>alert('Something went wrong');</script>";
+    }
+
+    $stmt->close();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,6 +26,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">  
   <!-- Font Awesome -->
   <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <!-- Ionicons -->
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <!-- Tempusdominus Bootstrap 4 -->
@@ -29,6 +49,8 @@
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
   <script defer src="https://cdn.datatables.net/2.0.3/js/dataTables.js"></script>
   <script defer src="https://cdn.datatables.net/2.0.3/js/dataTables.bootstrap5.js"></script>
+  <script defer src="script.js"></script>
+  <!--Icon Image--> 
   <link rel="shortcut icon" href="../../images/Logo2.png" type="image/x-icon">
   <script defer src="script.js"></script>
   <script>
@@ -783,46 +805,81 @@
 <h3><center><font color="" face="Cambria Math">Training Course Non-Degree Programmes<font><br></center></h3>
 <br><br>
 <div class="container pt-50">
+    <div class="text-right mb-3">
+        <a href="../sectionF/addTrainCourse.php" class="btn btn-success">+Add New Training Course</a>
+      </div>
     <div class="table-responsive">
         <table id="example" class="table table-striped" style="width:200%">
             <thead>
             <tr>
-            <th>No.</th>
-            <th>Name Of Coordinator</th>
-            <th>Faculty</th>
-            <th>Training Course Title</th>
-            <th>Venue</th>
-            <th>Start Date</th>
-            <th>End Date</th>
-            <th>Reference No.</th>
-            <th>Gross Income Generated</th>
+            <th style="text-align: center">No.</th>
+            <th style="text-align: center">Name Of Coordinator</th>
+            <th style="text-align: center">Faculty</th>
+            <th style="text-align: center">Training Course Title</th>
+            <th style="text-align: center">Venue</th>
+            <th style="text-align: center">Start Date</th>
+            <th style="text-align: center">End Date</th>
+            <th style="text-align: center">Reference No.</th>
+            <th style="text-align: center">Gross Income Generated (RM)</th>
+            <th style="text-align: center">Link To evidence</th>
+            <th style="text-align: center">Remarks</th>
+            <th style="text-align: center">Action</th>
         </tr>
     </thead>
-    <tbody>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
+    <tbody id="myTable">
+    <?php
+        require_once "../examples/config.php";
+         $query = "SELECT * FROM training_courses";
+         $count =1;
+         $result = mysqli_query($conn, $query);
 
+    if ($result) {
+        while ($row = mysqli_fetch_assoc($result)) {
+    ?>
+        <tr>
+            <td style="text-align: center"><?php echo $count;?></td>
+            <td style="text-align: center"><?php echo $row['coordinator_name']; ?></td>
+            <td style="text-align: center"><?php echo $row['faculty']; ?></td>
+            <td style="text-align: center"><?php echo $row['training_course_title']; ?></td>
+            <td style="text-align: center"><?php echo $row['venue']; ?></td>
+            <td style="text-align: center"><?php echo $row['start_date']; ?></td>
+            <td style="text-align: center"><?php echo $row['end_date']; ?></td>
+            <td style="text-align: center"><?php echo $row['reference_no']; ?></td>
+            <td style="text-align: center"><?php echo $row['gross_income_generated']; ?></td>
+            <td style="text-align: center"><a href="<?php echo $row['link']; ?>" target="_blank"><?php echo $row['link']; ?></a>
+            <td style="text-align: center"><?php echo $row['remarks']; ?></td>
+            <td style="text-align: center;">
+                    <a href="../sectionF/editTrainCourse.php?ID=<?php echo $row['reference_no']; ?>" class="btn btn-primary btn-sm"><i class="fa-solid fa-pen-to-square fs-5 me-3"></i></a>
+                    <a href="Training_Course.php?delid=<?php echo htmlentities($row['reference_no']); ?>" onClick="return confirm('Do you really want to remove this Record?');" class="btn btn-danger btn-sm"><i class="fa-solid fa-trash fs-5 me-3"></i></a>
+            </td>
+        </tr>
+        <?php
+          
+          $count = $count+1;
+              }
+            } 
+            else 
+            
+            {
+              echo "Error: " . mysqli_error($conn);
+             }
+          ?>
     </tbody>
     <tfoot>
         <tr>
-            <th></th>
-            <th>Name Of Coordinator</th>
-            <th>Faculty</th>
-            <th>Training Course Title</th>
-            <th>Venue</th>
-            <th>Start Date</th>
-            <th>End Date</th>
-            <th>Reference No.</th>
-            <th>Gross Income Generated</th>
+            <th style="text-align: center">No.</th>
+            <th style="text-align: center">Name Of Coordinator</th>
+            <th style="text-align: center">Faculty</th>
+            <th style="text-align: center">Training Course Title</th>
+            <th style="text-align: center">Venue</th>
+            <th style="text-align: center">Start Date</th>
+            <th style="text-align: center">End Date</th>
+            <th style="text-align: center">Reference No.</th>
+            <th style="text-align: center">Gross Income Generated (RM)</th>
+            <th style="text-align: center">Link To evidence</th>
+            <th style="text-align: center">Remarks</th>
+            <th style="text-align: center">Action</th>
+
         </tr>
             </tfoot>
         </table>

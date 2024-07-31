@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 29, 2024 at 07:04 AM
+-- Generation Time: Jul 31, 2024 at 05:46 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -212,6 +212,7 @@ CREATE TABLE `pg_student` (
   `matric_no` varchar(255) NOT NULL,
   `student_name` varchar(255) NOT NULL,
   `faculty` varchar(255) NOT NULL,
+  `prog_code` varchar(50) NOT NULL,
   `cgpa` varchar(255) NOT NULL,
   `cgpa_degree` double NOT NULL,
   `cgpa_deg_actual` varchar(255) NOT NULL,
@@ -250,11 +251,39 @@ CREATE TABLE `pg_student` (
 -- Dumping data for table `pg_student`
 --
 
-INSERT INTO `pg_student` (`matric_no`, `student_name`, `faculty`, `cgpa`, `cgpa_degree`, `cgpa_deg_actual`, `cgpa_master`, `cgpa_phd`, `university_degree`, `university_master`, `degree_registered`, `mixedmode_ratio`, `st`, `area`, `sponsor`, `intake_year`, `aca_year`, `numsem`, `student_time`, `study_mode`, `citizen`, `country`, `first_appointment`, `current_appointment`, `serve_date`, `app_dur`, `year_awd`, `awd_inst`, `entry_date`, `senate`, `duration`, `got`, `link`, `remarks`, `status_active`) VALUES
-('GS35697', 'AFIFAH BINTI HASSAN', 'Al-Quran & Hadis', 'No', 2.96, '2.96', 'No', 'No', 'Usim', 'UiTM', 'PhD', '70:30', 'NON S&T', 'DAKWAH', 'SELF-FINANCE', '2015', '2016/2017', '4', 'Full-Time', 'Mix Mode', 'Local', 'Malaysia', '0000-00-00', '0000-00-00', '0000-00-00', 0, '2015', '', '2024-07-21', '2024-07-21', 2, 'No', 'https://github.com/queain27', '-', 'Active'),
-('GS38336', 'ABBAS SANI DAHIRU', 'Al-Quran & Hadis', 'Yes', 3.33, '10', 'Yes', 'Yes', 'Université De Toulouse', 'USMANU DANFODIYO UNIVERSITY SOKOTO', 'PhD', '70:30', 'NON S&T', 'DAKWAH', 'SELF-FINANCE', '2015', '2016/2017', '4', 'Part-Time', 'Research', 'Foreign', 'Nigeria', '0000-00-00', '0000-00-00', '0000-00-00', 0, '', '', '2015-11-02', '2017-12-30', 4, 'Yes', 'https://github.com/queain27', 'Active', 'Graduate'),
-('GS44903', 'Nur Athirah Binti Mohammad', 'Al-Quran & Hadis', 'Yes', 3.33, '3.33', 'Yes', 'Yes', 'Usim', 'UiTM', 'Master', '70:30', 'NON S&T', 'al-quran', 'SELF-FINANCE', '2015', '2016/2017', '4', 'Full-Time', 'Research', 'Local', 'Malaysia', '0000-00-00', '0000-00-00', '0000-00-00', 0, '', '', '2024-07-15', '2024-07-23', 2, 'Yes', 'https://github.com/queain27', 'Active', 'Graduate'),
-('PD123', 'Mohammad', 'Teknologi Maklumat & Multimedia', 'No', 2.96, '2.96', 'Yes', 'No', 'uitm', 'UiTM', 'Doctoral', '60:40', 'S&T', 'IT', 'No', '2023', '2023/2024', '5', 'Full-Time', 'Mix Mode', 'Local', 'Malaysia', '2015-01-01', '2016-06-30', '2016-12-31', 12, '2012', 'UNIVERSITI TEKNOLOGI MALAYSIA', '2015-01-01', '2016-12-31', 12, 'Yes', 'https://github.com/queain27', '-', 'Complete');
+INSERT INTO `pg_student` (`matric_no`, `student_name`, `faculty`, `prog_code`, `cgpa`, `cgpa_degree`, `cgpa_deg_actual`, `cgpa_master`, `cgpa_phd`, `university_degree`, `university_master`, `degree_registered`, `mixedmode_ratio`, `st`, `area`, `sponsor`, `intake_year`, `aca_year`, `numsem`, `student_time`, `study_mode`, `citizen`, `country`, `first_appointment`, `current_appointment`, `serve_date`, `app_dur`, `year_awd`, `awd_inst`, `entry_date`, `senate`, `duration`, `got`, `link`, `remarks`, `status_active`) VALUES
+('GS35697', 'AFIFAH BINTI HASSAN', 'Al-Quran & Hadis', '', 'No', 2.96, '2.96', 'No', 'No', 'Usim', 'UiTM', 'PhD', '70:30', 'NON S&T', 'DAKWAH', 'SELF-FINANCE', '2015', '2016/2017', '4', 'Full-Time', 'Mix Mode', 'Local', 'Malaysia', '0000-00-00', '0000-00-00', '0000-00-00', 0, '2015', '', '2024-07-21', '2024-07-21', 2, 'No', 'https://github.com/queain27', '-', 'Active'),
+('GS38336', 'ABBAS SANI DAHIRU', 'Al-Quran & Hadis', '', 'Yes', 3.33, '10', 'Yes', 'Yes', 'Université De Toulouse', 'USMANU DANFODIYO UNIVERSITY SOKOTO', 'PhD', '70:30', 'NON S&T', 'DAKWAH', 'SELF-FINANCE', '2015', '2016/2017', '4', 'Part-Time', 'Research', 'Foreign', 'Nigeria', '0000-00-00', '0000-00-00', '0000-00-00', 0, '', '', '2015-11-02', '2017-12-30', 4, 'Yes', 'https://github.com/queain27', 'Active', 'Graduate'),
+('GS44903', 'Nur Athirah Binti Mohammad', 'Al-Quran & Hadis', 'AH112', 'Yes', 3.33, '3.33', 'Yes', 'Yes', 'Usim', 'UiTM', 'Master', '70:30', 'NON S&T', 'al-quran', 'SELF-FINANCE', '2015', '2016/2017', '4', 'Full-Time', 'Research', 'Local', 'Malaysia', '0000-00-00', '0000-00-00', '0000-00-00', 0, '', '', '2024-07-15', '2024-07-23', 2, 'Yes', 'https://github.com/queain27', 'Active', 'Graduate'),
+('PD123', 'Mohammad', 'Teknologi Maklumat & Multimedia', '', 'No', 2.96, '2.96', 'Yes', 'No', 'uitm', 'UiTM', 'Doctoral', '60:40', 'S&T', 'IT', 'No', '2023', '2023/2024', '5', 'Full-Time', 'Mix Mode', 'Local', 'Malaysia', '2015-01-01', '2016-06-30', '2016-12-31', 12, '2012', 'UNIVERSITI TEKNOLOGI MALAYSIA', '2015-01-01', '2016-12-31', 12, 'Yes', 'https://github.com/queain27', '-', 'Complete');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `post_fee`
+--
+
+CREATE TABLE `post_fee` (
+  `reference_no` varchar(255) NOT NULL,
+  `matric_no` varchar(255) NOT NULL,
+  `student_name` varchar(255) NOT NULL,
+  `faculty` varchar(255) NOT NULL,
+  `prog_code` varchar(255) NOT NULL,
+  `study_mode` varchar(255) NOT NULL,
+  `aca_year` varchar(255) NOT NULL,
+  `payment_date` date NOT NULL,
+  `gross_income` decimal(50,0) NOT NULL,
+  `link` varchar(255) NOT NULL,
+  `remarks` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `post_fee`
+--
+
+INSERT INTO `post_fee` (`reference_no`, `matric_no`, `student_name`, `faculty`, `prog_code`, `study_mode`, `aca_year`, `payment_date`, `gross_income`, `link`, `remarks`) VALUES
+('BILJB1806178', 'GS44903', 'Nur Athirah Binti Mohammad', 'Al-Quran & Hadis', 'AH112', 'Research', '', '2016-12-20', '12', 'HYPERLINK', 'No'),
+('JB1806178', 'GS38336', 'ABBAS SANI DAHIRU', 'Al-Quran & Hadis', '', 'Research', '2016/2017', '2016-02-15', '50', 'HYPERLINK', 'no');
 
 -- --------------------------------------------------------
 
@@ -363,6 +392,31 @@ INSERT INTO `staff` (`staff_id`, `staff_name`, `grade`, `position`, `first_appoi
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `training_courses`
+--
+
+CREATE TABLE `training_courses` (
+  `coordinator_name` varchar(255) NOT NULL,
+  `training_course_title` varchar(255) NOT NULL,
+  `venue` varchar(255) NOT NULL,
+  `start_date` date NOT NULL,
+  `end_date` date NOT NULL,
+  `reference_no` varchar(255) NOT NULL,
+  `gross_income_generated` decimal(50,0) NOT NULL,
+  `link` varchar(255) NOT NULL,
+  `remarks` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `training_courses`
+--
+
+INSERT INTO `training_courses` (`coordinator_name`, `training_course_title`, `venue`, `start_date`, `end_date`, `reference_no`, `gross_income_generated`, `link`, `remarks`) VALUES
+('INSTITUTE OF BIOPRODUCT DEVELOPMENT (IBD)', 'A 3 DAYS TRAINING ON COSMETIC FORMULATIONS AND EVALUATIONS', 'Dewan Johor', '2018-10-23', '2018-10-25', 'BILJB1806178', '20000', 'HYPERLINK', 'No');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `ug_student`
 --
 
@@ -437,6 +491,12 @@ ALTER TABLE `pg_student`
   ADD PRIMARY KEY (`matric_no`);
 
 --
+-- Indexes for table `post_fee`
+--
+ALTER TABLE `post_fee`
+  ADD PRIMARY KEY (`reference_no`);
+
+--
 -- Indexes for table `spinn_off`
 --
 ALTER TABLE `spinn_off`
@@ -447,6 +507,12 @@ ALTER TABLE `spinn_off`
 --
 ALTER TABLE `staff`
   ADD PRIMARY KEY (`staff_id`);
+
+--
+-- Indexes for table `training_courses`
+--
+ALTER TABLE `training_courses`
+  ADD PRIMARY KEY (`reference_no`);
 
 --
 -- Indexes for table `ug_student`
