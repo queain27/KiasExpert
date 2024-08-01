@@ -1,11 +1,17 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.0.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
+<<<<<<< Farhana/draft2
+-- Generation Time: Aug 01, 2024 at 09:07 AM
+-- Server version: 10.4.17-MariaDB
+-- PHP Version: 7.4.15
+=======
 -- Generation Time: Aug 01, 2024 at 09:05 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
+>>>>>>> ain/backup
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -44,6 +50,65 @@ INSERT INTO `admin_form` (`id`, `name`, `adminid`, `password`, `image`) VALUES
 (2, 'Admin', '123', '123', 'Logo2.png'),
 (3, 'Admin', '1234', '1234', 'photo_2020-03-03_21-41-31.jpg');
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `awarding`
+--
+
+CREATE TABLE `awarding` (
+  `staff_id` int(11) NOT NULL,
+  `staff_name` varchar(255) NOT NULL,
+  `faculty` varchar(255) NOT NULL,
+  `name_awd` varchar(255) NOT NULL,
+  `type` varchar(255) NOT NULL,
+  `level` varchar(255) NOT NULL,
+  `conferring` varchar(255) NOT NULL,
+  `title_invention` varchar(255) NOT NULL,
+  `event` varchar(255) NOT NULL,
+  `date` varchar(255) NOT NULL,
+  `link_award` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `awarding`
+--
+
+INSERT INTO `awarding` (`staff_id`, `staff_name`, `faculty`, `name_awd`, `type`, `level`, `conferring`, `title_invention`, `event`, `date`, `link_award`) VALUES
+(1067, 'AMRAN BIN AYOB                          ', 'J24-FAKULTI KEJURUTERAAN MEKANIKAL ', 'dfgh', 'award', 'University', 'aas', 'sdfg', 'sdfg', '2024-07-26', 'as'),
+(1274, 'HAMDANI BIN AHMAD                       ', 'J46-FAKULTI KEJURUTERAAN KIMIA DAN KEJURUTERAAN TENAGA', 'dfgh', 'award', 'National', 'aas', 'sdfg', 'sdfg', '2024-07-25', 'dfvgbn');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `book`
+--
+
+CREATE TABLE `book` (
+  `staff_id` int(11) NOT NULL,
+  `staff_name` varchar(255) NOT NULL,
+  `authors` varchar(255) NOT NULL,
+  `industrial` varchar(255) NOT NULL,
+  `international` varchar(255) NOT NULL,
+  `national` varchar(255) NOT NULL,
+  `book_title` varchar(255) NOT NULL,
+  `book_editor` varchar(255) NOT NULL,
+  `chapter_title` varchar(255) NOT NULL,
+  `publisher` varchar(255) NOT NULL,
+  `isbn` int(11) NOT NULL,
+  `book_status` varchar(255) NOT NULL,
+  `link_evidence` varchar(255) NOT NULL,
+  `remarks` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `book`
+--
+
+INSERT INTO `book` (`staff_id`, `staff_name`, `authors`, `industrial`, `international`, `national`, `book_title`, `book_editor`, `chapter_title`, `publisher`, `isbn`, `book_status`, `link_evidence`, `remarks`) VALUES
+(1067, 'AMRAN BIN AYOB                          ', 'sfg', 'N', 'Y', 'N', 'asd', 'rty', '467', 'jhkg', 0, 'dwd', 'fbh', 'add');
+
+-- --------------------------------------------------------
 -- --------------------------------------------------------
 
 --
@@ -176,6 +241,28 @@ INSERT INTO `lect_form` (`id`, `name`, `staffid`, `password`, `image`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `other_publication`
+--
+
+CREATE TABLE `other_publication` (
+  `staff_id` int(11) NOT NULL,
+  `staff_name` varchar(255) NOT NULL,
+  `document_type` varchar(255) NOT NULL,
+  `document_title` varchar(255) NOT NULL,
+  `source_title` varchar(255) NOT NULL,
+  `volume` varchar(255) NOT NULL,
+  `issue` varchar(255) NOT NULL,
+  `page_start` int(11) NOT NULL,
+  `page_end` int(11) NOT NULL,
+  `year` int(11) NOT NULL,
+  `issn_isbn` int(11) NOT NULL,
+  `link_evidence` varchar(255) NOT NULL,
+  `remarks` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `patent`
 --
 
@@ -226,9 +313,7 @@ CREATE TABLE `patent_filed` (
 INSERT INTO `patent_filed` (`fill_id`, `fill_name`, `staff_id`, `staff_name`, `date_filed`, `country`, `faculty`, `link`, `remarks`) VALUES
 ('P12016987', 'SYSTEM Q', 1067, 'AMRAN BIN AYOB                          ', '2016-09-03', 'MALAYSIA', 'Teknologi Maklumat & Multimedia', 'No', 'Active'),
 ('PI2016111', 'PRODUCT XYZ', 958, 'JALIL BIN OMAR                          ', '2016-01-05', 'MALAYSIA', 'Pengajian Bahasa Arab', 'No', 'No');
-
 -- --------------------------------------------------------
-
 --
 -- Table structure for table `pg_student`
 --
@@ -285,6 +370,35 @@ INSERT INTO `pg_student` (`matric_no`, `student_name`, `faculty`, `prog_code`, `
 -- --------------------------------------------------------
 
 --
+<<<<<<< Farhana/draft2
+-- Table structure for table `policy_paper`
+--
+
+CREATE TABLE `policy_paper` (
+  `staff_id` int(11) NOT NULL,
+  `staff_name` varchar(255) NOT NULL,
+  `authors` varchar(255) NOT NULL,
+  `title_paper` varchar(255) NOT NULL,
+  `stake_holder` varchar(255) NOT NULL,
+  `level` varchar(255) NOT NULL,
+  `year_published` int(11) NOT NULL,
+  `isbn` int(11) NOT NULL,
+  `link_evidence` varchar(255) NOT NULL,
+  `remarks` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `policy_paper`
+--
+
+INSERT INTO `policy_paper` (`staff_id`, `staff_name`, `authors`, `title_paper`, `stake_holder`, `level`, `year_published`, `isbn`, `link_evidence`, `remarks`) VALUES
+(1067, 'AMRAN BIN AYOB                          ', 'dg', 'ggt', 'aert', 'State Government', 325, 467, 'fsaa', 'DSJDSH');
+
+-- --------------------------------------------------------
+
+--
+=======
+>>>>>>> ain/backup
 -- Table structure for table `post_fee`
 --
 
@@ -329,6 +443,44 @@ CREATE TABLE `prod_tech` (
   `link` varchar(255) NOT NULL,
   `remarks` int(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+<<<<<<< Farhana/draft2
+
+-- --------------------------------------------------------
+--
+-- Table structure for table `publication`
+--
+
+CREATE TABLE `publication` (
+  `article_no` int(11) NOT NULL,
+  `staff_id` int(11) NOT NULL,
+  `staff_name` varchar(255) NOT NULL,
+  `authors` varchar(255) NOT NULL,
+  `industrial` varchar(255) NOT NULL,
+  `international` varchar(255) NOT NULL,
+  `national` varchar(255) NOT NULL,
+  `document_title` varchar(255) NOT NULL,
+  `source_title` varchar(255) NOT NULL,
+  `document_type` varchar(255) NOT NULL,
+  `volume` varchar(255) NOT NULL,
+  `issue` varchar(255) NOT NULL,
+  `page_start` int(11) NOT NULL,
+  `page_end` int(11) NOT NULL,
+  `year` int(11) NOT NULL,
+  `issn_isbn` int(11) NOT NULL,
+  `link_evidence` varchar(255) NOT NULL,
+  `remarks` varchar(255) NOT NULL,
+  `quartile1` varchar(255) NOT NULL,
+  `quartile2` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `publication`
+--
+
+INSERT INTO `publication` (`article_no`, `staff_id`, `staff_name`, `authors`, `industrial`, `international`, `national`, `document_title`, `source_title`, `document_type`, `volume`, `issue`, `page_start`, `page_end`, `year`, `issn_isbn`, `link_evidence`, `remarks`, `quartile1`, `quartile2`) VALUES
+(123, 1067, 'AMRAN BIN AYOB                          ', 'dg', 'Y', 'N', 'N', 'dcfgh', 'dfgh', 'sdfg', '12345', '12', 456, 234, 2024, 245, 'fbh', 'fgh', '1234', '345');
+=======
+>>>>>>> ain/backup
 
 -- --------------------------------------------------------
 
@@ -361,6 +513,67 @@ INSERT INTO `research` (`project_id`, `staff_id`, `staff_name`, `research_title`
 (1324, 1067, '', 'djsakdh', '2024-07-24', '2024-07-28', 'hdjhdh', 'University', 'gjnhnb', 800, 8000, 799, 80),
 (124, 11234, 'ROBERT', 'djsakdh', '2024-07-23', '2024-07-26', 'hdjhdh', 'National', 'gjnhnb', 800, 8000, 799, 80),
 (125, 1274, 'HAMDANI BIN AHMAD                       ', 'djsakdh', '2024-07-23', '2024-07-26', 'hdjhdh', 'University', 'gjnhnb', 800, 8000, 799, 80);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `research_grant`
+--
+
+CREATE TABLE `research_grant` (
+  `project_id` int(11) NOT NULL,
+  `staff_id` int(11) NOT NULL,
+  `staff_name` varchar(255) NOT NULL,
+  `faculty` varchar(255) NOT NULL,
+  `st` varchar(255) NOT NULL,
+  `staff_status` varchar(255) NOT NULL,
+  `research_title` varchar(255) NOT NULL,
+  `start_date` varchar(255) NOT NULL,
+  `end_date` int(11) NOT NULL,
+  `page_end` int(11) NOT NULL,
+  `duration_project` int(11) NOT NULL,
+  `status_project` varchar(255) NOT NULL,
+  `project_extension` varchar(255) NOT NULL,
+  `project_extend` int(11) NOT NULL,
+  `sponsor_cat` varchar(255) NOT NULL,
+  `grant_name` varchar(255) NOT NULL,
+  `amt_pledge` int(11) NOT NULL,
+  `amt_receive` int(11) NOT NULL,
+  `amt_spent` int(11) NOT NULL,
+  `link_evidence` varchar(255) NOT NULL,
+  `remarks` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `research_project`
+--
+
+CREATE TABLE `research_project` (
+  `project_id` int(11) NOT NULL,
+  `staff_id` int(11) NOT NULL,
+  `staff_name` varchar(255) NOT NULL,
+  `faculty` varchar(255) NOT NULL,
+  `st` varchar(255) NOT NULL,
+  `status_staff` varchar(255) NOT NULL,
+  `research_title` varchar(255) NOT NULL,
+  `start_date` varchar(255) NOT NULL,
+  `end_date` varchar(255) NOT NULL,
+  `page_end` int(11) NOT NULL,
+  `duration_project` int(11) NOT NULL,
+  `status_project` varchar(255) NOT NULL,
+  `project_extension` varchar(255) NOT NULL,
+  `project_extend` varchar(255) NOT NULL,
+  `sponsor` varchar(255) NOT NULL,
+  `sponsor_cat` varchar(255) NOT NULL,
+  `grant_name` varchar(255) NOT NULL,
+  `amt_pledge` int(11) NOT NULL,
+  `amt_receive` int(11) NOT NULL,
+  `amt_spent` int(11) NOT NULL,
+  `link_evidence` varchar(255) NOT NULL,
+  `remarks` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -461,7 +674,10 @@ INSERT INTO `training_courses` (`coordinator_name`, `faculty`, `training_course_
 ('INSTITUTE OF BIOPRODUCT DEVELOPMENT (IBD)', 'Dakwah & Pembangunan Insan', 'A 3 DAYS TRAINING ON COSMETIC FORMULATIONS AND EVALUATIONS', 'Dewan Johor', '2018-10-23', '2018-10-25', 'BILJB1806178', '20000', 'HYPERLINK', 'No');
 
 -- --------------------------------------------------------
+<<<<<<< Farhana/draft2
+=======
 
+>>>>>>> ain/backup
 --
 -- Table structure for table `ug_student`
 --
@@ -493,6 +709,18 @@ INSERT INTO `ug_student` (`matric_no`, `student_name`, `faculty`, `year_enroll`,
 --
 ALTER TABLE `admin_form`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `awarding`
+--
+ALTER TABLE `awarding`
+  ADD PRIMARY KEY (`staff_id`);
+
+--
+-- Indexes for table `book`
+--
+ALTER TABLE `book`
+  ADD PRIMARY KEY (`staff_id`);
 
 --
 -- Indexes for table `commercial`
@@ -543,6 +771,15 @@ ALTER TABLE `pg_student`
   ADD PRIMARY KEY (`matric_no`);
 
 --
+<<<<<<< Farhana/draft2
+-- Indexes for table `policy_paper`
+--
+ALTER TABLE `policy_paper`
+  ADD PRIMARY KEY (`staff_id`);
+
+--
+=======
+>>>>>>> ain/backup
 -- Indexes for table `post_fee`
 --
 ALTER TABLE `post_fee`
@@ -554,12 +791,27 @@ ALTER TABLE `post_fee`
 ALTER TABLE `prod_tech`
   ADD PRIMARY KEY (`staff_id`);
 
+<<<<<<< Farhana/draft2
+-- Indexes for table `publication`
+--
+ALTER TABLE `publication`
+  ADD PRIMARY KEY (`article_no`);
+
+--
+-- Indexes for table `research`
+--
+ALTER TABLE `research`
+  ADD PRIMARY KEY (`project_id`);
+
+=======
+>>>>>>> ain/backup
 --
 -- Indexes for table `spinn_off`
 --
 ALTER TABLE `spinn_off`
   ADD PRIMARY KEY (`project_id`);
 
+--
 --
 -- Indexes for table `staff`
 --
