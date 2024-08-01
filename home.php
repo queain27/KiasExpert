@@ -585,16 +585,32 @@
                <p>F2 Gross Organising, Seminar & Knowledge Program</p>
           </a>  
       </li>
-    <!--F3-->
-    <li class="nav-item">
-      <a href="pages/sectionF/Product_Technology.php" class="nav-link">
-         <i class="far fa-circle nav-icon"></i>
-           <p>F3 Gross products commercialization/technology know-how licensing/outright
-           
-          </p>
-      </a>  
-  </li>
-    <!--F4-->
+<!--F3-->
+<li class="nav-item">
+     <a href="#" class="nav-link">
+        <i class="far fa-circle nav-icon"></i>
+          <p>F3 Gross products commercialization/technology know-how licensing/outright
+            <i class="fas fa-angle-left right"></i>
+         </p>
+     </a>  
+     <ul class="nav nav-treeview">
+       <!--a-->
+               <li class="nav-item">
+                 <a href="pages/sectionF/Product.php" class="nav-link">
+                   <i class="far fa-circle nav-icon"></i>
+                   <p>(a) Product Commercial</p>
+                 </a>
+               </li>
+          <!--b-->
+               <li class="nav-item">
+                 <a href="pages/sectionF/Technology.php" class="nav-link">
+                   <i class="far fa-circle nav-icon"></i>
+                   <p>(b) Technology Know-How Licensing/Sold outright Sale </p>
+                 </a>
+               </li>
+         </ul>
+     </li>
+   <!--F4-->
     <li class="nav-item">
       <a href="#" class="nav-link">
          <i class="far fa-circle nav-icon"></i>

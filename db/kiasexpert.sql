@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 31, 2024 at 05:46 AM
+-- Generation Time: Aug 01, 2024 at 09:05 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -70,6 +70,31 @@ CREATE TABLE `commercial` (
 
 INSERT INTO `commercial` (`product_id`, `staff_id`, `staff_name`, `product_name`, `date_com`, `date_ach`, `comp_name`, `gross_income`, `link_licen`, `link_com`, `remarks`) VALUES
 ('P001', 11234, 'ROBERT', 'PRODUCT X', '2014-07-07', '2016-09-15', 'SYKT ABC', '24000', 'Hyperlink', 'Hyperlink', 'No');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `conference`
+--
+
+CREATE TABLE `conference` (
+  `id` int(50) NOT NULL,
+  `name_organizer` varchar(255) NOT NULL,
+  `name_title` varchar(255) NOT NULL,
+  `start_date` date NOT NULL,
+  `end_date` date NOT NULL,
+  `gross_income` varchar(255) NOT NULL,
+  `link` varchar(255) NOT NULL,
+  `remark` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `conference`
+--
+
+INSERT INTO `conference` (`id`, `name_organizer`, `name_title`, `start_date`, `end_date`, `gross_income`, `link`, `remark`) VALUES
+(1, 'Process Systems Engineering Center (PROSPECT)', 'BENGKEL COURSE ON ENERGY AUDIT ON MECHANICAL EQUIPMENT', '2016-01-20', '2016-01-21', '1,007.00', 'HYPERLINK', 'No Remark'),
+(2, 'PUSAT KALAM', 'SEMINAR WACANA ILMU KALAM KE-34 SENIBINA MELAYU NUSANTARA', '2016-07-03', '2016-07-05', '9,000.00', 'HYPERLINK', 'No');
 
 -- --------------------------------------------------------
 
@@ -272,7 +297,7 @@ CREATE TABLE `post_fee` (
   `study_mode` varchar(255) NOT NULL,
   `aca_year` varchar(255) NOT NULL,
   `payment_date` date NOT NULL,
-  `gross_income` decimal(50,0) NOT NULL,
+  `gross_income` varchar(50) NOT NULL,
   `link` varchar(255) NOT NULL,
   `remarks` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -284,6 +309,26 @@ CREATE TABLE `post_fee` (
 INSERT INTO `post_fee` (`reference_no`, `matric_no`, `student_name`, `faculty`, `prog_code`, `study_mode`, `aca_year`, `payment_date`, `gross_income`, `link`, `remarks`) VALUES
 ('BILJB1806178', 'GS44903', 'Nur Athirah Binti Mohammad', 'Al-Quran & Hadis', 'AH112', 'Research', '', '2016-12-20', '12', 'HYPERLINK', 'No'),
 ('JB1806178', 'GS38336', 'ABBAS SANI DAHIRU', 'Al-Quran & Hadis', '', 'Research', '2016/2017', '2016-02-15', '50', 'HYPERLINK', 'no');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `prod_tech`
+--
+
+CREATE TABLE `prod_tech` (
+  `staff_id` int(50) NOT NULL,
+  `staff_name` varchar(255) NOT NULL,
+  `prod_name` varchar(255) NOT NULL,
+  `Type` varchar(255) NOT NULL,
+  `faculty` varchar(255) NOT NULL,
+  `year` varchar(50) NOT NULL,
+  `comp_name` varchar(255) NOT NULL,
+  `reference_no` varchar(255) NOT NULL,
+  `gross_income` varchar(255) NOT NULL,
+  `link` varchar(255) NOT NULL,
+  `remarks` int(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -397,12 +442,13 @@ INSERT INTO `staff` (`staff_id`, `staff_name`, `grade`, `position`, `first_appoi
 
 CREATE TABLE `training_courses` (
   `coordinator_name` varchar(255) NOT NULL,
+  `faculty` varchar(255) NOT NULL,
   `training_course_title` varchar(255) NOT NULL,
   `venue` varchar(255) NOT NULL,
   `start_date` date NOT NULL,
   `end_date` date NOT NULL,
   `reference_no` varchar(255) NOT NULL,
-  `gross_income_generated` decimal(50,0) NOT NULL,
+  `gross_income_generated` varchar(50) NOT NULL,
   `link` varchar(255) NOT NULL,
   `remarks` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -411,8 +457,8 @@ CREATE TABLE `training_courses` (
 -- Dumping data for table `training_courses`
 --
 
-INSERT INTO `training_courses` (`coordinator_name`, `training_course_title`, `venue`, `start_date`, `end_date`, `reference_no`, `gross_income_generated`, `link`, `remarks`) VALUES
-('INSTITUTE OF BIOPRODUCT DEVELOPMENT (IBD)', 'A 3 DAYS TRAINING ON COSMETIC FORMULATIONS AND EVALUATIONS', 'Dewan Johor', '2018-10-23', '2018-10-25', 'BILJB1806178', '20000', 'HYPERLINK', 'No');
+INSERT INTO `training_courses` (`coordinator_name`, `faculty`, `training_course_title`, `venue`, `start_date`, `end_date`, `reference_no`, `gross_income_generated`, `link`, `remarks`) VALUES
+('INSTITUTE OF BIOPRODUCT DEVELOPMENT (IBD)', 'Dakwah & Pembangunan Insan', 'A 3 DAYS TRAINING ON COSMETIC FORMULATIONS AND EVALUATIONS', 'Dewan Johor', '2018-10-23', '2018-10-25', 'BILJB1806178', '20000', 'HYPERLINK', 'No');
 
 -- --------------------------------------------------------
 
@@ -453,6 +499,12 @@ ALTER TABLE `admin_form`
 --
 ALTER TABLE `commercial`
   ADD PRIMARY KEY (`product_id`);
+
+--
+-- Indexes for table `conference`
+--
+ALTER TABLE `conference`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `iprs`
@@ -497,6 +549,12 @@ ALTER TABLE `post_fee`
   ADD PRIMARY KEY (`reference_no`);
 
 --
+-- Indexes for table `prod_tech`
+--
+ALTER TABLE `prod_tech`
+  ADD PRIMARY KEY (`staff_id`);
+
+--
 -- Indexes for table `spinn_off`
 --
 ALTER TABLE `spinn_off`
@@ -529,6 +587,12 @@ ALTER TABLE `ug_student`
 --
 ALTER TABLE `admin_form`
   MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `conference`
+--
+ALTER TABLE `conference`
+  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `lect_form`
