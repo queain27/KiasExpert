@@ -788,59 +788,84 @@
         <table id="example" class="table table-striped" style="width:250%">
             <thead>
                 <tr>
-                    <th>No.</th>
-                    <th>Staff ID</th>
-                    <th>Staff Name</th>     
-                    <th>Authors</th>              
-                    <th>Industrial (Y/N)</th>
-                    <th>International (Y/N)</th>
-                    <th>National (Y/N)</th>
-                    <th>Book Tittle</th>
-                    <th>Book Editor</th>
-                    <th>Chapter Tittle</th>
-                    <th>ISBN</th>
-                    <th>Book Status</th>
-                    <th>Link Device</th>
-                    <th>Remarks</th>     
+                <th style="text-align: center">No.</th>
+                <th style="text-align: center">Staff ID</th>
+                <th style="text-align: center">Staff Name</th>     
+                <th style="text-align: center">Authors</th>              
+                <th style="text-align: center">Industrial (Y/N)</th>
+                <th style="text-align: center">International (Y/N)</th>
+                <th style="text-align: center">National (Y/N)</th>
+                <th style="text-align: center">Book Tittle</th>
+                <th style="text-align: center">Book Editor</th>
+                <th style="text-align: center">Chapter Tittle</th>
+                <th style="text-align: center">ISBN</th>
+                <th style="text-align: center">Book Status</th>
+                <th style="text-align: center">Link Evidence</th>
+                <th style="text-align: center">Remarks</th>     
                 </tr>
             </thead>
             
             <tbody>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-               
+            <?php
+            require_once "../examples/config.php";
+            $query = "SELECT * FROM book WHERE book_editor IS NOT NULL AND book_editor <> '' AND chapter_title IS NOT NULL AND chapter_title <> ''";
+
+            $count =1;
+            $result = mysqli_query($conn, $query);
+
+            if ($result) {
+             while ($row = mysqli_fetch_assoc($result)) {
+            ?>
+            <tr>
+                <td style="text-align: center"><?php echo $count;?></td>
+                <td style="text-align: center"><?php echo $row['staff_id']; ?></td>
+                <td style="text-align: center"><?php echo $row['staff_name']; ?></td>
+                <td style="text-align: center"><?php echo $row['authors']; ?></td>
+                <td style="text-align: center"><?php echo $row['industrial']; ?></td>
+                <td style="text-align: center"><?php echo $row['international']; ?></td>
+                <td style="text-align: center"><?php echo $row['national']; ?></td>
+                <td style="text-align: center"><?php echo $row['book_title']; ?></td>
+                <td style="text-align: center"><?php echo $row['book_editor']; ?></td>
+                <td style="text-align: center"><?php echo $row['chapter_title']; ?></td>
+                <td style="text-align: center"><?php echo $row['isbn']; ?></td>
+                <td style="text-align: center"><?php echo $row['book_status']; ?></td>
+                <td style="text-align: center"><a href="<?php echo $row['link_evidence']; ?>" target="_blank"><?php echo $row['link_evidence']; ?>
+                <td style="text-align: center"><?php echo $row['remarks']; ?></td>
+               </a>
+          
+
+                </td>
+            </tr>
+        <?php
+          
+          $count = $count+1;
+              }
+            } 
+            else 
+            
+            {
+              echo "Error: " . mysqli_error($conn);
+             }
+          ?>
             </tbody>
             
             <tfoot>
                 <tr>
-                   <th></th>
-                    <th>Staff ID</th>
-                    <th>Staff Name</th>     
-                    <th>Authors</th>              
-                    <th>Industrial (Y/N)</th>
-                    <th>International (Y/N)</th>
-                    <th>National (Y/N)</th>
-                    <th>Book Tittle</th>
-                    <th>Book Editor</th>
-                    <th>Chapter Tittle</th>
-                    <th>ISBN</th>
-                    <th>Book Status</th>
-                    <th>Link Device</th>
-                    <th>Remarks</th>  
+                <th style="text-align: center">No.</th>
+                <th style="text-align: center">Staff ID</th>
+                <th style="text-align: center">Staff Name</th>     
+                <th style="text-align: center">Authors</th>              
+                <th style="text-align: center">Industrial (Y/N)</th>
+                <th style="text-align: center">International (Y/N)</th>
+                <th style="text-align: center">National (Y/N)</th>
+                <th style="text-align: center">Book Tittle</th>
+                <th style="text-align: center">Book Editor</th>
+                <th style="text-align: center">Chapter Tittle</th>
+                <th style="text-align: center">ISBN</th>
+                <th style="text-align: center">Book Status</th>
+                <th style="text-align: center">Link Evidence</th>
+                <th style="text-align: center">Remarks</th>     
+                </tr>
                 </tr>
             </tfoot>
         </table>
