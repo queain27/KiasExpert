@@ -1,12 +1,31 @@
+<?php
+include "../examples/config.php";
+
+if (isset($_GET['delid'])) {
+    $project_id= $_GET['delid'];
+    $stmt = $conn->prepare("DELETE FROM spinn_off WHERE project_id= ?");
+    $stmt->bind_param("s", $project_id);
+
+    if ($stmt->execute()) {
+        echo "<script>alert('Record successfully deleted');</script>";
+        echo "<script>document.location='Startup.php';</script>";
+    } else {
+        echo "<script>alert('Something went wrong');</script>";
+    }
+
+    $stmt->close();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Spin Off Startup Companies</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">  
+    <title> New Spin Off Startup Companies</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">  
   <!-- Font Awesome -->
   <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <!-- Ionicons -->
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <!-- Tempusdominus Bootstrap 4 -->
@@ -29,6 +48,8 @@
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
   <script defer src="https://cdn.datatables.net/2.0.3/js/dataTables.js"></script>
   <script defer src="https://cdn.datatables.net/2.0.3/js/dataTables.bootstrap5.js"></script>
+  <script defer src="script.js"></script>
+  <!--Icon Image--> 
   <link rel="shortcut icon" href="../../images/Logo2.png" type="image/x-icon">
   <script defer src="script.js"></script>
   <script>
@@ -525,7 +546,7 @@
            </a>
          </li>
          <li class="nav-item">
-         <a href="./sectionE/StartupNew.php" class="nav-link">
+         <a href="../sectionE/StartupNew.php" class="nav-link">
              <i class="far fa-circle nav-icon"></i>
              <p>(b) New Spin Off Companies</p>
            </a>
@@ -579,13 +600,29 @@
      </li>
    <!--F3-->
    <li class="nav-item">
-     <a href="../sectionF/Product_Technology.php" class="nav-link">
+     <a href="#" class="nav-link">
         <i class="far fa-circle nav-icon"></i>
           <p>F3 Gross products commercialization/technology know-how licensing/outright
-          
+            <i class="fas fa-angle-left right"></i>
          </p>
      </a>  
- </li>
+     <ul class="nav nav-treeview">
+       <!--a-->
+               <li class="nav-item">
+                 <a href="../sectionF/Product.php" class="nav-link">
+                   <i class="far fa-circle nav-icon"></i>
+                   <p>(a) Product Commercial</p>
+                 </a>
+               </li>
+          <!--b-->
+               <li class="nav-item">
+                 <a href="../sectionF/Technology.php" class="nav-link">
+                   <i class="far fa-circle nav-icon"></i>
+                   <p>(b) Technology Know-How Licensing/Sold outright Sale </p>
+                 </a>
+               </li>
+         </ul>
+     </li>
    <!--F4-->
    <li class="nav-item">
      <a href="#" class="nav-link">
@@ -780,48 +817,86 @@
 <body>
 <!--Main Content-->
 <!--TableStart-->  
-<h3><center><font color="" face="Cambria Math">Spinn-Off or Start-Up Companies<font><br></center></h3>
+<h3><center><font color="" face="Cambria Math">New Spinn-Off or Start-Up Companies<font><br></center></h3>
 <br><br>
 <div class="container pt-50">
+    <div class="text-right mb-3">
+        <a href="../sectionE/addStartup.php" class="btn btn-success">+Add New StartUp</a>
+      </div>
     <div class="table-responsive">
         <table id="example" class="table table-striped" style="width:200%">
             <thead>
             <tr>
-            <th>No.</th>
-            <th>Staff ID</th>
-            <th>Staff Name</th>
-            <th>Project ID</th>
-            <th>Company Registartion</th>
-            <th>Date Incorporated</th>
-            <th>Equity</th>
-            <th>Description Research</th>
-            <th>Link Evidence</th>
+            <th style="text-align: center">No.</th>
+            <th style="text-align: center">Staff ID</th>
+            <th style="text-align: center">Staff Name</th>
+            <th style="text-align: center">Project ID</th>
+            <th style="text-align: center">Company Registartion</th>
+            <th style="text-align: center">Company Name</th>
+            <th style="text-align: center">Date Incorporated</th>
+            <th style="text-align: center">Equity</th>
+            <th style="text-align: center">Description Research</th>
+            <th style="text-align: center">Link Evidence</th>
+            <th style="text-align: center">Remarks</th>
+            <th style="text-align: center">Action</th>
         </tr>
     </thead>
-    <tbody>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
+    <tbody id="myTable">
 
-    </tbody>
+    <?php
+require_once "../examples/config.php";
+
+// Query to get the most recent  spinn_off for each staff member
+$query = " SELECT * FROM spinn_off WHERE date (date_corp) = (SELECT MAX(date(date_corp)) FROM spinn_off )ORDER BY date_corp DESC; ";
+
+// Execute the query
+$result = mysqli_query($conn, $query);
+
+if ($result) {
+    $count = 1;
+    while ($row = mysqli_fetch_assoc($result)) {
+        ?>
+ <tr>
+         <td style="text-align: center"><?php echo $count;?></td>
+         <td style="text-align: center"><?php echo $row['staff_id']; ?></td>
+         <td style="text-align: center"><?php echo $row['staff_name']; ?></td>
+         <td style="text-align: center"><?php echo $row['project_id']; ?></td>
+         <td style="text-align: center"><?php echo $row['regis_comp']; ?></td>
+         <td style="text-align: center"><?php echo $row['comp_name']; ?></td>
+         <td style="text-align: center"><?php echo $row['date_corp']; ?></td>
+         <td style="text-align: center"><?php echo $row['equity']; ?></td>
+         <td style="text-align: center"><?php echo $row['desc_research']; ?></td>
+         <td style="text-align: center"><a href="<?php echo $row['link']; ?>" target="_blank"><?php echo $row['link']; ?></a>
+         <td style="text-align: center"><?php echo $row['remarks']; ?></td>
+         <td style="text-align: center;"><a href="../sectionE/editStartup.php?ID=<?php echo $row['project_id']; ?>" class="btn btn-primary btn-sm"><i class="fa-solid fa-pen-to-square fs-5 me-3"></i></a>
+                                         <a href="Startup.php?delid=<?php echo htmlentities($row['project_id']); ?>" onClick="return confirm('Do you really want to remove this Record?');" class="btn btn-danger btn-sm"><i class="fa-solid fa-trash fs-5 me-3"></i></a>
+         </td>
+ </tr>
+ <?php 
+   $count = $count+1;
+       }
+     } 
+     else 
+     
+     {
+       echo "Error: " . mysqli_error($conn);
+     }
+ ?>
+</tbody>
     <tfoot>
         <tr>
-            <th></th>
-            <th>Staff ID</th>
-            <th>Staff Name</th>
-            <th>Project ID</th>
-            <th>Company Registartion</th>
-            <th>Date Incorporated</th>
-            <th>Equity</th>
-            <th>Description Research</th>
-            <th>Link Evidence</th>
+            <th style="text-align: center">No.</th>
+            <th style="text-align: center">Staff ID</th>
+            <th style="text-align: center">Staff Name</th>
+            <th style="text-align: center">Project ID</th>
+            <th style="text-align: center">Company Registartion</th>
+            <th style="text-align: center">Company Name</th>
+            <th style="text-align: center">Date Incorporated</th>
+            <th style="text-align: center">Equity</th>
+            <th style="text-align: center">Description Research</th>
+            <th style="text-align: center">Link Evidence</th>
+            <th style="text-align: center">Remarks</th>
+            <th style="text-align: center">Action</th>
         </tr>
             </tfoot>
         </table>

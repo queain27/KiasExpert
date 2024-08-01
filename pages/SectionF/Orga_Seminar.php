@@ -1,13 +1,26 @@
+<?php
+require_once "../examples/config.php";
+
+if(isset($_GET['delid']))
+{
+  $id =intval($_GET['delid']);
+  $sql =mysqli_query($conn,"DELETE FROM conference WHERE id='$id'");
+  echo"<script>alert('Record has been succesfully Deleted!!');</script>";
+  echo"<script>window.location='Orga_Seminar.php?';</script>";
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gross Income</title>    
+    <title>Gross Income from Organising Conferences</title>    
 
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">  
   <!-- Font Awesome -->
   <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <!-- Ionicons -->
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <!-- Tempusdominus Bootstrap 4 -->
@@ -30,6 +43,8 @@
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
   <script defer src="https://cdn.datatables.net/2.0.3/js/dataTables.js"></script>
   <script defer src="https://cdn.datatables.net/2.0.3/js/dataTables.bootstrap5.js"></script>
+  <script defer src="script.js"></script>
+  <!--Icon Image--> 
   <link rel="shortcut icon" href="../../images/Logo2.png" type="image/x-icon">
   <script defer src="script.js"></script>
 
@@ -528,7 +543,7 @@
            </a>
          </li>
          <li class="nav-item">
-         <a href="./sectionE/StartupNew.php" class="nav-link">
+         <a href="../sectionE/StartupNew.php" class="nav-link">
              <i class="far fa-circle nav-icon"></i>
              <p>(b) New Spin Off Companies</p>
            </a>
@@ -582,13 +597,29 @@
      </li>
    <!--F3-->
    <li class="nav-item">
-     <a href="../sectionF/Product_Technology.php" class="nav-link">
+     <a href="#" class="nav-link">
         <i class="far fa-circle nav-icon"></i>
           <p>F3 Gross products commercialization/technology know-how licensing/outright
-          
+            <i class="fas fa-angle-left right"></i>
          </p>
      </a>  
- </li>
+     <ul class="nav nav-treeview">
+       <!--a-->
+               <li class="nav-item">
+                 <a href="../sectionF/Product.php" class="nav-link">
+                   <i class="far fa-circle nav-icon"></i>
+                   <p>(a) Product Commercial</p>
+                 </a>
+               </li>
+          <!--b-->
+               <li class="nav-item">
+                 <a href="../sectionF/Technology.php" class="nav-link">
+                   <i class="far fa-circle nav-icon"></i>
+                   <p>(b) Technology Know-How Licensing/Sold outright Sale </p>
+                 </a>
+               </li>
+         </ul>
+     </li>
    <!--F4-->
    <li class="nav-item">
      <a href="#" class="nav-link">
@@ -787,43 +818,71 @@
 <h3><center><font color="" face="Cambria Math">Organising Conference,Seminars & Knowledge-Sharing Programmes in The Field Expertise<font><br></center></h3>
 <br><br>
 <div class="container pt-50">
+    <div class="text-right mb-3">
+        <a href="../sectionF/addConference.php" class="btn btn-success">+Add New</a>
+      </div>
     <div class="table-responsive">
         <table id="example" class="table table-striped" style="width:200%">
             <thead>
-            <tr>
-            <th>No.</th>
-            <th>Name Of Coordinator</th>
-            <th>Faculty/Centres</th>
-            <th>Training Course Title</th>
-            <th>Venue</th>
-            <th>Start Date</th>
-            <th>Reference No.</th>
-            <th>Gross Income Generated</th>
+           <tr>
+            <th style="text-align: center">No.</th>
+            <th style="text-align: center">Name Of Coordinator</th>
+            <th style="text-align: center">Name Of Conference/ Seminars/ Knowledge-Sharing Programmes</th>
+            <th style="text-align: center">Start Date</th>
+            <th style="text-align: center">End Date</th>
+            <th style="text-align: center">Gross Income Generate (RM)</th>
+            <th style="text-align: center">Link To evidence</th>
+            <th style="text-align: center">Remarks</th>
+            <th style="text-align: center">Action</th>
+            
         </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
+        </thead>
 
-    </tbody>
-    <tfoot>
+       <tbody id="myTable">
+      <?php
+          require_once "../examples/config.php";
+         $query = "SELECT * FROM conference";
+         $count =1;
+         $result = mysqli_query($conn, $query);
+
+          if ($result) {
+            while ($row = mysqli_fetch_assoc($result)) {
+        ?>
         <tr>
-            <th></th>
-            <th>Name Of Coordinator</th>
-            <th>Faculty/Centres</th>
-            <th>Training Course Title</th>
-            <th>Venue</th>
-            <th>Start Date</th>
-            <th>Reference No.</th>
-            <th>Gross Income Generated</th>
+            <td style="text-align: center"><?php echo $count;?></td>
+            <td style="text-align: center"><?php echo $row['name_organizer'];?></td>
+            <td style="text-align: center"><?php echo $row['name_title'];?></td>
+            <td style="text-align: center"><?php echo $row['start_date'];?></td>
+            <td style="text-align: center"><?php echo $row['end_date'];?></td>
+            <td style="text-align: center"><?php echo $row['gross_income'];?></td>
+            <td style="text-align: center"><a href="<?php echo $row['link']; ?>" target="_blank"><?php echo $row['link']; ?>
+            <td style="text-align: center"><?php echo $row['remark']; ?>
+            <td style="text-align: center;"><a href="editConference.php?ID=<?php echo $row['id']; ?>" class="btn btn-primary btn-sm"><i class="fa-solid fa-pen-to-square fs-5 me-3"></i></a>
+            <a href="Orga_Seminar.php?delid=<?php echo htmlentities($row['id']); ?>" onClick="return confirm('Do you really want to remove this Record?');" class="btn btn-danger btn-sm"><i class="fa-solid fa-trash fs-5 me-3"></i></a></td>
+        </tr>
+        <?php
+          
+          $count = $count+1;
+              }
+            } 
+            else 
+            
+            {
+              echo "Error: " . mysqli_error($conn);
+             }
+          ?>
+</tbody>
+    <tfoot>
+       <tr>
+            <th style="text-align: center">No.</th>
+            <th style="text-align: center">Name Of Coordinator</th>
+            <th style="text-align: center">Name Of Conference/ Seminars/ Knowledge-Sharing Programmes</th>
+            <th style="text-align: center">Start Date</th>
+            <th style="text-align: center">End Date</th>
+            <th style="text-align: center">Gross Income Generate (RM)</th>
+            <th style="text-align: center">Link To evidence</th>
+            <th style="text-align: center">Remarks</th>
+            <th style="text-align: center">Action</th>
         </tr>
             </tfoot>
         </table>
