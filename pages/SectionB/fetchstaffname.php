@@ -17,16 +17,17 @@ if (isset($_POST['staff_id'])) {
             // Staff ID is active, fetch staff name and faculty
             $staff = mysqli_fetch_assoc($result);
             echo json_encode([
+                'status' => 'Active',
                 'staff_name' => $staff['staff_name'],
                 'faculty' => $staff['faculty']
             ]);
         } else {
             // Staff ID not active or does not exist
-            echo "Not Active";
+            echo json_encode(['status' => 'Not Active']);
         }
     } else {
         // Query execution failed
-        echo "Query failed";
+        echo json_encode(['status' => 'Query failed']);
     }
     // Free result set
     mysqli_free_result($result);

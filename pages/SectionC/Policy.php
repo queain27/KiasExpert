@@ -861,6 +861,9 @@
 <h3><center><font color="" face="Cambria Math">Policy Papers<font><br></center></h3>
 <br><br>
 <div class="container pt-50">
+<div class="text-right mb-3">
+        <a href="../sectionC/addpolicypaper.php" class="btn btn-success">+Add New Policy Papers</a>
+      </div>
     <div class="table-responsive">
         <table id="example" class="table table-striped" style="width:250%">
             <thead>
@@ -874,27 +877,50 @@
                     <th>Level</th>
                     <th>Year Published</th>
                     <th>ISBN</th>
-                    <th>Book Status</th>
                     <th>Link Device</th>
                     <th>Remarks</th>     
                 </tr>
             </thead>
             
             <tbody>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
+            <?php
+            require_once "../examples/config.php";
+             $query = "SELECT * FROM policy_paper";
+            $count =1;
+            $result = mysqli_query($conn, $query);
+
+            if ($result) {
+             while ($row = mysqli_fetch_assoc($result)) {
+            ?>
+            <tr>
+                <td style="text-align: center"><?php echo $count;?></td>
+                <td style="text-align: center"><?php echo $row['staff_id']; ?></td>
+                <td style="text-align: center"><?php echo $row['staff_name']; ?></td>
+                <td style="text-align: center"><?php echo $row['authors']; ?></td>
+                <td style="text-align: center"><?php echo $row['title_paper']; ?></td>
+                <td style="text-align: center"><?php echo $row['stake_holder']; ?></td>
+                <td style="text-align: center"><?php echo $row['level']; ?></td>
+                <td style="text-align: center"><?php echo $row['year_published']; ?></td>
+                <td style="text-align: center"><?php echo $row['isbn']; ?></td>
+                <td style="text-align: center"><a href="<?php echo $row['link_evidence']; ?>" target="_blank"><?php echo $row['link_evidence']; ?>
+                <td style="text-align: center"><?php echo $row['remarks']; ?></td>
+               </a>
+          
+
+                </td>
+            </tr>
+        <?php
+          
+          $count = $count+1;
+              }
+            } 
+            else 
+            
+            {
+              echo "Error: " . mysqli_error($conn);
+             }
+          ?>
+               
                
             </tbody>
             
@@ -909,7 +935,6 @@
                     <th>Level</th>
                     <th>Year Published</th>
                     <th>ISBN</th>
-                    <th>Book Status</th>
                     <th>Link Device</th>
                     <th>Remarks</th>     
                 </tr>
