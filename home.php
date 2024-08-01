@@ -293,7 +293,7 @@
         <ul class="nav nav-treeview">
   <!--Indexed (Articel)-->
           <li class="nav-item">
-            <a href="pages/sectionC/IndexJournalArticel.php" class="nav-link">
+            <a href="pages/sectionC/IndexJournalArticle.php" class="nav-link">
               <i class="far fa-circle nav-icon"></i>
               <p>(a) Total Number Publication Indexed Journal</p>
             </a>
