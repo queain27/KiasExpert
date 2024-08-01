@@ -3,15 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
-<<<<<<< Farhana/draft2
--- Generation Time: Aug 01, 2024 at 09:07 AM
--- Server version: 10.4.17-MariaDB
--- PHP Version: 7.4.15
-=======
 -- Generation Time: Aug 01, 2024 at 09:05 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
->>>>>>> ain/backup
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -370,7 +364,6 @@ INSERT INTO `pg_student` (`matric_no`, `student_name`, `faculty`, `prog_code`, `
 -- --------------------------------------------------------
 
 --
-<<<<<<< Farhana/draft2
 -- Table structure for table `policy_paper`
 --
 
@@ -397,8 +390,6 @@ INSERT INTO `policy_paper` (`staff_id`, `staff_name`, `authors`, `title_paper`, 
 -- --------------------------------------------------------
 
 --
-=======
->>>>>>> ain/backup
 -- Table structure for table `post_fee`
 --
 
@@ -443,7 +434,6 @@ CREATE TABLE `prod_tech` (
   `link` varchar(255) NOT NULL,
   `remarks` int(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-<<<<<<< Farhana/draft2
 
 -- --------------------------------------------------------
 --
@@ -479,8 +469,6 @@ CREATE TABLE `publication` (
 
 INSERT INTO `publication` (`article_no`, `staff_id`, `staff_name`, `authors`, `industrial`, `international`, `national`, `document_title`, `source_title`, `document_type`, `volume`, `issue`, `page_start`, `page_end`, `year`, `issn_isbn`, `link_evidence`, `remarks`, `quartile1`, `quartile2`) VALUES
 (123, 1067, 'AMRAN BIN AYOB                          ', 'dg', 'Y', 'N', 'N', 'dcfgh', 'dfgh', 'sdfg', '12345', '12', 456, 234, 2024, 245, 'fbh', 'fgh', '1234', '345');
-=======
->>>>>>> ain/backup
 
 -- --------------------------------------------------------
 
@@ -674,10 +662,6 @@ INSERT INTO `training_courses` (`coordinator_name`, `faculty`, `training_course_
 ('INSTITUTE OF BIOPRODUCT DEVELOPMENT (IBD)', 'Dakwah & Pembangunan Insan', 'A 3 DAYS TRAINING ON COSMETIC FORMULATIONS AND EVALUATIONS', 'Dewan Johor', '2018-10-23', '2018-10-25', 'BILJB1806178', '20000', 'HYPERLINK', 'No');
 
 -- --------------------------------------------------------
-<<<<<<< Farhana/draft2
-=======
-
->>>>>>> ain/backup
 --
 -- Table structure for table `ug_student`
 --
@@ -771,15 +755,12 @@ ALTER TABLE `pg_student`
   ADD PRIMARY KEY (`matric_no`);
 
 --
-<<<<<<< Farhana/draft2
 -- Indexes for table `policy_paper`
 --
 ALTER TABLE `policy_paper`
   ADD PRIMARY KEY (`staff_id`);
 
 --
-=======
->>>>>>> ain/backup
 -- Indexes for table `post_fee`
 --
 ALTER TABLE `post_fee`
@@ -791,7 +772,6 @@ ALTER TABLE `post_fee`
 ALTER TABLE `prod_tech`
   ADD PRIMARY KEY (`staff_id`);
 
-<<<<<<< Farhana/draft2
 -- Indexes for table `publication`
 --
 ALTER TABLE `publication`
@@ -803,8 +783,6 @@ ALTER TABLE `publication`
 ALTER TABLE `research`
   ADD PRIMARY KEY (`project_id`);
 
-=======
->>>>>>> ain/backup
 --
 -- Indexes for table `spinn_off`
 --
