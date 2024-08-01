@@ -662,10 +662,6 @@ INSERT INTO `training_courses` (`coordinator_name`, `faculty`, `training_course_
 ('INSTITUTE OF BIOPRODUCT DEVELOPMENT (IBD)', 'Dakwah & Pembangunan Insan', 'A 3 DAYS TRAINING ON COSMETIC FORMULATIONS AND EVALUATIONS', 'Dewan Johor', '2018-10-23', '2018-10-25', 'BILJB1806178', '20000', 'HYPERLINK', 'No');
 
 -- --------------------------------------------------------
-<<<<<<< Farhana/draft2
-=======
-
->>>>>>> ain/backup
 --
 -- Table structure for table `ug_student`
 --
