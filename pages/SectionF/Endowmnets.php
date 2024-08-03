@@ -1,40 +1,48 @@
-<?php
-
-include 'config.php';
-session_start();
-$user_id = $_SESSION['user_id'];
-
-if(!isset($user_id)){
-   header('location:../login.php');
-};
-
-if(isset($_GET['logout'])){
-   unset($user_id);
-   session_destroy();
-   header('location:../login.php');
-}
-
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Profile</title>
-
-  <!-- Google Font: Source Sans Pro -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Endowment</title> 
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">  
   <!-- Font Awesome -->
   <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- Tempusdominus Bootstrap 4 -->
+  <link rel="stylesheet" href="plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+  <!-- iCheck -->
+  <link rel="stylesheet" href="plugins/icheck-bootstrap/icheck-bootstrap.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
+  <!-- overlayScrollbars -->
+  <link rel="stylesheet" href="plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+  <!-- Daterange picker -->
+  <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
+  <!-- summernote -->
+  <link rel="stylesheet" href="../../plugins/summernote/summernote-bs4.min.css">
+  <!--Data Table-->
+  <link rel="stylesheet" href="https://cdn.datatables.net/2.0.3/css/dataTables.bootstrap5.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
+  <!--link Javascript Data Table-->
+  <script defer src="https://code.jquery.com/jquery-3.7.1.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+  <script defer src="https://cdn.datatables.net/2.0.3/js/dataTables.js"></script>
+  <script defer src="https://cdn.datatables.net/2.0.3/js/dataTables.bootstrap5.js"></script>
+  <script defer src="script.js"></script>
+  <!--Icon Image--> 
   <link rel="shortcut icon" href="../../images/Logo2.png" type="image/x-icon">
-  <link rel="stylesheet" href="css/style.css">
-
-
+  <script defer src="script.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('#example').DataTable();
+        });
+       </script>
 </head>
-<!-- Paste the content of sidebar.php here -->
-<body class="hold-transition sidebar-mini layout-fixed">
+ <!-- Paste the content of sidebar.php here -->
+ <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -117,7 +125,16 @@ if(isset($_GET['logout'])){
         </div>
       </div>
       <!-- SidebarSearch Form -->
-
+      <div class="form-inline">
+        <div class="input-group" data-widget="sidebar-search">
+          <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
+          <div class="input-group-append">
+            <button class="btn btn-sidebar">
+              <i class="fas fa-search fa-fw"></i>
+            </button>
+          </div>
+        </div>
+      </div>
       <!-- Sidebar Menu -->
   <!-- Sidebar Menu -->
   <nav class="mt-2">
@@ -522,7 +539,7 @@ if(isset($_GET['logout'])){
     </ul>  
  </li>
  <!--Seksyen E End-->
-<!--Seksyen F Start-->
+ <!--Seksyen F Start-->
  <!-- <li class="nav-header">Section F</li> -->
  <li class="nav-item">
    <a href="#" class="nav-link">
@@ -810,42 +827,92 @@ if(isset($_GET['logout'])){
   <!--Seksyen H End-->
       </nav>
     </div>
-  </aside> 
-<!-- Paste the content of sidebar.php here -->
-  <div class="content-wrapper">
-  <!-- Main content -->
-  <div class="container">
-
-<div class="profile">
-   <?php
-      $select = mysqli_query($conn, "SELECT * FROM `admin_form` WHERE id = '$user_id'") or die('query failed');
-      if(mysqli_num_rows($select) > 0){
-         $fetch = mysqli_fetch_assoc($select);
-      }
-      if($fetch['image'] == ''){
-         echo '<img src="images/default-avatar.png">';
-      }else{
-         echo '<img src="../../images/'.$fetch['image'].'">';
-      }
-   ?>
-   <h3><?php echo $fetch['name']; ?></h3>
-   <a href="update_profile.php" class="btn">update profile</a>
-</div>
-
-</div>
-
-  <aside class="control-sidebar control-sidebar-dark">
   </aside>
-</div>
-<!-- jQuery -->
+  <!-- Paste the content of sidebar.php here -->
+<body>
+<!--Main Content-->
+<!--TableStart-->  
+<h3><center><font color="" face="Cambria Math">Endowmnets<font><br></center></h3>
+<br><br>
+<div class="container pt-50">
+    <div class="table-responsive">
+        <table id="example" class="table table-striped" style="width:200%">
+            <thead>
+            <tr>
+            <th>No.</th>
+            <th>Faculty/Centre</th>
+            <th>Gifts/Donation</th>
+            <th>Donor</th>
+            <th>Type (Money,Equipment,<br>Research materials)</th>
+            <th>Date Received</th>
+            <th>Reference</th>
+            <th>Value (RM)</th>
+            <th>Remarks</th>
+            <th>Link Document</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+
+    </tbody>
+    <tfoot>
+        <tr>
+            <th></th>
+            <th>Faculty/Centre</th>
+            <th>Gifts/Donation</th>
+            <th>Donor</th>
+            <th>Type (Money,Equipment,<br>Research materials)</th>
+            <th>Date Received</th>
+            <th>Reference</th>
+            <th>Value (RM)</th>
+            <th>Remarks</th>
+            <th>Link Document</th>
+        </tr>
+            </tfoot>
+        </table>
+    </div>
+</div> 
+<!--Main Content-->
+<script>
+    $(document).ready(function() {
+        $('#example').DataTable({
+            "scrollX": true, // Enable horizontal scrolling
+            "scrollY": 200, // Set a fixed height for vertical scrolling
+            "paging": false, // Disable pagination
+            "searching": true, // Enable searching
+            "ordering": true, // Enable sorting
+            "info": false, // Disable showing information
+            "search": {
+                "search": "", // Search box content
+                "placeholder": "Search", // Placeholder text for search box
+                "className": "form-control mr-sm-2", // Bootstrap class for search box
+                "container": "#example_wrapper .col-md-6:eq(0)", // Container to which the search box should be appended
+                "position": "append" // Position of search box in the container
+            }
+        });
+    });
+</script>
+<!--TableEnd --> 
 <script src="../../plugins/jquery/jquery.min.js"></script>
-<!-- Bootstrap 4 -->
 <script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- AdminLTE App -->
 <script src="../../dist/js/adminlte.min.js"></script>
-<!-- Summernote -->
 <script src="../../plugins/summernote/summernote-bs4.min.js"></script>
-<!-- AdminLTE for demo purposes -->
 <script src="../../dist/js/demo.js"></script>
+<script>
+  $(function () 
+  {
+    $('#compose-textarea').summernote()
+  })
+</script>
 </body>
 </html>

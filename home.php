@@ -543,16 +543,16 @@
     </ul>  
  </li>
  <!--Seksyen E End-->
-  <!--Seksyen F Start-->
-  <!-- <li class="nav-header">Section F</li> -->
-  <li class="nav-item">
-    <a href="#" class="nav-link">
-      <i class="nav-icon fas fa-handshake icon"></i>
-      <p>F. Professional Service & Gifts
-        <i class="fas fa-angle-left right"></i>
-      </p>
-    </a>
-    <ul class="nav nav-treeview">
+<!--Seksyen F Start-->
+ <!-- <li class="nav-header">Section F</li> -->
+ <li class="nav-item">
+   <a href="#" class="nav-link">
+     <i class="nav-icon fas fa-handshake icon"></i>
+     <p>F. Professional Service & Gifts
+       <i class="fas fa-angle-left right"></i>
+     </p>
+   </a>
+   <ul class="nav nav-treeview">
       </li>
       <li class="nav-item">
         <a href="#" class="nav-link">
@@ -578,15 +578,15 @@
                 </li>
           </ul>
   </li>
-  <!--F2-->
-     <li class="nav-item">
-          <a href="pages/sectionF/Orga_Seminar.php" class="nav-link">
-             <i class="far fa-circle nav-icon"></i>
-               <p>F2 Gross Organising, Seminar & Knowledge Program</p>
-          </a>  
-      </li>
-<!--F3-->
-<li class="nav-item">
+ <!--F2-->
+    <li class="nav-item">
+         <a href="pages/sectionF/Orga_Seminar.php" class="nav-link">
+            <i class="far fa-circle nav-icon"></i>
+              <p>F2 Gross Organising, Seminar & Knowledge Program</p>
+         </a>  
+     </li>
+   <!--F3-->
+   <li class="nav-item">
      <a href="#" class="nav-link">
         <i class="far fa-circle nav-icon"></i>
           <p>F3 Gross products commercialization/technology know-how licensing/outright
@@ -611,48 +611,80 @@
          </ul>
      </li>
    <!--F4-->
-    <li class="nav-item">
-      <a href="#" class="nav-link">
-         <i class="far fa-circle nav-icon"></i>
-           <p>F4 Financial transaction
-             <i class="fas fa-angle-left right"></i>
-          </p>
+   <li class="nav-item">
+     <a href="#" class="nav-link">
+        <i class="far fa-circle nav-icon"></i>
+          <p>F4 Financial transaction
+            <i class="fas fa-angle-left right"></i>
+         </p>
+     </a>  
+     <ul class="nav nav-treeview">
+       <!--a-->
+               <li class="nav-item">
+                 <a href="pages/sectionF/Consultancies.php" class="nav-link">
+                   <i class="far fa-circle nav-icon"></i>
+                   <p>(a) Consultancies</p>
+                 </a>
+               </li>
+          <!--b-->
+               <li class="nav-item">
+                 <a href="pages/sectionF/Hospital.php" class="nav-link">
+                   <i class="far fa-circle nav-icon"></i>
+                   <p>(b) Hospitality</p>
+                 </a>
+               </li>
+ 
+           <!--c-->
+           <li class="nav-item">
+             <a href="pages/sectionF/Lab_Service.php" class="nav-link">
+               <i class="far fa-circle nav-icon"></i>
+               <p>(c) Lab Services Fee</p>
+             </a>
+           </li>
+         </ul>
+     </li>
+      <!--F5-->
+   <li class="nav-item">
+     <a href="#" class="nav-link">
+        <i class="far fa-circle nav-icon"></i>
+          <p>F5 Endowment
+            <i class="fas fa-angle-left right"></i>
+         </p>
+     </a>  
+     <ul class="nav nav-treeview">
+       <!--a-->
+               <li class="nav-item">
+                 <a href="pages/sectionF/Endowmnets.php" class="nav-link">
+                   <i class="far fa-circle nav-icon"></i>
+                   <p>(a) New Endowmnets</p>
+                 </a>
+               </li>
+          <!--b-->
+               <li class="nav-item">
+                 <a href="pages/sectionF/Income.php" class="nav-link">
+                   <i class="far fa-circle nav-icon"></i>
+                   <p>(b) Income Dividen</p>
+                 </a>
+               </li>
+         </ul>
+     </li>
+      <!--F6-->
+      <li class="nav-item">
+       <a href="pages/sectionF/Gift_Donation.php" class="nav-link">
+          <i class="far fa-circle nav-icon"></i>
+          <p> F6 Gifts/Donation</p>
       </a>  
-      <ul class="nav nav-treeview">
-        <!--a-->
-                <li class="nav-item">
-                  <a href="pages/sectionF/Consultancies.php" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>(a) Consultancies</p>
-                  </a>
-                </li>
-           <!--b-->
-                <li class="nav-item">
-                  <a href="pages/sectionF/Hospital.php" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>(b) Hospitality</p>
-                  </a>
-                </li>
-  
-            <!--c-->
-            <li class="nav-item">
-              <a href="pages/sectionF/Lab_Service.php" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>(c) Lab Services Fee</p>
-              </a>
-            </li>
-          </ul>
-      </li>
-       <!--F6-->
-       <li class="nav-item">
-        <a href="pages/sectionF/Gift_Donation.php" class="nav-link">
-           <i class="far fa-circle nav-icon"></i>
-           <p> F5 Gifts/Donation</p>
-       </a>  
-    </li>
-     </ul>  
-  </li>
-  <!--Seksyen F End-->
+   </li>
+         <!--F7-->
+         <li class="nav-item">
+       <a href="pages/sectionF/OE.php" class="nav-link">
+          <i class="far fa-circle nav-icon"></i>
+          <p> F7 Total Expenditure for R&D Development </p>
+      </a>  
+   </li>
+    </ul>  
+ </li>
+ <!--Seksyen F End-->
   <!--Seksyen G Start-->
   <!-- <li class="nav-header">Section G</li> -->
   <li class="nav-item">
