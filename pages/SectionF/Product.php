@@ -1,3 +1,22 @@
+<?php
+include "../examples/config.php";
+
+if (isset($_GET['delid'])) {
+    $staff_id = $_GET['delid'];
+    $stmt = $conn->prepare("DELETE FROM prod_tech WHERE staff_id = ?");
+    $stmt->bind_param("s", $staff_id);
+
+    if ($stmt->execute()) {
+        echo "<script>alert('Record successfully deleted');</script>";
+        echo "<script>document.location='Product.php';</script>";
+    } else {
+        echo "<script>alert('Something went wrong');</script>";
+    }
+
+    $stmt->close();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -807,7 +826,6 @@
     <div class="text-right mb-3">
         <a href="../sectionF/addProduc.php" class="btn btn-success">+Add New Produc Commercial</a>
     </div>
-
     <div class="table-responsive">
         <table id="example" class="table table-striped" style="width:200%">
             <thead>
@@ -830,7 +848,7 @@
     <tbody id="myTable">
     <?php
         require_once "../examples/config.php";
-        $query = "SELECT * FROM prod_tech WHERE Type = 'product commercial'";
+        $query = "SELECT * FROM prod_tech where Type ='product commercial'";
         $count =1;
         $result = mysqli_query($conn, $query);
 
@@ -847,7 +865,7 @@
             <td style="text-align: center"><?php echo $row['year']; ?></td>
             <td style="text-align: center"><?php echo $row['comp_name']; ?></td>
             <td style="text-align: center"><?php echo $row['reference_no']; ?></td>
-            <td style="text-align: center"><?php echo $row['gross_incom']; ?></td>
+            <td style="text-align: center"><?php echo $row['gross_income']; ?></td>
             <td style="text-align: center"><a href="<?php echo $row['link']; ?>" target="_blank"><?php echo $row['link']; ?></a>
             <td style="text-align: center"><?php echo $row['remarks']; ?></td>
             <td style="text-align: center;">
