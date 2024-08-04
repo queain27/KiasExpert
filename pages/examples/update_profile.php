@@ -628,7 +628,7 @@ if(isset($_POST['update_profile'])){
      <ul class="nav nav-treeview">
        <!--a-->
                <li class="nav-item">
-                 <a href="../sectionF/Endowmnets.php" class="nav-link">
+                 <a href="../sectionF/Endowment.php" class="nav-link">
                    <i class="far fa-circle nav-icon"></i>
                    <p>(a) New Endowmnets</p>
                  </a>

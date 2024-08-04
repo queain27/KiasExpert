@@ -650,7 +650,7 @@
      <ul class="nav nav-treeview">
        <!--a-->
                <li class="nav-item">
-                 <a href="../sectionF/Endowmnets.php" class="nav-link">
+                 <a href="../sectionF/Endowment.php" class="nav-link">
                    <i class="far fa-circle nav-icon"></i>
                    <p>(a) New Endowmnets</p>
                  </a>
@@ -838,45 +838,62 @@
     <div class="table-responsive">
         <table id="example" class="table table-striped" style="width:200%">
             <thead>
-            <tr>
-            <th>No.</th>
-            <th>Faculty/Centre</th>
-            <th>Gifts/Donation</th>
-            <th>Donor</th>
-            <th>Type (Money,Equipment,<br>Research materials)</th>
-            <th>Date Received</th>
-            <th>Reference</th>
-            <th>Value (RM)</th>
-            <th>Remarks</th>
-            <th>Link Document</th>
+          <tr>
+            <th style="text-align: center">No.</th>
+            <th style="text-align: center">Contributor/th>
+            <th style="text-align: center">Contribution Details</th>
+            <th style="text-align: center">Type (Cash/Asset/Crowd  Funding)</th>
+            <th style="text-align: center">Principal Amount Endowment (RM)</th>
+            <th style="text-align: center">Link To Evidence</th>
+            <th style="text-align: center">Remarks</th>
+            <th style="text-align: center">Action</th>
         </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
+        </thead>
 
-    </tbody>
-    <tfoot>
-        <tr>
-            <th></th>
-            <th>Faculty/Centre</th>
-            <th>Gifts/Donation</th>
-            <th>Donor</th>
-            <th>Type (Money,Equipment,<br>Research materials)</th>
-            <th>Date Received</th>
-            <th>Reference</th>
-            <th>Value (RM)</th>
-            <th>Remarks</th>
-            <th>Link Document</th>
+<tbody id="myTable">
+<?php
+   require_once "../examples/config.php";
+  $query = "SELECT * FROM endownment";
+  $count =1;
+  $result = mysqli_query($conn, $query);
+
+   if ($result) {
+     while ($row = mysqli_fetch_assoc($result)) {
+ ?>
+ <tr>
+     <td style="text-align: center"><?php echo $count;?></td>
+     <td style="text-align: center"><?php echo $row['name_organizer'];?></td>
+     <td style="text-align: center"><?php echo $row['name_title'];?></td>
+     <td style="text-align: center"><?php echo $row['start_date'];?></td>
+     <td style="text-align: center"><?php echo $row['end_date'];?></td>
+     <td style="text-align: center"><?php echo $row['gross_income'];?></td>
+     <td style="text-align: center"><a href="<?php echo $row['link']; ?>" target="_blank"><?php echo $row['link']; ?>
+     <td style="text-align: center"><?php echo $row['remark']; ?>
+     <td style="text-align: center;"><a href="editendownment.php".php?ID=<?php echo $row['id']; ?>" class="btn btn-primary btn-sm"><i class="fa-solid fa-pen-to-square fs-5 me-3"></i></a>
+     <a href="Endowment.php?delid=<?php echo htmlentities($row['id']); ?>" onClick="return confirm('Do you really want to remove this Record?');" class="btn btn-danger btn-sm"><i class="fa-solid fa-trash fs-5 me-3"></i></a></td>
+ </tr>
+ <?php
+   
+   $count = $count+1;
+       }
+     } 
+     else 
+     
+     {
+       echo "Error: " . mysqli_error($conn);
+      }
+   ?>
+</tbody>
+<tfoot>
+      <tr>
+            <th style="text-align: center">No.</th>
+            <th style="text-align: center">Contributor/th>
+            <th style="text-align: center">Contribution Details</th>
+            <th style="text-align: center">Type (Cash/Asset/Crowd  Funding)</th>
+            <th style="text-align: center">Principal Amount Endowment (RM)</th>
+            <th style="text-align: center">Link To Evidence</th>
+            <th style="text-align: center">Remarks</th>
+            <th style="text-align: center">Action</th>
         </tr>
             </tfoot>
         </table>

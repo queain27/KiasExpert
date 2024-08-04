@@ -664,7 +664,7 @@ if(isset($_GET['delid']))
      <ul class="nav nav-treeview">
        <!--a-->
                <li class="nav-item">
-                 <a href="../sectionF/Endowmnets.php" class="nav-link">
+                 <a href="../sectionF/Endowment.php" class="nav-link">
                    <i class="far fa-circle nav-icon"></i>
                    <p>(a) New Endowmnets</p>
                  </a>
@@ -866,7 +866,7 @@ if(isset($_GET['delid']))
             <th style="text-align: center">Link To evidence</th>
             <th style="text-align: center">Remarks</th>
             <th style="text-align: center">Action</th>
-            
+   
         </tr>
         </thead>
 
