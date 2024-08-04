@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 04, 2024 at 08:51 AM
+-- Generation Time: Aug 04, 2024 at 03:27 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -226,6 +226,14 @@ CREATE TABLE `gift` (
   `remarks` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `gift`
+--
+
+INSERT INTO `gift` (`reference_no`, `faculty`, `gift`, `donor`, `type`, `date_receive`, `value`, `link`, `remarks`) VALUES
+('kew10/2018', 'Pengurusan Al-Syariah', 'Bahan Kimia', 'Sykt ABC Sdn Bhd', 'Equipment', '2018-01-01', '200000.00', 'HYPERLINK', 'no'),
+('KEW18/2018', 'Dakwah & Pembangunan Insan', 'Keynote speaker ', 'NUS', 'Etc', '2018-08-06', '10000.00', 'HYPERLINK', '-');
+
 -- --------------------------------------------------------
 
 --
@@ -247,6 +255,7 @@ CREATE TABLE `hosp_lab` (
 
 INSERT INTO `hosp_lab` (`reference_no`, `name`, `type`, `gross_income`, `link`, `remarks`) VALUES
 ('INV00100', 'Clinical Services', 'Hospital', '25000', 'HYPERLINK', 'no'),
+('kew10/2018', 'Clinical Services', 'Hospital', '1,007.00', 'HYPERLINK', 'no'),
 ('RJ201601089736', 'INSTITUT BAHAN KIMIA', 'Lab Service', '6260.00', 'HYPERLINK', 'No');
 
 -- --------------------------------------------------------
