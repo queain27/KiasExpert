@@ -1,3 +1,22 @@
+<?php
+include "../examples/config.php";
+
+if (isset($_GET['delid'])) {
+    $staff_id = $_GET['delid'];
+    $stmt = $conn->prepare("DELETE FROM prod_tech WHERE staff_id = ?");
+    $stmt->bind_param("s", $staff_id);
+
+    if ($stmt->execute()) {
+        echo "<script>alert('Record successfully deleted');</script>";
+        echo "<script>document.location='Product.php';</script>";
+    } else {
+        echo "<script>alert('Something went wrong');</script>";
+    }
+
+    $stmt->close();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -540,7 +559,7 @@
     </ul>  
  </li>
  <!--Seksyen E End-->
- <!--Seksyen F Start-->
+<!--Seksyen F Start-->
  <!-- <li class="nav-header">Section F</li> -->
  <li class="nav-item">
    <a href="#" class="nav-link">
@@ -640,11 +659,43 @@
            </li>
          </ul>
      </li>
+      <!--F5-->
+   <li class="nav-item">
+     <a href="#" class="nav-link">
+        <i class="far fa-circle nav-icon"></i>
+          <p>F5 Endowment
+            <i class="fas fa-angle-left right"></i>
+         </p>
+     </a>  
+     <ul class="nav nav-treeview">
+       <!--a-->
+               <li class="nav-item">
+                 <a href="../sectionF/Endowment.php" class="nav-link">
+                   <i class="far fa-circle nav-icon"></i>
+                   <p>(a) New Endowmnets</p>
+                 </a>
+               </li>
+          <!--b-->
+               <li class="nav-item">
+                 <a href="../sectionF/Income.php" class="nav-link">
+                   <i class="far fa-circle nav-icon"></i>
+                   <p>(b) Income Dividen</p>
+                 </a>
+               </li>
+         </ul>
+     </li>
       <!--F6-->
       <li class="nav-item">
        <a href="../sectionF/Gift_Donation.php" class="nav-link">
           <i class="far fa-circle nav-icon"></i>
-          <p> F5 Gifts/Donation</p>
+          <p> F6 Gifts/Donation</p>
+      </a>  
+   </li>
+         <!--F7-->
+         <li class="nav-item">
+       <a href="../sectionF/OE.php" class="nav-link">
+          <i class="far fa-circle nav-icon"></i>
+          <p> F7 Total Expenditure for R&D Development </p>
       </a>  
    </li>
     </ul>  
@@ -807,7 +858,6 @@
     <div class="text-right mb-3">
         <a href="../sectionF/addProduc.php" class="btn btn-success">+Add New Produc Commercial</a>
     </div>
-
     <div class="table-responsive">
         <table id="example" class="table table-striped" style="width:200%">
             <thead>
@@ -830,7 +880,7 @@
     <tbody id="myTable">
     <?php
         require_once "../examples/config.php";
-        $query = "SELECT * FROM prod_tech WHERE Type = 'product commercial'";
+        $query = "SELECT * FROM prod_tech where Type ='product commercial'";
         $count =1;
         $result = mysqli_query($conn, $query);
 
@@ -847,7 +897,7 @@
             <td style="text-align: center"><?php echo $row['year']; ?></td>
             <td style="text-align: center"><?php echo $row['comp_name']; ?></td>
             <td style="text-align: center"><?php echo $row['reference_no']; ?></td>
-            <td style="text-align: center"><?php echo $row['gross_incom']; ?></td>
+            <td style="text-align: center"><?php echo $row['gross_income']; ?></td>
             <td style="text-align: center"><a href="<?php echo $row['link']; ?>" target="_blank"><?php echo $row['link']; ?></a>
             <td style="text-align: center"><?php echo $row['remarks']; ?></td>
             <td style="text-align: center;">

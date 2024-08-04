@@ -1,9 +1,9 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.4
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 01, 2024 at 09:05 AM
+-- Generation Time: Aug 04, 2024 at 05:40 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -103,7 +103,6 @@ INSERT INTO `book` (`staff_id`, `staff_name`, `authors`, `industrial`, `internat
 (1067, 'AMRAN BIN AYOB                          ', 'sfg', 'N', 'Y', 'N', 'asd', 'rty', '467', 'jhkg', 0, 'dwd', 'fbh', 'add');
 
 -- --------------------------------------------------------
--- --------------------------------------------------------
 
 --
 -- Table structure for table `commercial`
@@ -154,6 +153,83 @@ CREATE TABLE `conference` (
 INSERT INTO `conference` (`id`, `name_organizer`, `name_title`, `start_date`, `end_date`, `gross_income`, `link`, `remark`) VALUES
 (1, 'Process Systems Engineering Center (PROSPECT)', 'BENGKEL COURSE ON ENERGY AUDIT ON MECHANICAL EQUIPMENT', '2016-01-20', '2016-01-21', '1,007.00', 'HYPERLINK', 'No Remark'),
 (2, 'PUSAT KALAM', 'SEMINAR WACANA ILMU KALAM KE-34 SENIBINA MELAYU NUSANTARA', '2016-07-03', '2016-07-05', '9,000.00', 'HYPERLINK', 'No');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `consultancies`
+--
+
+CREATE TABLE `consultancies` (
+  `reference_no` varchar(255) NOT NULL,
+  `staff_id` int(11) NOT NULL,
+  `staff_name` varchar(255) NOT NULL,
+  `faculty` varchar(255) NOT NULL,
+  `tittle` varchar(255) NOT NULL,
+  `client_name` varchar(255) NOT NULL,
+  `start_date` date NOT NULL,
+  `end_date` date NOT NULL,
+  `gross_income` varchar(255) NOT NULL,
+  `link` varchar(255) NOT NULL,
+  `remarks` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `consultancies`
+--
+
+INSERT INTO `consultancies` (`reference_no`, `staff_id`, `staff_name`, `faculty`, `tittle`, `client_name`, `start_date`, `end_date`, `gross_income`, `link`, `remarks`) VALUES
+('VR1234', 1274, 'HAMDANI BIN AHMAD                       ', 'Dakwah & Pembangunan Insan', 'PROJEK EIA DI LABUAN ', 'AMSTEEL MILLS SDN. BHD.', '2016-01-19', '2018-01-20', '', 'HYPERLINK', 'No');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `endownment`
+--
+
+CREATE TABLE `endownment` (
+  `id` int(11) NOT NULL,
+  `name_contributor` varchar(255) NOT NULL,
+  `detail` varchar(255) NOT NULL,
+  `type` varchar(255) NOT NULL,
+  `inc_dividen` varchar(255) NOT NULL,
+  `year` varchar(255) NOT NULL,
+  `amount` varchar(50) NOT NULL,
+  `dividen` varchar(255) NOT NULL,
+  `link` varchar(255) NOT NULL,
+  `remark` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `endownment`
+--
+
+INSERT INTO `endownment` (`id`, `name_contributor`, `detail`, `type`, `inc_dividen`, `year`, `amount`, `dividen`, `link`, `remark`) VALUES
+(1, 'Tanah 3 Hektar', 'Sumbangan bagi penanaman pokok herba', 'Asset', 'No', '2018', '3400000', '-', 'HYPERLINK', 'No'),
+(2, 'Fakulti Pendidikan ', 'Sumbangan Tabung endowmen', 'Crowd Funding', 'yes', '2018', '90500', '2715.00', 'HYPERLINK', '-');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `hosp_lab`
+--
+
+CREATE TABLE `hosp_lab` (
+  `reference_no` varchar(255) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `type` varchar(255) NOT NULL,
+  `gross_income` varchar(255) NOT NULL,
+  `link` varchar(255) NOT NULL,
+  `remarks` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `hosp_lab`
+--
+
+INSERT INTO `hosp_lab` (`reference_no`, `name`, `type`, `gross_income`, `link`, `remarks`) VALUES
+('INV00100', 'Clinical Services', 'Hospital', '25000', 'HYPERLINK', 'no'),
+('RJ201601089736', 'INSTITUT BAHAN KIMIA', 'Lab Service', '6260.00', 'HYPERLINK', 'No');
 
 -- --------------------------------------------------------
 
@@ -225,12 +301,12 @@ CREATE TABLE `lect_form` (
 --
 
 INSERT INTO `lect_form` (`id`, `name`, `staffid`, `password`, `image`) VALUES
-(1, 'Mohd Rosli Bin Hamat', '123455', '12345', 'user1.jpg'),
-(2, 'Ahmad Maulana Bin Bakar', '1231', '1231', 'user3.jpg'),
-(3, 'Muhammad Alif Bin Sanusi', '1232', '1232', 'user1.jpg'),
-(4, 'Nur Anis Bin Khalid', '1233', '1233', 'user.jpg'),
-(5, 'Siti Nor Binti Halim', '1222', '1222', ''),
-(6, 'Alif Bin Abu', '1223', '1233', 'user1.jpg');
+(1, 'ALI BIN AHMAD', '743', '743', 'user1.jpg'),
+(2, 'Hannan Binti Zulkafli', '12345', '12345', 'user3.jpg'),
+(3, 'HAMDANI BIN AHMAD ', '1274', '1274', 'user1.jpg'),
+(4, 'AMRAN BIN AYOB ', '992', '992', 'user.jpg'),
+(5, 'JALIL BIN OMAR', '958', '958', ''),
+(6, 'ROBERT', '11234', '11234', 'user1.jpg');
 
 -- --------------------------------------------------------
 
@@ -307,7 +383,9 @@ CREATE TABLE `patent_filed` (
 INSERT INTO `patent_filed` (`fill_id`, `fill_name`, `staff_id`, `staff_name`, `date_filed`, `country`, `faculty`, `link`, `remarks`) VALUES
 ('P12016987', 'SYSTEM Q', 1067, 'AMRAN BIN AYOB                          ', '2016-09-03', 'MALAYSIA', 'Teknologi Maklumat & Multimedia', 'No', 'Active'),
 ('PI2016111', 'PRODUCT XYZ', 958, 'JALIL BIN OMAR                          ', '2016-01-05', 'MALAYSIA', 'Pengajian Bahasa Arab', 'No', 'No');
+
 -- --------------------------------------------------------
+
 --
 -- Table structure for table `pg_student`
 --
@@ -432,10 +510,19 @@ CREATE TABLE `prod_tech` (
   `reference_no` varchar(255) NOT NULL,
   `gross_income` varchar(255) NOT NULL,
   `link` varchar(255) NOT NULL,
-  `remarks` int(255) NOT NULL
+  `remarks` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `prod_tech`
+--
+
+INSERT INTO `prod_tech` (`staff_id`, `staff_name`, `prod_name`, `Type`, `faculty`, `year`, `comp_name`, `reference_no`, `gross_income`, `link`, `remarks`) VALUES
+(124, 'Ahmad Roslan', 'Tongkat Ali Phyto Plus ', 'product commercial', 'Al-Quran & Hadis', '2009', 'Phyto Biznet Sdn.Bhd.', 'A12298', '93011.12', 'Hyperlink', 'No'),
+(958, 'Ali', 'Tongkat Ali Phyto Plus ', 'licensing', 'Pengajian Bahasa Arab', '2010', 'SYKT ABC', 'JB1806178', '9,000.00', 'HYPERLINK', 'No');
+
 -- --------------------------------------------------------
+
 --
 -- Table structure for table `publication`
 --
@@ -498,9 +585,9 @@ CREATE TABLE `research` (
 
 INSERT INTO `research` (`project_id`, `staff_id`, `staff_name`, `research_title`, `start_date`, `end_date`, `sponsor`, `sponsor_cat`, `grant_name`, `amtpled_act`, `amtpled_new`, `amt_rec`, `remarks`) VALUES
 (123, 1067, '', 'djsakdh', '2024', '2024', 'hdjhdh', 'University', 'jgjg', 800, 8000, 799, 80),
-(1324, 1067, '', 'djsakdh', '2024-07-24', '2024-07-28', 'hdjhdh', 'University', 'gjnhnb', 800, 8000, 799, 80),
 (124, 11234, 'ROBERT', 'djsakdh', '2024-07-23', '2024-07-26', 'hdjhdh', 'National', 'gjnhnb', 800, 8000, 799, 80),
-(125, 1274, 'HAMDANI BIN AHMAD                       ', 'djsakdh', '2024-07-23', '2024-07-26', 'hdjhdh', 'University', 'gjnhnb', 800, 8000, 799, 80);
+(125, 1274, 'HAMDANI BIN AHMAD                       ', 'djsakdh', '2024-07-23', '2024-07-26', 'hdjhdh', 'University', 'gjnhnb', 800, 8000, 799, 80),
+(1324, 1067, '', 'djsakdh', '2024-07-24', '2024-07-28', 'hdjhdh', 'University', 'gjnhnb', 800, 8000, 799, 80);
 
 -- --------------------------------------------------------
 
@@ -662,6 +749,7 @@ INSERT INTO `training_courses` (`coordinator_name`, `faculty`, `training_course_
 ('INSTITUTE OF BIOPRODUCT DEVELOPMENT (IBD)', 'Dakwah & Pembangunan Insan', 'A 3 DAYS TRAINING ON COSMETIC FORMULATIONS AND EVALUATIONS', 'Dewan Johor', '2018-10-23', '2018-10-25', 'BILJB1806178', '20000', 'HYPERLINK', 'No');
 
 -- --------------------------------------------------------
+
 --
 -- Table structure for table `ug_student`
 --
@@ -719,6 +807,24 @@ ALTER TABLE `conference`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `consultancies`
+--
+ALTER TABLE `consultancies`
+  ADD PRIMARY KEY (`reference_no`);
+
+--
+-- Indexes for table `endownment`
+--
+ALTER TABLE `endownment`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `hosp_lab`
+--
+ALTER TABLE `hosp_lab`
+  ADD PRIMARY KEY (`reference_no`);
+
+--
 -- Indexes for table `iprs`
 --
 ALTER TABLE `iprs`
@@ -772,6 +878,7 @@ ALTER TABLE `post_fee`
 ALTER TABLE `prod_tech`
   ADD PRIMARY KEY (`staff_id`);
 
+--
 -- Indexes for table `publication`
 --
 ALTER TABLE `publication`
@@ -789,7 +896,6 @@ ALTER TABLE `research`
 ALTER TABLE `spinn_off`
   ADD PRIMARY KEY (`project_id`);
 
---
 --
 -- Indexes for table `staff`
 --
@@ -823,6 +929,12 @@ ALTER TABLE `admin_form`
 --
 ALTER TABLE `conference`
   MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `endownment`
+--
+ALTER TABLE `endownment`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `lect_form`

@@ -52,7 +52,8 @@
 
     <a href="#" class="hero-btn">Visit Us To Know More</a><br><br>
     <div class="container">
-    <form method="get" target="_blank" class="search-bar" action="expert_search.php" id="searchType">
+    <!-- <form method="get" target="_blank" class="search-bar" action="expert_search.php" id="searchType">    -->
+    <form action="https://www.google.com/search" method="get" class="search-bar">
     <div class="input-group">
         <button type="button" class="btn btn-lg btn-default dropdown-toggle" data-toggle="dropdown">
             <span id="search_concept">Name</span>
@@ -76,7 +77,8 @@
         <option value='US'>Pengurusan Usuluddin</option>
         <option value='IT'>Teknologi Maklumat & Multimedia</option>   
     </select>
-    <input type="text" name="search_front" class="search-bar" placeholder="Search Term..." id="input_item">
+    <input type="text" name="q" class="search-bar" placeholder="Search Term..." id="input_item">
+    <!-- <input type="text" name="search_front" class="search-bar" placeholder="Search Term..." id="input_item"> -->
     <button type="submit"><img src="images/search.png"></button>
    </form>
      </div>

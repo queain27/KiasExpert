@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Online Book</title> 
+  <title>Total Expenditure for R&D Development </title> 
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">  
   <!-- Font Awesome -->
   <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <!-- Ionicons -->
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <!-- Tempusdominus Bootstrap 4 -->
@@ -32,7 +34,7 @@
   <script defer src="script.js"></script>
   <!--Icon Image--> 
   <link rel="shortcut icon" href="../../images/Logo2.png" type="image/x-icon">
-    <script defer src="script.js"></script>
+  <script defer src="script.js"></script>
     <script>
         $(document).ready(function(){
             $('#example').DataTable();
@@ -537,7 +539,7 @@
     </ul>  
  </li>
  <!--Seksyen E End-->
-<!--Seksyen F Start-->
+ <!--Seksyen F Start-->
  <!-- <li class="nav-header">Section F</li> -->
  <li class="nav-item">
    <a href="#" class="nav-link">
@@ -830,18 +832,23 @@
 <body>
 <!--Main Content-->
 <!--TableStart-->  
-<h3><center><font color="" face="Cambria Math">Total Online Book<font><br></center></h3>
+<h3><center><font color="" face="Cambria Math">Total Expenditure for R&D Development <font><br></center></h3>
 <br><br>
 <div class="container pt-50">
     <div class="table-responsive">
         <table id="example" class="table table-striped" style="width:200%">
             <thead>
             <tr>
-            <th>Type</th>
-            <th>Collection Name</th>
-            <th>Total Title</th>
-            <th>Total Volume</th>
-            <th>Link Evidence</th>
+            <th>No.</th>
+            <th>Faculty/Centre</th>
+            <th>Gifts/Donation</th>
+            <th>Donor</th>
+            <th>Type (Money,Equipment,<br>Research materials)</th>
+            <th>Date Received</th>
+            <th>Reference</th>
+            <th>Value (RM)</th>
+            <th>Remarks</th>
+            <th>Link Document</th>
         </tr>
     </thead>
     <tbody>
@@ -851,23 +858,31 @@
             <td></td>
             <td></td>
             <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
         </tr>
 
     </tbody>
-    <!-- <tfoot>
+    <tfoot>
         <tr>
             <th></th>
-            <th>Faculty/Institute</th>
-            <th>Laboratory</th>
-            <th>Reference No.|Vot No.</th>
-            <th>Gross Income Generated</th>
+            <th>Faculty/Centre</th>
+            <th>Gifts/Donation</th>
+            <th>Donor</th>
+            <th>Type (Money,Equipment,<br>Research materials)</th>
+            <th>Date Received</th>
+            <th>Reference</th>
+            <th>Value (RM)</th>
+            <th>Remarks</th>
+            <th>Link Document</th>
         </tr>
-            </tfoot> -->
+            </tfoot>
         </table>
     </div>
 </div> 
 <!--Main Content-->
-<!-- Add this script to initialize the DataTable and adjust its properties -->
 <script>
     $(document).ready(function() {
         $('#example').DataTable({
@@ -887,7 +902,6 @@
         });
     });
 </script>
-
 <!--TableEnd --> 
 <script src="../../plugins/jquery/jquery.min.js"></script>
 <script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>

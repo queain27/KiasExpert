@@ -1,3 +1,22 @@
+<?php
+include "../examples/config.php";
+
+if (isset($_GET['delid'])) {
+    $staff_id = $_GET['delid'];
+    $stmt = $conn->prepare("DELETE FROM prod_tech WHERE staff_id = ?");
+    $stmt->bind_param("s", $staff_id);
+
+    if ($stmt->execute()) {
+        echo "<script>alert('Record successfully deleted');</script>";
+        echo "<script>document.location='Technology.php';</script>";
+    } else {
+        echo "<script>alert('Something went wrong');</script>";
+    }
+
+    $stmt->close();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -540,7 +559,7 @@
     </ul>  
  </li>
  <!--Seksyen E End-->
- <!--Seksyen F Start-->
+<!--Seksyen F Start-->
  <!-- <li class="nav-header">Section F</li> -->
  <li class="nav-item">
    <a href="#" class="nav-link">
@@ -640,11 +659,43 @@
            </li>
          </ul>
      </li>
+      <!--F5-->
+   <li class="nav-item">
+     <a href="#" class="nav-link">
+        <i class="far fa-circle nav-icon"></i>
+          <p>F5 Endowment
+            <i class="fas fa-angle-left right"></i>
+         </p>
+     </a>  
+     <ul class="nav nav-treeview">
+       <!--a-->
+               <li class="nav-item">
+                 <a href="../sectionF/Endowment.php" class="nav-link">
+                   <i class="far fa-circle nav-icon"></i>
+                   <p>(a) New Endowmnets</p>
+                 </a>
+               </li>
+          <!--b-->
+               <li class="nav-item">
+                 <a href="../sectionF/Income.php" class="nav-link">
+                   <i class="far fa-circle nav-icon"></i>
+                   <p>(b) Income Dividen</p>
+                 </a>
+               </li>
+         </ul>
+     </li>
       <!--F6-->
       <li class="nav-item">
        <a href="../sectionF/Gift_Donation.php" class="nav-link">
           <i class="far fa-circle nav-icon"></i>
-          <p> F5 Gifts/Donation</p>
+          <p> F6 Gifts/Donation</p>
+      </a>  
+   </li>
+         <!--F7-->
+         <li class="nav-item">
+       <a href="../sectionF/OE.php" class="nav-link">
+          <i class="far fa-circle nav-icon"></i>
+          <p> F7 Total Expenditure for R&D Development </p>
       </a>  
    </li>
     </ul>  
@@ -804,20 +855,26 @@
 <h3><center><font color="" face="Cambria Math">Technology Know-How Licensing/Sold outright Sale<font><br></center></h3>
 <br><br>
 <div class="container pt-50">
+   <div class="text-right mb-3">
+        <a href="../sectionF/addProduc.php" class="btn btn-success">+Add New</a>
+    </div>
     <div class="table-responsive">
         <table id="example" class="table table-striped" style="width:200%">
             <thead>
             <tr>
-            <th>No.</th>
-            <th>Staff ID</th>
-            <th>Staff Name</th>
-            <th>Product Name</th>
-            <th>Technology Know-How Licensing/Sold outright Sale </th>
-            <th>Faculty/Centre</th>
-            <th>Year Commercialized</th>
-            <th>Company/Publisher Name</th>
-            <th>Refference No.</th>
-            <th>Gross Income Generated (RM)</th>
+             <th style="text-align: center">No.</th>
+             <th style="text-align: center">Staff ID</th>
+             <th style="text-align: center">Staff Name</th>
+             <th style="text-align: center">Product Name</th>
+             <th style="text-align: center">Technology Know-How Licensing/<br>Outright Sale</th>
+             <th style="text-align: center">Faculty/Centre</th>
+             <th style="text-align: center">Year Commercialized</th>
+             <th style="text-align: center">Company/Publisher Name</th>
+             <th style="text-align: center">Refference No.</th>
+             <th style="text-align: center">Gross Income Generated (RM)</th>
+             <th style="text-align: center">Link Evidence</th>
+             <th style="text-align: center">Remarks</th>
+             <th style="text-align: center">Action</th>
         </tr>
         </thead>
     <tbody id="myTable">
@@ -840,11 +897,11 @@
             <td style="text-align: center"><?php echo $row['year']; ?></td>
             <td style="text-align: center"><?php echo $row['comp_name']; ?></td>
             <td style="text-align: center"><?php echo $row['reference_no']; ?></td>
-            <td style="text-align: center"><?php echo $row['gross_incom']; ?></td>
+            <td style="text-align: center"><?php echo $row['gross_income']; ?></td>
             <td style="text-align: center"><a href="<?php echo $row['link']; ?>" target="_blank"><?php echo $row['link']; ?></a>
             <td style="text-align: center"><?php echo $row['remarks']; ?></td>
             <td style="text-align: center;">
-            <a href="../sectionF/editTech.php?ID=<?php echo $row['staff_id']; ?>" class="btn btn-primary btn-sm"><i class="fa-solid fa-pen-to-square fs-5 me-3"></i></a>
+            <a href="../sectionF/editProduct.php?ID=<?php echo $row['staff_id']; ?>" class="btn btn-primary btn-sm"><i class="fa-solid fa-pen-to-square fs-5 me-3"></i></a>
             <a href="Technology.php?delid=<?php echo htmlentities($row['staff_id']); ?>" onClick="return confirm('Do you really want to remove this Record?');" class="btn btn-danger btn-sm"><i class="fa-solid fa-trash fs-5 me-3"></i></a>
             </td>
         </tr>
@@ -861,16 +918,19 @@
     </tbody>
     <tfoot>
         <tr>
-            <th></th>
-            <th>Staff ID</th>
-            <th>Staff Name</th>
-            <th>Product Name</th>
-            <th>Technology Know-How Licensing/Outright Sale</th>
-            <th>Faculty/Centre</th>
-            <th>Year Commercialized</th>
-            <th>Company/Publisher Name</th>
-            <th>Refference No.</th>
-            <th>Gross Income Generated (RM)</th>
+         <th style="text-align: center">No.</th>
+             <th style="text-align: center">Staff ID</th>
+             <th style="text-align: center">Staff Name</th>
+             <th style="text-align: center">Product Name</th>
+             <th style="text-align: center">Technology Know-How Licensing/<br>Outright Sale</th>
+             <th style="text-align: center">Faculty/Centre</th>
+             <th style="text-align: center">Year Commercialized</th>
+             <th style="text-align: center">Company/Publisher Name</th>
+             <th style="text-align: center">Refference No.</th>
+             <th style="text-align: center">Gross Income Generated (RM)</th>
+             <th style="text-align: center">Link Evidence</th>
+             <th style="text-align: center">Remarks</th>
+             <th style="text-align: center">Action</th>
         </tr>
             </tfoot>
         </table>

@@ -1,3 +1,22 @@
+<?php
+include "../examples/config.php";
+
+if (isset($_GET['delid'])) {
+    $reference_no = $_GET['delid'];
+    $stmt = $conn->prepare("DELETE FROM hosp_lab WHERE reference_no = ?");
+    $stmt->bind_param("s", $reference_no);
+
+    if ($stmt->execute()) {
+        echo "<script>alert('Record successfully deleted');</script>";
+        echo "<script>document.location='Hospital.php';</script>";
+    } else {
+        echo "<script>alert('Something went wrong');</script>";
+    }
+
+    $stmt->close();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -539,7 +558,7 @@
     </ul>  
  </li>
  <!--Seksyen E End-->
- <!--Seksyen F Start-->
+<!--Seksyen F Start-->
  <!-- <li class="nav-header">Section F</li> -->
  <li class="nav-item">
    <a href="#" class="nav-link">
@@ -639,11 +658,43 @@
            </li>
          </ul>
      </li>
+      <!--F5-->
+   <li class="nav-item">
+     <a href="#" class="nav-link">
+        <i class="far fa-circle nav-icon"></i>
+          <p>F5 Endowment
+            <i class="fas fa-angle-left right"></i>
+         </p>
+     </a>  
+     <ul class="nav nav-treeview">
+       <!--a-->
+               <li class="nav-item">
+                 <a href="../sectionF/Endowment.php" class="nav-link">
+                   <i class="far fa-circle nav-icon"></i>
+                   <p>(a) New Endowmnets</p>
+                 </a>
+               </li>
+          <!--b-->
+               <li class="nav-item">
+                 <a href="../sectionF/Income.php" class="nav-link">
+                   <i class="far fa-circle nav-icon"></i>
+                   <p>(b) Income Dividen</p>
+                 </a>
+               </li>
+         </ul>
+     </li>
       <!--F6-->
       <li class="nav-item">
        <a href="../sectionF/Gift_Donation.php" class="nav-link">
           <i class="far fa-circle nav-icon"></i>
-          <p> F5 Gifts/Donation</p>
+          <p> F6 Gifts/Donation</p>
+      </a>  
+   </li>
+         <!--F7-->
+         <li class="nav-item">
+       <a href="../sectionF/OE.php" class="nav-link">
+          <i class="far fa-circle nav-icon"></i>
+          <p> F7 Total Expenditure for R&D Development </p>
       </a>  
    </li>
     </ul>  
@@ -804,38 +855,63 @@
 <h3><center><font color="" face="Cambria Math">Hospital Recoupable Fees<font><br></center></h3>
 <br><br>
 <div class="container pt-50">
+    <div class="text-right mb-3">
+        <a href="../sectionF/addHosLab.php" class="btn btn-success">+Add New</a>
+    </div>
     <div class="table-responsive">
         <table id="example" class="table table-striped" style="width:200%">
             <thead>
             <tr>
-            <th>No.</th>
-            <th>Service|Hospital Name</th>
-            <th>Reference No.|Vot No.</th>
-            <th>Gross Income Generated</th>
-            <th>Remarks</th>
-            <th>Link Document</th>
-            
+            <th style="text-align: center">No.</th>
+            <th style="text-align: center">Service|Hospital Name</th>
+            <th style="text-align: center">Reference No.|Vot No.</th>
+            <th style="text-align: center">Gross Income Generated</th>
+            <th style="text-align: center">Link To Evidence</th>
+            <th style="text-align: center">Remarks</th>
+            <th style="text-align: center">Action</th>
         </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
+        </thead>
+    <tbody id="myTable">
+    <?php
+        require_once "../examples/config.php";
+         $query = "SELECT * FROM hosp_lab WHERE type = 'hospital'";
+         $count =1;
+         $result = mysqli_query($conn, $query);
 
+    if ($result) {
+        while ($row = mysqli_fetch_assoc($result)) {
+      ?>
+        <tr>
+            <td style="text-align: center"><?php echo $count;?></td>
+            <td style="text-align: center"><?php echo $row['name']; ?></td>
+            <td style="text-align: center"><?php echo $row['reference_no']; ?></td>
+            <td style="text-align: center"><?php echo $row['gross_income']; ?></td>
+            <td style="text-align: center"><a href="<?php echo $row['link']; ?>" target="_blank"><?php echo $row['link']; ?></a>
+            <td style="text-align: center"><?php echo $row['remarks']; ?></td>
+            <td style="text-align: center;">
+            <a href="../sectionF/edithosp_lab.php?ID=<?php echo $row['reference_no']; ?>" class="btn btn-primary btn-sm"><i class="fa-solid fa-pen-to-square fs-5 me-3"></i></a>
+            <a href="Hospital.php?delid=<?php echo htmlentities($row['reference_no']); ?>" onClick="return confirm('Do you really want to remove this Record?');" class="btn btn-danger btn-sm"><i class="fa-solid fa-trash fs-5 me-3"></i></a></td>
+        </tr>
+        <?php
+          $count = $count+1;
+              }
+            } 
+            else 
+            
+            {
+              echo "Error: " . mysqli_error($conn);
+             }
+          ?>
     </tbody>
     <tfoot>
         <tr>
-            <th></th>
-            <th>Service|Hospital Name</th>
-            <th>Reference No.|Vot No.</th>
-            <th>Gross Income Generated</th>
-            <th>Remarks</th>
-            <th>Link Document</th>
+           <th style="text-align: center">No.</th>
+            <th style="text-align: center">Service|Hospital Name</th>
+            <th style="text-align: center">Reference No.|Vot No.</th>
+            <th style="text-align: center">Gross Income Generated</th>
+            <th style="text-align: center">Link To Evidence</th>
+            <th style="text-align: center">Remarks</th>
+            <th style="text-align: center">Action</th>
         </tr>
             </tfoot>
         </table>
