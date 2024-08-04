@@ -1,3 +1,22 @@
+<?php
+include "../examples/config.php";
+
+if (isset($_GET['delid'])) {
+    $reference_no = $_GET['delid'];
+    $stmt = $conn->prepare("DELETE FROM gift WHERE reference_no = ?");
+    $stmt->bind_param("s", $reference_no);
+
+    if ($stmt->execute()) {
+        echo "<script>alert('Record successfully deleted');</script>";
+        echo "<script>document.location='Gift_Donation.php';</script>";
+    } else {
+        echo "<script>alert('Something went wrong');</script>";
+    }
+
+    $stmt->close();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -835,48 +854,77 @@
 <h3><center><font color="" face="Cambria Math">Gifts/Donations (money,equipment,research materials,etc.) worth >=RM 3,000 each<font><br></center></h3>
 <br><br>
 <div class="container pt-50">
+   
+   <div class="text-right mb-3">
+        <a href="../sectionF/addGift.php" class="btn btn-success">+Add New</a>
+    </div>
     <div class="table-responsive">
         <table id="example" class="table table-striped" style="width:200%">
             <thead>
-            <tr>
-            <th>No.</th>
-            <th>Faculty/Centre</th>
-            <th>Gifts/Donation</th>
-            <th>Donor</th>
-            <th>Type (Money,Equipment,<br>Research materials)</th>
-            <th>Date Received</th>
-            <th>Reference</th>
-            <th>Value (RM)</th>
-            <th>Remarks</th>
-            <th>Link Document</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
+          <tr>
+            <th style="text-align: center">No.</th>
+            <th style="text-align: center">Faculty/Centre</th>
+            <th style="text-align: center">Gifts/Donation</th>
+            <th style="text-align: center">Donor</th>
+            <th style="text-align: center">Type (Money,Equipment,<br>Research materials)</th>
+            <th style="text-align: center">Date Received</th>
+            <th style="text-align: center">Reference</th>
+            <th style="text-align: center">Value (RM)</th>
+            <th style="text-align: center">Link To Evidence</th>
+            <th style="text-align: center">Remarks</th>
+            <th style="text-align: center">Action</th>
+      </tr>  
+       </thead>
+    <tbody id="myTable">
+    <?php
+        require_once "../examples/config.php";
+         $query = "SELECT * FROM gift";
+         $count =1;
+         $result = mysqli_query($conn, $query);
 
+    if ($result) {
+        while ($row = mysqli_fetch_assoc($result)) {
+      ?>
+        <tr>
+            <td style="text-align: center"><?php echo $count;?></td>
+            <td style="text-align: center"><?php echo $row['faculty']; ?></td>
+            <td style="text-align: center"><?php echo $row['gift']; ?></td>
+            <td style="text-align: center"><?php echo $row['donor']; ?></td>
+            <td style="text-align: center"><?php echo $row['type']; ?></td>
+            <td style="text-align: center"><?php echo $row['date_receive']; ?></td>
+            <td style="text-align: center"><?php echo $row['reference_no']; ?></td>
+            <td style="text-align: center"><?php echo $row['value']; ?></td>
+            <td style="text-align: center"><a href="<?php echo $row['link']; ?>" target="_blank"><?php echo $row['link']; ?></a>
+            <td style="text-align: center"><?php echo $row['remarks']; ?></td>
+            
+            <td style="text-align: center;">
+            <a href="../sectionF/editGift.php?ID=<?php echo $row['reference_no']; ?>" class="btn btn-primary btn-sm"><i class="fa-solid fa-pen-to-square fs-5 me-3"></i></a>
+            <a href="Gift_Donation.php?delid=<?php echo htmlentities($row['reference_no']); ?>" onClick="return confirm('Do you really want to remove this Record?');" class="btn btn-danger btn-sm"><i class="fa-solid fa-trash fs-5 me-3"></i></a></td>
+        </tr>
+        <?php
+          $count = $count+1;
+              }
+            } 
+            else 
+            
+            {
+              echo "Error: " . mysqli_error($conn);
+             }
+          ?>
     </tbody>
     <tfoot>
         <tr>
-            <th></th>
-            <th>Faculty/Centre</th>
-            <th>Gifts/Donation</th>
-            <th>Donor</th>
-            <th>Type (Money,Equipment,<br>Research materials)</th>
-            <th>Date Received</th>
-            <th>Reference</th>
-            <th>Value (RM)</th>
-            <th>Remarks</th>
-            <th>Link Document</th>
+          <th style="text-align: center">No.</th>
+            <th style="text-align: center">Faculty/Centre</th>
+            <th style="text-align: center">Gifts/Donation</th>
+            <th style="text-align: center">Donor</th>
+            <th style="text-align: center">Type (Money,Equipment,<br>Research materials)</th>
+            <th style="text-align: center">Date Received</th>
+            <th style="text-align: center">Reference</th>
+            <th style="text-align: center">Value (RM)</th>
+            <th style="text-align: center">Link To Evidence</th>
+            <th style="text-align: center">Remarks</th>
+            <th style="text-align: center">Action</th>
         </tr>
             </tfoot>
         </table>
