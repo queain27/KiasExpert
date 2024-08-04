@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 04, 2024 at 05:40 AM
+-- Generation Time: Aug 04, 2024 at 08:51 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -70,7 +70,7 @@ CREATE TABLE `awarding` (
 
 INSERT INTO `awarding` (`staff_id`, `staff_name`, `faculty`, `name_awd`, `type`, `level`, `conferring`, `title_invention`, `event`, `date`, `link_award`) VALUES
 (1067, 'AMRAN BIN AYOB                          ', 'J24-FAKULTI KEJURUTERAAN MEKANIKAL ', 'dfgh', 'award', 'University', 'aas', 'sdfg', 'sdfg', '2024-07-26', 'as'),
-(1274, 'HAMDANI BIN AHMAD                       ', 'J46-FAKULTI KEJURUTERAAN KIMIA DAN KEJURUTERAAN TENAGA', 'dfgh', 'award', 'National', 'aas', 'sdfg', 'sdfg', '2024-07-25', 'dfvgbn');
+(1274, 'HAMDANI BIN AHMAD                       ', 'Dakwah & Pembangunan Insan', 'dfgh', 'award', 'National', 'aas', 'sdfg', 'sdfg', '2024-07-25', 'dfvgbn');
 
 -- --------------------------------------------------------
 
@@ -211,6 +211,24 @@ INSERT INTO `endownment` (`id`, `name_contributor`, `detail`, `type`, `inc_divid
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `gift`
+--
+
+CREATE TABLE `gift` (
+  `reference_no` varchar(255) NOT NULL,
+  `faculty` varchar(255) NOT NULL,
+  `gift` varchar(255) NOT NULL,
+  `donor` varchar(255) NOT NULL,
+  `type` varchar(255) NOT NULL,
+  `date_receive` date NOT NULL,
+  `value` varchar(255) NOT NULL,
+  `link` varchar(255) NOT NULL,
+  `remarks` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `hosp_lab`
 --
 
@@ -307,6 +325,20 @@ INSERT INTO `lect_form` (`id`, `name`, `staffid`, `password`, `image`) VALUES
 (4, 'AMRAN BIN AYOB ', '992', '992', 'user.jpg'),
 (5, 'JALIL BIN OMAR', '958', '958', ''),
 (6, 'ROBERT', '11234', '11234', 'user1.jpg');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `oe`
+--
+
+CREATE TABLE `oe` (
+  `reference_no` varchar(255) NOT NULL,
+  `type` varchar(255) NOT NULL,
+  `value` varchar(255) NOT NULL,
+  `link` varchar(255) NOT NULL,
+  `remarks` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -819,6 +851,12 @@ ALTER TABLE `endownment`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `gift`
+--
+ALTER TABLE `gift`
+  ADD PRIMARY KEY (`reference_no`);
+
+--
 -- Indexes for table `hosp_lab`
 --
 ALTER TABLE `hosp_lab`
@@ -841,6 +879,12 @@ ALTER TABLE `know_licen`
 --
 ALTER TABLE `lect_form`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `oe`
+--
+ALTER TABLE `oe`
+  ADD PRIMARY KEY (`reference_no`);
 
 --
 -- Indexes for table `patent`
