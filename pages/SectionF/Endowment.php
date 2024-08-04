@@ -1,3 +1,15 @@
+<?php
+require_once "../examples/config.php";
+
+if(isset($_GET['delid']))
+{
+  $id =intval($_GET['delid']);
+  $sql =mysqli_query($conn,"DELETE FROM endownment WHERE id='$id'");
+  echo"<script>alert('Record has been succesfully Deleted!!');</script>";
+  echo"<script>window.location='Endowment.php?';</script>";
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -835,12 +847,15 @@
 <h3><center><font color="" face="Cambria Math">Endowmnets<font><br></center></h3>
 <br><br>
 <div class="container pt-50">
+<div class="text-right mb-3">
+        <a href="../sectionF/addEndowment.php" class="btn btn-success">+Add New</a>
+      </div>
     <div class="table-responsive">
         <table id="example" class="table table-striped" style="width:200%">
             <thead>
           <tr>
             <th style="text-align: center">No.</th>
-            <th style="text-align: center">Contributor/th>
+            <th style="text-align: center">Contributor</th>
             <th style="text-align: center">Contribution Details</th>
             <th style="text-align: center">Type (Cash/Asset/Crowd  Funding)</th>
             <th style="text-align: center">Principal Amount Endowment (RM)</th>
@@ -862,16 +877,15 @@
  ?>
  <tr>
      <td style="text-align: center"><?php echo $count;?></td>
-     <td style="text-align: center"><?php echo $row['name_organizer'];?></td>
-     <td style="text-align: center"><?php echo $row['name_title'];?></td>
-     <td style="text-align: center"><?php echo $row['start_date'];?></td>
-     <td style="text-align: center"><?php echo $row['end_date'];?></td>
-     <td style="text-align: center"><?php echo $row['gross_income'];?></td>
+     <td style="text-align: center"><?php echo $row['name_contributor'];?></td>
+     <td style="text-align: center"><?php echo $row['detail'];?></td>
+     <td style="text-align: center"><?php echo $row['type'];?></td>
+     <td style="text-align: center"><?php echo $row['amount'];?></td>
      <td style="text-align: center"><a href="<?php echo $row['link']; ?>" target="_blank"><?php echo $row['link']; ?>
      <td style="text-align: center"><?php echo $row['remark']; ?>
-     <td style="text-align: center;"><a href="editendownment.php".php?ID=<?php echo $row['id']; ?>" class="btn btn-primary btn-sm"><i class="fa-solid fa-pen-to-square fs-5 me-3"></i></a>
-     <a href="Endowment.php?delid=<?php echo htmlentities($row['id']); ?>" onClick="return confirm('Do you really want to remove this Record?');" class="btn btn-danger btn-sm"><i class="fa-solid fa-trash fs-5 me-3"></i></a></td>
- </tr>
+     <td style="text-align: center;"><a href="editendownment.php?ID=<?php echo $row['id']; ?>" class="btn btn-primary btn-sm"><i class="fa-solid fa-pen-to-square fs-5 me-3"></i></a>
+     <a href="Edownment.php?delid=<?php echo htmlentities($row['id']); ?>" onClick="return confirm('Do you really want to remove this Record?');" class="btn btn-danger btn-sm"><i class="fa-solid fa-trash fs-5 me-3"></i></a></td>
+        </tr>
  <?php
    
    $count = $count+1;
@@ -887,7 +901,7 @@
 <tfoot>
       <tr>
             <th style="text-align: center">No.</th>
-            <th style="text-align: center">Contributor/th>
+            <th style="text-align: center">Contributor</th>
             <th style="text-align: center">Contribution Details</th>
             <th style="text-align: center">Type (Cash/Asset/Crowd  Funding)</th>
             <th style="text-align: center">Principal Amount Endowment (RM)</th>

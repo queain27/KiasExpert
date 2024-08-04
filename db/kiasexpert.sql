@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 03, 2024 at 11:43 AM
+-- Generation Time: Aug 04, 2024 at 05:40 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -180,6 +180,33 @@ CREATE TABLE `consultancies` (
 
 INSERT INTO `consultancies` (`reference_no`, `staff_id`, `staff_name`, `faculty`, `tittle`, `client_name`, `start_date`, `end_date`, `gross_income`, `link`, `remarks`) VALUES
 ('VR1234', 1274, 'HAMDANI BIN AHMAD                       ', 'Dakwah & Pembangunan Insan', 'PROJEK EIA DI LABUAN ', 'AMSTEEL MILLS SDN. BHD.', '2016-01-19', '2018-01-20', '', 'HYPERLINK', 'No');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `endownment`
+--
+
+CREATE TABLE `endownment` (
+  `id` int(11) NOT NULL,
+  `name_contributor` varchar(255) NOT NULL,
+  `detail` varchar(255) NOT NULL,
+  `type` varchar(255) NOT NULL,
+  `inc_dividen` varchar(255) NOT NULL,
+  `year` varchar(255) NOT NULL,
+  `amount` varchar(50) NOT NULL,
+  `dividen` varchar(255) NOT NULL,
+  `link` varchar(255) NOT NULL,
+  `remark` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `endownment`
+--
+
+INSERT INTO `endownment` (`id`, `name_contributor`, `detail`, `type`, `inc_dividen`, `year`, `amount`, `dividen`, `link`, `remark`) VALUES
+(1, 'Tanah 3 Hektar', 'Sumbangan bagi penanaman pokok herba', 'Asset', 'No', '2018', '3400000', '-', 'HYPERLINK', 'No'),
+(2, 'Fakulti Pendidikan ', 'Sumbangan Tabung endowmen', 'Crowd Funding', 'yes', '2018', '90500', '2715.00', 'HYPERLINK', '-');
 
 -- --------------------------------------------------------
 
@@ -786,6 +813,12 @@ ALTER TABLE `consultancies`
   ADD PRIMARY KEY (`reference_no`);
 
 --
+-- Indexes for table `endownment`
+--
+ALTER TABLE `endownment`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `hosp_lab`
 --
 ALTER TABLE `hosp_lab`
@@ -896,6 +929,12 @@ ALTER TABLE `admin_form`
 --
 ALTER TABLE `conference`
   MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `endownment`
+--
+ALTER TABLE `endownment`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `lect_form`
