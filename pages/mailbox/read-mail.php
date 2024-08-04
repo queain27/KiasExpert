@@ -263,7 +263,7 @@
        <ul class="nav nav-treeview">
  <!--Indexed (Articel)-->
          <li class="nav-item">
-           <a href="../sectionC/IndexJournalArticel.php" class="nav-link">
+           <a href="../sectionC/IndexJournalArticle.php" class="nav-link">
              <i class="far fa-circle nav-icon"></i>
              <p>(a) Total Number Publication Indexed Journal</p>
            </a>
@@ -503,7 +503,7 @@
            </a>
          </li>
          <li class="nav-item">
-         <a href="./sectionE/StartupNew.php" class="nav-link">
+         <a href="../sectionE/StartupNew.php" class="nav-link">
              <i class="far fa-circle nav-icon"></i>
              <p>(b) New Spin Off Companies</p>
            </a>
@@ -513,7 +513,7 @@
     </ul>  
  </li>
  <!--Seksyen E End-->
- <!--Seksyen F Start-->
+<!--Seksyen F Start-->
  <!-- <li class="nav-header">Section F</li> -->
  <li class="nav-item">
    <a href="#" class="nav-link">
@@ -557,13 +557,29 @@
      </li>
    <!--F3-->
    <li class="nav-item">
-     <a href="../sectionF/Product_Technology.php" class="nav-link">
+     <a href="#" class="nav-link">
         <i class="far fa-circle nav-icon"></i>
           <p>F3 Gross products commercialization/technology know-how licensing/outright
-          
+            <i class="fas fa-angle-left right"></i>
          </p>
      </a>  
- </li>
+     <ul class="nav nav-treeview">
+       <!--a-->
+               <li class="nav-item">
+                 <a href="../sectionF/Product.php" class="nav-link">
+                   <i class="far fa-circle nav-icon"></i>
+                   <p>(a) Product Commercial</p>
+                 </a>
+               </li>
+          <!--b-->
+               <li class="nav-item">
+                 <a href="../sectionF/Technology.php" class="nav-link">
+                   <i class="far fa-circle nav-icon"></i>
+                   <p>(b) Technology Know-How Licensing/Sold outright Sale </p>
+                 </a>
+               </li>
+         </ul>
+     </li>
    <!--F4-->
    <li class="nav-item">
      <a href="#" class="nav-link">
@@ -597,11 +613,43 @@
            </li>
          </ul>
      </li>
+      <!--F5-->
+   <li class="nav-item">
+     <a href="#" class="nav-link">
+        <i class="far fa-circle nav-icon"></i>
+          <p>F5 Endowment
+            <i class="fas fa-angle-left right"></i>
+         </p>
+     </a>  
+     <ul class="nav nav-treeview">
+       <!--a-->
+               <li class="nav-item">
+                 <a href="../sectionF/Endowment.php" class="nav-link">
+                   <i class="far fa-circle nav-icon"></i>
+                   <p>(a) New Endowmnets</p>
+                 </a>
+               </li>
+          <!--b-->
+               <li class="nav-item">
+                 <a href="../sectionF/Income.php" class="nav-link">
+                   <i class="far fa-circle nav-icon"></i>
+                   <p>(b) Income Dividen</p>
+                 </a>
+               </li>
+         </ul>
+     </li>
       <!--F6-->
       <li class="nav-item">
        <a href="../sectionF/Gift_Donation.php" class="nav-link">
           <i class="far fa-circle nav-icon"></i>
-          <p> F5 Gifts/Donation</p>
+          <p> F6 Gifts/Donation</p>
+      </a>  
+   </li>
+         <!--F7-->
+         <li class="nav-item">
+       <a href="../sectionF/OE.php" class="nav-link">
+          <i class="far fa-circle nav-icon"></i>
+          <p> F7 Total Expenditure for R&D Development </p>
       </a>  
    </li>
     </ul>  

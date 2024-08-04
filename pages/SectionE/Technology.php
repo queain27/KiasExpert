@@ -1,12 +1,32 @@
+<?php
+include "../examples/config.php";
+
+if (isset($_GET['delid'])) {
+    $tech_id= $_GET['delid'];
+    $stmt = $conn->prepare("DELETE FROM know_licen WHERE tech_id= ?");
+    $stmt->bind_param("s", $tech_id);
+
+    if ($stmt->execute()) {
+        echo "<script>alert('Record successfully deleted');</script>";
+        echo "<script>document.location='Technology.php';</script>";
+    } else {
+        echo "<script>alert('Something went wrong');</script>";
+    }
+
+    $stmt->close();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Technolgy</title>  
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">  
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">  
   <!-- Font Awesome -->
   <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <!-- Ionicons -->
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <!-- Tempusdominus Bootstrap 4 -->
@@ -29,6 +49,8 @@
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
   <script defer src="https://cdn.datatables.net/2.0.3/js/dataTables.js"></script>
   <script defer src="https://cdn.datatables.net/2.0.3/js/dataTables.bootstrap5.js"></script>
+  <script defer src="script.js"></script>
+  <!--Icon Image--> 
   <link rel="shortcut icon" href="../../images/Logo2.png" type="image/x-icon">
   <script defer src="script.js"></script>
   <script>
@@ -525,7 +547,7 @@
            </a>
          </li>
          <li class="nav-item">
-         <a href="./sectionE/StartupNew.php" class="nav-link">
+         <a href="../sectionE/StartupNew.php" class="nav-link">
              <i class="far fa-circle nav-icon"></i>
              <p>(b) New Spin Off Companies</p>
            </a>
@@ -535,7 +557,7 @@
     </ul>  
  </li>
  <!--Seksyen E End-->
- <!--Seksyen F Start-->
+<!--Seksyen F Start-->
  <!-- <li class="nav-header">Section F</li> -->
  <li class="nav-item">
    <a href="#" class="nav-link">
@@ -579,13 +601,29 @@
      </li>
    <!--F3-->
    <li class="nav-item">
-     <a href="../sectionF/Product_Technology.php" class="nav-link">
+     <a href="#" class="nav-link">
         <i class="far fa-circle nav-icon"></i>
           <p>F3 Gross products commercialization/technology know-how licensing/outright
-          
+            <i class="fas fa-angle-left right"></i>
          </p>
      </a>  
- </li>
+     <ul class="nav nav-treeview">
+       <!--a-->
+               <li class="nav-item">
+                 <a href="../sectionF/Product.php" class="nav-link">
+                   <i class="far fa-circle nav-icon"></i>
+                   <p>(a) Product Commercial</p>
+                 </a>
+               </li>
+          <!--b-->
+               <li class="nav-item">
+                 <a href="../sectionF/Technology.php" class="nav-link">
+                   <i class="far fa-circle nav-icon"></i>
+                   <p>(b) Technology Know-How Licensing/Sold outright Sale </p>
+                 </a>
+               </li>
+         </ul>
+     </li>
    <!--F4-->
    <li class="nav-item">
      <a href="#" class="nav-link">
@@ -619,11 +657,43 @@
            </li>
          </ul>
      </li>
+      <!--F5-->
+   <li class="nav-item">
+     <a href="#" class="nav-link">
+        <i class="far fa-circle nav-icon"></i>
+          <p>F5 Endowment
+            <i class="fas fa-angle-left right"></i>
+         </p>
+     </a>  
+     <ul class="nav nav-treeview">
+       <!--a-->
+               <li class="nav-item">
+                 <a href="../sectionF/Endowment.php" class="nav-link">
+                   <i class="far fa-circle nav-icon"></i>
+                   <p>(a) New Endowmnets</p>
+                 </a>
+               </li>
+          <!--b-->
+               <li class="nav-item">
+                 <a href="../sectionF/Income.php" class="nav-link">
+                   <i class="far fa-circle nav-icon"></i>
+                   <p>(b) Income Dividen</p>
+                 </a>
+               </li>
+         </ul>
+     </li>
       <!--F6-->
       <li class="nav-item">
        <a href="../sectionF/Gift_Donation.php" class="nav-link">
           <i class="far fa-circle nav-icon"></i>
-          <p> F5 Gifts/Donation</p>
+          <p> F6 Gifts/Donation</p>
+      </a>  
+   </li>
+         <!--F7-->
+         <li class="nav-item">
+       <a href="../sectionF/OE.php" class="nav-link">
+          <i class="far fa-circle nav-icon"></i>
+          <p> F7 Total Expenditure for R&D Development </p>
       </a>  
    </li>
     </ul>  
@@ -783,43 +853,88 @@
 <h3><center><font color="" face="Cambria Math">Technology Know-How Licensing/ Sold Outright<font><br></center></h3>
 <br><br>
 <div class="container pt-50">
+
+      <div class="text-right mb-3">
+        <a href="../sectionE/addTech.php" class="btn btn-success">+Add New Technolgy</a>
+      </div>
     <div class="table-responsive">
         <table id="example" class="table table-striped" style="width:200%">
             <thead>
             <tr>
-            <th>No.</th>
-            <th>Staff ID</th>
-            <th>Staff Name</th>
-            <th>Technology Name</th>
-            <th>End Date</th>
-            <th>License</th>
-            <th>Gross Income</th>
-            <th>Link Evidence</th>
+            <th style="text-align: center"> No.</th>
+            <th style="text-align: center"> Staff ID</th>
+            <th style="text-align: center"> Staff Name</th>
+            <th style="text-align: center"> Technology ID/ No.</th>
+            <th style="text-align: center"> Technology Name</th>
+            <th style="text-align: center"> Type</th>
+            <th style="text-align: center"> Start Date</th>
+            <th style="text-align: center"> End Date</th>
+            <th style="text-align: center"> Date Archieve</th>
+            <th style="text-align: center"> License</th>
+            <th style="text-align: center"> Gross Income</th>
+            <th style="text-align: center"> Link Evidence</th>
+            <th style="text-align: center"> Remarks</th>
+            <th style="text-align: center">Action</th>
         </tr>
     </thead>
-    <tbody>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
+    <tbody id="myTable">
 
+       <?php
+           require_once "../examples/config.php";
+           $query = "SELECT * FROM know_licen";
+           $count =1;
+           $result = mysqli_query($conn, $query);
+
+         if ($result) 
+         {
+              while ($row = mysqli_fetch_assoc($result)) 
+              {
+      ?>
+        <tr>
+                <td style="text-align: center"><?php echo $count;?></td>
+                <td style="text-align: center"><?php echo $row['staff_id']; ?></td>
+                <td style="text-align: center"><?php echo $row['staff_name']; ?></td>
+                <td style="text-align: center"><?php echo $row['tech_id']; ?></td>
+                <td style="text-align: center"><?php echo $row['tech_name']; ?></td>
+                <td style="text-align: center"><?php echo $row['type']; ?></td>
+                <td style="text-align: center"><?php echo $row['start_date']; ?></td>
+                <td style="text-align: center"><?php echo $row['end_date']; ?></td>
+                <td style="text-align: center"><?php echo $row['date_achv']; ?></td>
+                <td style="text-align: center"><?php echo $row['licensing']; ?></td>
+                <td style="text-align: center"><?php echo $row['gross_incom']; ?></td>
+                <td style="text-align: center"><a href="<?php echo $row['link']; ?>" target="_blank"><?php echo $row['link']; ?></a>
+                <td style="text-align: center"><?php echo $row['remarks']; ?></td>
+                <td style="text-align: center;"><a href="../sectionE/editTech.php?ID=<?php echo $row['tech_id']; ?>" class="btn btn-primary btn-sm"><i class="fa-solid fa-pen-to-square fs-5 me-3"></i></a>
+                                                <a href="Technology.php?delid=<?php echo htmlentities($row['tech_id']); ?>" onClick="return confirm('Do you really want to remove this Record?');" class="btn btn-danger btn-sm"><i class="fa-solid fa-trash fs-5 me-3"></i></a>
+                </td>
+        </tr>
+        <?php 
+          $count = $count+1;
+              }
+            } 
+            else 
+            
+            {
+              echo "Error: " . mysqli_error($conn);
+            }
+        ?>
     </tbody>
     <tfoot>
         <tr>
-            <th></th>
-            <th>Staff ID</th>
-            <th>Staff Name</th>
-            <th>Technology Name</th>
-            <th>End Date</th>
-            <th>License</th>
-            <th>Gross Income</th>
-            <th>Link Evidence</th>
+        <th style="text-align: center"> No.</th>
+            <th style="text-align: center"> Staff ID</th>
+            <th style="text-align: center"> Staff Name</th>
+            <th style="text-align: center"> Technology ID/ No.</th>
+            <th > Technology Name</th>
+            <th style="text-align: center"> Type</th>
+            <th style="text-align: center"> Start Date</th>
+            <th style="text-align: center"> End Date</th>
+            <th style="text-align: center"> Date Archieve</th>
+            <th style="text-align: center"> License</th>
+            <th style="text-align: center"> Gross Income</th>
+            <th style="text-align: center"> Link Evidence</th>
+            <th style="text-align: center"> Remarks</th>
+            <th style="text-align: center">Action</th>
         </tr>
             </tfoot>
         </table>

@@ -206,7 +206,7 @@ if(isset($_GET['logout'])){
        <ul class="nav nav-treeview">
  <!--Indexed (Articel)-->
          <li class="nav-item">
-           <a href="../LectC/IndexJournalArticel.php" class="nav-link">
+           <a href="../LectC/IndexJournalArticle.php" class="nav-link">
              <i class="far fa-circle nav-icon"></i>
              <p>(a) Total Number Publication Indexed Journal</p>
            </a>

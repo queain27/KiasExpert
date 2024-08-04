@@ -547,7 +547,7 @@ if (isset($_GET['delid'])) {
            </a>
          </li>
          <li class="nav-item">
-         <a href="./sectionE/StartupNew.php" class="nav-link">
+         <a href="../sectionE/StartupNew.php" class="nav-link">
              <i class="far fa-circle nav-icon"></i>
              <p>(b) New Spin Off Companies</p>
            </a>
@@ -557,7 +557,7 @@ if (isset($_GET['delid'])) {
     </ul>  
  </li>
  <!--Seksyen E End-->
- <!--Seksyen F Start-->
+<!--Seksyen F Start-->
  <!-- <li class="nav-header">Section F</li> -->
  <li class="nav-item">
    <a href="#" class="nav-link">
@@ -601,13 +601,29 @@ if (isset($_GET['delid'])) {
      </li>
    <!--F3-->
    <li class="nav-item">
-     <a href="../sectionF/Product_Technology.php" class="nav-link">
+     <a href="#" class="nav-link">
         <i class="far fa-circle nav-icon"></i>
           <p>F3 Gross products commercialization/technology know-how licensing/outright
-          
+            <i class="fas fa-angle-left right"></i>
          </p>
      </a>  
- </li>
+     <ul class="nav nav-treeview">
+       <!--a-->
+               <li class="nav-item">
+                 <a href="../sectionF/Product.php" class="nav-link">
+                   <i class="far fa-circle nav-icon"></i>
+                   <p>(a) Product Commercial</p>
+                 </a>
+               </li>
+          <!--b-->
+               <li class="nav-item">
+                 <a href="../sectionF/Technology.php" class="nav-link">
+                   <i class="far fa-circle nav-icon"></i>
+                   <p>(b) Technology Know-How Licensing/Sold outright Sale </p>
+                 </a>
+               </li>
+         </ul>
+     </li>
    <!--F4-->
    <li class="nav-item">
      <a href="#" class="nav-link">
@@ -641,11 +657,43 @@ if (isset($_GET['delid'])) {
            </li>
          </ul>
      </li>
+      <!--F5-->
+   <li class="nav-item">
+     <a href="#" class="nav-link">
+        <i class="far fa-circle nav-icon"></i>
+          <p>F5 Endowment
+            <i class="fas fa-angle-left right"></i>
+         </p>
+     </a>  
+     <ul class="nav nav-treeview">
+       <!--a-->
+               <li class="nav-item">
+                 <a href="../sectionF/Endowment.php" class="nav-link">
+                   <i class="far fa-circle nav-icon"></i>
+                   <p>(a) New Endowmnets</p>
+                 </a>
+               </li>
+          <!--b-->
+               <li class="nav-item">
+                 <a href="../sectionF/Income.php" class="nav-link">
+                   <i class="far fa-circle nav-icon"></i>
+                   <p>(b) Income Dividen</p>
+                 </a>
+               </li>
+         </ul>
+     </li>
       <!--F6-->
       <li class="nav-item">
        <a href="../sectionF/Gift_Donation.php" class="nav-link">
           <i class="far fa-circle nav-icon"></i>
-          <p> F5 Gifts/Donation</p>
+          <p> F6 Gifts/Donation</p>
+      </a>  
+   </li>
+         <!--F7-->
+         <li class="nav-item">
+       <a href="../sectionF/OE.php" class="nav-link">
+          <i class="far fa-circle nav-icon"></i>
+          <p> F7 Total Expenditure for R&D Development </p>
       </a>  
    </li>
     </ul>  
@@ -813,18 +861,18 @@ if (isset($_GET['delid'])) {
             <thead>
             <tr>
             <th style="text-align: center">No.</th>
-            <th style="text-align: center">STAFF ID</th>
-            <th style="text-align: center">STAFF NAME</th>
-            <th style="text-align: center">PRODUCT ID / NO. </th>
-            <th style="text-align: center">PRODUCT NAME</th>
-            <th style="text-align: center">DATE COMMERCIALIZED </th>
-            <th style="text-align: center">DATE THRESHOLD ACHIEVED (RM 20,000)</th>
-            <th style="text-align: center">COMPANY NAME</th>
-            <th style="text-align: center">GROSS INCOME (RM)</th>
-            <th style="text-align: center">LINK TO EVIDENCE OF LICENSING AGREEMENT</th>
-            <th style="text-align: center">LINK TO EVIDENCE OF COMMERCIALIZED PRODUCT</th>
+            <th style="text-align: center">Staff ID</th>
+            <th style="text-align: center">Staff Name</th>
+            <th style="text-align: center">Product ID / NO. </th>
+            <th>Product Name</th>
+            <th style="text-align: center">Date Commercialized </th>
+            <th style="text-align: center">Date Threshold Achieved (RM 20,000)</th>
+            <th style="text-align: center">Company Name</th>
+            <th style="text-align: center">Gross Income (RM)</th>
+            <th style="text-align: center">Link To Evidence Of Licensing Agreement</th>
+            <th style="text-align: center">Link To Evidence Of Commercialized Product</th>
             <th style="text-align: center">Remarks</th>
-            <th style="text-align: center">ACTION</th>
+            <th style="text-align: center">Action</th>
         </tr>
     </thead>
     <tbody id="myTable">
@@ -870,19 +918,19 @@ if (isset($_GET['delid'])) {
     </tbody>
     <tfoot>
         <tr>
-            <th style="text-align: center">No.</th>
-            <th style="text-align: center">STAFF ID</th>
-            <th style="text-align: center">STAFF NAME</th>
-            <th style="text-align: center">PRODUCT ID / NO. </th>
-            <th style="text-align: center">PRODUCT NAME</th>
-            <th style="text-align: center">DATE COMMERCIALIZED </th>
-            <th style="text-align: center">DATE THRESHOLD ACHIEVED (RM 20,000)</th>
-            <th style="text-align: center">COMPANY NAME</th>
-            <th style="text-align: center">GROSS INCOME (RM)</th>
-            <th style="text-align: center">LINK TO EVIDENCE OF LICENSING AGREEMENT</th>
-            <th style="text-align: center">LINK TO EVIDENCE OF COMMERCIALIZED PRODUCT</th>
+             <th style="text-align: center">No.</th>
+            <th style="text-align: center">Staff ID</th>
+            <th style="text-align: center">Staff Name</th>
+            <th style="text-align: center">Product ID / NO. </th>
+            <th style="text-align: center">Product Name</th>
+            <th style="text-align: center">Date Commercialized </th>
+            <th style="text-align: center">Date Threshold Achieved (RM 20,000)</th>
+            <th style="text-align: center">Company Name</th>
+            <th style="text-align: center">Gross Income (RM)</th>
+            <th style="text-align: center">Link To Evidence Of Licensing Agreement</th>
+            <th style="text-align: center">Link To Evidence Of Commercialized Product</th>
             <th style="text-align: center">Remarks</th>
-            <th style="text-align: center">ACTION</th>
+            <th style="text-align: center">Action</th>
         </tr>
             </tfoot>
         </table>

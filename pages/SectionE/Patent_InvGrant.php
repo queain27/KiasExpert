@@ -548,7 +548,7 @@ if (isset($_GET['delid'])) {
            </a>
          </li>
          <li class="nav-item">
-         <a href="./sectionE/StartupNew.php" class="nav-link">
+         <a href="../sectionE/StartupNew.php" class="nav-link">
              <i class="far fa-circle nav-icon"></i>
              <p>(b) New Spin Off Companies</p>
            </a>
@@ -602,13 +602,29 @@ if (isset($_GET['delid'])) {
      </li>
    <!--F3-->
    <li class="nav-item">
-     <a href="../sectionF/Product_Technology.php" class="nav-link">
+     <a href="#" class="nav-link">
         <i class="far fa-circle nav-icon"></i>
           <p>F3 Gross products commercialization/technology know-how licensing/outright
-          
+            <i class="fas fa-angle-left right"></i>
          </p>
      </a>  
- </li>
+     <ul class="nav nav-treeview">
+       <!--a-->
+               <li class="nav-item">
+                 <a href="../sectionF/Product.php" class="nav-link">
+                   <i class="far fa-circle nav-icon"></i>
+                   <p>(a) Product Commercial</p>
+                 </a>
+               </li>
+          <!--b-->
+               <li class="nav-item">
+                 <a href="../sectionF/Technology.php" class="nav-link">
+                   <i class="far fa-circle nav-icon"></i>
+                   <p>(b) Technology Know-How Licensing/Sold outright Sale </p>
+                 </a>
+               </li>
+         </ul>
+     </li>
    <!--F4-->
    <li class="nav-item">
      <a href="#" class="nav-link">
@@ -831,16 +847,7 @@ if (isset($_GET['delid'])) {
 require_once "../examples/config.php";
 
 // Query to get the most recent patent for each staff member
-$query = "
-    SELECT p.*, s.staff_name, s.faculty, s.country
-    FROM patent p
-    JOIN (
-        SELECT staff_id, MAX(date_granted) AS latest_grant
-        FROM patent
-        GROUP BY staff_id
-    ) latest_p ON p.staff_id = latest_p.staff_id AND p.date_granted = latest_p.latest_grant
-    JOIN staff s ON p.staff_id = s.staff_id
-";
+$query = " SELECT * FROM patent WHERE date (date_granted) = (SELECT MAX(date(date_granted)) FROM patent )ORDER BY date_granted DESC; ";
 
 // Execute the query
 $result = mysqli_query($conn, $query);
@@ -874,7 +881,6 @@ if ($result) {
     echo "Error: " . mysqli_error($conn);
 }
 ?>
-
 </tbody>
     <tfoot>
         <tr>
