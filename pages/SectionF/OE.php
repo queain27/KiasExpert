@@ -4,7 +4,7 @@
   
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Staff Academic</title>
+  <title>Total Expenditure for R&D Development </title> 
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">  
   <!-- Font Awesome -->
   <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
@@ -34,6 +34,7 @@
   <script defer src="script.js"></script>
   <!--Icon Image--> 
   <link rel="shortcut icon" href="../../images/Logo2.png" type="image/x-icon">
+  <script defer src="script.js"></script>
     <script>
         $(document).ready(function(){
             $('#example').DataTable();
@@ -171,31 +172,31 @@
          <li class="nav-item">
            <a href="../sectionA/Staff.php" class="nav-link">
              <i class="far fa-circle nav-icon"></i>
-             <p>Staff</p>
+             <p>(a)Staff</p>
            </a>
          </li>
          <li class="nav-item">
          <a href="../sectionA/Staff_Active.php" class="nav-link">
              <i class="far fa-circle nav-icon"></i>
-             <p>Staff Active</p>
+             <p>(b) Staff Active</p>
            </a>
          </li>
          <li class="nav-item">
          <a href="../sectionA/Staff_Foreign.php" class="nav-link">
              <i class="far fa-circle nav-icon"></i>
-             <p>Staff Foreign</p>
+             <p>(c) Staff Foreign</p>
            </a>
          </li>
          <li class="nav-item">
          <a href="../sectionA/Staff_ST.php" class="nav-link">
              <i class="far fa-circle nav-icon"></i>
-             <p>Staff S&T</p>
+             <p>(d) Staff S&T</p>
            </a>
          </li>
          <li class="nav-item">
          <a href="../sectionA/Staff_NONST.php" class="nav-link">
              <i class="far fa-circle nav-icon"></i>
-             <p>Staff Non S&T</p>
+             <p>(e)Staff Non S&T</p>
            </a>
          </li>
        </ul>
@@ -288,7 +289,7 @@
        <ul class="nav nav-treeview">
  <!--Indexed (Articel)-->
          <li class="nav-item">
-           <a href="../sectionC/IndexJournalArticel.php" class="nav-link">
+           <a href="../sectionC/IndexJournalArticle.php" class="nav-link">
              <i class="far fa-circle nav-icon"></i>
              <p>(a) Total Number Publication Indexed Journal</p>
            </a>
@@ -456,28 +457,51 @@
    <ul class="nav nav-treeview">
      </li>
      <li class="nav-item">
-       <a href="../sectionE/Patent.php" class="nav-link">
+     <a href="#" class="nav-link">
          <i class="far fa-circle nav-icon"></i>
          <p>E1 Patent
-           
+           <i class="fas fa-angle-left right"></i>
          </p>
        </a>
- </li>
+       <ul class="nav nav-treeview">
+         <li class="nav-item">
+           <a href="../sectionE/Patent.php" class="nav-link">
+             <i class="far fa-circle nav-icon"></i>
+             <p>(a) patent Granted</p>
+           </a>
+         </li>
+         <li class="nav-item">
+         <a href="../sectionE/Patent_Filled.php" class="nav-link">
+             <i class="far fa-circle nav-icon"></i>
+             <p>(b) Patent Filed</p>
+           </a>
+         </li>
+         <li class="nav-item">
+         <a href="../sectionE/Patent_InvGrant.php" class="nav-link">
+             <i class="far fa-circle nav-icon"></i>
+             <p>(c) Invention Granted</p>
+           </a>
+         </li>
+         <li class="nav-item">
+         <a href="../sectionE/Patent_InvFil.php" class="nav-link">
+             <i class="far fa-circle nav-icon"></i>
+             <p>(d) Invention Filed</p>
+           </a>
+         </li>
+       </ul>
+     </li>
  <!--E2-->
     <li class="nav-item">
          <a href="../sectionE/Commercial.php" class="nav-link">
             <i class="far fa-circle nav-icon"></i>
-              <p>E2 Commercial
-             </p>
+              <p>E2 Commercial</p>
          </a>  
      </li>
    <!--E3-->
    <li class="nav-item">
      <a href="../sectionE/Technology.php" class="nav-link">
         <i class="far fa-circle nav-icon"></i>
-          <p>E3 Technology</br>
-            
-         </p>
+          <p>E3 Technology</br></p>
      </a>  
  </li>
  <!--E4-->
@@ -491,13 +515,27 @@
  </li>
  <!--E5-->
  <li class="nav-item">
-   <a href="../sectionE/Startup.php" class="nav-link">
-      <i class="far fa-circle nav-icon"></i>
-        <p>E5 Startup</br>
-          
-       </p>
-   </a>  
- </li>
+ <a href="#" class="nav-link">
+         <i class="far fa-circle nav-icon"></i>
+         <p>E5 Startup
+           <i class="fas fa-angle-left right"></i>
+         </p>
+       </a>
+       <ul class="nav nav-treeview">
+         <li class="nav-item">
+           <a href="../sectionE/Startup.php" class="nav-link">
+             <i class="far fa-circle nav-icon"></i>
+             <p>(a) Spinn off Companies</p>
+           </a>
+         </li>
+         <li class="nav-item">
+         <a href="../sectionE/StartupNew.php" class="nav-link">
+             <i class="far fa-circle nav-icon"></i>
+             <p>(b) New Spin Off Companies</p>
+           </a>
+         </li>     
+       </ul>
+     </li>
     </ul>  
  </li>
  <!--Seksyen E End-->
@@ -545,13 +583,29 @@
      </li>
    <!--F3-->
    <li class="nav-item">
-     <a href="../sectionF/Product_Technology.php" class="nav-link">
+     <a href="#" class="nav-link">
         <i class="far fa-circle nav-icon"></i>
           <p>F3 Gross products commercialization/technology know-how licensing/outright
-          
+            <i class="fas fa-angle-left right"></i>
          </p>
      </a>  
- </li>
+     <ul class="nav nav-treeview">
+       <!--a-->
+               <li class="nav-item">
+                 <a href="../sectionF/Product.php" class="nav-link">
+                   <i class="far fa-circle nav-icon"></i>
+                   <p>(a) Product Commercial</p>
+                 </a>
+               </li>
+          <!--b-->
+               <li class="nav-item">
+                 <a href="../sectionF/Technology.php" class="nav-link">
+                   <i class="far fa-circle nav-icon"></i>
+                   <p>(b) Technology Know-How Licensing/Sold outright Sale </p>
+                 </a>
+               </li>
+         </ul>
+     </li>
    <!--F4-->
    <li class="nav-item">
      <a href="#" class="nav-link">
@@ -585,11 +639,43 @@
            </li>
          </ul>
      </li>
+      <!--F5-->
+   <li class="nav-item">
+     <a href="#" class="nav-link">
+        <i class="far fa-circle nav-icon"></i>
+          <p>F5 Endowment
+            <i class="fas fa-angle-left right"></i>
+         </p>
+     </a>  
+     <ul class="nav nav-treeview">
+       <!--a-->
+               <li class="nav-item">
+                 <a href="../sectionF/Endowment.php" class="nav-link">
+                   <i class="far fa-circle nav-icon"></i>
+                   <p>(a) New Endowmnets</p>
+                 </a>
+               </li>
+          <!--b-->
+               <li class="nav-item">
+                 <a href="../sectionF/Income.php" class="nav-link">
+                   <i class="far fa-circle nav-icon"></i>
+                   <p>(b) Income Dividen</p>
+                 </a>
+               </li>
+         </ul>
+     </li>
       <!--F6-->
       <li class="nav-item">
        <a href="../sectionF/Gift_Donation.php" class="nav-link">
           <i class="far fa-circle nav-icon"></i>
-          <p> F5 Gifts/Donation</p>
+          <p> F6 Gifts/Donation</p>
+      </a>  
+   </li>
+         <!--F7-->
+         <li class="nav-item">
+       <a href="../sectionF/OE.php" class="nav-link">
+          <i class="far fa-circle nav-icon"></i>
+          <p> F7 Total Expenditure for R&D Development </p>
       </a>  
    </li>
     </ul>  
@@ -745,361 +831,58 @@
   <!-- Paste the content of sidebar.php here -->
 <body>
 <!--Main Content-->
-<h3><center><font color="" face="Cambria Math">Staff Academic<font><br></center></h3>
 <!--TableStart-->  
-  <div class="container pt-50">
-   <div class="row">
-    <div class="col col-sm-3">
-       <button type="button" id="add_data" class="btn btn-success btn-sm float-end">Add</button>
+<h3><center><font color="" face="Cambria Math">Total Expenditure for R&D Development <font><br></center></h3>
+<br><br>
+<div class="container pt-50">
+    <div class="table-responsive">
+        <table id="example" class="table table-striped" style="width:200%">
+            <thead>
+            <tr>
+            <th>No.</th>
+            <th>Faculty/Centre</th>
+            <th>Gifts/Donation</th>
+            <th>Donor</th>
+            <th>Type (Money,Equipment,<br>Research materials)</th>
+            <th>Date Received</th>
+            <th>Reference</th>
+            <th>Value (RM)</th>
+            <th>Remarks</th>
+            <th>Link Document</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+
+    </tbody>
+    <tfoot>
+        <tr>
+            <th></th>
+            <th>Faculty/Centre</th>
+            <th>Gifts/Donation</th>
+            <th>Donor</th>
+            <th>Type (Money,Equipment,<br>Research materials)</th>
+            <th>Date Received</th>
+            <th>Reference</th>
+            <th>Value (RM)</th>
+            <th>Remarks</th>
+            <th>Link Document</th>
+        </tr>
+            </tfoot>
+        </table>
     </div>
-    </div>
- </div>
-        <div class="card-body">
-            <div class="table-responsive">
-              <table class="table table-striped table-bordered" id="staff_data">
-              <thead>
-             <tr>
-                    <th style="text-align: center">No.</th>
-                    <th style="text-align: center">Staff ID</th>
-                    <th style="text-align: center">Staff Name</th>
-                    <th style="text-align: center">Grade</th>
-                    <th style="text-align: center">Position</th>
-                    <th style="text-align: center">First Appointment Date</th>
-                    <th style="text-align: center">Appointment Date <br>Current Position</th>
-                    <th style="text-align: center">Status Active</th>
-                    <th style="text-align: center">Status Contract</th>
-                    <th style="text-align: center">Status Time</th>
-                    <th style="text-align: center">Citizenship</th>
-                    <th style="text-align: center">Country</th>
-                    <th style="text-align: center">Action</th>
-            </thead>
-              <tbody>
-                 </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </body>
-</html>
-
-<div class="modal" tabindex="-1" id="action_modal">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <form method="post" id="staff_form">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="dynamic_modal_title">Add Data</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <!--Staff ID-->
-            <div class="col-md-6 mb-3">
-              <label class="form-label text-end">STAFF ID:</label>
-              <input type="text" class="form-control" name="staff_id" id="staff_id" placeholder="Staff ID" required>
-              <span id="staff_id_error" class="text-danger"></span>
-            </div>
-
-            <!--Name-->
-            <div class="col-md-6 mb-3">
-              <label class="form-label text-end">STAFF NAME:</label>
-              <input type="text" class="form-control" name="staff_name" placeholder="Staff Name" required>
-              <span id="staff_name_error" class="text-danger"></span>
-            </div>
-
-              <!--Grade-->
-              <div class="col-md-6 mb-3">
-              <label class="form-label text-end">GRADE:</label>
-              <input type="text" class="form-control" name="grade" placeholder="Grade" required>
-              <span id="grade_error" class="text-danger"></span>
-            </div>
-
-            <!--Position Staff-->
-            <div class="col-md-6 mb-3">
-              <label class="form-label text-end">POSITION STAFF:</label>
-              <select class="form-control" name="position" required>
-                <option value="" disabled selected>Choose Position</option>
-                <option value="Professor">Professor</option>
-                <option value="Assoc.Prof">Assoc.Prof</option>
-                <option value="Senior Lecturer">Senior Lecturer</option>
-                <option value="Lecturer">Lecturer</option>
-                <option value="Research Fellow">Research Fellow</option>
-              </select>
-            </div>         
-
-            <!--First Appointment-->
-            <div class="col-md-6 mb-3">
-              <label class="form-label text-end">FIRST APPOINTMENT:</label>
-              <input type="date" class="form-control" name="first_appointment" required>
-              <span id="first_appointment_error" class="text-danger"></span>
-            </div>
-
-            <!--Current Appointment-->
-            <div class="col-md-6 mb-3">
-              <label class="form-label text-end">CURRENT APPOINTMENT:</label>
-              <input type="date" class="form-control" name="current_appointment" required>
-              <span id="current_appointment_error" class="text-danger"></span>
-            </div>
-
-            <!--Status Active-->
-            <div class="col-md-6 mb-3">
-              <label class="form-label text-end">STATUS:</label>
-              <select class="form-control" name="status" required>
-                <option value="" disabled selected>Choose Status</option>
-                <option value="Active">Active</option>
-                <option value="Study">Study</option>
-                <option value="Leaves">Leaves</option>
-                <option value="Sabbatical">Sabbatical</option>
-                <option value="Training">Training</option>
-                <option value="Attachment">Attachment</option>
-                <option value="Seconded">Seconded</option>
-              </select>
-          </div>
-            <!--Status Active-->        
-
-            <!--Status Contract-->
-            <div class="col-md-6 mb-3">
-              <label class="form-label text-end">STATUS CONTRACT:</label>
-              <select class="form-control" name="status_contract" required>
-                <option value="" disabled selected>Choose Status  contract</option>
-                <option value="Permanent">Permenant</option>
-                <option value="Contract">Contract</option>
-              </select>
-            </div>
-
-            <!--Status Time-->
-            <div class="col-md-6 mb-3">
-              <label class="form-label text-end">STATUS TIME:</label>
-              <select class="form-control" name="status_time" required>
-                <option value="" disabled selected>Choose Status time</option>
-                <option value="Full-Time">Full-Time</option>
-                <option value="Part-Time">Part-Time</option>
-              </select>
-            </div>
-
-            <!--citizenship-->
-              <div class="col-md-6 mb-3">
-            <div class="col-md-6 mb-3">
-              <label class="form-label text-end">CITIZENSHIP</label>
-              <select class="form-control" name="citizen" required>
-                <option value="" disabled selected>Choose Citizenship</option>
-                <option value="Local">Local</option>
-                <option value="Foreign">Foreign</option>
-              </select>
-            </div>    
-
-            <!--country-->
-             <div class="col-md-6 mb-3">
-             <label class="form-label text-end">COUNTRY:</label>
-             <input type="text" class="form-control" name="country" placeholder="Country" required>
-             <span id="country_error" class="text-danger"></span>
-            </div>
-                </div>
-                <div class="modal-footer">
-                    <input type="hidden" name="id" id="id" value="" />
-                    <input type="hidden" name="action" id="action" value="Add" />
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary" id="action_button">Add</button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-
-<script>
-
-$(document).ready(function(){
-
-    load_data();
-
-    function load_data()
-    {
-        var seconds = new Date() / 1000;
-
-        $.getJSON("data.json?"+seconds+"", function(data){
-
-            data.sort(function (a, b) {
-                return b.id - a.id
-            });
-
-            var data_arr = [];
-
-            for(var count = 0; count < data.length; count++)
-            {
-                var sub_arr = 
-                {
-                  'staff_id': data[count].staff_id,
-                    'staff_name': data[count].staff_name,
-                    'grade': data[count].grade,
-                    'position': data[count].position,
-                    'first_appointment': data[count].first_appointment,
-                    'current_appointment': data[count].current_appointment,
-                    'status': data[count].status,
-                    'status_contract': data[count].status_contract,
-                    'status_time': data[count].status_time,
-                    'citizen': data[count].citizen,
-                    'country': data[count].country,
-                    'action' : '<button type="button" class="btn btn-warning btn-sm edit" data-id="'+data[count].id+'">Edit</button>&nbsp;<button type="button" class="btn btn-danger btn-sm delete" data-id="'+data[count].id+'">Delete</button>'
-                };
-
-                data_arr.push(sub_arr);
-            }
-
-            console.log(data_arr);
-
-            $('#staff_data').DataTable({
-                data:data_arr,
-                order:[],
-                columns: [
-                    { data: "staff_id" },
-                    { data: "staff_name" },
-                    { data: "grade" },
-                    { data: "position" },
-                    { data: "first_appointment" },
-                    { data: "current_appointment" },
-                    { data: "status" },
-                    { data: "status_contract" },
-                    { data: "status_time" },
-                    { data: "citizen" },
-                    { data: "country" },
-                    { data: "action" },
-                ]
-            });
-
-        });       
-
-    }
-    $('#add_data').click(function(){
-
-        $('#dynamic_modal_title').text('Add Data');
-
-        $('#staff_form')[0].reset();
-
-        $('#action').val('Add');
-
-        $('#action_button').text('Add');
-
-        $('.text-danger').text('');
-
-        $('#action_modal').modal('show');
-
-    });
-
-    $('#staff_form').on('submit', function(event){
-
-        event.preventDefault();
-
-        $.ajax({
-            url:"action.php",
-            method:"POST",
-            data:$('#staff_form').serialize(),
-            dataType:"JSON",
-            beforeSend:function(){
-                $('#action_button').attr('disabled','disabled');
-            },
-            success:function(data)
-            {
-                $('#action_button').attr('disabled',false);
-                if(data.error)
-                {
-                    if(data.error.first_name_error)
-                    {
-                        $('#first_name_error').text(data.error.first_name_error);
-                    }
-                    if(data.error.last_name_error)
-                    {
-                        $('#last_name_error').text(data.error.last_name_error);
-                    }
-
-                    if(data.error.age_error)
-                    {
-                        $('#age_error').text(data.error.age_error);
-                    }
-                }
-                else
-                {
-                    $('#message').html('<div class="alert alert-success">'+data.success+'</div>');
-                    $('#action_modal').modal('hide');
-
-                    $('#staff_data').DataTable().destroy();
-                    
-                    load_data();
-
-                    setTimeout(function(){
-                        $('#message').html('');
-                    }, 5000);
-                }
-            }
-        });
-
-    });
-
-    $(document).on('click', '.edit', function(){
-
-        var id = $(this).data('id');
-
-        $('#dynamic_modal_title').text('Edit Data');
-
-        $('#action').val('Edit');
-
-        $('#action_button').text('Edit');
-
-        $('.text-danger').text('');
-
-        $('#action_modal').modal('show');
-
-        $.ajax({
-            url:"action.php",
-            method:"POST",
-            data:{id:id, action:'fetch_single'},
-            dataType:"JSON",
-            success:function(data)
-            {
-                $('#staff_id').val(data.staff_id);
-                $('#staff_name').val(data.staff_name);
-                $('#grade').val(data.grade);
-                $('#first_appointment').val(data.first_appointment);
-                $('#current_appointment').val(data. current_appointment);
-                $('#status').val(data.status );
-                $('#status_contract').val(data. status_contract);
-                $('#status_time').val(data.status_time );
-                $('#citizen').val(data. citizen);
-                $('#country').val(data. country);
-                $('#id').val(data.id);
-            }
-        });
-
-    });
-
-    $(document).on('click', '.delete', function(){
-
-        var id = $(this).data('id');
-
-        if(confirm("Are you sure you want to delete this data?"))
-        {
-            $.ajax({
-                url:"action.php",
-                method:"POST",
-                data:{action:'delete', id:id},
-                dataType:"JSON",
-                success:function(data)
-                {
-                    $('#message').html('<div class="alert alert-success">'+data.success+'</div>');
-
-                    $('#staff_data').DataTable().destroy();
-
-                    load_data();
-
-                    setTimeout(function(){
-                        $('#message').html('');
-                    }, 5000);
-                }
-            });
-        }
-
-    });
-
-});
-
+</div> 
+<!--Main Content-->
 <script>
     $(document).ready(function() {
         $('#example').DataTable({
@@ -1118,7 +901,6 @@ $(document).ready(function(){
             }
         });
     });
-</script>
 </script>
 <!--TableEnd --> 
 <script src="../../plugins/jquery/jquery.min.js"></script>

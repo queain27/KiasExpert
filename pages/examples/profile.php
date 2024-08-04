@@ -155,31 +155,31 @@ if(isset($_GET['logout'])){
          <li class="nav-item">
            <a href="../sectionA/Staff.php" class="nav-link">
              <i class="far fa-circle nav-icon"></i>
-             <p>Staff</p>
+             <p>(a)Staff</p>
            </a>
          </li>
          <li class="nav-item">
          <a href="../sectionA/Staff_Active.php" class="nav-link">
              <i class="far fa-circle nav-icon"></i>
-             <p>Staff Active</p>
+             <p>(b) Staff Active</p>
            </a>
          </li>
          <li class="nav-item">
          <a href="../sectionA/Staff_Foreign.php" class="nav-link">
              <i class="far fa-circle nav-icon"></i>
-             <p>Staff Foreign</p>
+             <p>(c) Staff Foreign</p>
            </a>
          </li>
          <li class="nav-item">
          <a href="../sectionA/Staff_ST.php" class="nav-link">
              <i class="far fa-circle nav-icon"></i>
-             <p>Staff S&T</p>
+             <p>(d) Staff S&T</p>
            </a>
          </li>
          <li class="nav-item">
          <a href="../sectionA/Staff_NONST.php" class="nav-link">
              <i class="far fa-circle nav-icon"></i>
-             <p>Staff Non S&T</p>
+             <p>(e)Staff Non S&T</p>
            </a>
          </li>
        </ul>
@@ -272,7 +272,7 @@ if(isset($_GET['logout'])){
        <ul class="nav nav-treeview">
  <!--Indexed (Articel)-->
          <li class="nav-item">
-           <a href="../sectionC/IndexJournalArticel.php" class="nav-link">
+           <a href="../sectionC/IndexJournalArticle.php" class="nav-link">
              <i class="far fa-circle nav-icon"></i>
              <p>(a) Total Number Publication Indexed Journal</p>
            </a>
@@ -440,29 +440,51 @@ if(isset($_GET['logout'])){
    <ul class="nav nav-treeview">
      </li>
      <li class="nav-item">
-       <a href="../sectionE/Patent.php" class="nav-link">
+     <a href="#" class="nav-link">
          <i class="far fa-circle nav-icon"></i>
          <p>E1 Patent
-           
+           <i class="fas fa-angle-left right"></i>
          </p>
        </a>
- </li>
+       <ul class="nav nav-treeview">
+         <li class="nav-item">
+           <a href="../sectionE/Patent.php" class="nav-link">
+             <i class="far fa-circle nav-icon"></i>
+             <p>(a) patent Granted</p>
+           </a>
+         </li>
+         <li class="nav-item">
+         <a href="../sectionE/Patent_Filled.php" class="nav-link">
+             <i class="far fa-circle nav-icon"></i>
+             <p>(b) Patent Filed</p>
+           </a>
+         </li>
+         <li class="nav-item">
+         <a href="../sectionE/Patent_InvGrant.php" class="nav-link">
+             <i class="far fa-circle nav-icon"></i>
+             <p>(c) Invention Granted</p>
+           </a>
+         </li>
+         <li class="nav-item">
+         <a href="../sectionE/Patent_InvFil.php" class="nav-link">
+             <i class="far fa-circle nav-icon"></i>
+             <p>(d) Invention Filed</p>
+           </a>
+         </li>
+       </ul>
+     </li>
  <!--E2-->
     <li class="nav-item">
          <a href="../sectionE/Commercial.php" class="nav-link">
             <i class="far fa-circle nav-icon"></i>
-              <p>E2 Commercial
-                
-             </p>
+              <p>E2 Commercial</p>
          </a>  
      </li>
    <!--E3-->
    <li class="nav-item">
      <a href="../sectionE/Technology.php" class="nav-link">
         <i class="far fa-circle nav-icon"></i>
-          <p>E3 Technology</br>
-            
-         </p>
+          <p>E3 Technology</br></p>
      </a>  
  </li>
  <!--E4-->
@@ -476,17 +498,31 @@ if(isset($_GET['logout'])){
  </li>
  <!--E5-->
  <li class="nav-item">
-   <a href="../sectionE/Startup.php" class="nav-link">
-      <i class="far fa-circle nav-icon"></i>
-        <p>E5 Startup</br>
-          
-       </p>
-   </a>  
- </li>
+ <a href="#" class="nav-link">
+         <i class="far fa-circle nav-icon"></i>
+         <p>E5 Startup
+           <i class="fas fa-angle-left right"></i>
+         </p>
+       </a>
+       <ul class="nav nav-treeview">
+         <li class="nav-item">
+           <a href="../sectionE/Startup.php" class="nav-link">
+             <i class="far fa-circle nav-icon"></i>
+             <p>(a) Spinn off Companies</p>
+           </a>
+         </li>
+         <li class="nav-item">
+         <a href="../sectionE/StartupNew.php" class="nav-link">
+             <i class="far fa-circle nav-icon"></i>
+             <p>(b) New Spin Off Companies</p>
+           </a>
+         </li>     
+       </ul>
+     </li>
     </ul>  
  </li>
  <!--Seksyen E End-->
- <!--Seksyen F Start-->
+<!--Seksyen F Start-->
  <!-- <li class="nav-header">Section F</li> -->
  <li class="nav-item">
    <a href="#" class="nav-link">
@@ -530,13 +566,29 @@ if(isset($_GET['logout'])){
      </li>
    <!--F3-->
    <li class="nav-item">
-     <a href="../sectionF/Product_Technology.php" class="nav-link">
+     <a href="#" class="nav-link">
         <i class="far fa-circle nav-icon"></i>
           <p>F3 Gross products commercialization/technology know-how licensing/outright
-          
+            <i class="fas fa-angle-left right"></i>
          </p>
      </a>  
- </li>
+     <ul class="nav nav-treeview">
+       <!--a-->
+               <li class="nav-item">
+                 <a href="../sectionF/Product.php" class="nav-link">
+                   <i class="far fa-circle nav-icon"></i>
+                   <p>(a) Product Commercial</p>
+                 </a>
+               </li>
+          <!--b-->
+               <li class="nav-item">
+                 <a href="../sectionF/Technology.php" class="nav-link">
+                   <i class="far fa-circle nav-icon"></i>
+                   <p>(b) Technology Know-How Licensing/Sold outright Sale </p>
+                 </a>
+               </li>
+         </ul>
+     </li>
    <!--F4-->
    <li class="nav-item">
      <a href="#" class="nav-link">
@@ -570,11 +622,43 @@ if(isset($_GET['logout'])){
            </li>
          </ul>
      </li>
+      <!--F5-->
+   <li class="nav-item">
+     <a href="#" class="nav-link">
+        <i class="far fa-circle nav-icon"></i>
+          <p>F5 Endowment
+            <i class="fas fa-angle-left right"></i>
+         </p>
+     </a>  
+     <ul class="nav nav-treeview">
+       <!--a-->
+               <li class="nav-item">
+                 <a href="../sectionF/Endowment.php" class="nav-link">
+                   <i class="far fa-circle nav-icon"></i>
+                   <p>(a) New Endowmnets</p>
+                 </a>
+               </li>
+          <!--b-->
+               <li class="nav-item">
+                 <a href="../sectionF/Income.php" class="nav-link">
+                   <i class="far fa-circle nav-icon"></i>
+                   <p>(b) Income Dividen</p>
+                 </a>
+               </li>
+         </ul>
+     </li>
       <!--F6-->
       <li class="nav-item">
        <a href="../sectionF/Gift_Donation.php" class="nav-link">
           <i class="far fa-circle nav-icon"></i>
-          <p> F5 Gifts/Donation</p>
+          <p> F6 Gifts/Donation</p>
+      </a>  
+   </li>
+         <!--F7-->
+         <li class="nav-item">
+       <a href="../sectionF/OE.php" class="nav-link">
+          <i class="far fa-circle nav-icon"></i>
+          <p> F7 Total Expenditure for R&D Development </p>
       </a>  
    </li>
     </ul>  

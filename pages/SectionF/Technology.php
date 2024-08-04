@@ -1,12 +1,32 @@
+<?php
+include "../examples/config.php";
+
+if (isset($_GET['delid'])) {
+    $staff_id = $_GET['delid'];
+    $stmt = $conn->prepare("DELETE FROM prod_tech WHERE staff_id = ?");
+    $stmt->bind_param("s", $staff_id);
+
+    if ($stmt->execute()) {
+        echo "<script>alert('Record successfully deleted');</script>";
+        echo "<script>document.location='Technology.php';</script>";
+    } else {
+        echo "<script>alert('Something went wrong');</script>";
+    }
+
+    $stmt->close();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Undergraduate Student</title>  <!--Link CSS-->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">  
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Technology</title> 
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">  
   <!-- Font Awesome -->
   <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <!-- Ionicons -->
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <!-- Tempusdominus Bootstrap 4 -->
@@ -29,13 +49,17 @@
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
   <script defer src="https://cdn.datatables.net/2.0.3/js/dataTables.js"></script>
   <script defer src="https://cdn.datatables.net/2.0.3/js/dataTables.bootstrap5.js"></script>
+  <script defer src="script.js"></script>
+  <!--Icon Image--> 
   <link rel="shortcut icon" href="../../images/Logo2.png" type="image/x-icon">
   <script defer src="script.js"></script>
-  <script>
+  
+    <script>
         $(document).ready(function(){
             $('#example').DataTable();
         });
        </script>
+
 </head>
  <!-- Paste the content of sidebar.php here -->
  <body class="hold-transition sidebar-mini layout-fixed">
@@ -146,7 +170,7 @@
                 <i class="nav-icon 	fas fa-user-circle"></i>
                 <p>Profile</p>
               </a>
-            </li> 
+            </li>
  <!--Seksyen A Start-->
  <li class="nav-header">Section MyRA</li>
  <li class="nav-item">
@@ -168,31 +192,31 @@
          <li class="nav-item">
            <a href="../sectionA/Staff.php" class="nav-link">
              <i class="far fa-circle nav-icon"></i>
-             <p>Staff</p>
+             <p>(a)Staff</p>
            </a>
          </li>
          <li class="nav-item">
          <a href="../sectionA/Staff_Active.php" class="nav-link">
              <i class="far fa-circle nav-icon"></i>
-             <p>Staff Active</p>
+             <p>(b) Staff Active</p>
            </a>
          </li>
          <li class="nav-item">
          <a href="../sectionA/Staff_Foreign.php" class="nav-link">
              <i class="far fa-circle nav-icon"></i>
-             <p>Staff Foreign</p>
+             <p>(c) Staff Foreign</p>
            </a>
          </li>
          <li class="nav-item">
          <a href="../sectionA/Staff_ST.php" class="nav-link">
              <i class="far fa-circle nav-icon"></i>
-             <p>Staff S&T</p>
+             <p>(d) Staff S&T</p>
            </a>
          </li>
          <li class="nav-item">
          <a href="../sectionA/Staff_NONST.php" class="nav-link">
              <i class="far fa-circle nav-icon"></i>
-             <p>Staff Non S&T</p>
+             <p>(e)Staff Non S&T</p>
            </a>
          </li>
        </ul>
@@ -285,7 +309,7 @@
        <ul class="nav nav-treeview">
  <!--Indexed (Articel)-->
          <li class="nav-item">
-           <a href="../sectionC/IndexJournalArticel.php" class="nav-link">
+           <a href="../sectionC/IndexJournalArticle.php" class="nav-link">
              <i class="far fa-circle nav-icon"></i>
              <p>(a) Total Number Publication Indexed Journal</p>
            </a>
@@ -453,29 +477,51 @@
    <ul class="nav nav-treeview">
      </li>
      <li class="nav-item">
-       <a href="../sectionE/Patent.php" class="nav-link">
+     <a href="#" class="nav-link">
          <i class="far fa-circle nav-icon"></i>
          <p>E1 Patent
-           
+           <i class="fas fa-angle-left right"></i>
          </p>
        </a>
- </li>
+       <ul class="nav nav-treeview">
+         <li class="nav-item">
+           <a href="../sectionE/Patent.php" class="nav-link">
+             <i class="far fa-circle nav-icon"></i>
+             <p>(a) patent Granted</p>
+           </a>
+         </li>
+         <li class="nav-item">
+         <a href="../sectionE/Patent_Filled.php" class="nav-link">
+             <i class="far fa-circle nav-icon"></i>
+             <p>(b) Patent Filed</p>
+           </a>
+         </li>
+         <li class="nav-item">
+         <a href="../sectionE/Patent_InvGrant.php" class="nav-link">
+             <i class="far fa-circle nav-icon"></i>
+             <p>(c) Invention Granted</p>
+           </a>
+         </li>
+         <li class="nav-item">
+         <a href="../sectionE/Patent_InvFil.php" class="nav-link">
+             <i class="far fa-circle nav-icon"></i>
+             <p>(d) Invention Filed</p>
+           </a>
+         </li>
+       </ul>
+     </li>
  <!--E2-->
     <li class="nav-item">
          <a href="../sectionE/Commercial.php" class="nav-link">
             <i class="far fa-circle nav-icon"></i>
-              <p>E2 Commercial
-                
-             </p>
+              <p>E2 Commercial</p>
          </a>  
      </li>
    <!--E3-->
    <li class="nav-item">
      <a href="../sectionE/Technology.php" class="nav-link">
         <i class="far fa-circle nav-icon"></i>
-          <p>E3 Technology</br>
-            
-         </p>
+          <p>E3 Technology</br></p>
      </a>  
  </li>
  <!--E4-->
@@ -489,17 +535,31 @@
  </li>
  <!--E5-->
  <li class="nav-item">
-   <a href="../sectionE/Startup.php" class="nav-link">
-      <i class="far fa-circle nav-icon"></i>
-        <p>E5 Startup</br>
-          
-       </p>
-   </a>  
- </li>
+ <a href="#" class="nav-link">
+         <i class="far fa-circle nav-icon"></i>
+         <p>E5 Startup
+           <i class="fas fa-angle-left right"></i>
+         </p>
+       </a>
+       <ul class="nav nav-treeview">
+         <li class="nav-item">
+           <a href="../sectionE/Startup.php" class="nav-link">
+             <i class="far fa-circle nav-icon"></i>
+             <p>(a) Spinn off Companies</p>
+           </a>
+         </li>
+         <li class="nav-item">
+         <a href="../sectionE/StartupNew.php" class="nav-link">
+             <i class="far fa-circle nav-icon"></i>
+             <p>(b) New Spin Off Companies</p>
+           </a>
+         </li>     
+       </ul>
+     </li>
     </ul>  
  </li>
  <!--Seksyen E End-->
- <!--Seksyen F Start-->
+<!--Seksyen F Start-->
  <!-- <li class="nav-header">Section F</li> -->
  <li class="nav-item">
    <a href="#" class="nav-link">
@@ -543,13 +603,29 @@
      </li>
    <!--F3-->
    <li class="nav-item">
-     <a href="../sectionF/Product_Technology.php" class="nav-link">
+     <a href="#" class="nav-link">
         <i class="far fa-circle nav-icon"></i>
           <p>F3 Gross products commercialization/technology know-how licensing/outright
-          
+            <i class="fas fa-angle-left right"></i>
          </p>
      </a>  
- </li>
+     <ul class="nav nav-treeview">
+       <!--a-->
+               <li class="nav-item">
+                 <a href="../sectionF/Product.php" class="nav-link">
+                   <i class="far fa-circle nav-icon"></i>
+                   <p>(a) Product Commercial</p>
+                 </a>
+               </li>
+          <!--b-->
+               <li class="nav-item">
+                 <a href="../sectionF/Technology.php" class="nav-link">
+                   <i class="far fa-circle nav-icon"></i>
+                   <p>(b) Technology Know-How Licensing/Sold outright Sale </p>
+                 </a>
+               </li>
+         </ul>
+     </li>
    <!--F4-->
    <li class="nav-item">
      <a href="#" class="nav-link">
@@ -583,11 +659,43 @@
            </li>
          </ul>
      </li>
+      <!--F5-->
+   <li class="nav-item">
+     <a href="#" class="nav-link">
+        <i class="far fa-circle nav-icon"></i>
+          <p>F5 Endowment
+            <i class="fas fa-angle-left right"></i>
+         </p>
+     </a>  
+     <ul class="nav nav-treeview">
+       <!--a-->
+               <li class="nav-item">
+                 <a href="../sectionF/Endowment.php" class="nav-link">
+                   <i class="far fa-circle nav-icon"></i>
+                   <p>(a) New Endowmnets</p>
+                 </a>
+               </li>
+          <!--b-->
+               <li class="nav-item">
+                 <a href="../sectionF/Income.php" class="nav-link">
+                   <i class="far fa-circle nav-icon"></i>
+                   <p>(b) Income Dividen</p>
+                 </a>
+               </li>
+         </ul>
+     </li>
       <!--F6-->
       <li class="nav-item">
        <a href="../sectionF/Gift_Donation.php" class="nav-link">
           <i class="far fa-circle nav-icon"></i>
-          <p> F5 Gifts/Donation</p>
+          <p> F6 Gifts/Donation</p>
+      </a>  
+   </li>
+         <!--F7-->
+         <li class="nav-item">
+       <a href="../sectionF/OE.php" class="nav-link">
+          <i class="far fa-circle nav-icon"></i>
+          <p> F7 Total Expenditure for R&D Development </p>
       </a>  
    </li>
     </ul>  
@@ -744,56 +852,91 @@
 <body>
 <!--Main Content-->
 <!--TableStart-->  
-<h3><center><font color="" face="Cambria Math">Undergraduate Student<font><br></center></h3>
+<h3><center><font color="" face="Cambria Math">Technology Know-How Licensing/Sold outright Sale<font><br></center></h3>
 <br><br>
 <div class="container pt-50">
+   <div class="text-right mb-3">
+        <a href="../sectionF/addProduc.php" class="btn btn-success">+Add New</a>
+    </div>
     <div class="table-responsive">
         <table id="example" class="table table-striped" style="width:200%">
             <thead>
             <tr>
-            <th>No.</th>
-            <th>Matric No.</th>
-            <th>Student Name</th>
-            <th>Faculty</th>
-            <th>Year Enrolled</th>
-            <th>Academic Year</th>
-            <th>Citizenship</th>
-            <th>Country</th>
-            <th>Status Active</th>
+             <th style="text-align: center">No.</th>
+             <th style="text-align: center">Staff ID</th>
+             <th style="text-align: center">Staff Name</th>
+             <th style="text-align: center">Product Name</th>
+             <th style="text-align: center">Technology Know-How Licensing/<br>Outright Sale</th>
+             <th style="text-align: center">Faculty/Centre</th>
+             <th style="text-align: center">Year Commercialized</th>
+             <th style="text-align: center">Company/Publisher Name</th>
+             <th style="text-align: center">Refference No.</th>
+             <th style="text-align: center">Gross Income Generated (RM)</th>
+             <th style="text-align: center">Link Evidence</th>
+             <th style="text-align: center">Remarks</th>
+             <th style="text-align: center">Action</th>
         </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
+        </thead>
+    <tbody id="myTable">
+    <?php
+        require_once "../examples/config.php";
+         $query = "SELECT * FROM prod_tech WHERE Type = 'licensing' OR Type = 'sold outright'";
+         $count =1;
+         $result = mysqli_query($conn, $query);
 
+    if ($result) {
+        while ($row = mysqli_fetch_assoc($result)) {
+      ?>
+        <tr>
+            <td style="text-align: center"><?php echo $count;?></td>
+            <td style="text-align: center"><?php echo $row['staff_id']; ?></td>
+            <td style="text-align: center"><?php echo $row['staff_name']; ?></td>
+            <td style="text-align: center"><?php echo $row['prod_name']; ?></td>
+            <td style="text-align: center"><?php echo $row['Type']; ?></td>
+            <td style="text-align: center"><?php echo $row['faculty']; ?></td>
+            <td style="text-align: center"><?php echo $row['year']; ?></td>
+            <td style="text-align: center"><?php echo $row['comp_name']; ?></td>
+            <td style="text-align: center"><?php echo $row['reference_no']; ?></td>
+            <td style="text-align: center"><?php echo $row['gross_income']; ?></td>
+            <td style="text-align: center"><a href="<?php echo $row['link']; ?>" target="_blank"><?php echo $row['link']; ?></a>
+            <td style="text-align: center"><?php echo $row['remarks']; ?></td>
+            <td style="text-align: center;">
+            <a href="../sectionF/editProduct.php?ID=<?php echo $row['staff_id']; ?>" class="btn btn-primary btn-sm"><i class="fa-solid fa-pen-to-square fs-5 me-3"></i></a>
+            <a href="Technology.php?delid=<?php echo htmlentities($row['staff_id']); ?>" onClick="return confirm('Do you really want to remove this Record?');" class="btn btn-danger btn-sm"><i class="fa-solid fa-trash fs-5 me-3"></i></a>
+            </td>
+        </tr>
+        <?php
+          $count = $count+1;
+              }
+            } 
+            else 
+            
+            {
+              echo "Error: " . mysqli_error($conn);
+             }
+          ?>
     </tbody>
     <tfoot>
         <tr>
-            <th></th>
-            <th>Matric No.</th>
-            <th>Student Name</th>
-            <th>Faculty</th>
-            <th>Year Enrolled</th>
-            <th>Academic Year</th>
-            <th>Citizenship</th>
-            <th>Country</th>
-            <th>Status Active</th>
+         <th style="text-align: center">No.</th>
+             <th style="text-align: center">Staff ID</th>
+             <th style="text-align: center">Staff Name</th>
+             <th style="text-align: center">Product Name</th>
+             <th style="text-align: center">Technology Know-How Licensing/<br>Outright Sale</th>
+             <th style="text-align: center">Faculty/Centre</th>
+             <th style="text-align: center">Year Commercialized</th>
+             <th style="text-align: center">Company/Publisher Name</th>
+             <th style="text-align: center">Refference No.</th>
+             <th style="text-align: center">Gross Income Generated (RM)</th>
+             <th style="text-align: center">Link Evidence</th>
+             <th style="text-align: center">Remarks</th>
+             <th style="text-align: center">Action</th>
         </tr>
             </tfoot>
         </table>
     </div>
 </div> 
 <!--Main Content-->
-<!-- Add this script to initialize the DataTable and adjust its properties -->
 <script>
     $(document).ready(function() {
         $('#example').DataTable({
@@ -812,8 +955,7 @@
             }
         });
     });
-</script>cript>
-
+</script>
 <!--TableEnd --> 
 <script src="../../plugins/jquery/jquery.min.js"></script>
 <script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
