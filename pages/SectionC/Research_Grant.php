@@ -785,6 +785,9 @@
 <h3><center><font color="" face="Cambria Math">Research Grant For Academic Staff<font><br></center></h3>
 <br><br>
 <div class="container pt-50">
+<div class="text-right mb-3">
+        <a href="../sectionC/addresearchgrant.php" class="btn btn-success">+Add New Research Grant</a>
+      </div>
     <div class="table-responsive">
         <table id="example" class="table table-striped" style="width:250%">
             <thead>
@@ -818,29 +821,55 @@
             
             <tbody>
                 <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                <?php
+    require_once "../examples/config.php";
+    $query = "SELECT * FROM research_grant";
+    $count =1;
+    $result = mysqli_query($conn, $query);
+
+    if ($result) {
+        while ($row = mysqli_fetch_assoc($result)) {
+    ?>
+            <tr>
+                <td style="text-align: center"><?php echo $count;?></td>
+                <td style="text-align: center"><?php echo $row['project_id']; ?></td>
+                <td style="text-align: center"><?php echo $row['staff_id']; ?></td>
+                <td style="text-align: center"><?php echo $row['staff_name']; ?></td>
+                <td style="text-align: center"><?php echo $row['faculty']; ?></td>
+                <td style="text-align: center"><?php echo $row['st']; ?></td>
+                <td style="text-align: center"><?php echo $row['staff_status']; ?></td>
+                <td style="text-align: center"><?php echo $row['research_title']; ?></td>
+                <td style="text-align: center"><?php echo $row['start_date']; ?></td>
+                <td style="text-align: center"><?php echo $row['end_date']; ?></td>
+                <td style="text-align: center"><?php echo $row['page_end']; ?></td>
+                <td style="text-align: center"><?php echo $row['duration_project']; ?></td>
+                <td style="text-align: center"><?php echo $row['status_project']; ?></td>
+                <td style="text-align: center"><?php echo $row['project_extension']; ?></td>
+                <td style="text-align: center"><?php echo $row['project_extend']; ?></td>
+                <td style="text-align: center"><?php echo $row['sponsor']; ?></td>
+                <td style="text-align: center"><?php echo $row['sponsor_cat']; ?></td>
+                <td style="text-align: center"><?php echo $row['grant_name']; ?></td>
+                <td style="text-align: center"><?php echo $row['amt_pledge']; ?></td>
+                <td style="text-align: center"><?php echo $row['amt_rec']; ?></td>
+                <td style="text-align: center"><?php echo $row['amt_spent']; ?></td>
+                <td style="text-align: center"><a href="<?php echo $row['link_evidence']; ?>" target="_blank"><?php echo $row['link_evidence']; ?>
+                <td style="text-align: center"><?php echo $row['remarks']; ?></td>
+               </a>
+       
+
+                </td>
+            </tr>
+        <?php
+          
+          $count = $count+1;
+              }
+            } 
+            else 
+            
+            {
+              echo "Error: " . mysqli_error($conn);
+             }
+          ?>
                 </tr>
                
             </tbody>
