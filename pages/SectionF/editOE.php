@@ -4,24 +4,24 @@ include "../examples/config.php";
 $reference_no = $_GET['ID'];
 
 if (isset($_POST['submit'])) {
-    $name = $_POST['name'];
+    
     $type = $_POST['type'];
-    $gross_income = $_POST['gross_income'];
+    $value = $_POST['value'];
     $link = $_POST['link'];
     $remarks = $_POST['remarks'];
 
-    $stmt = $conn->prepare("UPDATE hosp_lab SET name=?, type=?,gross_income=?, link=?, remarks=? WHERE reference_no=?");
-    $stmt->bind_param("ssssss", $name, $type, $gross_income, $link, $remarks, $reference_no);
+    $stmt = $conn->prepare("UPDATE oe SET type=?,value=?, link=?, remarks=? WHERE reference_no=?");
+    $stmt->bind_param("sssss",  $type, $value, $link, $remarks, $reference_no);
     
     if ($stmt->execute())
     
     {
         echo "<script>alert('New record successfully updated');</script>";
-        echo "<script>document.location='Hospital.php';</script>";
+        echo "<script>document.location='OE.php';</script>";
     } 
     
        else {
-        echo "<script>alert('Something Wrong or Reference Number Already Exists );</script>";
+        echo "<script>alert('Something Wrong);</script>";
     }
     
     $stmt->close();
@@ -31,7 +31,7 @@ if (isset($_POST['submit'])) {
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title> Edit Hospital & Lab Service</title>
+<title> Edit Operational Expenditure</title>
 <style>
     * body 
     {
@@ -55,7 +55,7 @@ if (isset($_POST['submit'])) {
     </div>
     <?php 
         $reference_no = mysqli_real_escape_string($conn, $reference_no); // Sanitize the input to prevent SQL injection
-        $stmt = $conn->prepare("SELECT * FROM hosp_lab WHERE reference_no = ? LIMIT 1");
+        $stmt = $conn->prepare("SELECT * FROM oe WHERE reference_no = ? LIMIT 1");
         $stmt->bind_param("s", $reference_no);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -77,26 +77,16 @@ if (isset($_POST['submit'])) {
                     <input type="text" class="form-control" name="reference_no" value="<?php echo $row['reference_no']?>">
                 </div>
                 
-                <!--coordinate-->
+                <!--TYPE OF EXPENDITURE-->
                 <div class="col-md-6 mb-3">
-                    <label class="form-label">HOSPITAL NAME /  LAB OR CLINIC :</label>
-                    <input type="text" class="form-control" name="name" value="<?php echo $row['name']?>">
+                    <label class="form-label">TYPE OF EXPENDITURE:</label>
+                    <input type="text" class="form-control" name="type" value="<?php echo $row['type']?>">
                 </div>
-
-                    <!--type/CENTRE-->
-                    <div class="col-md-6 mb-3">
-                        <label class="form-label">TYPE SERVICE:</label>
-                        <select class="form-control" name="type">
-                            <option value="" disabled selected>Choose type</option>
-                            <option value="Hospital" <?php if ($row['type'] == 'Hospital') echo 'selected'; ?>>Hospital</option>
-                            <option value="Lab Service" <?php if ($row['type'] == 'Lab Service') echo 'selected'; ?>>Lab Service</option>
-                        </select>
-                    </div>
 
                 <!--GROSS INCOME GENERATE-->
                 <div class="col-md-6 mb-3">
                     <label class="form-label">GROSS INCOME GENERATE (RM):</label>
-                    <input type="text" class="form-control" name="gross_income" value="<?php echo $row['gross_income']?>">
+                    <input type="text" class="form-control" name="value" value="<?php echo $row['value']?>">
                 </div>
 
                 <!--Link-->
@@ -116,7 +106,7 @@ if (isset($_POST['submit'])) {
       <div> 
        <center>
             <button type ="submit" class="btn btn-success" name="submit">UPDATE</button>
-            <a href="Hospital.php" class="btn btn-danger">Cancel</a>
+            <a href="OE.php" class="btn btn-danger">Cancel</a>
             </div>
        </center>
       </form>

@@ -864,7 +864,6 @@ if (isset($_GET['delid'])) {
         <tr>
             <th style="text-align: center">No.</th>
             <th style="text-align: center">Type Of Expenditure</th>
-            <th style="text-align: center">Value</th>
             <th style="text-align: center">Reference</th>
             <th style="text-align: center">Value (RM)</th>
             <th style="text-align: center">Link Document</th>
@@ -884,7 +883,7 @@ if (isset($_GET['delid'])) {
       ?>
         <tr>
             <td style="text-align: center"><?php echo $count;?></td>
-            <td style="text-align: center"><?php echo $row['type']; ?></td>
+            <td><?php echo $row['type']; ?></td>
             <td style="text-align: center"><?php echo $row['value']; ?></td>
             <td style="text-align: center"><?php echo $row['reference_no']; ?></td>
             <td style="text-align: center"><a href="<?php echo $row['link']; ?>" target="_blank"><?php echo $row['link']; ?></a>
@@ -908,7 +907,6 @@ if (isset($_GET['delid'])) {
        <tr>
             <th style="text-align: center">No.</th>
             <th style="text-align: center">Type Of Expenditure</th>
-            <th style="text-align: center">Value</th>
             <th style="text-align: center">Reference</th>
             <th style="text-align: center">Value (RM)</th>
             <th style="text-align: center">Link Document</th>
