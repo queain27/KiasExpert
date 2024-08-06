@@ -4,23 +4,22 @@ if(isset($_POST ['submit']))
 {
    
    $reference_no = $_POST['reference_no'];
-   $name = $_POST['name'];
    $type = $_POST['type'];
-   $gross_income = $_POST['gross_income'];
+   $value = $_POST['value'];
    $link = $_POST['link'];
    $remarks = $_POST['remarks'];
    
- $sql = mysqli_query($conn, "INSERT INTO hosp_lab (reference_no, name, type, gross_income, link,remarks)
-        VALUES ('$reference_no','$name','$type','$gross_income','$link','$remarks')");
+ $sql = mysqli_query($conn, "INSERT INTO oe (reference_no, type, value, link,remarks)
+        VALUES ('$reference_no','$type','$value','$link','$remarks')");
     
     if($sql)
     {
        echo "<script>alert('New record successsfully addedd');</script>";
-       echo "<script>document.location=Hospital.php';</script>";
+       echo "<script>document.location=OE.php';</script>";
     }
 
     else
-    { echo "<script>alert('Something Wrong');</script>";
+    { echo "<script>alert('Something Wrong or Reference Number Already Exists');</script>";
     }
 }
 ?>
@@ -30,7 +29,7 @@ if(isset($_POST ['submit']))
 
 <head>
   <meta charset="utf-8">
-  <title>Add New Hospital and Lab Service</title>
+  <title>Add New Total Expenditure for R&D Development</title>
   <style>
     * body {
       background-repeat: no-repeat;
@@ -53,12 +52,12 @@ if(isset($_POST ['submit']))
     <div class="container">
       <?php
         require "../header.php";
-        createHeader('fa fa-briefcase', 'Add New Hospital and Lab Service', 'Add Hospital and Lab Service');
+        createHeader('fa fa-briefcase', 'Add New Operational Expenditure', 'Add Operational Expenditure');
       ?>
       <div class="container">
         <div class="row">
           <div class="col-sm-12">
-            <h1 class="border-bottom center pb-3 mb-4" style="text-align: center;">Add Hospital and Lab Service</h1>
+            <h1 class="border-bottom center pb-3 mb-4" style="text-align: center;">Add Operational Expenditure</h1>
           </div>
         </div>
 
@@ -71,26 +70,17 @@ if(isset($_POST ['submit']))
   <input type="text" class="form-control" name="reference_no" id="reference_no" placeholder="REFERENCE NO." required>
 </div>
 
-<!--NAME OF ORGANIZER-->
-<div class="col-md-6 mb-3">
-  <label class="form-label">NAME HOSPITAL OR LAB SERVICE:</label>
-  <input type="text" class="form-control" name="name" placeholder="NAME OF HASPIATL OR LAB" required>
-</div>
-
-<!--type-->
+<!--typeTYPE OF EXPENDITURE-->
      <div class="col-md-6 mb-3">
-     <label class="form-label">TYPE SERVICE:</label>
-      <select class="form-control" name="type">
-            <option value="" disabled selected>Choose type</option>
-            <option value="Hospital">Hospital</option>
-            <option value="Lab Service">Lab Service</option>
-      </select>
+     <label class="form-label">TYPE OF EXPENDITURE:</label>
+     <input type="text" class="form-control" name="type" placeholder="Type Expenditure" required>
+
      </div> 
 
-<!--GROSS INCOME GENERATED-->
+<!--VALUE-->
 <div class="col-md-6 mb-3">
-  <label class="form-label">GROSS INCOME GENERATED (RM):</label>
-  <input type="text" class="form-control" name="gross_income" placeholder="gross_income" required>
+  <label class="form-label">VALUE (RM):</label>
+  <input type="text" class="form-control" name="value" placeholder="Value" required>
 </div>
 
 <!--Link Evidence-->
@@ -107,7 +97,7 @@ if(isset($_POST ['submit']))
             <!--Button-->
           <div class="col-md-12 mb-3 text-center">
             <button type="submit" class="btn btn-primary" name="submit">ADD</button>
-            <a href="Hospital.php" class="btn btn-success">View Hospital and Lab Service Course</a>
+            <a href="OE.php" class="btn btn-success">View Operational Expenditure</a>
           </div>
             </div>
           </div>
