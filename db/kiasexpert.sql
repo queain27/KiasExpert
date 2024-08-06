@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 04, 2024 at 03:27 PM
+-- Generation Time: Aug 06, 2024 at 03:38 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -333,7 +333,8 @@ INSERT INTO `lect_form` (`id`, `name`, `staffid`, `password`, `image`) VALUES
 (3, 'HAMDANI BIN AHMAD ', '1274', '1274', 'user1.jpg'),
 (4, 'AMRAN BIN AYOB ', '992', '992', 'user.jpg'),
 (5, 'JALIL BIN OMAR', '958', '958', ''),
-(6, 'ROBERT', '11234', '11234', 'user1.jpg');
+(6, 'ROBERT', '11234', '11234', 'user1.jpg'),
+(7, 'ANIE BTE ATTAN', '992', '760702031234', 'IMG_20230107_003037.jpg');
 
 -- --------------------------------------------------------
 
@@ -348,6 +349,14 @@ CREATE TABLE `oe` (
   `link` varchar(255) NOT NULL,
   `remarks` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `oe`
+--
+
+INSERT INTO `oe` (`reference_no`, `type`, `value`, `link`, `remarks`) VALUES
+('KEW.PA-2  J28/BDC/H/15/1', 'Penggajian penyelidik / pengurusan penyelidikan (Tidak termasuk gaji staf akademik)', '10 000.00', 'HYPERLINK', '-'),
+('KEW.PA-2  J28/BDC/H/15/2', 'Pembelian peralatan penyelidikan (Buku, Bahan Guna Habis,dll) ', '10 000.00', 'HYPERLINK', 'no');
 
 -- --------------------------------------------------------
 
@@ -993,7 +1002,7 @@ ALTER TABLE `endownment`
 -- AUTO_INCREMENT for table `lect_form`
 --
 ALTER TABLE `lect_form`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `staff`
