@@ -871,16 +871,34 @@
             </thead>
             
             <tbody>
+            <?php
+            require_once "../examples/config.php"; // Ensure this path is correct
+
+           if (isset($_GET['delid'])) {
+           $id = mysqli_real_escape_string($conn, $_GET['delid']);
+           $query = "DELETE FROM research_grant WHERE project_id = '$id'";
+           $result = mysqli_query($conn, $query);
+
+           if ($result) {
+            echo "<script>alert('Record deleted successfully');</script>";
+            echo "<script>window.location.href='Research_Grant.php';</script>"; // Redirect to avoid resubmission
+           } else {
+           echo "<script>alert('Error deleting record');</script>";
+          }
+        } 
+       ?>
+
+
                 <tr>
                 <?php
-    require_once "../examples/config.php";
-    $query = "SELECT * FROM research_grant";
-    $count =1;
-    $result = mysqli_query($conn, $query);
+                require_once "../examples/config.php";
+                $query = "SELECT * FROM research_grant";
+                $count =1;
+                $result = mysqli_query($conn, $query);
 
-    if ($result) {
-        while ($row = mysqli_fetch_assoc($result)) {
-    ?>
+                if ($result) {
+                    while ($row = mysqli_fetch_assoc($result)) {
+                ?>
             <tr>
                 <td style="text-align: center"><?php echo $count;?></td>
                 <td style="text-align: center"><?php echo $row['project_id']; ?></td>
@@ -906,7 +924,18 @@
                 <td style="text-align: center"><a href="<?php echo $row['link_evidence']; ?>" target="_blank"><?php echo $row['link_evidence']; ?>
                 <td style="text-align: center"><?php echo $row['remarks']; ?></td>
                </a>
-       
+               <td style="text-align: center;">
+                    <a href="editresearchgrant.php?ID=<?php echo $row['project_id']; ?>" class="btn btn-primary btn-sm">
+                        <i class="fa-solid fa-pen-to-square fs-5 me-3"></i>
+                    </a>
+                    <a href="Research_Grant.php?delid=<?php echo urlencode($row['project_id']); ?>" 
+                    onClick="return confirm('Do you really want to remove this Record?');" 
+                    class="btn btn-danger btn-sm">
+                     <i class="fa-solid fa-trash fs-5 me-3"></i>
+               </a>
+
+
+                </td>
 
                 </td>
             </tr>

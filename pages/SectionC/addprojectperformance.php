@@ -51,7 +51,7 @@ if (isset($_POST['submit'])) {
             if ($insert_sql === false) {
                 die("Prepare failed: " . $conn->error);
             }
-            $insert_sql->bind_param('iisssssiiiissssssiiiss', 
+            $insert_sql->bind_param('iisssssssiissssssiiiss', 
                 $project_id, $staff_id, $staff_name, $faculty, $st, $staff_status, $research_title, 
                 $start_date, $end_date, $page_end, $duration_project, $status_project, $project_extension, 
                 $project_extend, $sponsor_cat, $sponsor, $grant_name, $amt_pledge, $amt_rec, $amt_spent, 

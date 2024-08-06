@@ -871,6 +871,23 @@
             <tbody>
                 <tr>
                 <?php
+            require_once "../examples/config.php"; // Ensure this path is correct
+
+           if (isset($_GET['delid'])) {
+           $id = mysqli_real_escape_string($conn, $_GET['delid']);
+           $query = "DELETE FROM research_project WHERE project_id = '$id'";
+           $result = mysqli_query($conn, $query);
+
+           if ($result) {
+            echo "<script>alert('Record deleted successfully');</script>";
+            echo "<script>window.location.href='Research_Project.php';</script>"; // Redirect to avoid resubmission
+           } else {
+           echo "<script>alert('Error deleting record');</script>";
+          }
+        } 
+       ?>
+
+                <?php
     require_once "../examples/config.php";
     $query = "SELECT * FROM research_project";
     $count =1;
@@ -904,7 +921,19 @@
                 <td style="text-align: center"><a href="<?php echo $row['link_evidence']; ?>" target="_blank"><?php echo $row['link_evidence']; ?>
                 <td style="text-align: center"><?php echo $row['remarks']; ?></td>
                </a>
-       
+               <td style="text-align: center;">
+                    <a href="editresearchproject.php?ID=<?php echo $row['project_id']; ?>" class="btn btn-primary btn-sm">
+                        <i class="fa-solid fa-pen-to-square fs-5 me-3"></i>
+                    </a>
+                    <a href="Research_Project.php?delid=<?php echo urlencode($row['project_id']); ?>" 
+                    onClick="return confirm('Do you really want to remove this Record?');" 
+                    class="btn btn-danger btn-sm">
+                     <i class="fa-solid fa-trash fs-5 me-3"></i>
+               </a>
+
+
+                </td>
+
 
                 </td>
             </tr>
