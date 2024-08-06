@@ -83,9 +83,9 @@ if (isset($_POST['submit'])) {
                     <input type="text" class="form-control" name="type" value="<?php echo $row['type']?>">
                 </div>
 
-                <!--GROSS INCOME GENERATE-->
+                <!--VALUE-->
                 <div class="col-md-6 mb-3">
-                    <label class="form-label">GROSS INCOME GENERATE (RM):</label>
+                    <label class="form-label">VALUE (RM):</label>
                     <input type="text" class="form-control" name="value" value="<?php echo $row['value']?>">
                 </div>
 
