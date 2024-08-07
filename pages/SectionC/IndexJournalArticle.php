@@ -823,7 +823,7 @@
 
            if (isset($_GET['delid'])) {
            $id = mysqli_real_escape_string($conn, $_GET['delid']);
-           $query = "DELETE FROM publication WHERE article_no = '$id'";
+           $query = "DELETE FROM index_journal WHERE article_no = '$id'";
            $result = mysqli_query($conn, $query);
 
            if ($result) {
@@ -838,7 +838,7 @@
 
             <?php
     require_once "../examples/config.php";
-    $query = "SELECT * FROM publication";
+    $query = "SELECT * FROM index_journal";
     $count =1;
     $result = mysqli_query($conn, $query);
 

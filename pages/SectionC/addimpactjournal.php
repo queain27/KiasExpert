@@ -32,19 +32,19 @@ if (isset($_POST['submit'])) {
 
     if ($check_staff_result->num_rows > 0) {
         // Staff is active, check for duplicates
-        $check_duplicate_sql = $conn->prepare("SELECT * FROM `publication` WHERE `article_no` = ?");
+        $check_duplicate_sql = $conn->prepare("SELECT * FROM `impact_journal` WHERE `article_no` = ?");
         $check_duplicate_sql->bind_param('s', $article_no);
         $check_duplicate_sql->execute();
         $check_duplicate_result = $check_duplicate_sql->get_result();
 
         if ($check_duplicate_result->num_rows == 0) {
             // No duplicates, proceed with the insertion
-            $sql = mysqli_query($conn, "INSERT INTO `publication` (`article_no`, `staff_id`, `staff_name`, `authors`, `industrial`, `international`, `national`, `document_title`, `source_title`, `document_type`, `volume`, `issue`, `page_start`, `page_end`, `year`, `issn_isbn`, `link_evidence`, `remarks`, `quartile1`, `quartile2`) 
+            $sql = mysqli_query($conn, "INSERT INTO `impact_journal` (`article_no`, `staff_id`, `staff_name`, `authors`, `industrial`, `international`, `national`, `document_title`, `source_title`, `document_type`, `volume`, `issue`, `page_start`, `page_end`, `year`, `issn_isbn`, `link_evidence`, `remarks`, `quartile1`, `quartile2`) 
       VALUES ('$article_no', '$staff_id', '$staff_name', '$authors', '$industrial', '$international', '$national', '$document_title', '$source_title', '$document_type', '$volume', '$issue', '$page_start', '$page_end', '$year', '$issn_isbn', '$link_evidence', '$remarks', '$quartile1','$quartile2')");
       
             if ($sql) {
                 echo "<script>alert('New record successfully added');</script>";
-                echo "<script>document.location='IndexJournalArticle.php';</script>";
+                echo "<script>document.location='ImpactJournal.php';</script>";
             } else {
                 echo "<script>alert('Failed to add new record');</script>";
             }
@@ -256,7 +256,7 @@ $(document).ready(function() {
           <!--Button-->
           <div class="col-md-12 mb-3 text-center">
             <button type="submit" class="btn btn-primary" name="submit">ADD</button>
-            <a href="IndexJournalArticle.php" class="btn btn-success">View Journal</a>
+            <a href="ImpactJournal.php" class="btn btn-success">View Journal</a>
           </div>
         </div>
       </form>

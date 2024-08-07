@@ -45,7 +45,7 @@ if (isset($_POST['submit'])) {
             }
         } else {
             // Duplicate entry found
-            echo "<script>alert('Duplicate entry found for the given Article Number');</script>";
+            echo "<script>alert('Duplicate entry found for the given StaffID');</script>";
         }
     } else {
         // Staff is not active
