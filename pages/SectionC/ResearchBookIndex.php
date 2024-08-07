@@ -855,10 +855,27 @@
                 <th style="text-align: center">ISBN</th>
                 <th style="text-align: center">Book Status</th>
                 <th style="text-align: center">Link Evidence</th>
-                <th style="text-align: center">Remarks</th>    
+                <th style="text-align: center">Remarks</th> 
+                <th style="text-align: center">Action</th>     
                 </tr>
             </thead>
             <tbody>
+            <?php
+            require_once "../examples/config.php"; // Ensure this path is correct
+
+           if (isset($_GET['delid'])) {
+           $id = mysqli_real_escape_string($conn, $_GET['delid']);
+           $query = "DELETE FROM book WHERE staff_id = '$id'";
+           $result = mysqli_query($conn, $query);
+
+           if ($result) {
+            echo "<script>alert('Record deleted successfully');</script>";
+            echo "<script>window.location.href='ResearchBookIndex.php';</script>"; // Redirect to avoid resubmission
+           } else {
+           echo "<script>alert('Error deleting record');</script>";
+          }
+        } 
+       ?>
             <?php
             require_once "../examples/config.php";
              $query = "SELECT * FROM book";
@@ -883,7 +900,19 @@
                 <td style="text-align: center"><a href="<?php echo $row['link_evidence']; ?>" target="_blank"><?php echo $row['link_evidence']; ?>
                 <td style="text-align: center"><?php echo $row['remarks']; ?></td>
                </a>
-          
+               <td style="text-align: center;">
+                    <a href="editbook.php?ID=<?php echo $row['staff_id']; ?>" class="btn btn-primary btn-sm">
+                        <i class="fa-solid fa-pen-to-square fs-5 me-3"></i>
+                    </a>
+                    <a href="ResearchBookIndex.php?delid=<?php echo urlencode($row['staff_id']); ?>" 
+                    onClick="return confirm('Do you really want to remove this Record?');" 
+                    class="btn btn-danger btn-sm">
+                     <i class="fa-solid fa-trash fs-5 me-3"></i>
+               </a>
+
+
+                </td>
+
 
                 </td>
             </tr>
@@ -914,7 +943,8 @@
                 <th style="text-align: center">ISBN</th>
                 <th style="text-align: center">Book Status</th>
                 <th style="text-align: center">Link Evidence</th>
-                <th style="text-align: center">Remarks</th>    
+                <th style="text-align: center">Remarks</th> 
+                <th style="text-align: center">Action</th> 
                 </tr>
             </tfoot>
         </table>

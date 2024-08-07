@@ -35,7 +35,7 @@ if (isset($_POST['submit'])) {
         if ($check_duplicate_result->num_rows == 0) {
             // No duplicates, proceed with the insertion
             $sql = mysqli_query($conn, "INSERT INTO `book` (`staff_id`, `staff_name`, `authors`, `industrial`, `international`, `national`, `book_title`, `book_editor`,`chapter_title`, `publisher`,`isbn`,`book_status`,`link_evidence`,`remarks`) 
-      VALUES ('$staff_id', '$staff_name', '$authors', '$industrial', '$international', '$national', '$book_title','$publisher',  '$isbn','$book_status','$book_editor','$chapter_title',   '$link_evidence', '$remarks')");
+      VALUES ('$staff_id', '$staff_name', '$authors', '$industrial', '$international', '$national', '$book_title','$book_editor','$chapter_title','$publisher','$isbn','$book_status','$link_evidence', '$remarks')");
       
             if ($sql) {
                 echo "<script>alert('New record successfully added');</script>";
@@ -202,8 +202,12 @@ $(document).ready(function() {
             <input type="text" class="form-control" name="isbn" placeholder="Isbn" required>
           </div>
           <div class="col-md-6 mb-3">
-            <label class="form-label">BOOK STATUS:</label>
-            <input type="text" class="form-control" name="book_status" placeholder="Book Status" required>
+            <label class="form-label">BOOK STATUS</label>
+            <select class="form-control" name="book_status" required>
+              <option value="" disabled selected>Choose</option>
+              <option value="INDEX">INDEX</option>
+              <option value="NO INDEX">NO INDEX</option>
+            </select>
           </div>
       
           <div class="col-md-6 mb-3">
