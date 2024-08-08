@@ -22,49 +22,61 @@ if(isset($_POST ['submit']))
   $issn_isbn= $_POST['issn_isbn'];
   $link_evidence = $_POST['link_evidence'];
   $remarks = $_POST['remarks'];
- // Prepare the SQL statement
-$stmt = $conn->prepare("UPDATE index_journal SET 
+  $quartile1 = $_POST['quartile1'];  
+  $quartile2 = $_POST['quartile2'];
+
+// Prepare the SQL statement
+$stmt = $conn->prepare("UPDATE impact_journal SET 
 article_no = ?, 
 staff_id = ?, 
 staff_name = ?, 
-authors = ?, 
-industrial = ?, 
+authors = ?,
+industrial = ?,  
 international = ?, 
 national = ?, 
 document_title = ?, 
-source_title = ?, 
-document_type = ?, 
-volume = ?, 
-issue = ?, 
-page_start = ?, 
-page_end = ?, 
+source_title = ?,
+document_type = ?,
+volume = ?,
+issue = ?,
+page_start = ?,
+page_end = ?,
 year = ?, 
 issn_isbn = ?, 
 link_evidence = ?, 
-remarks = ? 
+remarks = ?, 
+quartile1 = ?,
+quartile2 = ?
 WHERE article_no = ?");
 
+// Check if the statement preparation was successful
+if (!$stmt) {
+die('Prepare failed: ' . htmlspecialchars($conn->error));
+}
+
 // Bind the parameters
-$stmt->bind_param(
-"iisssssssssiiiiissi", 
+// Assuming all fields are strings except for the `staff_id` which is an integer
+$stmt->bind_param("iissssssssssiiiissssi", 
 $article_no, 
-$staff_id, 
+$staff_id , 
 $staff_name, 
-$authors, 
-$industrial, 
+$authors,
+$industrial,  
 $international, 
 $national, 
 $document_title, 
-$source_title, 
-$document_type, 
-$volume, 
-$issue, 
-$page_start, 
-$page_end, 
+$source_title,
+$document_type,
+$volume,
+$issue,
+$page_start,
+$page_end,
 $year, 
 $issn_isbn, 
 $link_evidence, 
-$remarks, 
+$remarks,  
+$quartile1,
+$quartile2,
 $article_no
 );
 
@@ -72,7 +84,7 @@ $article_no
 
     if($stmt->execute()) {
         echo "<script>alert('New record successfully updated');</script>";
-        echo "<script>document.location='IndexJournalArticle.php';</script>";
+        echo "<script>document.location='ImpactJournal.php';</script>";
     } else {
         echo "<script>alert('Something went wrong');</script>";
     }
@@ -86,7 +98,7 @@ $article_no
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Update Journal Information</title>
+    <title>Update Impact Journal Information</title>
     <style>
         body {
             background-repeat:            no-repeat;
@@ -111,7 +123,7 @@ $article_no
 
        
         <?php 
-        $sql = "SELECT * FROM `index_journal` WHERE article_no= $article_no LIMIT 1";
+        $sql = "SELECT * FROM `impact_journal` WHERE article_no= $article_no LIMIT 1";
         $result = mysqli_query($conn, $sql);
         $row = mysqli_fetch_assoc($result);
         ?>
@@ -220,11 +232,20 @@ $article_no
                     <div class="col-md-6 mb-3">
                         <label class="form-label">REMARKS:</label>
                         <input type="text" class="form-control" name="remarks" value="<?php echo $row['remarks']?>">
-                    </div>         
+                    </div>      
+                      <!-- Remarks -->
+                      <div class="col-md-6 mb-3">
+                        <label class="form-label">QUARTILE 1:</label>
+                        <input type="text" class="form-control" name="quartile1" value="<?php echo $row['quartile1']?>">
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">QUARTILE 2:</label>
+                        <input type="text" class="form-control" name="quartile2" value="<?php echo $row['quartile2']?>">
+                    </div>                
                <div>
                <center>
                        <button type ="submit" class="btn btn-success" name="submit">UPDATE</button>
-                       <a href="IndexJournalArticle.php" class="btn btn-danger">Cancel</a>
+                       <a href="ImpactJournal.php" class="btn btn-danger">Cancel</a>
               </div>
                  </center>
           </form>

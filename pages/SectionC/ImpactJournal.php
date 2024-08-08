@@ -922,7 +922,7 @@
                 <td style="text-align: center"><?php echo $row['quartile1']; ?></td>
                 <td style="text-align: center"><?php echo $row['quartile2']; ?></td>
                 <td style="text-align: center;">
-                    <a href="editbook.php?ID=<?php echo $row['staff_id']; ?>" class="btn btn-primary btn-sm">
+                    <a href="editimpactjournal.php?ID=<?php echo $row['article_no']; ?>" class="btn btn-primary btn-sm">
                         <i class="fa-solid fa-pen-to-square fs-5 me-3"></i>
                     </a>
                     <a href="ImpactJournal.php?delid=<?php echo urlencode($row['article_no']); ?>" 

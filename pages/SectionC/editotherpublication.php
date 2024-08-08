@@ -1,19 +1,15 @@
 <?php
 include "../examples/config.php";
-$article_no =$_GET['ID'];
+$staff_id =$_GET['ID'];
 
 if(isset($_POST ['submit']))
 { 
-  $article_no = $_POST['article_no'];
+
   $staff_id = $_POST['staff_id'];
   $staff_name = $_POST['staff_name'];
-  $authors = $_POST['authors'];
-  $industrial= $_POST['industrial'];
-  $international = $_POST['international'];
-  $national = $_POST['national'];
+  $document_type= $_POST['document_type'];
   $document_title = $_POST['document_title'];
   $source_title= $_POST['source_title'];
-  $document_type= $_POST['document_type'];
   $volume= $_POST['volume'];
   $issue = $_POST['issue'];
   $page_start = $_POST['page_start'];
@@ -23,17 +19,11 @@ if(isset($_POST ['submit']))
   $link_evidence = $_POST['link_evidence'];
   $remarks = $_POST['remarks'];
  // Prepare the SQL statement
-$stmt = $conn->prepare("UPDATE index_journal SET 
-article_no = ?, 
+$stmt = $conn->prepare("UPDATE other_publication SET 
 staff_id = ?, 
 staff_name = ?, 
-authors = ?, 
-industrial = ?, 
-international = ?, 
-national = ?, 
-document_title = ?, 
-source_title = ?, 
 document_type = ?, 
+document_title = ?, 
 volume = ?, 
 issue = ?, 
 page_start = ?, 
@@ -46,17 +36,11 @@ WHERE article_no = ?");
 
 // Bind the parameters
 $stmt->bind_param(
-"iisssssssssiiiiissi", 
-$article_no, 
+"issssssiiiissi", 
 $staff_id, 
 $staff_name, 
-$authors, 
-$industrial, 
-$international, 
-$national, 
-$document_title, 
-$source_title, 
 $document_type, 
+$document_title, 
 $volume, 
 $issue, 
 $page_start, 
@@ -72,7 +56,7 @@ $article_no
 
     if($stmt->execute()) {
         echo "<script>alert('New record successfully updated');</script>";
-        echo "<script>document.location='IndexJournalArticle.php';</script>";
+        echo "<script>document.location='PublicationOtherJournal.php';</script>";
     } else {
         echo "<script>alert('Something went wrong');</script>";
     }
@@ -111,7 +95,7 @@ $article_no
 
        
         <?php 
-        $sql = "SELECT * FROM `index_journal` WHERE article_no= $article_no LIMIT 1";
+        $sql = "SELECT * FROM `other_publication` WHERE staff_id= $staff_id LIMIT 1";
         $result = mysqli_query($conn, $sql);
         $row = mysqli_fetch_assoc($result);
         ?>
@@ -119,11 +103,7 @@ $article_no
         <div class="container d-flex justify-content-center">
             <form action="" method="post" style="width:50vw; min-width:300px;">
                 <div class="row">
-                        <!-- Staff ID -->
-                        <div class="col-md-6 mb-3">
-                        <label class="form-label">ARTICLE NO:</label>
-                        <input type="text" class="form-control" name="article_no" value="<?php echo $row['article_no']?>" readonly>
-                    </div>
+                   
                   
                     <!-- Staff ID -->
                     <div class="col-md-6 mb-3">
@@ -137,40 +117,18 @@ $article_no
                         <input type="text" class="form-control" name="staff_name" value="<?php echo $row['staff_name']?>" readonly>
                     </div>
 
-                 <!-- Name -->
-                 <div class="col-md-6 mb-3">
-                        <label class="form-label">AUTHORS:</label>
-                        <input type="text" class="form-control" name="authors" value="<?php echo $row['authors']?>">
-                    </div>
-
-
-                    <div class="col-md-6 mb-3">
-                    <label class="form-label">INDUSTRIAL:</label>
-                    <select class="form-control" name="industrial" required>
+            
+          <div class="col-md-6 mb-3">
+                    <label class="form-label">DOCUMENT TYPE:</label>
+                    <select class="form-control" name="document_type" required>
                             <option value="" disabled selected>Choose</option>
-                            <option value="Y" <?php if ($row['industrial'] == 'Y') echo 'selected'; ?>>YES</option>
-                            <option value="N" <?php if ($row['industrial'] == 'N') echo 'selected'; ?>>NO</option>
+                            <option value="OTHER JOURNALS" <?php if ($row['document_type'] == 'OTHER JOURNALS') echo 'selected'; ?>>OTHER JOURNALS</option>
+                            <option value="ARTICLES IN MAGAZINES" <?php if ($row['document_type'] == 'ARTICLES IN MAGAZINES') echo 'selected'; ?>>ARTICLES IN MAGAZINES</option>
+                            <option value="NEWESLETTERS" <?php if ($row['document_type'] == 'NEWESLETTERS') echo 'selected'; ?>>NEWESLETTERS</option>
+                            <option value="ORIGINAL WRITINGS AND PUBLICATION FROM CONFERENCES,DIGITAL OR PRINT MEDIA" <?php if ($row['document_type'] == 'ORIGINAL WRITINGS AND PUBLICATION FROM CONFERENCES,DIGITAL OR PRINT MEDIA') echo 'selected'; ?>>ORIGINAL WRITINGS AND PUBLICATION FROM CONFERENCES,DIGITAL OR PRINT MEDIA</option>
+                            
                     </select>
                     </div>
-
-                 
-                    <div class="col-md-6 mb-3">
-                    <label class="form-label">INTERNATIONAL:</label>
-                    <select class="form-control" name="international" required>
-                            <option value="" disabled selected>Choose</option>
-                            <option value="Y" <?php if ($row['international'] == 'Y') echo 'selected'; ?>>YES</option>
-                            <option value="N" <?php if ($row['international'] == 'N') echo 'selected'; ?>>NO</option>
-                    </select>
-                    </div>
-                    <div class="col-md-6 mb-3">
-                    <label class="form-label">NATIONAL:</label>
-                    <select class="form-control" name="national" required>
-                            <option value="" disabled selected>Choose</option>
-                            <option value="Y" <?php if ($row['national'] == 'Y') echo 'selected'; ?>>YES</option>
-                            <option value="N" <?php if ($row['national'] == 'N') echo 'selected'; ?>>NO</option>
-                    </select>
-                    </div>
-
                     <!-- Academic Qualification -->
                     <div class="col-md-6 mb-3">
                         <label class="form-label">DOCUMENT TITLE:</label>
@@ -182,10 +140,7 @@ $article_no
                         <label class="form-label">SOURCE TITLE:</label>
                         <input type="text" class="form-control" name="source_title" value="<?php echo $row['source_title']?>">
                     </div>
-                    <div class="col-md-6 mb-3">
-                        <label class="form-label">DOCUMENT TYPE:</label>
-                        <input type="text" class="form-control" name="document_type" value="<?php echo $row['document_type']?>">
-                    </div>
+                
 
                     <!-- Registration Number for Professional Membership -->
                     <div class="col-md-6 mb-3">
@@ -224,7 +179,7 @@ $article_no
                <div>
                <center>
                        <button type ="submit" class="btn btn-success" name="submit">UPDATE</button>
-                       <a href="IndexJournalArticle.php" class="btn btn-danger">Cancel</a>
+                       <a href="PublicationOtherJournal.php" class="btn btn-danger">Cancel</a>
               </div>
                  </center>
           </form>

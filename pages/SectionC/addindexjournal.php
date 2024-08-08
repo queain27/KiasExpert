@@ -20,8 +20,7 @@ if (isset($_POST['submit'])) {
     $issn_isbn = $_POST['issn_isbn'];
     $link_evidence = $_POST['link_evidence'];
     $remarks = $_POST['remarks'];
-    $quartile1 = $_POST['quartile1'];
-    $quartile2 = $_POST['quartile2'];
+    
 
 
     // Check if staff_id is active
@@ -32,19 +31,19 @@ if (isset($_POST['submit'])) {
 
     if ($check_staff_result->num_rows > 0) {
         // Staff is active, check for duplicates
-        $check_duplicate_sql = $conn->prepare("SELECT * FROM `impact_journal` WHERE `article_no` = ?");
+        $check_duplicate_sql = $conn->prepare("SELECT * FROM `index_journal` WHERE `article_no` = ?");
         $check_duplicate_sql->bind_param('s', $article_no);
         $check_duplicate_sql->execute();
         $check_duplicate_result = $check_duplicate_sql->get_result();
 
         if ($check_duplicate_result->num_rows == 0) {
             // No duplicates, proceed with the insertion
-            $sql = mysqli_query($conn, "INSERT INTO `impact_journal` (`article_no`, `staff_id`, `staff_name`, `authors`, `industrial`, `international`, `national`, `document_title`, `source_title`, `document_type`, `volume`, `issue`, `page_start`, `page_end`, `year`, `issn_isbn`, `link_evidence`, `remarks`, `quartile1`, `quartile2`) 
-      VALUES ('$article_no', '$staff_id', '$staff_name', '$authors', '$industrial', '$international', '$national', '$document_title', '$source_title', '$document_type', '$volume', '$issue', '$page_start', '$page_end', '$year', '$issn_isbn', '$link_evidence', '$remarks', '$quartile1','$quartile2')");
+            $sql = mysqli_query($conn, "INSERT INTO `index_journal` (`article_no`, `staff_id`, `staff_name`, `authors`, `industrial`, `international`, `national`, `document_title`, `source_title`, `document_type`, `volume`, `issue`, `page_start`, `page_end`, `year`, `issn_isbn`, `link_evidence`, `remarks`) 
+      VALUES ('$article_no', '$staff_id', '$staff_name', '$authors', '$industrial', '$international', '$national', '$document_title', '$source_title', '$document_type', '$volume', '$issue', '$page_start', '$page_end', '$year', '$issn_isbn', '$link_evidence', '$remarks')");
       
             if ($sql) {
                 echo "<script>alert('New record successfully added');</script>";
-                echo "<script>document.location='ImpactJournal.php';</script>";
+                echo "<script>document.location='IndexJournalArticle.php';</script>";
             } else {
                 echo "<script>alert('Failed to add new record');</script>";
             }
@@ -69,7 +68,7 @@ if (isset($_POST['submit'])) {
 <html lang="en" dir="ltr">
 <head>
   <meta charset="utf-8">
-  <title>Add New Impact Journal</title>
+  <title>Add New Journal</title>
   <link rel="stylesheet" href="../../bootstrap/css/bootstrap.min.css">
   <script src="../../bootstrap/js/jquery.min.js"></script>
   <script src="../../bootstrap/js/bootstrap.min.js"></script>
@@ -136,7 +135,7 @@ $(document).ready(function() {
     <div class="container">
       <div class="row">
         <div class="col-sm-12">
-          <h1 class="border-bottom text-center pb-3 mb-4">Add New Impact Journal</h1>
+          <h1 class="border-bottom text-center pb-3 mb-4">Add New Index Journal</h1>
         </div>
       </div>
       <form action="" method="post">
@@ -245,18 +244,10 @@ $(document).ready(function() {
             <input type="text" class="form-control" name="remarks" placeholder="Remarks" required>
           </div>
       
-            <div class="col-md-6 mb-3">
-            <label class="form-label">QUARTILE 1:</label>
-            <input type="text" class="form-control" name="quartile1" placeholder="Quartile 1" required>
-          </div>
-          <div class="col-md-6 mb-3">
-            <label class="form-label">QUARTILE 2:</label>
-            <input type="text" class="form-control" name="quartile2" placeholder="Quartile 2" required>
-          </div>
           <!--Button-->
           <div class="col-md-12 mb-3 text-center">
             <button type="submit" class="btn btn-primary" name="submit">ADD</button>
-            <a href="ImpactJournal.php" class="btn btn-success">View Journal</a>
+            <a href="IndexOtherJournalArticle.php" class="btn btn-success">View Index Journal</a>
           </div>
         </div>
       </form>

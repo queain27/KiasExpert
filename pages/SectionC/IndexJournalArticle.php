@@ -788,7 +788,7 @@
 <br><br>  
 <div class="container pt-50">
 <div class="text-right mb-3">
-        <a href="../sectionC/addjournal.php" class="btn btn-success">+Add New Journal</a>
+        <a href="../sectionC/addindexjournal.php" class="btn btn-success">+Add New Index Journal</a>
       </div>
     <div class="table-responsive">
         <table id="example" class="table table-striped" style="width:250%">

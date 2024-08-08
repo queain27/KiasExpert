@@ -23,7 +23,7 @@ if(isset($_POST ['submit']))
   $link_evidence = $_POST['link_evidence'];
   $remarks = $_POST['remarks'];
  // Prepare the SQL statement
-$stmt = $conn->prepare("UPDATE index_journal SET 
+$stmt = $conn->prepare("UPDATE other_journal SET 
 article_no = ?, 
 staff_id = ?, 
 staff_name = ?, 
@@ -46,7 +46,7 @@ WHERE article_no = ?");
 
 // Bind the parameters
 $stmt->bind_param(
-"iisssssssssiiiiissi", 
+"iissssssssssiiiissi", 
 $article_no, 
 $staff_id, 
 $staff_name, 
@@ -72,7 +72,7 @@ $article_no
 
     if($stmt->execute()) {
         echo "<script>alert('New record successfully updated');</script>";
-        echo "<script>document.location='IndexJournalArticle.php';</script>";
+        echo "<script>document.location='PublicationOtherJournal.php';</script>";
     } else {
         echo "<script>alert('Something went wrong');</script>";
     }
@@ -111,7 +111,7 @@ $article_no
 
        
         <?php 
-        $sql = "SELECT * FROM `index_journal` WHERE article_no= $article_no LIMIT 1";
+        $sql = "SELECT * FROM `other_journal` WHERE article_no= $article_no LIMIT 1";
         $result = mysqli_query($conn, $sql);
         $row = mysqli_fetch_assoc($result);
         ?>
@@ -224,7 +224,7 @@ $article_no
                <div>
                <center>
                        <button type ="submit" class="btn btn-success" name="submit">UPDATE</button>
-                       <a href="IndexJournalArticle.php" class="btn btn-danger">Cancel</a>
+                       <a href="PublicationOtherJournal.php" class="btn btn-danger">Cancel</a>
               </div>
                  </center>
           </form>

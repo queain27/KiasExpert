@@ -5,60 +5,57 @@ if (isset($_POST['submit'])) {
     $staff_id = $_POST['staff_id'];
     $staff_name = $_POST['staff_name'];
     $document_type = $_POST['document_type'];
-    $document_title= $_POST['document_title'];
-    $staff_status = $_POST['staff_status'];
+    $document_title = $_POST['document_title'];
     $source_title = $_POST['source_title'];
     $volume = $_POST['volume'];
     $issue = $_POST['issue'];
     $page_start = $_POST['page_start'];
     $page_end = $_POST['page_end'];
     $year = $_POST['year'];
-    $issn_isbn= $_POST['issn_isbn'];
+    $issn_isbn = $_POST['issn_isbn'];
     $link_evidence = $_POST['link_evidence'];
     $remarks = $_POST['remarks'];
 
     // Check if staff_id is active
     $check_staff_sql = $conn->prepare("SELECT * FROM `staff` WHERE `staff_id` = ? AND `status` = 'active'");
     if ($check_staff_sql === false) {
-        die("Prepare failed: " . $conn->error);
+        die("Prepare failed: " . htmlspecialchars($conn->error));
     }
-    $check_staff_sql->bind_param('s', $staff_id);
+    $check_staff_sql->bind_param('i', $staff_id);
     $check_staff_sql->execute();
     $check_staff_result = $check_staff_sql->get_result();
 
     if ($check_staff_result->num_rows > 0) {
         // Staff is active, check for duplicates
-        $check_duplicate_sql = $conn->prepare("SELECT * FROM `other_publication` WHERE `project_id` = ?");
+        $check_duplicate_sql = $conn->prepare("SELECT * FROM `other_publication` WHERE `staff_id` = ? AND `document_title` = ?");
         if ($check_duplicate_sql === false) {
-            die("Prepare failed: " . $conn->error);
+            die("Prepare failed: " . htmlspecialchars($conn->error));
         }
-        $check_duplicate_sql->bind_param('i', $project_id);
+        $check_duplicate_sql->bind_param('is', $staff_id, $document_title);
         $check_duplicate_sql->execute();
         $check_duplicate_result = $check_duplicate_sql->get_result();
 
         if ($check_duplicate_result->num_rows == 0) {
             // No duplicates, proceed with the insertion
-            $insert_sql = $conn->prepare("INSERT INTO `other_publication` ( `staff_id`, `staff_name`, `document_type`, `document_title`,`source_title`, `volume`, `page_start`, `page_end`, `year`, `issn_isbn`,`link_evidence`, `remarks`) 
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+            $insert_sql = $conn->prepare("INSERT INTO `other_publication` (`staff_id`, `staff_name`, `document_type`, `document_title`, `source_title`, `volume`, `issue`, `page_start`, `page_end`, `year`, `issn_isbn`, `link_evidence`, `remarks`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
             if ($insert_sql === false) {
-                die("Prepare failed: " . $conn->error);
+                die("Prepare failed: " . htmlspecialchars($conn->error));
             }
-            $insert_sql->bind_param('issssssiiiiss', 
-                $staff_id, $staff_name, $document_type, $source_title, $volume, $page_start, 
-               $page_end, $year, $issn_isbn,
-                $link_evidence, $remarks
+            $insert_sql->bind_param(
+                'issssssiiisss',
+                $staff_id, $staff_name, $document_type, $document_title, $source_title, $volume, $issue, $page_start, $page_end, $year, $issn_isbn, $link_evidence, $remarks
             );
 
             if ($insert_sql->execute()) {
                 echo "<script>alert('New record successfully added');</script>";
                 echo "<script>document.location='OtherPub.php';</script>";
             } else {
-                echo "<script>alert('Failed to add new record: " . $conn->error . "');</script>";
+                echo "<script>alert('Failed to add new record: " . htmlspecialchars($insert_sql->error) . "');</script>";
             }
             $insert_sql->close();
         } else {
             // Duplicate entry found
-            echo "<script>alert('Duplicate entry found for the given Project ID');</script>";
+            echo "<script>alert('Duplicate entry found for the given document title');</script>";
         }
         $check_duplicate_sql->close();
     } else {
@@ -71,6 +68,7 @@ if (isset($_POST['submit'])) {
     $conn->close();
 }
 ?>
+
 
 
 
@@ -163,7 +161,7 @@ $(document).ready(function() {
             <input type="text" class="form-control" name="staff_name" placeholder="Staff Name" readonly required>
           </div>
       
-        <
+    
           <div class="col-md-6 mb-3">
             <label class="form-label">DOCUMENT TYPE:</label>
             <select class="form-control" name="document_type" required>
@@ -175,7 +173,7 @@ $(document).ready(function() {
 
             </select>
           </div>
-     =
+
           <div class="col-md-6 mb-3">
             <label class="form-label">DOCUMENT  TITLE:</label>
             <input type="text" class="form-control" name="document_title" placeholder="Document Title" required>
@@ -207,7 +205,6 @@ $(document).ready(function() {
             <input type="text" class="form-control" name="year" placeholder="year" required>
           </div>
         
-         
 
           <div class="col-md-6 mb-3">
             <label class="form-label">ISSN/ISBN:</label>
@@ -228,7 +225,7 @@ $(document).ready(function() {
           <!--Button-->
           <div class="col-md-12 mb-3 text-center">
             <button type="submit" class="btn btn-primary" name="submit">ADD</button>
-            <a href="OtherPub.php" class="btn btn-success">View Research Grant</a>
+            <a href="OtherPub.php" class="btn btn-success">View Other Publication</a>
           </div>
         </div>
       </form>
