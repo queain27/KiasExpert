@@ -24,6 +24,7 @@ staff_id = ?,
 staff_name = ?, 
 document_type = ?, 
 document_title = ?, 
+source_title =?,
 volume = ?, 
 issue = ?, 
 page_start = ?, 
@@ -32,24 +33,24 @@ year = ?,
 issn_isbn = ?, 
 link_evidence = ?, 
 remarks = ? 
-WHERE article_no = ?");
+WHERE staff_id= ?");
 
 // Bind the parameters
-$stmt->bind_param(
-"issssssiiiissi", 
-$staff_id, 
-$staff_name, 
-$document_type, 
-$document_title, 
-$volume, 
-$issue, 
-$page_start, 
-$page_end, 
-$year, 
-$issn_isbn, 
-$link_evidence, 
-$remarks, 
-$article_no
+$stmt->bind_param("issssssiiiissi",
+$staff_id,
+$staff_name,
+$document_type,
+$document_title,
+$source_title,
+$volume,
+$issue,
+$page_start,
+$page_end,
+$year,
+$issn_isbn,
+$link_evidence,
+$remarks,
+$staff_id
 );
 
 
