@@ -47,8 +47,6 @@ if (isset($_POST['submit'])) {
 <link rel="stylesheet" href="../../css/navbar.css">
 <link rel="shortcut icon" href="../../images/Logo2.png" type="image/x-icon">
 </head>
-
-
 <body>
 <div class="container">
     <div class="text-center mb-4">
