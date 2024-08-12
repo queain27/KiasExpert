@@ -100,17 +100,20 @@ $(document).ready(function() {
     }
 });
 </script>
-</head>
-<body>
-<div class="container-fluid">
-  <div class="container">
+</head>  <div class="container-fluid">
     <div class="container">
-      <div class="row">
-        <div class="col-sm-12">
-          <h1 class="border-bottom text-center pb-3 mb-4">Add New patent</h1>
+      <?php
+        require "../header.php";
+        createHeader('fa fa-briefcase', 'Add New Patent Grant', 'Add Patent Grant');
+      ?>
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12">
+            <h1 class="border-bottom center pb-3 mb-4" style="text-align: center;">Add Patent Grant</h1>
+          </div>
         </div>
-      </div>
-      <form action="" method="post">
+
+        <form action=" " method="post">
         <div class="row">
           <!--Patent ID-->
           <div class="col-md-6 mb-3">
@@ -183,11 +186,14 @@ $(document).ready(function() {
           <div class="col-md-12 mb-3 text-center">
             <button type="submit" class="btn btn-primary" name="submit">ADD</button>
             <a href="Patent.php" class="btn btn-success">View Patent Granted</a>
+            </div>
+            </div>
           </div>
-        </div>
-      </form>
+        </form>
+      </div>
     </div>
   </div>
-</div>
+
 </body>
 </html>
+

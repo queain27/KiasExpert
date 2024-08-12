@@ -851,16 +851,7 @@
             <td></td>
             <td></td>
         </tr>
-
     </tbody>
-    <!-- <tfoot>
-        <tr>
-            <th></th>
-            <th>Faculty/Institute</th>
-            <th>Laboratory</th>
-            <th>Reference No.|Vot No.</th>
-            <th>Gross Income Generated</th>
-        </tr> -->
             </tfoot>
         </table>
     </div>

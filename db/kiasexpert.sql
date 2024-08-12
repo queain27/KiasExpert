@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 04, 2024 at 05:40 AM
+-- Generation Time: Aug 06, 2024 at 03:38 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -70,7 +70,7 @@ CREATE TABLE `awarding` (
 
 INSERT INTO `awarding` (`staff_id`, `staff_name`, `faculty`, `name_awd`, `type`, `level`, `conferring`, `title_invention`, `event`, `date`, `link_award`) VALUES
 (1067, 'AMRAN BIN AYOB                          ', 'J24-FAKULTI KEJURUTERAAN MEKANIKAL ', 'dfgh', 'award', 'University', 'aas', 'sdfg', 'sdfg', '2024-07-26', 'as'),
-(1274, 'HAMDANI BIN AHMAD                       ', 'J46-FAKULTI KEJURUTERAAN KIMIA DAN KEJURUTERAAN TENAGA', 'dfgh', 'award', 'National', 'aas', 'sdfg', 'sdfg', '2024-07-25', 'dfvgbn');
+(1274, 'HAMDANI BIN AHMAD                       ', 'Dakwah & Pembangunan Insan', 'dfgh', 'award', 'National', 'aas', 'sdfg', 'sdfg', '2024-07-25', 'dfvgbn');
 
 -- --------------------------------------------------------
 
@@ -211,6 +211,32 @@ INSERT INTO `endownment` (`id`, `name_contributor`, `detail`, `type`, `inc_divid
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `gift`
+--
+
+CREATE TABLE `gift` (
+  `reference_no` varchar(255) NOT NULL,
+  `faculty` varchar(255) NOT NULL,
+  `gift` varchar(255) NOT NULL,
+  `donor` varchar(255) NOT NULL,
+  `type` varchar(255) NOT NULL,
+  `date_receive` date NOT NULL,
+  `value` varchar(255) NOT NULL,
+  `link` varchar(255) NOT NULL,
+  `remarks` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `gift`
+--
+
+INSERT INTO `gift` (`reference_no`, `faculty`, `gift`, `donor`, `type`, `date_receive`, `value`, `link`, `remarks`) VALUES
+('kew10/2018', 'Pengurusan Al-Syariah', 'Bahan Kimia', 'Sykt ABC Sdn Bhd', 'Equipment', '2018-01-01', '200000.00', 'HYPERLINK', 'no'),
+('KEW18/2018', 'Dakwah & Pembangunan Insan', 'Keynote speaker ', 'NUS', 'Etc', '2018-08-06', '10000.00', 'HYPERLINK', '-');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `hosp_lab`
 --
 
@@ -229,6 +255,7 @@ CREATE TABLE `hosp_lab` (
 
 INSERT INTO `hosp_lab` (`reference_no`, `name`, `type`, `gross_income`, `link`, `remarks`) VALUES
 ('INV00100', 'Clinical Services', 'Hospital', '25000', 'HYPERLINK', 'no'),
+('kew10/2018', 'Clinical Services', 'Hospital', '1,007.00', 'HYPERLINK', 'no'),
 ('RJ201601089736', 'INSTITUT BAHAN KIMIA', 'Lab Service', '6260.00', 'HYPERLINK', 'No');
 
 -- --------------------------------------------------------
@@ -306,7 +333,30 @@ INSERT INTO `lect_form` (`id`, `name`, `staffid`, `password`, `image`) VALUES
 (3, 'HAMDANI BIN AHMAD ', '1274', '1274', 'user1.jpg'),
 (4, 'AMRAN BIN AYOB ', '992', '992', 'user.jpg'),
 (5, 'JALIL BIN OMAR', '958', '958', ''),
-(6, 'ROBERT', '11234', '11234', 'user1.jpg');
+(6, 'ROBERT', '11234', '11234', 'user1.jpg'),
+(7, 'ANIE BTE ATTAN', '992', '760702031234', 'IMG_20230107_003037.jpg');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `oe`
+--
+
+CREATE TABLE `oe` (
+  `reference_no` varchar(255) NOT NULL,
+  `type` varchar(255) NOT NULL,
+  `value` varchar(255) NOT NULL,
+  `link` varchar(255) NOT NULL,
+  `remarks` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `oe`
+--
+
+INSERT INTO `oe` (`reference_no`, `type`, `value`, `link`, `remarks`) VALUES
+('KEW.PA-2  J28/BDC/H/15/1', 'Penggajian penyelidik / pengurusan penyelidikan (Tidak termasuk gaji staf akademik)', '10 000.00', 'HYPERLINK', '-'),
+('KEW.PA-2  J28/BDC/H/15/2', 'Pembelian peralatan penyelidikan (Buku, Bahan Guna Habis,dll) ', '10 000.00', 'HYPERLINK', 'no');
 
 -- --------------------------------------------------------
 
@@ -819,6 +869,12 @@ ALTER TABLE `endownment`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `gift`
+--
+ALTER TABLE `gift`
+  ADD PRIMARY KEY (`reference_no`);
+
+--
 -- Indexes for table `hosp_lab`
 --
 ALTER TABLE `hosp_lab`
@@ -841,6 +897,12 @@ ALTER TABLE `know_licen`
 --
 ALTER TABLE `lect_form`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `oe`
+--
+ALTER TABLE `oe`
+  ADD PRIMARY KEY (`reference_no`);
 
 --
 -- Indexes for table `patent`
@@ -940,7 +1002,7 @@ ALTER TABLE `endownment`
 -- AUTO_INCREMENT for table `lect_form`
 --
 ALTER TABLE `lect_form`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `staff`

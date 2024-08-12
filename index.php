@@ -1,31 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- <meta charset="UTF-8"> -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">  
     <title>Kias experts</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Lugrasimo&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Sedan&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <!-- <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet"> -->
-  <style>
-    .dropdown-menu a {
-      color: black; /* Ensuring that the text is visible */
-    }
-  </style>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
     <link rel="shortcut icon" href="images/Logo2.png" type="image/x-icon">
     <link rel="stylesheet" href="style.css">
-
 </head>
 <body>
 <section class="header">
     <nav>
-        <a href="landing.html"><img src="images/Logo2.1.png"></a>
+        <a href="landing.html"><img src="images/Logo2.1.png" alt="Logo"></a>
         <div class="nav-link" id="navLinks">
            <i class="fa fa-times" aria-hidden="true" onclick="hideMenu()"></i>
          <ul class="nav">
@@ -33,99 +24,82 @@
               <li class="nav-item dropdown">
                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">LOGIN </a>
                   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                 <a class="dropdown-item" href="pages/examples/login.php">Admin</a><br>
-                 <a class="dropdown-item" href="pages/Lecture/Auth/login.php">Lecturer</a>
-      </div>
-    </li>
-  </ul>
-            </li>        
-            </ul>
+                     <a class="dropdown-item" href="pages/examples/login.php">Admin</a><br>
+                     <a class="dropdown-item" href="pages/Lecture/Auth/login.php">Lecturer</a>
+                  </div>
+              </li>
+          </ul>
         </div>
         <i class="fa fa-bars" aria-hidden="true" onclick="showMenu()"></i>
     </nav> 
     <div class="text-box">
-    <h1>Kolej University Islam Antarabangsa Sultan Ismail Petra (KIAS)</h1>
-    <h1></h1>
-    <p>Kias Experts System is a database developed to record, organize, and analyze data for MyRA and SETARA audits. 
-        <br>The literature review analyzes the types of data required by MyRA and SETARA based on the parts that have been defined.
-    </p>
-
-    <a href="#" class="hero-btn">Visit Us To Know More</a><br><br>
-    <div class="container">
-    <!-- <form method="get" target="_blank" class="search-bar" action="expert_search.php" id="searchType">    -->
-    <form action="https://www.google.com/search" method="get" class="search-bar">
-    <div class="input-group">
-        <button type="button" class="btn btn-lg btn-default dropdown-toggle" data-toggle="dropdown">
-            <span id="search_concept">Name</span>
-            <span class="caret"></span>
-        </button>
-        <ul class="dropdown-menu dropdown-menu-left" role="menu">
-            <li><a href="#" onclick="changeSearchConcept('Name')">Name</a></li>
-            <li><a href="#" onclick="changeSearchConcept('Faculty')">Faculty</a></li>
-            <li><a href="#" onclick="changeSearchConcept('Expertise')">Expertise</a></li>
-        </ul>
+        <h1>Kolej University Islam Antarabangsa Sultan Ismail Petra (KIAS)</h1>
+        <p>Kias Experts System is a database developed to record, organize, and analyze data for MyRA and SETARA audits. 
+            <br>The literature review analyzes the types of data required by MyRA and SETARA based on the parts that have been defined.
+        </p>
+        <a href="#" class="hero-btn">Visit Us To Know More</a><br><br>
+        <div class="container">
+            <form action="https://www.google.com/search" method="get" class="search-bar">
+                <div class="input-group">
+                    <button type="button" class="btn btn-lg btn-default dropdown-toggle" data-toggle="dropdown">
+                        <span id="search_concept">Name</span>
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-left" role="menu">
+                        <li><a href="#" onclick="changeSearchConcept('Name')">Name</a></li>
+                        <li><a href="#" onclick="changeSearchConcept('Faculty')">Faculty</a></li>
+                        <li><a href="#" onclick="changeSearchConcept('Expertise')">Expertise</a></li>
+                    </ul>
+                </div>
+                <select class="search-bar-select" name="faculty" id="selfac" aria-label="Choose faculty">
+                    <option></option>  
+                    <option value='QH'>Al-Quran & Hadis</option>
+                    <option value='DI'>Dakwah & Pembangunan Insan</option>
+                    <option value='AS'>Pengurusan Al-Syariah</option>
+                    <option value='BA'>Pengajian Bahasa Arab</option>
+                    <option value='IK'>Pengajian Muamalat</option>
+                    <option value='PI'>Pengajian Pendidikan Islam</option>
+                    <option value='PP'>Pusat Pengajian Teras</option>
+                    <option value='US'>Pengurusan Usuluddin</option>
+                    <option value='IT'>Teknologi Maklumat & Multimedia</option>   
+                </select>
+                <input type="text" name="q" class="search-bar-input" placeholder="Search Term..." id="input_item">
+                <button type="submit"><img src="images/search.png" alt="Search"></button>
+            </form>
+        </div>
     </div>
-    <select class="search-bar" name="faculty" id="selfac" aria-label="Choose faculty" style="display:none; font-size: 14px;" id="input_fac">
-        <option></option>  
-        <option value='QH'>Al-Quran & Hadis</option>
-        <option value='DI'>Dakwah & Pembangunan Insan</option>
-        <option value='AS'>Pengurusan Al-Syariah</option>
-        <option value='BA'>Pengajian Bahasa Arab</option>
-        <option value='IK'>Pengajian Muamalat</option>
-        <option value='PI'>Pengajian Pendidikan Islam</option>
-        <option value='PP'>Pusat Pengajian Teras</option>
-        <option value='US'>Pengurusan Usuluddin</option>
-        <option value='IT'>Teknologi Maklumat & Multimedia</option>   
-    </select>
-    <input type="text" name="q" class="search-bar" placeholder="Search Term..." id="input_item">
-    <!-- <input type="text" name="search_front" class="search-bar" placeholder="Search Term..." id="input_item"> -->
-    <button type="submit"><img src="images/search.png"></button>
-   </form>
-     </div>
-<!-- search -->
-</div>
 </section>
-<!-- fx search -->
+
 <script>
     function changeSearchConcept(concept) {
-    document.getElementById('search_concept').innerText = concept;
-    if (concept === 'Faculty') {
-        document.getElementById('input_item').style.display = 'none';
-        document.getElementById('selfac').style.display = 'inline-block';
-    } else {
-        document.getElementById('input_item').style.display = 'inline-block';
-        document.getElementById('selfac').style.display = 'none';
+        document.getElementById('search_concept').innerText = concept;
+        if (concept === 'Faculty') {
+            document.getElementById('input_item').style.display = 'none';
+            document.getElementById('selfac').style.display = 'inline-block';
+        } else {
+            document.getElementById('input_item').style.display = 'inline-block';
+            document.getElementById('selfac').style.display = 'none';
+        }
     }
-}
-
-document.getElementById("searchForm").addEventListener("submit", function(event){
-    event.preventDefault();
-    var searchConcept = document.getElementById("search_concept").innerText;
-    var searchTerm = document.getElementById("input_item").value;
-    var facultyValue = document.getElementById("selfac").value;
-    // Here you can perform further actions like submitting the form via AJAX
-    console.log("Search Concept:", searchConcept);
-    console.log("Search Term:", searchTerm);
-    console.log("Faculty Value:", facultyValue);
-});
-
 </script>
 <!-- Lecture-->
-    <section class="lecture">
-       <h1>Lecture Information</h1>
-       <div class="row">
-        <div class="lecture-col"  align="left">
-        <center><img src="images/user.jpg"></center>
-               <h3>ASSOCIATE PROF. DR. MOHAMMAD NAZRI BIN MOHD NOR</h3>
-               <p>Mohammad Nazri is an associate professor in the Department of Management and Marketing, Universiti Malaya. 
-                  He obtained his Doctor of Business Administration (DBA) from the University Technology MARA (UiTM), 
-                  MBA and BBA from the National University of Malaysia (UKM)</div>
-           <div class="lecture-col"  align="left">
-           <center><img src="images/user1.jpg"></center>
-               <h3>DR. RIZAL BIN MOHD RAZMAN</h3>
-               <p>Rizal was part of the very first batch of Sport Science students that graduated from University of Malaya in 1999. 
-                In year 2000, he went on to pursue an MSc (Human Movement) 
-                at the University of Western Australia, graduated the following year and started to teach in UM in 2001.</p>
+<section class="lecture">
+    <h1>Lecture Information</h1>
+    <div class="row">
+        <div class="lecture-col" align="left">
+            <center><img src="images/user.jpg"></center>
+            <h3>ASSOCIATE PROF. DR. MOHAMMAD NAZRI BIN MOHD NOR</h3>
+            <p>Mohammad Nazri is an associate professor in the Department of Management and Marketing, Universiti Malaya. 
+            He obtained his Doctor of Business Administration (DBA) from the University Technology MARA (UiTM), 
+            MBA and BBA from the National University of Malaysia (UKM)</p>
+        </div>
+        <div class="lecture-col" align="left">
+            <center><img src="images/user1.jpg"></center>
+            <h3>DR. RIZAL BIN MOHD RAZMAN</h3>
+            <p>Rizal was part of the very first batch of Sport Science students that graduated from University of Malaya in 1999. 
+            In year 2000, he went on to pursue an MSc (Human Movement) 
+            at the University of Western Australia
+, graduated the following year and started to teach in UM in 2001.</p>
             </div>
 
           <div class="lecture-col"  align="left">

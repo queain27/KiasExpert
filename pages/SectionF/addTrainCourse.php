@@ -24,7 +24,9 @@ if(isset($_POST ['submit']))
     }
 
     else
-    { echo "<script>alert('Something Wrong');</script>";
+    { 
+      echo "<script>alert('Something Wrong or Reference Number Already Exists );</script>";
+
     }
 }
 ?>

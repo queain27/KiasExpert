@@ -87,7 +87,7 @@ if(isset($_POST['submit'])){
 
       <input type="text" name="name" placeholder="Enter username" class="box" required>
       <input type="text" name="staffid" placeholder="Enter staffid" class="box" required>
-      <input type="password" name="password" placeholder="Enter password" class="box" required>
+      <input type="password" name="password" placeholder="Enter password (IC Number)" class="box" required>
       <input type="password" name="cpassword" placeholder="Confirm password" class="box" required>
       <input type="file" name="image" class="box" accept="image/jpg, image/jpeg, image/png">
       <input type="submit" name="submit" value="register now" class="btn">
