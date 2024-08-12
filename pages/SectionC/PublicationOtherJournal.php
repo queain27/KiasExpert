@@ -836,6 +836,9 @@
 <h3><center><font color="" face="Cambria Math">Publication Other Journal<font><br></center></h3>
 <br><br>
 <div class="container pt-50">
+<div class="text-right mb-3">
+        <a href="../sectionC/addotherjournal.php" class="btn btn-success">+Add New Other Journal</a>
+      </div>
     <div class="table-responsive">
         <table id="example" class="table table-striped" style="width:250%">
             <thead>
@@ -856,12 +859,29 @@
                 <th style="text-align: center">ISBN / ISSN</th>
                 <th style="text-align: center">Link Device</th>
                 <th style="text-align: center">Remarks</th>    
+                <th style="text-align: center">Action</th> 
                 </tr>
             </thead>
             <tbody>
             <?php
+            require_once "../examples/config.php"; // Ensure this path is correct
+
+           if (isset($_GET['delid'])) {
+           $id = mysqli_real_escape_string($conn, $_GET['delid']);
+           $query = "DELETE FROM other_journal WHERE article_no = '$id'";
+           $result = mysqli_query($conn, $query);
+
+           if ($result) {
+            echo "<script>alert('Record deleted successfully');</script>";
+            echo "<script>window.location.href='PublicationOtherJournal.php';</script>"; // Redirect to avoid resubmission
+           } else {
+           echo "<script>alert('Error deleting record');</script>";
+          }
+        } 
+       ?>
+            <?php
     require_once "../examples/config.php";
-    $query = "SELECT * FROM publication";
+    $query = "SELECT * FROM other_journal";
     $count =1;
     $result = mysqli_query($conn, $query);
 
@@ -885,7 +905,19 @@
                 <td style="text-align: center"><?php echo $row['issn_isbn']; ?></td>
                 <td style="text-align: center"><a href="<?php echo $row['link_evidence']; ?>" target="_blank"><?php echo $row['link_evidence']; ?>
                 <td style="text-align: center"><?php echo $row['remarks']; ?></td>
-           
+                <td style="text-align: center;">
+                    <a href="editotherjournal.php?ID=<?php echo $row['article_no']; ?>" class="btn btn-primary btn-sm">
+                        <i class="fa-solid fa-pen-to-square fs-5 me-3"></i>
+                    </a>
+                    <a href="PublicationOtherJournal.php?delid=<?php echo urlencode($row['article_no']); ?>" 
+                    onClick="return confirm('Do you really want to remove this Record?');" 
+                    class="btn btn-danger btn-sm">
+                     <i class="fa-solid fa-trash fs-5 me-3"></i>
+               </a>
+
+
+                </td>
+
               
 
            
@@ -922,7 +954,8 @@
                 <th style="text-align: center">Faculty</th>
                 <th style="text-align: center">ISBN / ISSN</th>
                 <th style="text-align: center">Link Device</th>
-                <th style="text-align: center">Remarks</th>    
+                <th style="text-align: center">Remarks</th> 
+                <th style="text-align: center">Action</th>    
                 </tr>
             </tfoot>
         </table>

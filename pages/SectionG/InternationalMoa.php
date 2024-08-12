@@ -833,6 +833,9 @@
 <h3><center><font color="" face="Cambria Math">Total Number of International MoAs Signed & Stamped<font><br></center></h3>
 <br><br>
 <div class="container pt-50">
+<div class="text-right mb-3">
+        <a href="../sectionG/addinternationalmoa.php" class="btn btn-success">+Add New </a>
+      </div>
     <div class="table-responsive">
         <table id="example" class="table table-striped" style="width:200%">
             <thead>
@@ -850,32 +853,67 @@
             <th>Period</th>
             <th>Link evidence</th>
             <th>Remarks</th>
+            <th>Action</th>
         </tr>
     </thead>
     <tbody>
         <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
+          
+    <?php
+    require_once "../examples/config.php";
+    $query = "SELECT * FROM organisation";
+    $count =1;
+    $result = mysqli_query($conn, $query);
+
+    if ($result) {
+        while ($row = mysqli_fetch_assoc($result)) {
+    ?>
+            <tr>
+                <td style="text-align: center"><?php echo $count;?></td>
+                <td style="text-align: center"><?php echo $row['organisation_name']; ?></td>
+                <td style="text-align: center"><?php echo $row['programme_title']; ?></td>
+                <td style="text-align: center"><?php echo $row['type']; ?></td>
+                <td style="text-align: center"><?php echo $row['activity']; ?></td>
+                <td style="text-align: center"><?php echo $row['category']; ?></td>
+                <td style="text-align: center"><?php echo $row['amount']; ?></td>
+                <td style="text-align: center"><?php echo $row['start_date']; ?></td>
+                <td style="text-align: center"><?php echo $row['end_date']; ?></td>
+                <td style="text-align: center"><?php echo $row['expiry_date']; ?></td>
+                <td style="text-align: center"><?php echo $row['period']; ?></td>
+                <td style="text-align: center"><a href="<?php echo $row['link_evidence']; ?>" target="_blank"><?php echo $row['link_evidence']; ?>
+                <td style="text-align: center"><?php echo $row['remarks']; ?></td>
+                <td style="text-align: center;">
+                    <a href="editinternationalmoa.php?ID=<?php echo $row['staff_id']; ?>" class="btn btn-primary btn-sm">
+                        <i class="fa-solid fa-pen-to-square fs-5 me-3"></i>
+                    </a>
+                    <a href="Policy.php?delid=<?php echo urlencode($row['staff_id']); ?>" 
+                    onClick="return confirm('Do you really want to remove this Record?');" 
+                    class="btn btn-danger btn-sm">
+                     <i class="fa-solid fa-trash fs-5 me-3"></i>
+               </a>
+
+
+                </td>
+
+
+            </tr>
+        <?php
+          
+          $count = $count+1;
+              }
+            } 
+            else 
+            
+            {
+              echo "Error: " . mysqli_error($conn);
+             }
+          ?>
         </tr>
 
     </tbody>
     <tfoot>
         <tr>
-            <th></th>
+        <th>No.</th>
             <th>Organisation/Collaborator</th>
             <th>Program Title</th>
             <th>Type (MoA,MoU,LoA,RA)</th>
@@ -888,6 +926,7 @@
             <th>Period</th>
             <th>Link evidence</th>
             <th>Remarks</th>
+            <th>Action</th>
         </tr>
             </tfoot>
         </table>

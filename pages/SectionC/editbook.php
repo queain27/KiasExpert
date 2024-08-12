@@ -1,78 +1,66 @@
 <?php
 include "../examples/config.php";
-$article_no =$_GET['ID'];
+$staff_id =$_GET['ID'];
 
 if(isset($_POST ['submit']))
 { 
-  $article_no = $_POST['article_no'];
-  $staff_id = $_POST['staff_id'];
-  $staff_name = $_POST['staff_name'];
-  $authors = $_POST['authors'];
-  $industrial= $_POST['industrial'];
-  $international = $_POST['international'];
-  $national = $_POST['national'];
-  $document_title = $_POST['document_title'];
-  $source_title= $_POST['source_title'];
-  $document_type= $_POST['document_type'];
-  $volume= $_POST['volume'];
-  $issue = $_POST['issue'];
-  $page_start = $_POST['page_start'];
-  $page_end = $_POST['page_end'];
-  $year = $_POST['year'];
-  $issn_isbn= $_POST['issn_isbn'];
-  $link_evidence = $_POST['link_evidence'];
-  $remarks = $_POST['remarks'];
+    $staff_id = $_POST['staff_id'];
+    $staff_name = $_POST['staff_name'];
+    $authors = $_POST['authors'];
+    $industrial = $_POST['industrial'];
+    $international = $_POST['international'];
+    $national = $_POST['national'];
+    $book_title = $_POST['book_title'];
+    $book_editor = $_POST['book_editor'];
+    $chapter_title = $_POST['chapter_title'];
+    $publisher = $_POST['publisher'];
+    $isbn = $_POST['isbn'];
+    $book_status = $_POST['book_status'];
+    $link_evidence = $_POST['link_evidence'];
+    $remarks = $_POST['remarks'];
  // Prepare the SQL statement
-$stmt = $conn->prepare("UPDATE index_journal SET 
-article_no = ?, 
+$stmt = $conn->prepare("UPDATE book SET 
 staff_id = ?, 
 staff_name = ?, 
 authors = ?, 
 industrial = ?, 
 international = ?, 
 national = ?, 
-document_title = ?, 
-source_title = ?, 
-document_type = ?, 
-volume = ?, 
-issue = ?, 
-page_start = ?, 
-page_end = ?, 
-year = ?, 
-issn_isbn = ?, 
+book_title = ?, 
+book_editor= ?, 
+chapter_title = ?, 
+publisher = ?, 
+isbn = ?, 
+book_status = ?, 
 link_evidence = ?, 
 remarks = ? 
-WHERE article_no = ?");
+WHERE staff_id= ?");
 
 // Bind the parameters
 $stmt->bind_param(
-"iisssssssssiiiiissi", 
-$article_no, 
+"isssssssssssssi", 
 $staff_id, 
 $staff_name, 
 $authors, 
 $industrial, 
 $international, 
 $national, 
-$document_title, 
-$source_title, 
-$document_type, 
-$volume, 
-$issue, 
-$page_start, 
-$page_end, 
-$year, 
-$issn_isbn, 
+$book_title, 
+$book_editor, 
+$chapter_title, 
+$publisher, 
+$isbn, 
+$book_status, 
 $link_evidence, 
-$remarks, 
-$article_no
+$remarks,
+$staff_id 
 );
 
 
 
     if($stmt->execute()) {
         echo "<script>alert('New record successfully updated');</script>";
-        echo "<script>document.location='IndexJournalArticle.php';</script>";
+        echo "<script>document.location='ResearchBookIndex.php';</script>";
     } else {
         echo "<script>alert('Something went wrong');</script>";
     }
@@ -89,9 +77,12 @@ $article_no
     <title>Update Journal Information</title>
     <style>
         body {
-            background-repeat:            no-repeat;
+            background-repeat: no-repeat;
             background-attachment: fixed;
             background-size: cover;
+        }
+        .hidden {
+            display: none;
         }
     </style>
     <link rel="stylesheet" href="../../bootstrap/css/bootstrap.min.css">
@@ -111,7 +102,7 @@ $article_no
 
        
         <?php 
-        $sql = "SELECT * FROM `index_journal` WHERE article_no= $article_no LIMIT 1";
+        $sql = "SELECT * FROM `book` WHERE staff_id= $staff_id LIMIT 1";
         $result = mysqli_query($conn, $sql);
         $row = mysqli_fetch_assoc($result);
         ?>
@@ -119,12 +110,7 @@ $article_no
         <div class="container d-flex justify-content-center">
             <form action="" method="post" style="width:50vw; min-width:300px;">
                 <div class="row">
-                        <!-- Staff ID -->
-                        <div class="col-md-6 mb-3">
-                        <label class="form-label">ARTICLE NO:</label>
-                        <input type="text" class="form-control" name="article_no" value="<?php echo $row['article_no']?>" readonly>
-                    </div>
-                  
+                      
                     <!-- Staff ID -->
                     <div class="col-md-6 mb-3">
                         <label class="form-label">STAFF ID:</label>
@@ -137,7 +123,6 @@ $article_no
                         <input type="text" class="form-control" name="staff_name" value="<?php echo $row['staff_name']?>" readonly>
                     </div>
 
-                 <!-- Name -->
                  <div class="col-md-6 mb-3">
                         <label class="form-label">AUTHORS:</label>
                         <input type="text" class="form-control" name="authors" value="<?php echo $row['authors']?>">
@@ -171,47 +156,42 @@ $article_no
                     </select>
                     </div>
 
-                    <!-- Academic Qualification -->
+                  
                     <div class="col-md-6 mb-3">
-                        <label class="form-label">DOCUMENT TITLE:</label>
-                        <input type="text" class="form-control" name="document_title" value="<?php echo $row['document_title']?>">
+                        <label class="form-label">BOOK TITLE:</label>
+                        <input type="text" class="form-control" name="book_title" value="<?php echo $row['book_title']?>">
                     </div>
 
-                    <!-- Name of Professional Qualification/Awarding Body -->
-                    <div class="col-md-6 mb-3">
-                        <label class="form-label">SOURCE TITLE:</label>
-                        <input type="text" class="form-control" name="source_title" value="<?php echo $row['source_title']?>">
+                   <!-- Book Editor (conditionally visible) -->
+                   <div class="col-md-6 mb-3 <?php echo empty($row['book_editor']) ? 'hidden' : ''; ?>" id="bookeditorField">
+                        <label class="form-label">BOOK EDITOR:</label>
+                        <input type="text" class="form-control" name="book_editor" value="<?php echo htmlspecialchars($row['book_editor']); ?>">
                     </div>
-                    <div class="col-md-6 mb-3">
-                        <label class="form-label">DOCUMENT TYPE:</label>
-                        <input type="text" class="form-control" name="document_type" value="<?php echo $row['document_type']?>">
+
+                    <!-- Chapter Title (conditionally visible) -->
+                    <div class="col-md-6 mb-3 <?php echo empty($row['chapter_title']) ? 'hidden' : ''; ?>" id="chaptertitleField">
+                        <label class="form-label">CHAPTER TITLE:</label>
+                        <input type="text" class="form-control" name="chapter_title" value="<?php echo htmlspecialchars($row['chapter_title']); ?>">
                     </div>
 
                     <!-- Registration Number for Professional Membership -->
-                    <div class="col-md-6 mb-3">
-                        <label class="form-label">VOLUME:</label>
-                        <input type="text" class="form-control" name="volume" value="<?php echo $row['volume']?>">
+                    <div class="col-md-6 mb-3 <?php echo empty($row['publisher']) ? 'hidden' : ''; ?>" id="publisherField">
+                        <label class="form-label">PUBLISHER:</label>
+                        <input type="text" class="form-control" name="publisher" value="<?php echo htmlspecialchars($row['publisher']); ?>">
                     </div>
                     <div class="col-md-6 mb-3">
-                        <label class="form-label">ISSUE :</label>
-                        <input type="text" class="form-control" name="issue" value="<?php echo $row['issue']?>">
+                        <label class="form-label">ISBN:</label>
+                        <input type="text" class="form-control" name="isbn" value="<?php echo $row['isbn']?>">
                     </div>
                     <div class="col-md-6 mb-3">
-                        <label class="form-label">PAGE START:</label>
-                        <input type="text" class="form-control" name="page_start" value="<?php echo $row['page_start']?>">
+                    <label class="form-label">BOOK STATUS:</label>
+                    <select class="form-control" id="statusDropdown" name="book_status" required>
+                            <option value="" disabled selected>Choose</option>
+                            <option value="INDEX" <?php if ($row['book_status'] == 'INDEX') echo 'selected'; ?>>INDEX</option>
+                            <option value="NO INDEX" <?php if ($row['book_status'] == 'NO INDEX') echo 'selected'; ?>>NO INDEX</option>
+                    </select>
                     </div>
-                    <div class="col-md-6 mb-3">
-                        <label class="form-label">PAGE END:</label>
-                        <input type="text" class="form-control" name="page_end" value="<?php echo $row['page_end']?>">
-                    </div>
-                    <div class="col-md-6 mb-3">
-                        <label class="form-label">YEAR:</label>
-                        <input type="text" class="form-control" name="year" value="<?php echo $row['year']?>">
-                    </div>
-                    <div class="col-md-6 mb-3">
-                        <label class="form-label">ISSN/ISBN:</label>
-                        <input type="text" class="form-control" name="issn_isbn" value="<?php echo $row['issn_isbn']?>">
-                    </div>
+
                     <div class="col-md-6 mb-3">
                         <label class="form-label">LINK EVIDENCE:</label>
                         <input type="text" class="form-control" name="link_evidence" value="<?php echo $row['link_evidence']?>">
@@ -224,12 +204,38 @@ $article_no
                <div>
                <center>
                        <button type ="submit" class="btn btn-success" name="submit">UPDATE</button>
-                       <a href="IndexJournalArticle.php" class="btn btn-danger">Cancel</a>
+                       <a href="ResearchBookIndex.php" class="btn btn-danger">Cancel</a>
               </div>
                  </center>
           </form>
      </div>
 </div>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const statusDropdown = document.getElementById('statusDropdown');
+        const bookeditorField = document.getElementById('bookeditorField');
+        const chaptertitleField = document.getElementById('chaptertitleField');
+        const publisherField = document.getElementById('publisherField');
+        // Function to update field visibility
+        function updateFieldsVisibility() {
+            if (statusDropdown.value === 'NO INDEX') {
+                bookeditorField.classList.remove('hidden');
+                chaptertitleField.classList.remove('hidden');
+                publisherField.classList.add('hidden');
+            } else {
+                bookeditorField.classList.add('hidden');
+                chaptertitleField.classList.add('hidden');
+                publisherField.classList.remove('hidden');
+            }
+        }
+
+        // Initial check on page load
+        updateFieldsVisibility();
+
+        // Add event listener to toggle field visibility
+        statusDropdown.addEventListener('change', updateFieldsVisibility);
+    });
+</script>
  <!--Boostrap-->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
  <!--Boostrap-->

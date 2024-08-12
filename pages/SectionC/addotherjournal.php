@@ -2,21 +2,25 @@
 include "../examples/config.php";
 
 if (isset($_POST['submit'])) {
+    $article_no = $_POST['article_no'];
     $staff_id = $_POST['staff_id'];
     $staff_name = $_POST['staff_name'];
     $authors = $_POST['authors'];
     $industrial = $_POST['industrial'];
     $international = $_POST['international'];
     $national = $_POST['national'];
-    $book_title = $_POST['book_title'];
-    $book_editor = $_POST['book_editor'];
-    $chapter_title = $_POST['chapter_title'];
-    $publisher = $_POST['publisher'];
-    $isbn = $_POST['isbn'];
-    $book_status = $_POST['book_status'];
+    $document_title = $_POST['document_title'];
+    $source_title = $_POST['source_title'];
+    $document_type = $_POST['document_type'];
+    $volume = $_POST['volume'];
+    $issue = $_POST['issue'];
+    $page_start = $_POST['page_start'];
+    $page_end = $_POST['page_end'];
+    $year = $_POST['year'];
+    $issn_isbn = $_POST['issn_isbn'];
     $link_evidence = $_POST['link_evidence'];
     $remarks = $_POST['remarks'];
-
+    
 
 
     // Check if staff_id is active
@@ -27,25 +31,25 @@ if (isset($_POST['submit'])) {
 
     if ($check_staff_result->num_rows > 0) {
         // Staff is active, check for duplicates
-        $check_duplicate_sql = $conn->prepare("SELECT * FROM `book` WHERE `staff_id` = ?");
-        $check_duplicate_sql->bind_param('s', $staff_id);
+        $check_duplicate_sql = $conn->prepare("SELECT * FROM `other_journal` WHERE `article_no` = ?");
+        $check_duplicate_sql->bind_param('s', $article_no);
         $check_duplicate_sql->execute();
         $check_duplicate_result = $check_duplicate_sql->get_result();
 
         if ($check_duplicate_result->num_rows == 0) {
             // No duplicates, proceed with the insertion
-            $sql = mysqli_query($conn, "INSERT INTO `book` (`staff_id`, `staff_name`, `authors`, `industrial`, `international`, `national`, `book_title`, `book_editor`,`chapter_title`, `publisher`,`isbn`,`book_status`,`link_evidence`,`remarks`) 
-      VALUES ('$staff_id', '$staff_name', '$authors', '$industrial', '$international', '$national', '$book_title','$book_editor','$chapter_title','$publisher','$isbn','$book_status','$link_evidence', '$remarks')");
+            $sql = mysqli_query($conn, "INSERT INTO `other_journal` (`article_no`, `staff_id`, `staff_name`, `authors`, `industrial`, `international`, `national`, `document_title`, `source_title`, `document_type`, `volume`, `issue`, `page_start`, `page_end`, `year`, `issn_isbn`, `link_evidence`, `remarks`) 
+      VALUES ('$article_no', '$staff_id', '$staff_name', '$authors', '$industrial', '$international', '$national', '$document_title', '$source_title', '$document_type', '$volume', '$issue', '$page_start', '$page_end', '$year', '$issn_isbn', '$link_evidence', '$remarks')");
       
             if ($sql) {
                 echo "<script>alert('New record successfully added');</script>";
-                echo "<script>document.location='ResearchBookIndex.php';</script>";
+                echo "<script>document.location='PublicationOtherJournal.php';</script>";
             } else {
                 echo "<script>alert('Failed to add new record');</script>";
             }
         } else {
             // Duplicate entry found
-            echo "<script>alert('Duplicate entry found for the given StaffID');</script>";
+            echo "<script>alert('Duplicate entry found for the given Article Number');</script>";
         }
     } else {
         // Staff is not active
@@ -64,7 +68,7 @@ if (isset($_POST['submit'])) {
 <html lang="en" dir="ltr">
 <head>
   <meta charset="utf-8">
-  <title>Add New Book</title>
+  <title>Add New Journal</title>
   <link rel="stylesheet" href="../../bootstrap/css/bootstrap.min.css">
   <script src="../../bootstrap/js/jquery.min.js"></script>
   <script src="../../bootstrap/js/bootstrap.min.js"></script>
@@ -73,14 +77,9 @@ if (isset($_POST['submit'])) {
   <link rel="stylesheet" href="../../css/navbar.css">
   <link rel="shortcut icon" href="../../images/Logo2.png" type="image/x-icon">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <style>
-        .hidden {
-            display: none;
-        }
-    </style>
+  
   <script>
 $(document).ready(function() {
-    // AJAX call to fetch staff data when staff_id changes
     $('input[name="staff_id"]').on('change', function() {
         var staff_id = $(this).val();
         if (staff_id) {
@@ -119,39 +118,12 @@ $(document).ready(function() {
         }
     });
 
-    // Optionally, disable the submit button initially if staff_id is empty
+    // Optionally, you can also disable the submit button initially if staff_id is empty
     if (!$('input[name="staff_id"]').val()) {
         $('button[name="submit"]').prop('disabled', true);
     }
-
-    // Toggle visibility of Book Editor and Chapter Title fields based on Book Status selection
-    $('#statusDropdown').on('change', function() {
-        var status = $(this).val();
-        if (status === 'NO INDEX') {
-            $('#bookeditorField').removeClass('hidden');
-            $('#chaptertitleField').removeClass('hidden');
-            $('#publisherField').addClass('hidden');
-        } else {
-            $('#bookeditorField').addClass('hidden');
-            $('#chaptertitleField').addClass('hidden');
-            $('#publisherField').removeClass('hidden');
-        }
-    });
-
-    // Initial check to set visibility based on the current value of statusDropdown
-    var initialStatus = $('#statusDropdown').val();
-    if (initialStatus === 'NO INDEX') {
-        $('#bookeditorField').removeClass('hidden');
-        $('#chaptertitleField').removeClass('hidden');
-        $('#publisherField').addClass('hidden');
-    } else {
-        $('#bookeditorField').addClass('hidden');
-        $('#chaptertitleField').addClass('hidden');
-        $('#publisherField').removeClass('hidden');
-    }
 });
 </script>
-
 
 
 
@@ -163,12 +135,16 @@ $(document).ready(function() {
     <div class="container">
       <div class="row">
         <div class="col-sm-12">
-          <h1 class="border-bottom text-center pb-3 mb-4">Add New Book</h1>
+          <h1 class="border-bottom text-center pb-3 mb-4">Add New Other Journal</h1>
         </div>
       </div>
       <form action="" method="post">
         <div class="row">
-       
+          <!--Project ID-->
+          <div class="col-md-6 mb-3">
+            <label class="form-label">ARTICLE NO:</label>
+            <input type="text" class="form-control" name="article_no" placeholder="Article No" required>
+          </div>
           <!--Staff ID-->
           <div class="col-md-6 mb-3">
             <label class="form-label">STAFF ID:</label>
@@ -213,39 +189,50 @@ $(document).ready(function() {
             </select>
           </div>
           <div class="col-md-6 mb-3">
-            <label class="form-label">BOOK TITLE:</label>
-            <input type="text" class="form-control" name="book_title" placeholder="Book Title" required>
+            <label class="form-label">DOCUMENT TITLE:</label>
+            <input type="text" class="form-control" name="document_title" placeholder="Document Title" required>
           </div>
-
-                       
-             <div class="col-md-6 mb-3">
-            <label class="form-label">BOOK STATUS</label>
-            <select class="form-control"id="statusDropdown" name="book_status" required>
-              <option value="" disabled selected>Choose</option>
-              <option value="INDEX">INDEX</option>
-              <option value="NO INDEX">NO INDEX</option>
-            </select>
-          </div>
-          <div class="col-md-6 mb-3 hidden" id="bookeditorField">
-            <label class="form-label">BOOK EDITOR:</label>
-            <input type="text" class="form-control" name="book_editor" placeholder="Book Editor">
-        </div>
-        <div class="col-md-6 mb-3 hidden" id="chaptertitleField">
-            <label class="form-label">CHAPTER TITLE:</label>
-            <input type="text" class="form-control" name="chapter_title" placeholder="Chapter Title">
-        </div>
-
-          <div class="col-md-6 mb-3 hidden" id="publisherField">
-            <label class="form-label">PUBLISHER:</label>
-            <input type="text" class="form-control" name="publisher" placeholder="Publisher" required>
-          </div>
-  
           <div class="col-md-6 mb-3">
-            <label class="form-label">ISBN:</label>
-            <input type="text" class="form-control" name="isbn" placeholder="Isbn" required>
+            <label class="form-label">SOURCE TITLE:</label>
+            <input type="text" class="form-control" name="source_title" placeholder="Source Title" required>
           </div>
+          <div class="col-md-6 mb-3">
+            <label class="form-label">DOCUMENT TYPE:</label>
+            <input type="text" class="form-control" name="document_type" placeholder="Document Type" required>
+          </div>
+
+          <div class="col-md-6 mb-3">
+            <label class="form-label">VOLUME:</label>
+            <input type="text" class="form-control" name="volume" placeholder="Volume" required>
+          </div>
+          <div class="col-md-6 mb-3">
+            <label class="form-label">ISSUE:</label>
+            <input type="text" class="form-control" name="issue" placeholder="Issue" required>
+          </div>
+
+          <!--Start Date-->
+          <div class="col-md-6 mb-3">
+            <label class="form-label">PAGE START:</label>
+            <input type="text" class="form-control" name="page_start"placeholder="Page Start"  required>
+          </div>
+          <!--End Of Date-->
+          <div class="col-md-6 mb-3">
+            <label class="form-label">PAGE END:</label>
+            <input type="text" class="form-control" name="page_end" placeholder="Page End" required>
+          </div>
+         
         
-      
+          <!--Grant Name-->
+          <div class="col-md-6 mb-3">
+            <label class="form-label">YEAR:</label>
+            <input type="text" class="form-control" name="year" placeholder="Year" required>
+          </div>
+          <!--Amount Pledged (Approved) For Active Project In This Year-->
+          <div class="col-md-6 mb-3">
+            <label class="form-label">ISSN/ISBN:</label>
+            <input type="text" class="form-control" name="issn_isbn" placeholder="ISSN/ISBN" required>
+          </div>
+          <!--Amount Pledged (Approved) For New Project In The Year-->
           <div class="col-md-6 mb-3">
             <label class="form-label">LINK EVIDENCE:</label>
             <input type="text" class="form-control" name="link_evidence" placeholder="Link Evidence" required>
@@ -260,13 +247,12 @@ $(document).ready(function() {
           <!--Button-->
           <div class="col-md-12 mb-3 text-center">
             <button type="submit" class="btn btn-primary" name="submit">ADD</button>
-            <a href="ResearchBookIndex.php" class="btn btn-success">View Book</a>
+            <a href="PublicationOtherJournal.php" class="btn btn-success">View Index Journal</a>
           </div>
         </div>
       </form>
     </div>
   </div>
 </div>
-
 </body>
 </html>
