@@ -833,6 +833,9 @@
 <h3><center><font color="" face="Cambria Math">Total number of staff involved in joint research projects under MoA<font><br></center></h3>
 <br><br>
 <div class="container pt-50">
+<div class="text-right mb-3">
+        <a href="../sectionG/addstaffinternational.php" class="btn btn-success">+Add New </a>
+      </div>
     <div class="table-responsive">
         <table id="example" class="table table-striped" style="width:200%">
             <thead>
