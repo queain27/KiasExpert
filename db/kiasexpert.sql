@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 06, 2024 at 03:38 AM
+-- Generation Time: Aug 13, 2024 at 04:09 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -127,7 +127,8 @@ CREATE TABLE `commercial` (
 --
 
 INSERT INTO `commercial` (`product_id`, `staff_id`, `staff_name`, `product_name`, `date_com`, `date_ach`, `comp_name`, `gross_income`, `link_licen`, `link_com`, `remarks`) VALUES
-('P001', 11234, 'ROBERT', 'PRODUCT X', '2014-07-07', '2016-09-15', 'SYKT ABC', '24000', 'Hyperlink', 'Hyperlink', 'No');
+('P001', 11234, 'ROBERT', 'PRODUCT X', '2014-07-07', '2016-09-15', 'SYKT ABC', '24000', 'Hyperlink', 'Hyperlink', 'No'),
+('P002', 1274, 'HAMDANI BIN AHMAD                       ', 'SYKT ABC', '2015-02-02', '2015-02-02', 'SYKT ABC', '12000', 'Hyperlink', 'Hyperlink', 'STAFF');
 
 -- --------------------------------------------------------
 
@@ -312,6 +313,24 @@ INSERT INTO `know_licen` (`tech_id`, `staff_id`, `staff_name`, `tech_name`, `typ
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `laboratory`
+--
+
+CREATE TABLE `laboratory` (
+  `regis_no` varchar(255) NOT NULL,
+  `facility` varchar(255) NOT NULL,
+  `faculty` varchar(255) NOT NULL,
+  `type` varchar(255) NOT NULL,
+  `awarding` int(255) NOT NULL,
+  `start_date` date NOT NULL,
+  `end_date` date NOT NULL,
+  `link` int(255) NOT NULL,
+  `remarks` int(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `lect_form`
 --
 
@@ -335,6 +354,30 @@ INSERT INTO `lect_form` (`id`, `name`, `staffid`, `password`, `image`) VALUES
 (5, 'JALIL BIN OMAR', '958', '958', ''),
 (6, 'ROBERT', '11234', '11234', 'user1.jpg'),
 (7, 'ANIE BTE ATTAN', '992', '760702031234', 'IMG_20230107_003037.jpg');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `library`
+--
+
+CREATE TABLE `library` (
+  `id` int(11) NOT NULL,
+  `type` varchar(255) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `volume` varchar(255) NOT NULL,
+  `link` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `library`
+--
+
+INSERT INTO `library` (`id`, `type`, `name`, `title`, `volume`, `link`) VALUES
+(1, 'Online Book', 'Online Database', '81', '81', 'No'),
+(2, 'Online Book', 'Online Database 2', '100', '100', 'No'),
+(3, 'Physical Book', 'Book', '125', '1000', '- ');
 
 -- --------------------------------------------------------
 
@@ -893,9 +936,21 @@ ALTER TABLE `know_licen`
   ADD PRIMARY KEY (`tech_id`);
 
 --
+-- Indexes for table `laboratory`
+--
+ALTER TABLE `laboratory`
+  ADD PRIMARY KEY (`regis_no`);
+
+--
 -- Indexes for table `lect_form`
 --
 ALTER TABLE `lect_form`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `library`
+--
+ALTER TABLE `library`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -1003,6 +1058,12 @@ ALTER TABLE `endownment`
 --
 ALTER TABLE `lect_form`
   MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT for table `library`
+--
+ALTER TABLE `library`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `staff`
