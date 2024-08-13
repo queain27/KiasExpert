@@ -52,7 +52,7 @@ if (isset($_POST['submit'])) {
 </head>
 
 <div class="container">
-    <div class="text-center mb-4">
+       <div class="text-center mb-5"><br><br><br><br>
         <b><p>Click Update After Finish Changing Information</p></b>
     </div>
     <?php 

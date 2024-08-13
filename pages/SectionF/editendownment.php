@@ -27,48 +27,29 @@ if (isset($_POST['submit'])) {
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Update Organiser Information</title>
-    <style>
-        body {
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-            background-size: cover;
-        }
-        .container {
-            margin-top: 50px;
-        }
-        .form-container {
-            width: 50vw;
-            min-width: 300px;
-            margin: auto;
-            padding: 20px;
-            background-color: white;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            border-radius: 10px;
-        }
-        .form-label {
-            font-weight: bold;
-        }
-        .text-center p {
-            font-weight: bold;
-        }
-    </style>
-    <link rel="stylesheet" href="../../bootstrap/css/bootstrap.min.css">
-    <script src="../../bootstrap/js/jquery.min.js"></script>
-    <script src="../../bootstrap/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="../../css/navbar.css">
-    <link rel="shortcut icon" href="../../images/Logo2.png" type="image/x-icon">
+<title> Edit Endowment</title>
+<style>
+    * body 
+    {
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-size: cover;
+    }
+  </style>
+  <link rel="stylesheet" href="../../bootstrap/css/bootstrap.min.css">
+  <script src="../../bootstrap/js/jquery.min.js"></script>
+  <script src="../../bootstrap/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="../../css/navbar.css">
+  <link rel="shortcut icon" href="../../images/Logo2.png" type="image/x-icon">
 </head>
+
 <body>
     <div class="container">
-        <div class="text-center mb-4">
-            <p>Click Update After Finish Changing Information</p>
-        </div>
-
+    <div class="text-center mb-5"><br><br><br><br>
+        <b><p>Click Update After Finish Changing Information</p></b>
+    </div>
         <?php 
         $sql = "SELECT * FROM `endownment` WHERE id = $id LIMIT 1";
         $result = mysqli_query($conn, $sql);
@@ -142,14 +123,20 @@ if (isset($_POST['submit'])) {
                         <textarea class="form-control" name="remark"><?php echo $row['remark'] ?></textarea>
                     </div>
 
-                </div>
-                <div class="d-flex justify-content-center">
-                    <button type="submit" class="btn btn-success me-2" name="submit">UPDATE</button>
-                    <a href="Endowment.php" class="btn btn-danger">Cancel</a>
-                </div>
-            </form>
-        </div>
-    </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+                        <!--Button-->
+      <div> 
+       <center>
+            <button type ="submit" class="btn btn-success" name="submit">UPDATE</button>
+            <a href="Endowment.php" class="btn btn-danger">Cancel</a>
+            </div>
+       </center>
+      </form>
+
+     </div>
+</div>
+ <!--Boostrap-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+ <!--Boostrap-->
+    
 </body>
 </html>
