@@ -18,6 +18,7 @@ if (isset($_POST['submit'])) {
         echo "<script>alert('New record successfully updated');</script>";
         echo "<script>document.location='Orga_Seminar.php';</script>";
     } else {
+        
         echo "<script>alert('Something Wrong');</script>";
     }
 }

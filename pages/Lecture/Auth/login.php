@@ -49,10 +49,10 @@ if(isset($_POST['submit'])){
          }
       }
       ?>
-      <input type="staffid" name="staffid" placeholder="enter staffid" class="box" required>
-      <input type="password" name="password" placeholder="enter password" class="box" required>
+      <input type="staffid" name="staffid" placeholder="Enter staffid" class="box" required>
+      <input type="password" name="password" placeholder="Enter password (Ic Number)" class="box" required>
       <input type="submit" name="submit" value="login now" class="btn">
-      <!-- <p>don't have an account? <a href="register.php">register now</a></p> -->
+      <p>don't have an account? <a href="register.php">register now</a></p>
    </form>
 
 </div>
