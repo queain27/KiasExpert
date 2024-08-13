@@ -171,7 +171,7 @@ $(document).ready(function() {
           <div class="col-md-6 mb-3">
             <label class="form-label">FACULTY:</label>
             <select class="form-control" name="faculty"  readonly>
-              <option value="" disabled selected>Choose Faculty</option>
+              <option value="" disabled selected>Faculty</option>
               <option value='Al-Quran & Hadis'>Al-Quran & Hadis</option>
               <option value='Dakwah & Pembangunan Insan'>Dakwah & Pembangunan Insan</option>
               <option value='Pengurusan Al-Syariah'>Pengurusan Al-Syariah</option>

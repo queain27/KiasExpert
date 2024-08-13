@@ -130,7 +130,7 @@ $(document).ready(function() {
           <!--Staff Name-->
           <div class="col-md-6 mb-3">
             <label class="form-label">STAFF NAME:</label>
-            <input type="text" class="form-control" name="staff_name" placeholder="Staff Name" readonly required>
+            <input type="text" class="form-control" name="staff_name" placeholder="Staff Name" readonly>
           </div>
           <!--Research Title-->
           <div class="col-md-6 mb-3">

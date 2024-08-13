@@ -129,7 +129,7 @@ $(document).ready(function() {
           <!--Staff Name-->
           <div class="col-md-6 mb-3">
             <label class="form-label">STAFF NAME:</label>
-            <input type="text" class="form-control" name="staff_name" placeholder="Staff Name" readonly required>
+            <input type="text" class="form-control" name="staff_name" placeholder="Staff Name" readonly>
           </div>
           <!--fill_name Name-->
           <div class="col-md-6 mb-3">
@@ -144,13 +144,13 @@ $(document).ready(function() {
           <!--Country-->
           <div class="col-md-6 mb-3">
             <label class="form-label">COUNTRY:</label>
-            <input type="text" class="form-control" name="country" placeholder="Country"  readonly required>
+            <input type="text" class="form-control" name="country" placeholder="Country"  readonly>
           </div>
         <!--Faculty-->
           <div class="col-md-6 mb-3">
             <label class="form-label">FACULTY:</label>
-            <select class="form-control" name="faculty"  readonly required>
-              <option value="" disabled selected>Choose Faculty</option>
+            <select class="form-control" name="faculty"  readonly>
+              <option value="" disabled selected>Faculty</option>
               <option value='Al-Quran & Hadis'>Al-Quran & Hadis</option>
               <option value='Dakwah & Pembangunan Insan'>Dakwah & Pembangunan Insan</option>
               <option value='Pengurusan Al-Syariah'>Pengurusan Al-Syariah</option>
