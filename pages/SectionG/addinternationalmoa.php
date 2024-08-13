@@ -5,6 +5,7 @@ include "../examples/config.php";
 if (isset($_POST['submit'])) {
     // Fetch and sanitize POST data
     $organisation_name = mysqli_real_escape_string($conn, $_POST['organisation_name']);
+    $country = mysqli_real_escape_string($conn, $_POST['country']);
     $programme_title = mysqli_real_escape_string($conn, $_POST['programme_title']);
     $type = mysqli_real_escape_string($conn, $_POST['type']);
     $activity = mysqli_real_escape_string($conn, $_POST['activity']);
@@ -19,9 +20,9 @@ if (isset($_POST['submit'])) {
 
     // Prepare SQL query
     $sql = "INSERT INTO `organisation` 
-        (`organisation_name`, `programme_title`, `type`, `activity`, `category`, `amount`, `start_date`, `end_date`, `expiry_date`, `period`, `link_evidence`, `remarks`) 
+        (`organisation_name`,`country`, `programme_title`, `type`, `activity`, `category`, `amount`, `start_date`, `end_date`, `expiry_date`, `period`, `link_evidence`, `remarks`) 
         VALUES 
-        ('$organisation_name', '$programme_title', '$type', '$activity', '$category', '$amount', '$start_date', '$end_date', '$expiry_date', '$period', '$link_evidence', '$remarks')";
+        ('$organisation_name','$country', '$programme_title', '$type', '$activity', '$category', '$amount', '$start_date', '$end_date', '$expiry_date', '$period', '$link_evidence', '$remarks')";
 
     // Execute the query and check for success
     if (mysqli_query($conn, $sql)) {
@@ -70,7 +71,10 @@ mysqli_close($conn);
                             <label class="form-label">ORGANISATION/COLLABORATOR NAME:</label>
                             <input type="text" class="form-control" name="organisation_name" placeholder="Organisation/Collaborator Name" required>
                         </div>
-
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">COUNTRY:</label>
+                            <input type="text" class="form-control" name="country" placeholder="Country" required>
+                        </div>
                         <!-- Programme Title -->
                         <div class="col-md-6 mb-3">
                             <label class="form-label">PROGRAMME TITLE:</label>
