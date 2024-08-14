@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 13, 2024 at 04:09 AM
+-- Generation Time: Aug 14, 2024 at 03:28 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -321,12 +321,19 @@ CREATE TABLE `laboratory` (
   `facility` varchar(255) NOT NULL,
   `faculty` varchar(255) NOT NULL,
   `type` varchar(255) NOT NULL,
-  `awarding` int(255) NOT NULL,
+  `awarding` varchar(255) NOT NULL,
   `start_date` date NOT NULL,
   `end_date` date NOT NULL,
-  `link` int(255) NOT NULL,
-  `remarks` int(255) NOT NULL
+  `link` varchar(255) NOT NULL,
+  `remarks` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `laboratory`
+--
+
+INSERT INTO `laboratory` (`regis_no`, `facility`, `faculty`, `type`, `awarding`, `start_date`, `end_date`, `link`, `remarks`) VALUES
+('IEC 17025', 'Pusat Ujian Sampel ', 'Teknologi Maklumat & Multimedia', 'ISO/IEC 17025 International Standard for Laboratories', 'World Anti-Doping Agency (WADA)', '2011-01-01', '2016-12-31', 'HYPERLINK', 'No');
 
 -- --------------------------------------------------------
 
