@@ -831,6 +831,7 @@
 <h3><center><font color="" face="Cambria Math">Membership in national Academic/ Professional Bodies/Associations/NGOs<font><br></center></h3>
 <br><br>
 <div class="container pt-50">
+
     <div class="table-responsive">
         <table id="example" class="table table-striped" style="width:200%">
             <thead>

@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">  
   <!-- Font Awesome -->
   <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <!-- Ionicons -->
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <!-- Tempusdominus Bootstrap 4 -->
@@ -30,6 +31,9 @@
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
   <script defer src="https://cdn.datatables.net/2.0.3/js/dataTables.js"></script>
   <script defer src="https://cdn.datatables.net/2.0.3/js/dataTables.bootstrap5.js"></script>
+  <script defer src="script.js"></script>
+  <!--Icon Image--> 
+  <link rel="shortcut icon" href="../../images/Logo2.png" type="image/x-icon">
   <script defer src="script.js"></script>
     <script>
         $(document).ready(function(){
@@ -842,6 +846,7 @@
             <tr>
             <th>No.</th>
             <th>Organisation/Collaborator</th>
+            <th>Country</th>
             <th>Program Title</th>
             <th>Type (MoA,MoU,LoA,RA)</th>
             <th>Activities (IF MoU)</th>
@@ -858,7 +863,22 @@
     </thead>
     <tbody>
         <tr>
-          
+        <?php
+            require_once "../examples/config.php"; // Ensure this path is correct
+
+           if (isset($_GET['delid'])) {
+           $id = mysqli_real_escape_string($conn, $_GET['delid']);
+           $query = "DELETE FROM organisation WHERE  id = '$id'";
+           $result = mysqli_query($conn, $query);
+
+           if ($result) {
+            echo "<script>alert('Record deleted successfully');</script>";
+            echo "<script>window.location.href='InternationalMoa.php';</script>"; // Redirect to avoid resubmission
+           } else {
+           echo "<script>alert('Error deleting record');</script>";
+          }
+        } 
+       ?>
     <?php
     require_once "../examples/config.php";
     $query = "SELECT * FROM organisation";
@@ -871,6 +891,7 @@
             <tr>
                 <td style="text-align: center"><?php echo $count;?></td>
                 <td style="text-align: center"><?php echo $row['organisation_name']; ?></td>
+                <td style="text-align: center"><?php echo $row['country']; ?></td>
                 <td style="text-align: center"><?php echo $row['programme_title']; ?></td>
                 <td style="text-align: center"><?php echo $row['type']; ?></td>
                 <td style="text-align: center"><?php echo $row['activity']; ?></td>
@@ -883,10 +904,10 @@
                 <td style="text-align: center"><a href="<?php echo $row['link_evidence']; ?>" target="_blank"><?php echo $row['link_evidence']; ?>
                 <td style="text-align: center"><?php echo $row['remarks']; ?></td>
                 <td style="text-align: center;">
-                    <a href="editinternationalmoa.php?ID=<?php echo $row['staff_id']; ?>" class="btn btn-primary btn-sm">
+                    <a href="editinternationalmoa.php?ID=<?php echo $row['id']; ?>" class="btn btn-primary btn-sm">
                         <i class="fa-solid fa-pen-to-square fs-5 me-3"></i>
                     </a>
-                    <a href="Policy.php?delid=<?php echo urlencode($row['staff_id']); ?>" 
+                    <a href="InternationalMoa.php?delid=<?php echo urlencode($row['id']); ?>" 
                     onClick="return confirm('Do you really want to remove this Record?');" 
                     class="btn btn-danger btn-sm">
                      <i class="fa-solid fa-trash fs-5 me-3"></i>
@@ -915,6 +936,7 @@
         <tr>
         <th>No.</th>
             <th>Organisation/Collaborator</th>
+            <th>Country</th>
             <th>Program Title</th>
             <th>Type (MoA,MoU,LoA,RA)</th>
             <th>Activities (IF MoU)</th>
