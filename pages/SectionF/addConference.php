@@ -1,6 +1,17 @@
 <?php
+session_start(); // Mulakan sesi
+
+if(!isset($_SESSION['user_id']))
+
+{
+    header('Location: pages/examples/login.php'); 
+    exit;
+}
+
 include "../examples/config.php";
-if(isset($_POST['submit'])) {
+if(isset($_POST ['submit']))
+
+{
    $id = $_POST['id'];
    $name_organizer = $_POST['name_organizer']; 
    $name_title = $_POST['name_title'];

@@ -1,6 +1,14 @@
 <?php
-include "../examples/config.php";
+session_start(); // Mulakan sesi
 
+if(!isset($_SESSION['user_id']))
+
+{
+    header('Location: pages/examples/login.php'); 
+    exit;
+}
+
+include "../examples/config.php";
 if(isset($_POST['submit'])) {
   $fill_id = $_POST['fill_id'];
   $staff_id = $_POST['staff_id'];
