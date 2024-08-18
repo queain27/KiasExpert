@@ -1,4 +1,12 @@
 <?php
+session_start();
+
+if(!isset($_SESSION['user_id']))
+
+{
+    header('Location: ../examples/login.php'); 
+    exit;
+}
 include "../examples/config.php";
 $ip_id= ($_GET['ID']); // Ensure the TECHNOLOGY ID is an integer
 

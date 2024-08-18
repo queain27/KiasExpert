@@ -4,7 +4,7 @@ session_start(); // Mulakan sesi
 if(!isset($_SESSION['user_id']))
 
 {
-    header('Location: login.php'); 
+    header('Location: ../examples/login.php'); 
     exit;
 }
 include "../examples/config.php";

@@ -1,4 +1,12 @@
 <?php
+session_start();
+
+if(!isset($_SESSION['user_id']))
+
+{
+    header('Location: ../examples/login.php'); 
+    exit;
+}
 include "../examples/config.php";
 $fill_id= ($_GET['ID']); // Ensure the patent ID is an integer
 

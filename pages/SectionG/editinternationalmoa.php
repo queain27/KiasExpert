@@ -1,6 +1,13 @@
 <?php
-include "../examples/config.php"; // Ensure this file connects to your database and creates $conn
+session_start();
 
+if(!isset($_SESSION['user_id']))
+
+{
+    header('Location: ../examples/login.php'); 
+    exit;
+}
+include "../examples/config.php";
 $id = $_GET['ID'];
 
 if (isset($_POST['submit'])) {
