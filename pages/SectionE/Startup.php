@@ -1,10 +1,10 @@
 <?php
-session_start(); // Mulakan sesi
+session_start();
 
 if(!isset($_SESSION['user_id']))
 
 {
-    header('Location: pages/examples/login.php'); 
+    header('Location: ../examples/login.php'); 
     exit;
 }
 
