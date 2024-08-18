@@ -24,18 +24,6 @@
   <!-- summernote -->
   <link rel="stylesheet" href="plugins/summernote/summernote-bs4.min.css">
   <link rel="shortcut icon" href="images/Logo2.png" type="image/x-icon">
-
-   <!-- including side navigations -->
-   <!--bg image -->
-   <!-- <style>
-    body {
-      background-image: url('images/logiin.png');
-      background-repeat: no-repeat;
-      background-size: cover;
-    }
-  </style> -->
-   <!--bg image -->
-
 </head>
 
 <!-- Paste the content of sidebar.php here -->
@@ -46,9 +34,7 @@
   <div class="wrapper">
     <!-- Preloader -->
     <div class="preloader flex-column justify-content-center align-items-center">
-      <!-- <img class="animation__shake" src="images/Logo2.pn" alt="Logo" height="60" width="60"> -->
     </div>
-  
     <!-- Navbar -->
     <nav class="main-header navbar navbar-expand navbar-white navbar-light">
       <!-- Left navbar links -->

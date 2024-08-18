@@ -24,9 +24,6 @@
       <li class="nav-item d-none d-sm-inline-block">
         <a href="../Lecture/homelect.php" class="nav-link">Home</a>
       </li>
-      <!-- <li class="nav-item d-none d-sm-inline-block">
-        <a href="../../contactus.php" class="nav-link">Contact</a>
-      </li> -->
     </ul>
         <!-- Right navbar links -->
         <ul class="navbar-nav ml-auto">
@@ -103,32 +100,9 @@
          <p>A1 Staff Academic</p>
        </a> 
      </li>
-     <!-- <li class="nav-item">
-       <a href="#" class="nav-link">
-         <i class="far fa-circle nav-icon"></i>
-         <p>A2 Student Information
-           <i class="fas fa-angle-left right"></i>
-         </p>
-       </a>
-       <ul class="nav nav-treeview">
-         <li class="nav-item">
-           <a href="#" class="nav-link">
-             <i class="far fa-circle nav-icon"></i>
-             <p>Student Undergraduate</p>
-           </a>
-         </li>
-         <li class="nav-item">
-         <a href="#" class="nav-link">
-             <i class="far fa-circle nav-icon"></i>
-             <p>Student Postgraduate</p>
-           </a>
-         </li>
-       </ul>
-     </li> -->
    </ul>
  </li>
  <!--Seksyen A End-->
- 
  <!--Seksyen B Start-->
  <li class="nav-item">
    <a href="#" class="nav-link">
