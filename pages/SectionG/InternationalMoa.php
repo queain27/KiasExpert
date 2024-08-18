@@ -853,7 +853,6 @@
             <th>Category (Industry/Community/University/Agency)</th>
             <th>Amount (If Applicable)</th>
             <th>Start Date</th>
-            <th>End Date</th>
             <th>Expiry Date</th>
             <th>Period</th>
             <th>Link evidence</th>
@@ -898,7 +897,6 @@
                 <td style="text-align: center"><?php echo $row['category']; ?></td>
                 <td style="text-align: center"><?php echo $row['amount']; ?></td>
                 <td style="text-align: center"><?php echo $row['start_date']; ?></td>
-                <td style="text-align: center"><?php echo $row['end_date']; ?></td>
                 <td style="text-align: center"><?php echo $row['expiry_date']; ?></td>
                 <td style="text-align: center"><?php echo $row['period']; ?></td>
                 <td style="text-align: center"><a href="<?php echo $row['link_evidence']; ?>" target="_blank"><?php echo $row['link_evidence']; ?>
@@ -943,7 +941,6 @@
             <th>Category (Industry/Community/University/Agency)</th>
             <th>Amount (If Applicable)</th>
             <th>Start Date</th>
-            <th>End Date</th>
             <th>Expiry Date</th>
             <th>Period</th>
             <th>Link evidence</th>
