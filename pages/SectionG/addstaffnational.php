@@ -129,7 +129,7 @@ $(document).ready(function() {
     <div class="container">
       <div class="row">
         <div class="col-sm-12">
-          <h1 class="border-bottom text-center pb-3 mb-4">Add New Staff MoA</h1>
+          <h1 class="border-bottom text-center pb-3 mb-4">Add New Staff </h1>
         </div>
       </div>
       <form action="" method="post">
