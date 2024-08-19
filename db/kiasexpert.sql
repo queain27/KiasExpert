@@ -95,8 +95,8 @@ CREATE TABLE `awarding` (
 --
 
 INSERT INTO `awarding` (`staff_id`, `staff_name`, `faculty`, `name_awd`, `type`, `level`, `conferring`, `title_invention`, `event`, `date`, `link_award`) VALUES
-(1067, 'AMRAN BIN AYOB                          ', 'J24-FAKULTI KEJURUTERAAN MEKANIKAL ', 'dfgh', 'award', 'University', 'aas', 'sdfg', 'sdfg', '2024-07-26', 'as'),
-(1274, 'HAMDANI BIN AHMAD                       ', 'J46-FAKULTI KEJURUTERAAN KIMIA DAN KEJURUTERAAN TENAGA', 'dfgh', 'award', 'National', 'aas', 'sdfg', 'sdfg', '2024-07-25', 'dfvgbn');
+(1067, 'AMRAN BIN AYOB                          ', 'Teknologi Maklumat & Multimedia', 'dfgh', 'award', 'University', 'aas', 'sdfg', 'sdfg', '2024-07-26', 'as'),
+(1274, 'HAMDANI BIN AHMAD                       ', 'Dakwah & Pembangunan Insan', 'dfgh', 'award', 'National', 'aas', 'sdfg', 'sdfg', '2024-07-25', 'dfvgbn');
 
 -- --------------------------------------------------------
 
@@ -492,8 +492,8 @@ CREATE TABLE `membership` (
   `staff_id` int(11) NOT NULL,
   `staff_name` varchar(255) NOT NULL,
   `faculty` varchar(255) NOT NULL,
-  `member` varchar(255) NOT NULL,
-  `type_appointment` varchar(255) NOT NULL,
+  `organisation_name` varchar(255) NOT NULL,
+  `type_member` varchar(255) NOT NULL,
   `start_date` varchar(255) NOT NULL,
   `end_date` varchar(255) NOT NULL,
   `link_evidence` varchar(255) NOT NULL,
@@ -504,8 +504,26 @@ CREATE TABLE `membership` (
 -- Dumping data for table `membership`
 --
 
-INSERT INTO `membership` (`staff_id`, `staff_name`, `faculty`, `member`, `type_appointment`, `start_date`, `end_date`, `link_evidence`, `remarks`) VALUES
-(1067, 'AMRAN BIN AYOB                          ', 'Teknologi Maklumat & Multimedia', 'ajfdfhf', 'Committe', '2024-08-14', '2024-08-25', 'FDkkk', 'addk');
+INSERT INTO `membership` (`staff_id`, `staff_name`, `faculty`, `organisation_name`, `type_member`, `start_date`, `end_date`, `link_evidence`, `remarks`) VALUES
+(958, 'JALIL BIN OMAR                          ', 'Pengajian Bahasa Arab', 'gsfdff', 'Committe', '2024-08-18', '2024-08-31', 'juii', 'DSJDSHk');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `membershipnational`
+--
+
+CREATE TABLE `membershipnational` (
+  `staff_id` int(11) NOT NULL,
+  `staff_name` varchar(255) NOT NULL,
+  `faculty` varchar(255) NOT NULL,
+  `organisation_name` varchar(255) NOT NULL,
+  `type_member` varchar(255) NOT NULL,
+  `start_date` varchar(255) NOT NULL,
+  `end_date` varchar(255) NOT NULL,
+  `link_evidence` varchar(255) NOT NULL,
+  `remarks` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -526,13 +544,6 @@ CREATE TABLE `nationalorganisation` (
   `link_evidence` varchar(255) NOT NULL,
   `remarks` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `nationalorganisation`
---
-
-INSERT INTO `nationalorganisation` (`id`, `organisation_name`, `type`, `category`, `amount`, `start_date`, `end_date`, `period`, `programme_title`, `link_evidence`, `remarks`) VALUES
-(2, 'SIRIM', 'LoA', 'Industry', 100, '2024-08-15', '2024-09-05', '21 days', 'Research Collaboration', 'KiasExpert/pages/sectionG/addnational.php', '8001');
 
 -- --------------------------------------------------------
 --
@@ -582,10 +593,10 @@ CREATE TABLE `organisation` (
 --
 
 INSERT INTO `organisation` (`id`, `organisation_name`, `country`, `programme_title`, `type`, `activity`, `category`, `amount`, `start_date`, `expiry_date`, `period`, `link_evidence`, `remarks`) VALUES
-(2, 'gsfdff', 'USA ', 'rty', 'MoU', 'jbjg', 'Community', 100, '2024-08-14', '2024-08-25', '11 days', 'dsd', 'fgj'),
 (3, 'asfsg', 'malaysia', 'dsjdhfh', 'MoA', '', 'Industry', 100, '2024-08-16', '2024-08-25', '35', 'fbh', 'add'),
 (4, 'gsfdff', 'malaysia', 'bbb', 'MoA', '', 'Industry', 100, '2024-08-15', '2024-08-31', '16 days', 'fbh', '800'),
-(5, 'sjdkhd', 'malaysia', 'dasa', 'MoU', 'jbjg', 'Industry', 100, '2024-08-16', '2024-08-24', '8 days', 'FD', 'gh');
+(5, 'sjdkhd', 'malaysia', 'dasa', 'MoU', 'jbjg', 'Industry', 100, '2024-08-16', '2024-08-24', '8 days', 'FD', 'gh'),
+(6, 'sjdkhd', 'USA', 'dggre', 'MoU', 'ggd', 'Industry', 100, '2024-08-18', '2024-09-08', '21 days', 'fsaa', 'gh');
 
 -- --------------------------------------------------------
 
@@ -622,6 +633,7 @@ INSERT INTO `other_journal` (`article_no`, `staff_id`, `staff_name`, `authors`, 
 (12345, 1067, 'AMRAN BIN AYOB                          ', 'dg', 'Y', 'N', 'Y', 'hn', 'ghh', 'hk', '124', 'jgugu', 12356, 6778, 2024, 3456, 'hjkll', '3413');
 
 -- --------------------------------------------------------
+
 --
 -- Table structure for table `other_publication`
 --
@@ -907,7 +919,7 @@ CREATE TABLE `research_grant` (
 --
 
 INSERT INTO `research_grant` (`project_id`, `staff_id`, `staff_name`, `faculty`, `st`, `staff_status`, `research_title`, `start_date`, `end_date`, `page_end`, `duration_project`, `status_project`, `project_extension`, `project_extend`, `sponsor_cat`, `sponsor`, `grant_name`, `amt_pledge`, `amt_rec`, `amt_spent`, `link_evidence`, `remarks`) VALUES
-(123, 1067, 'AMRAN BIN AYOB                          ', 'J24-FAKULTI KEJURUTERAAN MEKANIKAL ', 'NON S&T', 'FULL TIME', 'djsakdh', '2024-08-06', '2024-08-16', 2345, 8009, 'ONGOING', 'YES', 'complete', 'NATIONAL', 'eghjk', 'gjnhnb', 13083, 3345, 2345, 'dsd', 'DSJDSH');
+(123, 1067, 'AMRAN BIN AYOB                          ', 'Teknologi Maklumat & Multimedia', 'NON S&T', 'FULL TIME', 'djsakdh', '2024-08-06', '2024-08-16', 2345, 8009, 'ONGOING', 'YES', 'complete', 'NATIONAL', 'eghjk', 'gjnhnb', 13083, 3345, 2345, 'dsd', 'DSJDSH');
 
 -- --------------------------------------------------------
 
@@ -1040,7 +1052,7 @@ CREATE TABLE `staffinternational` (
 --
 
 INSERT INTO `staffinternational` (`staff_id`, `staff_name`, `programme_title`, `faculty`, `link_evidence`, `remarks`) VALUES
-(1067, 'AMRAN BIN AYOB                          ', 'dsjdhfh', 'Teknologi Maklumat & Multimedia', 'hj', 'DSJDSH');
+(958, 'JALIL BIN OMAR                          ', 'bbb', 'Pengajian Bahasa Arab', 'fsaa', 'addk');
 
 -- --------------------------------------------------------
 
@@ -1056,10 +1068,17 @@ CREATE TABLE `staffnational` (
   `type` varchar(255) NOT NULL,
   `organisation_name` varchar(255) NOT NULL,
   `start_date` varchar(255) NOT NULL,
-  `expiry_date` varchar(255) NOT NULL,
+  `end_date` varchar(255) NOT NULL,
   `link_evidence` varchar(255) NOT NULL,
   `remarks` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `staffnational`
+--
+
+INSERT INTO `staffnational` (`staff_id`, `staff_name`, `faculty`, `programme_title`, `type`, `organisation_name`, `start_date`, `end_date`, `link_evidence`, `remarks`) VALUES
+(1067, 'AMRAN BIN AYOB                          ', 'Teknologi Maklumat & Multimedia', 'Research Collaboration', 'Member', 'SIRIM', '2024-08-18', '2024-08-31', 'fbhk', 'DSJDSH');
 
 -- --------------------------------------------------------
 --
@@ -1223,6 +1242,12 @@ ALTER TABLE `membership`
   ADD PRIMARY KEY (`staff_id`);
 
 --
+-- Indexes for table `membershipnational`
+--
+ALTER TABLE `membershipnational`
+  ADD PRIMARY KEY (`staff_id`);
+
+--
 -- Indexes for table `nationalorganisation`
 --
 ALTER TABLE `nationalorganisation`
@@ -1329,6 +1354,7 @@ ALTER TABLE `staffinternational`
 --
 ALTER TABLE `staffnational`
   ADD PRIMARY KEY (`staff_id`);
+
 --
 -- Indexes for table `training_courses`
 --
