@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Main</title>
-
-  <!-- Google Font: Source Sans Pro -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
   <link rel="shortcut icon" href="../../images/Logo2.png" type="image/x-icon">
-
+  <link rel="stylesheet" href="css/style.css">
 </head>
  <!-- Paste the content of sidebar.php here -->
  <nav class="main-header navbar navbar-expand navbar-white navbar-light">
@@ -24,9 +24,6 @@
       <li class="nav-item d-none d-sm-inline-block">
         <a href="../Lecture/homelect.php" class="nav-link">Home</a>
       </li>
-      <!-- <li class="nav-item d-none d-sm-inline-block">
-        <a href="../../contactus.php" class="nav-link">Contact</a>
-      </li> -->
     </ul>
         <!-- Right navbar links -->
         <ul class="navbar-nav ml-auto">
@@ -45,7 +42,7 @@
       </li>
        <!-- logout -->
        <li class="nav-item">
-        <a class="nav-link" data-widget="logout" href="../examples/logout.php" role="button">
+        <a class="nav-link" data-widget="logout" href="../../../index.php" role="button">
           <i class="fas fa-power-off"></i>
         </a>
       </li>
@@ -68,13 +65,11 @@
           <img src="../../images/Logo2.png" img-circle elevation-2 alt="User Image">
           </div>
           <div class="info">
-            <a href="#" class="d-block">AdminKias</a>
+            <a href="#" class="d-block">Lecture Kias</a>
         </div>
       </div>
 
- <!-- Sidebar Menu -->
-      <nav class="mt-2">
-          <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+      <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
             <li class="nav-item menu-open">
               <a href="../Lecture/homelect.php" class="nav-link active">
                 <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -86,12 +81,7 @@
                 <i class="nav-icon 	fas fa-user-circle"></i>
                 <p>Profile</p>
               </a>
-            </li>
- <!--Seksyen A Start-->
-<li class="nav-header">Section MyRA</li>
- <li class="nav-item">
-   <a href="#" class="nav-link">
-     <i class="nav-icon fas fa-info-circle icon"></i>
+        </li>
 <!--Seksyen A Start-->
 <li class="nav-header">Section MyRA</li>
  <li class="nav-item">
@@ -281,12 +271,9 @@
     </ul>  
  </li>
  <!--Seksyen C End-->
-
  <!--Seksyen D Start-->
- <!-- <li class="nav-header">Section D</li> -->
  <!--Seksyen D End-->
-
- <!--Seksyen E Start-->
+  <!--Seksyen E Start-->
  <!-- <li class="nav-header">Section E</li> -->
  <li class="nav-item">
    <a href="#" class="nav-link">
@@ -542,51 +529,48 @@
  <!--Seksyen H End-->
         </ul>
       </nav>
-      <!-- /.sidebar-menu -->
     </div>
-    <!-- /.sidebar -->
   </aside>
-  <!--Extra Compactment End-->  
   <!-- Paste the content of sidebar.php here -->
-  <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
 
-    <!-- Main content -->
-    <section class="content">
-        <div class="container-fluid">
-            <h2 class="text-center display-4">Search</h2>
-            <div class="row">
-                <div class="col-md-8 offset-md-2">
-                    <form action="simple-results.php">
-                        <div class="input-group">
-                            <input type="search" class="form-control form-control-lg" placeholder="Type your keywords here">
-                            <div class="input-group-append">
-                                <button type="submit" class="btn btn-lg btn-default">
-                                    <i class="fa fa-search"></i>
-                                </button>
-                            </div>
+<!-- Main content -->
+<section class="content">
+    <div class="container-fluid">
+        <h2 class="text-center display-4">Search</h2>
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                <form action="simple-results.php">
+                    <div class="input-group">
+                        <input type="search" class="form-control form-control-lg" placeholder="Type your keywords here">
+                        <div class="input-group-append">
+                            <button type="submit" class="btn btn-lg btn-default">
+                                <i class="fa fa-search"></i>
+                            </button>
                         </div>
-                    </form>
-                </div>
+                    </div>
+                </form>
             </div>
         </div>
-    </section>
-  </div>
-
-  <!-- Main footer -->
-  <footer class="main-footer">
-    <strong>Copyright &copy; 2024 <a href="https://www.kias.edu.my/">KiasExperts</a>.</strong>
-    All rights reserved.
-    <div class="float-right d-none d-sm-inline-block">
-      <b>Version</b>1.0
     </div>
-  </footer>
+</section>
+</div>
 
-  <!-- Control Sidebar -->
-  <aside class="control-sidebar control-sidebar-dark">
-    <!-- Control sidebar content goes here -->
-  </aside>
-  <!-- /.control-sidebar -->
+<!-- Main footer -->
+<footer class="main-footer">
+<strong>Copyright &copy; 2024 <a href="https://www.kias.edu.my/">KiasExperts</a>.</strong>
+All rights reserved.
+<div class="float-right d-none d-sm-inline-block">
+  <b>Version</b>1.0
+</div>
+</footer>
+
+<!-- Control Sidebar -->
+<aside class="control-sidebar control-sidebar-dark">
+<!-- Control sidebar content goes here -->
+</aside>
+<!-- /.control-sidebar -->
 </div>
 <!-- ./wrapper -->
 
