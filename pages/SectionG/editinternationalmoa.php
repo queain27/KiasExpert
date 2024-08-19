@@ -19,7 +19,7 @@ if (isset($_POST['submit'])) {
     $remarks = $_POST['remarks'];
 
     // Prepare the SQL statement
-    $stmt = $conn->prepare("UPDATE `organisation` 
+    $stmt = $conn->prepare("UPDATE `internationalmoa` 
                             SET `organisation_name` = ?, 
                                 `country` = ?, 
                                 `programme_title` = ?, 
@@ -97,7 +97,7 @@ if (isset($_POST['submit'])) {
 
        
         <?php 
-        $sql = "SELECT * FROM `organisation` WHERE id= $id LIMIT 1";
+        $sql = "SELECT * FROM `internationalmoa` WHERE id= $id LIMIT 1";
         $result = mysqli_query($conn, $sql);
         $row = mysqli_fetch_assoc($result);
         ?>

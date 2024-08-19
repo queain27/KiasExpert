@@ -867,7 +867,7 @@
 
            if (isset($_GET['delid'])) {
            $id = mysqli_real_escape_string($conn, $_GET['delid']);
-           $query = "DELETE FROM organisation WHERE  id = '$id'";
+           $query = "DELETE FROM internationalmoa WHERE  id = '$id'";
            $result = mysqli_query($conn, $query);
 
            if ($result) {
@@ -880,7 +880,7 @@
        ?>
     <?php
     require_once "../examples/config.php";
-    $query = "SELECT * FROM organisation";
+    $query = "SELECT * FROM internationalmoa";
     $count =1;
     $result = mysqli_query($conn, $query);
 

@@ -156,7 +156,7 @@ $(document).ready(function() {
                 }
 
                 // Fetch data from the organisation table
-                $sql = "SELECT programme_title FROM organisation WHERE type = 'MoA'";
+                $sql = "SELECT programme_title FROM internationalmoa WHERE type = 'MoA'";
                 $result = $conn->query($sql);
 
                 if ($result->num_rows > 0) {

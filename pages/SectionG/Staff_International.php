@@ -853,32 +853,32 @@
     </thead>
     <tbody>
 
-        <tr>
-          <?php
-          require_once "../examples/config.php"; // Ensure this path is correct
+                <tr>
+                  <?php
+                  require_once "../examples/config.php"; // Ensure this path is correct
 
-        if (isset($_GET['delid'])) {
-        $id = mysqli_real_escape_string($conn, $_GET['delid']);
-        $query = "DELETE FROM staffinternational  WHERE staff_id = '$id'";
-        $result = mysqli_query($conn, $query);
+                if (isset($_GET['delid'])) {
+                $id = mysqli_real_escape_string($conn, $_GET['delid']);
+                $query = "DELETE FROM staffinternational  WHERE staff_id = '$id'";
+                $result = mysqli_query($conn, $query);
 
-        if ($result) {
-          echo "<script>alert('Record deleted successfully');</script>";
-          echo "<script>window.location.href='Staff_International.php';</script>"; // Redirect to avoid resubmission
-        } else {
-        echo "<script>alert('Error deleting record');</script>";
-        }
-        } 
-       ?>
-    <?php
-    require_once "../examples/config.php";
-    $query = "SELECT * FROM staffinternational";
-    $count =1;
-    $result = mysqli_query($conn, $query);
+                if ($result) {
+                  echo "<script>alert('Record deleted successfully');</script>";
+                  echo "<script>window.location.href='Staff_International.php';</script>"; // Redirect to avoid resubmission
+                } else {
+                echo "<script>alert('Error deleting record');</script>";
+                }
+                } 
+                ?>
+            <?php
+            require_once "../examples/config.php";
+            $query = "SELECT * FROM staffinternational";
+            $count =1;
+            $result = mysqli_query($conn, $query);
 
-    if ($result) {
-        while ($row = mysqli_fetch_assoc($result)) {
-    ?>
+            if ($result) {
+                while ($row = mysqli_fetch_assoc($result)) {
+            ?>
             <tr>
                 <td style="text-align: center"><?php echo $count;?></td>
                 <td style="text-align: center"><?php echo $row['programme_title']; ?></td>
