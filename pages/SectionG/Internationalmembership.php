@@ -724,7 +724,7 @@
      </li>
    <!--G3-->
    <li class="nav-item">
-     <a href="../sectionG/International.php" class="nav-link">
+     <a href="../sectionG/Internationalmembership.php" class="nav-link">
         <i class="far fa-circle nav-icon"></i>
           <p> G3 Membership in International Academic/Professional bodies/Associations/NGOs</br>
          </p>
@@ -860,12 +860,12 @@
         // Handle deletion
         if (isset($_GET['delid'])) {
             $staff_id = mysqli_real_escape_string($conn, $_GET['delid']);
-            $query = "DELETE FROM membership WHERE staff_id = '$staff_id'";
+            $query = "DELETE FROM membershipinternational WHERE staff_id = '$staff_id'";
             $result = mysqli_query($conn, $query);
 
             if ($result) {
                 echo "<script>alert('Record deleted successfully');</script>";
-                echo "<script>window.location.href='International.php';</script>"; // Redirect to avoid resubmission
+                echo "<script>window.location.href='Internationalmembership.php';</script>"; // Redirect to avoid resubmission
             } else {
                 echo "<script>alert('Error deleting record');</script>";
             }
@@ -873,7 +873,7 @@
     ?>
   <?php
     require_once "../examples/config.php";
-    $query = "SELECT * FROM membership";
+    $query = "SELECT * FROM membershipinternational";
     $count =1;
     $result = mysqli_query($conn, $query);
 
@@ -895,7 +895,7 @@
                     <a href="editinternationalmembership.php?ID=<?php echo $row['staff_id']; ?>" class="btn btn-primary btn-sm">
                         <i class="fa-solid fa-pen-to-square fs-5 me-3"></i>
                     </a>
-                    <a href="International.php?delid=<?php echo urlencode($row['staff_id']); ?>" 
+                    <a href="Internationalmembership.php?delid=<?php echo urlencode($row['staff_id']); ?>" 
                     onClick="return confirm('Do you really want to remove this Record?');" 
                     class="btn btn-danger btn-sm">
                      <i class="fa-solid fa-trash fs-5 me-3"></i>

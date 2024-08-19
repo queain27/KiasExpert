@@ -3,17 +3,15 @@ include "../examples/config.php";
 
 if (isset($_POST['submit'])) {
     $staff_id = $_POST['staff_id'];
-    $staff_name =$_POST['staff_name'];
+    $staff_name = $_POST['staff_name'];
     $faculty = $_POST['faculty'];
-    $programme_title =$_POST['programme_title'];
+    $programme_title = $_POST['programme_title'];
     $type = $_POST['type'];
     $organisation_name = $_POST['organisation_name'];
     $start_date = $_POST['start_date'];
     $expiry_date = $_POST['expiry_date'];
     $link_evidence = $_POST['link_evidence'];
     $remarks = $_POST['remarks'];
-
-
 
     // Check if staff_id is active
     $check_staff_sql = $conn->prepare("SELECT * FROM `staff` WHERE `staff_id` = ? AND `status` = 'active'");
@@ -30,30 +28,38 @@ if (isset($_POST['submit'])) {
 
         if ($check_duplicate_result->num_rows == 0) {
             // No duplicates, proceed with the insertion
-            $sql = mysqli_query($conn, "INSERT INTO `staffnational` (`staff_id`,`staff_name`,`faculty`, `programme_title`,`type`,`organisation_name`,`start_date`,`expiry_date`,`link_evidence`,`remarks`) 
-      VALUES ('$staff_id', '$staff_name','$faculty','$programme_title','$type','$organisation_name','$start_date','$expiry_date','$link_evidence','$remarks')");
-      
-            if ($sql) {
+            $insert_sql = $conn->prepare("INSERT INTO `staffnational` 
+            (`staff_id`, `staff_name`, `faculty`, `programme_title`, `type`, `organisation_name`, `start_date`, `expiry_date`, `link_evidence`, `remarks`) 
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+
+            // Bind parameters to the prepared statement
+            $insert_sql->bind_param('ssssssssss', $staff_id, $staff_name, $faculty, $programme_title, $type, $organisation_name, $start_date, $expiry_date, $link_evidence, $remarks);
+
+            if ($insert_sql->execute()) {
                 echo "<script>alert('New record successfully added');</script>";
-                echo "<script>document.location='Staff_Research.php';</script>";
+                echo "<script>document.location='Staff_National.php';</script>";
             } else {
                 echo "<script>alert('Failed to add new record');</script>";
             }
+
+            $insert_sql->close(); // Close the insert statement
         } else {
             // Duplicate entry found
             echo "<script>alert('Duplicate entry found for the given StaffID');</script>";
         }
+
+        $check_duplicate_sql->close(); // Close the duplicate check statement
     } else {
         // Staff is not active
         echo "<script>alert('Staff ID is not active or does not exist');</script>";
     }
 
-    // Close the prepared statements and the database connection
-    $check_staff_sql->close();
-    $check_duplicate_sql->close();
-    $conn->close();
+    $check_staff_sql->close(); // Close the staff check statement
+    $conn->close(); // Close the database connection
 }
 ?>
+
+
 
 
 <!DOCTYPE html>
@@ -168,7 +174,7 @@ $(document).ready(function() {
                 }
 
                 // Fetch data from the organisation table
-                $sql = "SELECT programme_title FROM nationalorganisation";
+                $sql = "SELECT programme_title FROM nationalmoa";
                 $result = $conn->query($sql);
 
                 if ($result->num_rows > 0) {
@@ -210,7 +216,7 @@ $(document).ready(function() {
                 }
 
                 // Fetch data from the nationalorganisation table
-                $sql = "SELECT organisation_name FROM nationalorganisation";
+                $sql = "SELECT organisation_name FROM nationalmoa";
                 $result = $conn->query($sql);
 
                 if ($result->num_rows > 0) {
@@ -255,7 +261,7 @@ $(document).ready(function() {
         <!-- Buttons -->
         <div class="col-md-12 mb-3 text-center">
             <button type="submit" class="btn btn-primary" name="submit">ADD</button>
-            <a href="Staff_International.php" class="btn btn-success">View Staff</a>
+            <a href="Staff_National.php" class="btn btn-success">View Staff</a>
         </div>
     </div>
 </div>
@@ -267,4 +273,3 @@ $(document).ready(function() {
 
 </body>
 </html>
-/

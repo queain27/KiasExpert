@@ -848,7 +848,7 @@
             <th>Project Leader/Member</th>
             <th>Collaborator</th>
             <th>Start Date</th>
-            <th>End Date</th>
+            <th>Expiry Date</th>
             <th>Link Evidence</th>
             <th>Remarks</th>
             <th>Action</th>
@@ -866,7 +866,7 @@
 
            if ($result) {
             echo "<script>alert('Record deleted successfully');</script>";
-            echo "<script>window.location.href='Staff_Research.php';</script>"; // Redirect to avoid resubmission
+            echo "<script>window.location.href='Staff_National.php';</script>"; // Redirect to avoid resubmission
            } else {
            echo "<script>alert('Error deleting record');</script>";
           }
@@ -890,14 +890,14 @@
                 <td style="text-align: center"><?php echo $row['type']; ?></td>
                 <td style="text-align: center"><?php echo $row['organisation_name']; ?></td>
                 <td style="text-align: center"><?php echo $row['start_date']; ?></td>
-                <td style="text-align: center"><?php echo $row['end_date']; ?></td>
+                <td style="text-align: center"><?php echo $row['expiry_date']; ?></td>
                 <td style="text-align: center"><a href="<?php echo $row['link_evidence']; ?>" target="_blank"><?php echo $row['link_evidence']; ?>
                 <td style="text-align: center"><?php echo $row['remarks']; ?></td>
                 <td style="text-align: center;">
-                    <a href="editstaffresearch.php?ID=<?php echo $row['staff_id']; ?>" class="btn btn-primary btn-sm">
+                    <a href="editstaffnational.php?ID=<?php echo $row['staff_id']; ?>" class="btn btn-primary btn-sm">
                         <i class="fa-solid fa-pen-to-square fs-5 me-3"></i>
                     </a>
-                    <a href="Staff_Research.php?delid=<?php echo urlencode($row['staff_id']); ?>" 
+                    <a href="Staff_National.php?delid=<?php echo urlencode($row['staff_id']); ?>" 
                     onClick="return confirm('Do you really want to remove this Record?');" 
                     class="btn btn-danger btn-sm">
                      <i class="fa-solid fa-trash fs-5 me-3"></i>
@@ -932,7 +932,7 @@
             <th>Project Leader/Member</th>
             <th>Collaborator</th>
             <th>Start Date</th>
-            <th>End Date</th>
+            <th>Expiry Date</th>
             <th>Link Evidence</th>
             <th>Remarks</th>
             <th>Action</th>

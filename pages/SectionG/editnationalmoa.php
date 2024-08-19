@@ -17,7 +17,7 @@ if (isset($_POST['submit'])) {
     $remarks = $_POST['remarks'];
 
     // Prepare the SQL statement
-    $stmt = $conn->prepare("UPDATE `nationalorganisation` 
+    $stmt = $conn->prepare("UPDATE `nationalmoa` 
                             SET `organisation_name` = ?, 
                                 `type` = ?,
                                 `category` = ?, 
@@ -46,7 +46,7 @@ if (isset($_POST['submit'])) {
     // Execute the prepared statement
     if ($stmt->execute()) {
         echo "<script>alert('Record successfully updated');</script>";
-        echo "<script>window.location.href='National.php';</script>";
+        echo "<script>window.location.href='Nationalmoa.php';</script>";
     } else {
         echo "<script>alert('Error updating record: " . $stmt->error . "');</script>";
     }
@@ -94,7 +94,7 @@ if (isset($_POST['submit'])) {
 
        
         <?php 
-        $sql = "SELECT * FROM `nationalorganisation` WHERE id= $id LIMIT 1";
+        $sql = "SELECT * FROM `nationalmoa` WHERE id= $id LIMIT 1";
         $result = mysqli_query($conn, $sql);
         $row = mysqli_fetch_assoc($result);
         ?>
@@ -166,7 +166,7 @@ if (isset($_POST['submit'])) {
                <div>
                <center>
                        <button type ="submit" class="btn btn-success" name="submit">UPDATE</button>
-                       <a href="National.php" class="btn btn-danger">Cancel</a>
+                       <a href="Nationalmoa.php" class="btn btn-danger">Cancel</a>
               </div>
                  </center>
           </form>
