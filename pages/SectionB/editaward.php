@@ -1,4 +1,12 @@
 <?php
+session_start();
+
+if(!isset($_SESSION['user_id']))
+
+{
+    header('Location: login.php'); 
+    exit;
+}
 include "../examples/config.php";
 $staff_id =$_GET['ID'];
 

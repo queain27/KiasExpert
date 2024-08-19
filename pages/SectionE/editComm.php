@@ -1,4 +1,12 @@
 <?php
+session_start();
+
+if(!isset($_SESSION['user_id']))
+
+{
+    header('Location: ../examples/login.php'); 
+    exit;
+}
 include "../examples/config.php";
 $product_id= ($_GET['ID']); // Ensure the commercial ID is an integer
 
@@ -47,11 +55,9 @@ if (isset($_POST['submit'])) {
 <link rel="stylesheet" href="../../css/navbar.css">
 <link rel="shortcut icon" href="../../images/Logo2.png" type="image/x-icon">
 </head>
-
-
 <body>
 <div class="container">
-    <div class="text-center mb-4">
+       <div class="text-center mb-5"><br><br><br><br>
         <b><p>Click Update After Finish Changing Information</p></b>
     </div>
     <?php 

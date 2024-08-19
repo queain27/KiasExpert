@@ -1,6 +1,14 @@
 <?php
-include "../examples/config.php";
+session_start(); // Mulakan sesi
 
+if(!isset($_SESSION['user_id']))
+
+{
+    header('Location: pages/examples/login.php'); 
+    exit;
+}
+
+include "../examples/config.php";
 if(isset($_POST['submit'])) {
   $reference_no = $_POST['reference_no'];
   $matric_no = $_POST['matric_no'];
@@ -47,7 +55,7 @@ if(isset($_POST['submit'])) {
 <html lang="en" dir="ltr">
 <head>
   <meta charset="utf-8">
-  <title>Add New Patent Granted</title>
+  <title>Add New Postgraduate Fees</title>
   <link rel="stylesheet" href="../../bootstrap/css/bootstrap.min.css">
   <script src="../../bootstrap/js/jquery.min.js"></script>
   <script src="../../bootstrap/js/bootstrap.min.js"></script>
@@ -107,16 +115,20 @@ $(document).ready(function() {
 });
 </script>
 </head>
-<body>
-<div class="container-fluid">
-  <div class="container">
+<body>  <div class="container-fluid">
     <div class="container">
-      <div class="row">
-        <div class="col-sm-12">
-          <h1 class="border-bottom text-center pb-3 mb-4">Add New patent</h1>
+      <?php
+        require "../header.php";
+        createHeader('fa fa-briefcase', 'Add New Postgraduate Fees', 'Add Postgraduate Fees');
+      ?>
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12">
+            <h1 class="border-bottom center pb-3 mb-4" style="text-align: center;">Add Postgraduate Fees</h1>
+          </div>
         </div>
-      </div>
-      <form action="" method="post">
+
+        <form action=" " method="post">
         <div class="row">
           <!--REFERENCE NO-->
           <div class="col-md-6 mb-3">
@@ -167,7 +179,7 @@ $(document).ready(function() {
           <div class="col-md-6 mb-3">
             <label class="form-label">FACULTY:</label>
             <select class="form-control" name="faculty"  readonly>
-              <option value="" disabled selected>Choose Faculty</option>
+              <option value="" disabled selected>Faculty</option>
               <option value='Al-Quran & Hadis'>Al-Quran & Hadis</option>
               <option value='Dakwah & Pembangunan Insan'>Dakwah & Pembangunan Insan</option>
               <option value='Pengurusan Al-Syariah'>Pengurusan Al-Syariah</option>
@@ -201,12 +213,14 @@ $(document).ready(function() {
           <!--Button-->
           <div class="col-md-12 mb-3 text-center">
             <button type="submit" class="btn btn-primary" name="submit">ADD</button>
-            <a href="Post_Fees.php" class="btn btn-success">View Patent Granted</a>
+            <a href="Post_Fees.php" class="btn btn-success">View Postgraduate Fees</a>
+            </div>
+            </div>
           </div>
-        </div>
-      </form>
+        </form>
+      </div>
     </div>
   </div>
-</div>
+
 </body>
 </html>

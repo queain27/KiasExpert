@@ -1,7 +1,17 @@
 <?php
-include "../examples/config.php";
+session_start(); // Mulakan sesi
 
-if(isset($_POST['submit'])) {
+if(!isset($_SESSION['user_id']))
+
+{
+    header('Location: pages/examples/login.php'); 
+    exit;
+}
+
+include "../examples/config.php";
+if(isset($_POST ['submit']))
+
+{
   $tech_id = $_POST['tech_id'];
   $staff_id = $_POST['staff_id'];
   $staff_name = $_POST['staff_name'];
@@ -98,14 +108,19 @@ $(document).ready(function() {
 </head>
 <body>
 <div class="container-fluid">
-  <div class="container">
     <div class="container">
-      <div class="row">
-        <div class="col-sm-12">
-          <h1 class="border-bottom text-center pb-3 mb-4">Add New Technology</h1>
+      <?php
+        require "../header.php";
+        createHeader('fa fa-briefcase', 'Add New Technology', 'Add Technology');
+      ?>
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12">
+            <h1 class="border-bottom center pb-3 mb-4" style="text-align: center;">Add Technology</h1>
+          </div>
         </div>
-      </div>
-      <form action="" method="post">
+
+        <form action=" " method="post">
         <div class="row">
           <!--TECHNOLGY ID / NO-->
           <div class="col-md-6 mb-3">
@@ -121,7 +136,7 @@ $(document).ready(function() {
           <!--Staff Name-->
           <div class="col-md-6 mb-3">
             <label class="form-label">STAFF NAME:</label>
-            <input type="text" class="form-control" name="staff_name" placeholder="Staff Name" readonly required>
+            <input type="text" class="form-control" name="staff_name" placeholder="Staff Name" readonly>
           </div>
           <!--NAME OF TECHNOLOGY-->
           <div class="col-md-6 mb-3">
@@ -185,11 +200,13 @@ $(document).ready(function() {
           <div class="col-md-12 mb-3 text-center">
             <button type="submit" class="btn btn-primary" name="submit">ADD</button>
             <a href="Technology.php" class="btn btn-success">View Techology</a>
+            </div>
+            </div>
           </div>
-        </div>
-      </form>
+        </form>
+      </div>
     </div>
   </div>
-</div>
+
 </body>
 </html>

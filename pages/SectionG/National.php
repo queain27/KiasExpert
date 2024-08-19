@@ -1,3 +1,15 @@
+<?php
+session_start();
+
+if(!isset($_SESSION['user_id']))
+
+{
+    header('Location: ../examples/login.php'); 
+    exit;
+}
+
+include "../examples/config.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -98,7 +110,7 @@
       </li>
        <!-- logout -->
        <li class="nav-item">
-        <a class="nav-link" data-widget="logout" href="../../index.php" role="button">
+        <a class="nav-link" data-widget="logout" href="../examples/logout.php" role="button">
           <i class="fas fa-power-off"></i>
         </a>
       </li>

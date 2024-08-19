@@ -1,7 +1,17 @@
 <?php
-include "../examples/config.php";
+session_start(); // Mulakan sesi
 
-if (isset($_POST['submit'])) {
+if(!isset($_SESSION['user_id']))
+
+{
+    header('Location: pages/examples/login.php'); 
+    exit;
+}
+
+include "../examples/config.php";
+if(isset($_POST ['submit']))
+
+{
     $staff_id = $_POST['staff_id'];
     $staff_name = $_POST['staff_name'];
     $authors = $_POST['authors'];
@@ -35,7 +45,7 @@ if (isset($_POST['submit'])) {
         if ($check_duplicate_result->num_rows == 0) {
             // No duplicates, proceed with the insertion
             $sql = mysqli_query($conn, "INSERT INTO `book` (`staff_id`, `staff_name`, `authors`, `industrial`, `international`, `national`, `book_title`, `book_editor`,`chapter_title`, `publisher`,`isbn`,`book_status`,`link_evidence`,`remarks`) 
-      VALUES ('$staff_id', '$staff_name', '$authors', '$industrial', '$international', '$national', '$book_title','$publisher',  '$isbn','$book_status','$book_editor','$chapter_title',   '$link_evidence', '$remarks')");
+      VALUES ('$staff_id', '$staff_name', '$authors', '$industrial', '$international', '$national', '$book_title','$book_editor','$chapter_title','$publisher','$isbn','$book_status','$link_evidence', '$remarks')");
       
             if ($sql) {
                 echo "<script>alert('New record successfully added');</script>";
@@ -45,7 +55,7 @@ if (isset($_POST['submit'])) {
             }
         } else {
             // Duplicate entry found
-            echo "<script>alert('Duplicate entry found for the given Article Number');</script>";
+            echo "<script>alert('Duplicate entry found for the given StaffID');</script>";
         }
     } else {
         // Staff is not active
@@ -73,9 +83,14 @@ if (isset($_POST['submit'])) {
   <link rel="stylesheet" href="../../css/navbar.css">
   <link rel="shortcut icon" href="../../images/Logo2.png" type="image/x-icon">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  
+  <style>
+        .hidden {
+            display: none;
+        }
+    </style>
   <script>
 $(document).ready(function() {
+    // AJAX call to fetch staff data when staff_id changes
     $('input[name="staff_id"]').on('change', function() {
         var staff_id = $(this).val();
         if (staff_id) {
@@ -114,12 +129,39 @@ $(document).ready(function() {
         }
     });
 
-    // Optionally, you can also disable the submit button initially if staff_id is empty
+    // Optionally, disable the submit button initially if staff_id is empty
     if (!$('input[name="staff_id"]').val()) {
         $('button[name="submit"]').prop('disabled', true);
     }
+
+    // Toggle visibility of Book Editor and Chapter Title fields based on Book Status selection
+    $('#statusDropdown').on('change', function() {
+        var status = $(this).val();
+        if (status === 'NO INDEX') {
+            $('#bookeditorField').removeClass('hidden');
+            $('#chaptertitleField').removeClass('hidden');
+            $('#publisherField').addClass('hidden');
+        } else {
+            $('#bookeditorField').addClass('hidden');
+            $('#chaptertitleField').addClass('hidden');
+            $('#publisherField').removeClass('hidden');
+        }
+    });
+
+    // Initial check to set visibility based on the current value of statusDropdown
+    var initialStatus = $('#statusDropdown').val();
+    if (initialStatus === 'NO INDEX') {
+        $('#bookeditorField').removeClass('hidden');
+        $('#chaptertitleField').removeClass('hidden');
+        $('#publisherField').addClass('hidden');
+    } else {
+        $('#bookeditorField').addClass('hidden');
+        $('#chaptertitleField').addClass('hidden');
+        $('#publisherField').removeClass('hidden');
+    }
 });
 </script>
+
 
 
 
@@ -146,7 +188,7 @@ $(document).ready(function() {
           <!--Staff Name-->
           <div class="col-md-6 mb-3">
             <label class="form-label">STAFF NAME:</label>
-            <input type="text" class="form-control" name="staff_name" placeholder="Staff Name" readonly required>
+            <input type="text" class="form-control" name="staff_name" placeholder="Staff Name" readonly>
           </div>
           <!--Research Title-->
           <div class="col-md-6 mb-3">
@@ -184,15 +226,26 @@ $(document).ready(function() {
             <label class="form-label">BOOK TITLE:</label>
             <input type="text" class="form-control" name="book_title" placeholder="Book Title" required>
           </div>
-          <div class="col-md-6 mb-3">
+
+                       
+             <div class="col-md-6 mb-3">
+            <label class="form-label">BOOK STATUS</label>
+            <select class="form-control"id="statusDropdown" name="book_status" required>
+              <option value="" disabled selected>Choose</option>
+              <option value="INDEX">INDEX</option>
+              <option value="NO INDEX">NO INDEX</option>
+            </select>
+          </div>
+          <div class="col-md-6 mb-3 hidden" id="bookeditorField">
             <label class="form-label">BOOK EDITOR:</label>
-            <input type="text" class="form-control" name="book_editor" placeholder="Book Editor" required>
-          </div>
-          <div class="col-md-6 mb-3">
+            <input type="text" class="form-control" name="book_editor" placeholder="Book Editor">
+        </div>
+        <div class="col-md-6 mb-3 hidden" id="chaptertitleField">
             <label class="form-label">CHAPTER TITLE:</label>
-            <input type="text" class="form-control" name="chapter_title" placeholder="Chapter Title"required>
-          </div>
-          <div class="col-md-6 mb-3">
+            <input type="text" class="form-control" name="chapter_title" placeholder="Chapter Title">
+        </div>
+
+          <div class="col-md-6 mb-3 hidden" id="publisherField">
             <label class="form-label">PUBLISHER:</label>
             <input type="text" class="form-control" name="publisher" placeholder="Publisher" required>
           </div>
@@ -201,10 +254,7 @@ $(document).ready(function() {
             <label class="form-label">ISBN:</label>
             <input type="text" class="form-control" name="isbn" placeholder="Isbn" required>
           </div>
-          <div class="col-md-6 mb-3">
-            <label class="form-label">BOOK STATUS:</label>
-            <input type="text" class="form-control" name="book_status" placeholder="Book Status" required>
-          </div>
+        
       
           <div class="col-md-6 mb-3">
             <label class="form-label">LINK EVIDENCE:</label>
@@ -227,5 +277,6 @@ $(document).ready(function() {
     </div>
   </div>
 </div>
+
 </body>
 </html>

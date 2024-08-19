@@ -1,3 +1,15 @@
+<?php
+session_start();
+
+if(!isset($_SESSION['user_id']))
+
+{
+    header('Location: ../examples/login.php'); 
+    exit;
+}
+
+include "../examples/config.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -96,7 +108,7 @@
       </li>
        <!-- logout -->
        <li class="nav-item">
-        <a class="nav-link" data-widget="logout" href="../../index.php" role="button">
+        <a class="nav-link" data-widget="logout" href="../examples/logout.php" role="button">
           <i class="fas fa-power-off"></i>
         </a>
       </li>
@@ -831,6 +843,7 @@
 <h3><center><font color="" face="Cambria Math">Membership in national Academic/ Professional Bodies/Associations/NGOs<font><br></center></h3>
 <br><br>
 <div class="container pt-50">
+
     <div class="table-responsive">
         <table id="example" class="table table-striped" style="width:200%">
             <thead>

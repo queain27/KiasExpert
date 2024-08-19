@@ -1,3 +1,15 @@
+<?php
+session_start();
+
+if(!isset($_SESSION['user_id']))
+
+{
+    header('Location: ../examples/login.php'); 
+    exit;
+}
+
+include "../examples/config.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -99,7 +111,7 @@
       </li>
        <!-- logout -->
        <li class="nav-item">
-        <a class="nav-link" data-widget="logout" href="../../index.php" role="button">
+        <a class="nav-link" data-widget="logout" href="../examples/logout.php" role="button">
           <i class="fas fa-power-off"></i>
         </a>
       </li>
@@ -835,6 +847,9 @@
 <h3><center><font color="" face="Cambria Math">Monitoring Research Project Performance or Progress<font><br></center></h3>
 <br><br> 
 <div class="container pt-50">
+<div class="text-right mb-3">
+        <a href="../sectionC/addprojectperformance.php" class="btn btn-success">+Add New Research Project</a>
+      </div>
     <div class="table-responsive">
         <table id="example" class="table table-striped" style="width:250%">
             <thead>
@@ -867,30 +882,86 @@
             
             <tbody>
                 <tr>
-                <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                <?php
+            require_once "../examples/config.php"; // Ensure this path is correct
+
+           if (isset($_GET['delid'])) {
+           $id = mysqli_real_escape_string($conn, $_GET['delid']);
+           $query = "DELETE FROM research_project WHERE project_id = '$id'";
+           $result = mysqli_query($conn, $query);
+
+           if ($result) {
+            echo "<script>alert('Record deleted successfully');</script>";
+            echo "<script>window.location.href='Research_Project.php';</script>"; // Redirect to avoid resubmission
+           } else {
+           echo "<script>alert('Error deleting record');</script>";
+          }
+        } 
+       ?>
+
+                <?php
+    require_once "../examples/config.php";
+    $query = "SELECT * FROM research_project";
+    $count =1;
+    $result = mysqli_query($conn, $query);
+
+    if ($result) {
+        while ($row = mysqli_fetch_assoc($result)) {
+    ?>
+            <tr>
+                <td style="text-align: center"><?php echo $count;?></td>
+                <td style="text-align: center"><?php echo $row['project_id']; ?></td>
+                <td style="text-align: center"><?php echo $row['staff_id']; ?></td>
+                <td style="text-align: center"><?php echo $row['staff_name']; ?></td>
+                <td style="text-align: center"><?php echo $row['faculty']; ?></td>
+                <td style="text-align: center"><?php echo $row['st']; ?></td>
+                <td style="text-align: center"><?php echo $row['staff_status']; ?></td>
+                <td style="text-align: center"><?php echo $row['research_title']; ?></td>
+                <td style="text-align: center"><?php echo $row['start_date']; ?></td>
+                <td style="text-align: center"><?php echo $row['end_date']; ?></td>
+                <td style="text-align: center"><?php echo $row['page_end']; ?></td>
+                <td style="text-align: center"><?php echo $row['duration_project']; ?></td>
+                <td style="text-align: center"><?php echo $row['status_project']; ?></td>
+                <td style="text-align: center"><?php echo $row['project_extension']; ?></td>
+                <td style="text-align: center"><?php echo $row['project_extend']; ?></td>
+                <td style="text-align: center"><?php echo $row['sponsor']; ?></td>
+                <td style="text-align: center"><?php echo $row['sponsor_cat']; ?></td>
+                <td style="text-align: center"><?php echo $row['grant_name']; ?></td>
+                <td style="text-align: center"><?php echo $row['amt_pledge']; ?></td>
+                <td style="text-align: center"><?php echo $row['amt_rec']; ?></td>
+                <td style="text-align: center"><?php echo $row['amt_spent']; ?></td>
+                <td style="text-align: center"><a href="<?php echo $row['link_evidence']; ?>" target="_blank"><?php echo $row['link_evidence']; ?>
+                <td style="text-align: center"><?php echo $row['remarks']; ?></td>
+               </a>
+               <td style="text-align: center;">
+                    <a href="editresearchproject.php?ID=<?php echo $row['project_id']; ?>" class="btn btn-primary btn-sm">
+                        <i class="fa-solid fa-pen-to-square fs-5 me-3"></i>
+                    </a>
+                    <a href="Research_Project.php?delid=<?php echo urlencode($row['project_id']); ?>" 
+                    onClick="return confirm('Do you really want to remove this Record?');" 
+                    class="btn btn-danger btn-sm">
+                     <i class="fa-solid fa-trash fs-5 me-3"></i>
+               </a>
+
+
+                </td>
+
+
+                </td>
+            </tr>
+        <?php
+          
+          $count = $count+1;
+              }
+            } 
+            else 
+            
+            {
+              echo "Error: " . mysqli_error($conn);
+             }
+          ?>
                 </tr>
+               
                
             </tbody>
             

@@ -1,3 +1,15 @@
+<?php
+session_start();
+
+if(!isset($_SESSION['user_id']))
+
+{
+    header('Location: ../examples/login.php'); 
+    exit;
+}
+
+include "../examples/config.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -101,7 +113,7 @@
       </li>
        <!-- logout -->
        <li class="nav-item">
-        <a class="nav-link" data-widget="logout" href="../../index.php" role="button">
+        <a class="nav-link" data-widget="logout" href="../examples/logout.php" role="button">
           <i class="fas fa-power-off"></i>
         </a>
       </li>
@@ -788,7 +800,7 @@
 <br><br>  
 <div class="container pt-50">
 <div class="text-right mb-3">
-        <a href="../sectionC/addjournal.php" class="btn btn-success">+Add New Journal</a>
+        <a href="../sectionC/addindexjournal.php" class="btn btn-success">+Add New Index Journal</a>
       </div>
     <div class="table-responsive">
         <table id="example" class="table table-striped" style="width:250%">
@@ -823,7 +835,7 @@
 
            if (isset($_GET['delid'])) {
            $id = mysqli_real_escape_string($conn, $_GET['delid']);
-           $query = "DELETE FROM publication WHERE article_no = '$id'";
+           $query = "DELETE FROM index_journal WHERE article_no = '$id'";
            $result = mysqli_query($conn, $query);
 
            if ($result) {
@@ -838,7 +850,7 @@
 
             <?php
     require_once "../examples/config.php";
-    $query = "SELECT * FROM publication";
+    $query = "SELECT * FROM index_journal";
     $count =1;
     $result = mysqli_query($conn, $query);
 

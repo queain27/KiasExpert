@@ -1,3 +1,24 @@
+<?php
+session_start();
+
+if(!isset($_SESSION['user_id']))
+
+{
+    header('Location: ../examples/login.php'); 
+    exit;
+}
+
+include "../examples/config.php";
+
+if(isset($_GET['delid']))
+{
+  $id =intval($_GET['delid']);
+  $sql =mysqli_query($conn,"DELETE FROM library WHERE id='$id'");
+  echo"<script>alert('Record has been succesfully Deleted!!');</script>";
+  echo"<script>window.location='TittleBook.php?';</script>";
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,6 +28,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">  
   <!-- Font Awesome -->
   <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <!-- Ionicons -->
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <!-- Tempusdominus Bootstrap 4 -->
@@ -98,7 +120,7 @@
       </li>
        <!-- logout -->
        <li class="nav-item">
-        <a class="nav-link" data-widget="logout" href="../../index.php" role="button">
+        <a class="nav-link" data-widget="logout" href="../examples/logout.php" role="button">
           <i class="fas fa-power-off"></i>
         </a>
       </li>
@@ -833,39 +855,63 @@
 <h3><center><font color="" face="Cambria Math">Total of Book<font><br></center></h3>
 <br><br>
 <div class="container pt-50">
+<div class="text-right mb-3">
+        <a href="../sectionH/addLibrary.php" class="btn btn-success">+Add New</a>
+      </div>
     <div class="table-responsive">
         <table id="example" class="table table-striped" style="width:200%">
-            <thead>
+        <thead>
             <tr>
-            <th>Type</th>
-            <th>Collection Name</th>
-            <th>Total Title</th>
-            <th>Total Volume</th>
-            <th>Link Evidence</th>
+            <th style="text-align: center">No.</th>
+            <th style="text-align: center">Type Book (Print)</th>
+            <th style="text-align: center">Collection Name</th>
+            <th style="text-align: center">Total Title</th>
+            <th style="text-align: center">Total Volume</th>
+            <th style="text-align: center">Link Evidence</th>
+            <th style="text-align: center">Action</th>
         </tr>
-    </thead>
+    </thead>   
     <tbody>
+          <?php
+                require_once "../examples/config.php";
+                $sql = mysqli_query($conn,"SELECT * FROM Library WHERE type = 'Physical Book'");
+                $AmtTitle = 0;
+                $TotVolume = 0;
+                $count =1;
+                $row = mysqli_num_rows($sql);
+                   if($row > 0)
+                     {
+                         while($row =mysqli_fetch_array($sql))
+                         {
+            ?>
         <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-
-    </tbody>
-    <!-- <tfoot>
-        <tr>
-            <th></th>
-            <th>Faculty/Institute</th>
-            <th>Laboratory</th>
-            <th>Reference No.|Vot No.</th>
-            <th>Gross Income Generated</th>
-        </tr> -->
-            </tfoot>
-        </table>
-    </div>
+            <td style="text-align: center"><?php echo $count;?></td> 
+            <td style="text-align: center"><?php echo $row ['type']?></td>
+            <td style="text-align: center"><?php echo $row ['name']?></td>
+            <td style="text-align: center"><?php echo $row ['title']?></td><?php $AmtTitle += $row["title"];?>
+            <td style="text-align: center"><?php echo $row ['volume']?></td><?php $TotVolume += $row["volume"];?>
+            <td style="text-align: center"><?php echo $row ['link']?></td>
+            <td style="text-align: center;"><a href="editLibrary.php?ID=<?php echo $row['id']; ?>" class="btn btn-primary btn-sm"><i class="fa-solid fa-pen-to-square fs-5 me-3"></i></a>
+            <a href="TittleBook.php?delid=<?php echo htmlentities($row['id']); ?>" onClick="return confirm('Do you really want to remove this Record?');" class="btn btn-danger btn-sm"><i class="fa-solid fa-trash fs-5 me-3"></i></a></td>
+         <?php
+               $count = $count+1;
+                 }
+              }
+          ?>
+       
+          <tfoot><tr>
+                <th style="text-align: center"></th> 
+                <th style="text-align: center"></th>
+                <th style="text-align: center">Total</th>   
+                <th style="text-align: center"><?php echo $AmtTitle;?></th>
+                <th style="text-align: center"><?php echo $TotVolume;?></th>  
+                <th style="text-align: center"></th> 
+                <th style="text-align: center"></th> 
+           </tfoot></tr>
+                </tbody>  
+                </table>
 </div> 
+</div>
 <!--Main Content-->
 
 <!-- Add this script to initialize the DataTable and adjust its properties -->

@@ -1,3 +1,15 @@
+<?php
+session_start();
+
+if(!isset($_SESSION['user_id']))
+
+{
+    header('Location: ../examples/login.php'); 
+    exit;
+}
+
+include "../examples/config.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -100,7 +112,7 @@
       </li>
        <!-- logout -->
        <li class="nav-item">
-        <a class="nav-link" data-widget="logout" href="../../index.php" role="button">
+        <a class="nav-link" data-widget="logout" href="../examples/logout.php" role="button">
           <i class="fas fa-power-off"></i>
         </a>
       </li>
@@ -900,21 +912,38 @@
         <table id="example" class="table table-striped" style="width:250%">
             <thead>
                 <tr>
-                    <th>No.</th>
-                    <th>Staff ID</th>
-                    <th>Staff Name</th>     
-                    <th>Authors</th>              
-                    <th>Title Policy paper</th>
-                    <th>Stake Holder</th>
-                    <th>Level</th>
-                    <th>Year Published</th>
-                    <th>ISBN</th>
-                    <th>Link Device</th>
-                    <th>Remarks</th>     
+                    <th style="text-align: center">No.</th>
+                    <th style="text-align: center">Staff ID</th>
+                    <th style="text-align: center">Staff Name</th>     
+                    <th style="text-align: center">Authors</th>              
+                    <th style="text-align: center">Title Policy paper</th>
+                    <th style="text-align: center">Stake Holder</th>
+                    <th style="text-align: center">Level</th>
+                    <th style="text-align: center">Year Published</th>
+                    <th style="text-align: center">ISBN</th>
+                    <th style="text-align: center">Link Device</th>
+                    <th style="text-align: center">Remarks</th>     
+                    <th style="text-align: center">Action</th>
                 </tr>
             </thead>
             
             <tbody>
+            <?php
+            require_once "../examples/config.php"; // Ensure this path is correct
+
+           if (isset($_GET['delid'])) {
+           $id = mysqli_real_escape_string($conn, $_GET['delid']);
+           $query = "DELETE FROM policy_paper WHERE staff_id = '$id'";
+           $result = mysqli_query($conn, $query);
+
+           if ($result) {
+            echo "<script>alert('Record deleted successfully');</script>";
+            echo "<script>window.location.href='Policy.php';</script>"; // Redirect to avoid resubmission
+           } else {
+           echo "<script>alert('Error deleting record');</script>";
+          }
+        } 
+       ?>
             <?php
             require_once "../examples/config.php";
              $query = "SELECT * FROM policy_paper";
@@ -937,7 +966,19 @@
                 <td style="text-align: center"><a href="<?php echo $row['link_evidence']; ?>" target="_blank"><?php echo $row['link_evidence']; ?>
                 <td style="text-align: center"><?php echo $row['remarks']; ?></td>
                </a>
-          
+               <td style="text-align: center;">
+                    <a href="editpolicypaper.php?ID=<?php echo $row['staff_id']; ?>" class="btn btn-primary btn-sm">
+                        <i class="fa-solid fa-pen-to-square fs-5 me-3"></i>
+                    </a>
+                    <a href="Policy.php?delid=<?php echo urlencode($row['staff_id']); ?>" 
+                    onClick="return confirm('Do you really want to remove this Record?');" 
+                    class="btn btn-danger btn-sm">
+                     <i class="fa-solid fa-trash fs-5 me-3"></i>
+               </a>
+
+
+                </td>
+
 
                 </td>
             </tr>
@@ -958,17 +999,18 @@
             
             <tfoot>
                 <tr>
-                   <th></th>
-                    <th>Staff ID</th>
-                    <th>Staff Name</th>     
-                    <th>Authors</th>              
-                    <th>Title Policy paper</th>
-                    <th>Stake Holder</th>
-                    <th>Level</th>
-                    <th>Year Published</th>
-                    <th>ISBN</th>
-                    <th>Link Device</th>
-                    <th>Remarks</th>     
+                <th style="text-align: center">No.</th>
+                    <th style="text-align: center">Staff ID</th>
+                    <th style="text-align: center">Staff Name</th>     
+                    <th style="text-align: center">Authors</th>              
+                    <th style="text-align: center">Title Policy paper</th>
+                    <th style="text-align: center">Stake Holder</th>
+                    <th style="text-align: center">Level</th>
+                    <th style="text-align: center">Year Published</th>
+                    <th style="text-align: center">ISBN</th>
+                    <th style="text-align: center">Link Device</th>
+                    <th style="text-align: center">Remarks</th>     
+                    <th style="text-align: center">Action</th>
                 </tr>
             </tfoot>
         </table>

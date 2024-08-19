@@ -1,3 +1,15 @@
+<?php
+session_start();
+
+if(!isset($_SESSION['user_id']))
+
+{
+    header('Location: ../examples/login.php'); 
+    exit;
+}
+
+include "../examples/config.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -100,7 +112,7 @@
       </li>
        <!-- logout -->
        <li class="nav-item">
-        <a class="nav-link" data-widget="logout" href="../../index.php" role="button">
+        <a class="nav-link" data-widget="logout" href="../examples/logout.php" role="button">
           <i class="fas fa-power-off"></i>
         </a>
       </li>
@@ -835,63 +847,121 @@
 <h3><center><font color="" face="Cambria Math">Other Publication<font><br></center></h3>
 <br><br>  
 <div class="container pt-50">
+<div class="text-right mb-3">
+        <a href="../sectionC/addotherpublication.php" class="btn btn-success">+Add New Other Publication</a>
+      </div>
     <div class="table-responsive">
         <table id="example" class="table table-striped" style="width:250%">
             <thead>
                 <tr>
-                    <th>No.</th>
-                    <th>Staff ID</th>
-                    <th>Staff Name</th>     
-                    <th>Document Type</th>              
-                    <th>Document Title</th>
-                    <th>Source Tittle</th>
-                    <th>Volume</th>
-                    <th>Issue</th>
-                    <th>Page Start</th>
-                    <th>Page End</th>
-                    <th>Year</th>
-                    <th>Issn/Isbn</th>   
-                    <th>Link Evidence</th>   
-                    <th>Remarks</th>     
+                <th style="text-align: center">No.</th>
+                <th style="text-align: center">Staff ID</th>
+                <th style="text-align: center">Staff Name</th>     
+                <th style="text-align: center">Document Type</th>              
+                <th style="text-align: center">Document Title</th>
+                <th style="text-align: center">Source Title</th>
+                <th style="text-align: center">Volume</th>
+                <th style="text-align: center">Issue</th>
+                <th style="text-align: center">Page Start</th>
+                <th style="text-align: center">Page End</th>
+                <th style="text-align: center">Year</th>
+                <th style="text-align: center">Issn/Isbn</th>   
+                <th style="text-align: center">Link Evidence</th>   
+                <th style="text-align: center">Remarks</th>
+                <th style="text-align: center">Action</th>     
                 </tr>
             </thead>
             
             <tbody>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+            <?php
+            require_once "../examples/config.php"; // Ensure this path is correct
+
+           if (isset($_GET['delid'])) {
+           $id = mysqli_real_escape_string($conn, $_GET['delid']);
+           $query = "DELETE FROM other_publication WHERE staff_id = '$id'";
+           $result = mysqli_query($conn, $query);
+
+           if ($result) {
+            echo "<script>alert('Record deleted successfully');</script>";
+            echo "<script>window.location.href='OtherPub.php';</script>"; // Redirect to avoid resubmission
+           } else {
+           echo "<script>alert('Error deleting record');</script>";
+          }
+        } 
+       ?>
+            <tr>
+                <?php
+                require_once "../examples/config.php";
+                $query = "SELECT * FROM other_publication";
+                $count =1;
+                $result = mysqli_query($conn, $query);
+
+                if ($result) {
+                    while ($row = mysqli_fetch_assoc($result)) {
+                ?>
+            <tr>
+                <td style="text-align: center"><?php echo $count;?></td>
+                <td style="text-align: center"><?php echo $row['staff_id']; ?></td>
+                <td style="text-align: center"><?php echo $row['staff_name']; ?></td>
+                <td style="text-align: center"><?php echo $row['document_type']; ?></td>
+                <td style="text-align: center"><?php echo $row['document_title']; ?></td>
+                <td style="text-align: center"><?php echo $row['source_title']; ?></td>
+                <td style="text-align: center"><?php echo $row['volume']; ?></td>
+                <td style="text-align: center"><?php echo $row['issue']; ?></td>
+                <td style="text-align: center"><?php echo $row['page_start']; ?></td>
+                <td style="text-align: center"><?php echo $row['page_end']; ?></td>
+                <td style="text-align: center"><?php echo $row['year']; ?></td>
+                <td style="text-align: center"><?php echo $row['issn_isbn']; ?></td>
+                <td style="text-align: center"><a href="<?php echo $row['link_evidence']; ?>" target="_blank"><?php echo $row['link_evidence']; ?>
+                <td style="text-align: center"><?php echo $row['remarks']; ?></td>
+               </a>
+               <td style="text-align: center;">
+                    <a href="editotherpublication.php?ID=<?php echo $row['staff_id']; ?>" class="btn btn-primary btn-sm">
+                        <i class="fa-solid fa-pen-to-square fs-5 me-3"></i>
+                    </a>
+                    <a href="OtherPub.php?delid=<?php echo urlencode($row['staff_id']); ?>" 
+                    onClick="return confirm('Do you really want to remove this Record?');" 
+                    class="btn btn-danger btn-sm">
+                     <i class="fa-solid fa-trash fs-5 me-3"></i>
+               </a>
+
+
+                </td>
+
+                </td>
+            </tr>
+        <?php
+          
+          $count = $count+1;
+              }
+            } 
+            else 
+            
+            {
+              echo "Error: " . mysqli_error($conn);
+             }
+          ?>
                 </tr>
                
             </tbody>
             
             <tfoot>
                 <tr>
-                    <th></th>
-                    <th>Staff ID</th>
-                    <th>Staff Name</th>     
-                    <th>Document Type</th>              
-                    <th>Document Title</th>
-                    <th>Source Tittle</th>
-                    <th>Volume</th>
-                    <th>Issue</th>
-                    <th>Page Start</th>
-                    <th>Page End</th>
-                    <th>Year</th>
-                    <th>Issn/Isbn</th>   
-                    <th>Link Evidence</th>   
-                    <th>Remarks</th>     
+                <th style="text-align: center">No.</th>
+                <th style="text-align: center">Staff ID</th>
+                <th style="text-align: center">Staff Name</th>     
+                <th style="text-align: center">Document Type</th>              
+                <th style="text-align: center">Document Title</th>
+                <th style="text-align: center">Source Title</th>
+                <th style="text-align: center">Volume</th>
+                <th style="text-align: center">Issue</th>
+                <th style="text-align: center">Page Start</th>
+                <th style="text-align: center">Page End</th>
+                <th style="text-align: center">Year</th>
+                <th style="text-align: center">Issn/Isbn</th>   
+                <th style="text-align: center">Link Evidence</th>   
+                <th style="text-align: center">Remarks</th>
+                <th style="text-align: center">Action</th>   
                 </tr>
             </tfoot>
         </table>

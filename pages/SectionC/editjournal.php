@@ -1,5 +1,14 @@
 <?php
+session_start();
+
+if(!isset($_SESSION['user_id']))
+
+{
+    header('Location: ../examples/login.php'); 
+    exit;
+}
 include "../examples/config.php";
+
 $article_no =$_GET['ID'];
 
 if(isset($_POST ['submit']))
@@ -23,7 +32,7 @@ if(isset($_POST ['submit']))
   $link_evidence = $_POST['link_evidence'];
   $remarks = $_POST['remarks'];
  // Prepare the SQL statement
-$stmt = $conn->prepare("UPDATE publication SET 
+$stmt = $conn->prepare("UPDATE index_journal SET 
 article_no = ?, 
 staff_id = ?, 
 staff_name = ?, 
@@ -111,7 +120,7 @@ $article_no
 
        
         <?php 
-        $sql = "SELECT * FROM `publication` WHERE article_no= $article_no LIMIT 1";
+        $sql = "SELECT * FROM `index_journal` WHERE article_no= $article_no LIMIT 1";
         $result = mysqli_query($conn, $sql);
         $row = mysqli_fetch_assoc($result);
         ?>

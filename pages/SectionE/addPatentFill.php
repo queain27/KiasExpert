@@ -1,6 +1,14 @@
 <?php
-include "../examples/config.php";
+session_start(); // Mulakan sesi
 
+if(!isset($_SESSION['user_id']))
+
+{
+    header('Location: pages/examples/login.php'); 
+    exit;
+}
+
+include "../examples/config.php";
 if(isset($_POST['submit'])) {
   $fill_id = $_POST['fill_id'];
   $staff_id = $_POST['staff_id'];
@@ -101,14 +109,19 @@ $(document).ready(function() {
 </head>
 <body>
 <div class="container-fluid">
-  <div class="container">
     <div class="container">
-      <div class="row">
-        <div class="col-sm-12">
-          <h1 class="border-bottom text-center pb-3 mb-4">Add New Patent Filled</h1>
+      <?php
+        require "../header.php";
+        createHeader('fa fa-briefcase', 'Add New Patent Filled', 'Add Patent Filled');
+      ?>
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12">
+            <h1 class="border-bottom center pb-3 mb-4" style="text-align: center;">Add Patent Filled</h1>
+          </div>
         </div>
-      </div>
-      <form action="" method="post">
+
+        <form action=" " method="post">
         <div class="row">
           <!--patent_filed ID-->
           <div class="col-md-6 mb-3">
@@ -124,7 +137,7 @@ $(document).ready(function() {
           <!--Staff Name-->
           <div class="col-md-6 mb-3">
             <label class="form-label">STAFF NAME:</label>
-            <input type="text" class="form-control" name="staff_name" placeholder="Staff Name" readonly required>
+            <input type="text" class="form-control" name="staff_name" placeholder="Staff Name" readonly>
           </div>
           <!--fill_name Name-->
           <div class="col-md-6 mb-3">
@@ -139,13 +152,13 @@ $(document).ready(function() {
           <!--Country-->
           <div class="col-md-6 mb-3">
             <label class="form-label">COUNTRY:</label>
-            <input type="text" class="form-control" name="country" placeholder="Country"  readonly required>
+            <input type="text" class="form-control" name="country" placeholder="Country"  readonly>
           </div>
         <!--Faculty-->
           <div class="col-md-6 mb-3">
             <label class="form-label">FACULTY:</label>
-            <select class="form-control" name="faculty"  readonly required>
-              <option value="" disabled selected>Choose Faculty</option>
+            <select class="form-control" name="faculty"  readonly>
+              <option value="" disabled selected>Faculty</option>
               <option value='Al-Quran & Hadis'>Al-Quran & Hadis</option>
               <option value='Dakwah & Pembangunan Insan'>Dakwah & Pembangunan Insan</option>
               <option value='Pengurusan Al-Syariah'>Pengurusan Al-Syariah</option>
@@ -171,11 +184,14 @@ $(document).ready(function() {
           <div class="col-md-12 mb-3 text-center">
             <button type="submit" class="btn btn-primary" name="submit">ADD</button>
             <a href="patent_Filled.php" class="btn btn-success">View patent_filed Filled</a>
+            </div>
+            </div>
           </div>
-        </div>
-      </form>
+        </form>
+      </div>
     </div>
   </div>
-</div>
+
 </body>
 </html>
+

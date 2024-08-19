@@ -12,8 +12,6 @@
   <link rel="stylesheet" href="../../../dist/css/adminlte.min.css">
   <link rel="shortcut icon" href="../../../images/Logo2.png" type="image/x-icon">
   <link rel="stylesheet" href="css/style.css">
-
-
   <!--Data Table-->
   <link rel="stylesheet" href="https://cdn.datatables.net/2.0.3/css/dataTables.bootstrap5.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
@@ -102,54 +100,64 @@
                 <p>Profile</p>
               </a>
         </li>
-
- <!--Seksyen A Start-->
- <li class="nav-header">Section MyRA</li>
+<!--Seksyen A Start-->
+<li class="nav-header">Section MyRA</li>
  <li class="nav-item">
    <a href="#" class="nav-link">
      <i class="nav-icon fas fa-info-circle icon"></i>
-     <p>A. General Information
+     <p>General Information
        <i class="fas fa-angle-left right"></i>
      </p>
    </a>
    <ul class="nav nav-treeview">
-     <li class="nav-item">
-       <a href="../LectA/staff.php" class="nav-link">
-         <i class="far fa-circle nav-icon"></i>
-         <p>A1 Staff Academic</p>
-       </a> 
-     </li>
-     <!-- <li class="nav-item">
+   <li class="nav-item">
        <a href="#" class="nav-link">
          <i class="far fa-circle nav-icon"></i>
-         <p>A2 Student Information
+         <p>Staff Information
            <i class="fas fa-angle-left right"></i>
          </p>
        </a>
        <ul class="nav nav-treeview">
          <li class="nav-item">
-           <a href="#" class="nav-link">
+           <a href="../LectA/Staff.php" class="nav-link">
              <i class="far fa-circle nav-icon"></i>
-             <p>Student Undergraduate</p>
+             <p>(a) Staff</p>
            </a>
          </li>
          <li class="nav-item">
-         <a href="#" class="nav-link">
+         <a href="../LectA/Staff_Active.php" class="nav-link">
              <i class="far fa-circle nav-icon"></i>
-             <p>Student Postgraduate</p>
+             <p>(b) Staff Active</p>
+           </a>
+         </li>
+         <li class="nav-item">
+         <a href="../LectA/Staff_Foreign.php" class="nav-link">
+             <i class="far fa-circle nav-icon"></i>
+             <p>(c) Staff Foreign</p>
+           </a>
+         </li>
+         <li class="nav-item">
+         <a href="../LectA/Staff_ST.php" class="nav-link">
+             <i class="far fa-circle nav-icon"></i>
+             <p>(d) Staff S&T</p>
+           </a>
+         </li>
+         <li class="nav-item">
+         <a href="../LectA/Staff_NONST.php" class="nav-link">
+             <i class="far fa-circle nav-icon"></i>
+             <p>(e) Staff Non S&T</p>
            </a>
          </li>
        </ul>
-     </li> -->
+     </li>
    </ul>
  </li>
  <!--Seksyen A End-->
- 
  <!--Seksyen B Start-->
  <li class="nav-item">
    <a href="#" class="nav-link">
      <i class="nav-icon fas fa-chart-bar icon"></i>
-     <p>B. Quantity & Quality Of Researchs 
+     <p>Quantity & Quality Of Researchs 
        <i class="fas fa-angle-left right"></i>
      </p>
    </a>
@@ -157,39 +165,35 @@
      <li class="nav-item">
      <a href="../LectB/CriticalMass.php"class="nav-link">
          <i class="far fa-circle nav-icon"></i>
-         <p> B1  Critical Mass</p>
+         <p>Critical Mass</p>
        </a> 
      </li>
- 
      <li class="nav-item">
        <a href="../LectB/PhDsPQ.php"class="nav-link">
          <i class="far fa-circle nav-icon"></i>
-         <p> B2 Total Number Staff Phd or Professional</p>
+         <p>Total Number Staff Phd or Professional</p>
        </a> 
      </li>
- 
      <li class="nav-item">
        <a href="../LectB/ResearchCohort.php" class="nav-link">
          <i class="far fa-circle nav-icon"></i>
-         <p> B3 Research Experience <br>3 Cohorts</p>
+         <p>Research Experience <br>3 Cohorts</p>
        </a> 
      </li>
- 
      <li class="nav-item">
        <a href="../LectB/Award.php" class="nav-link">
          <i class="far fa-circle nav-icon"></i>
-         <p>B4 Awards National & International</p>
+         <p>Awards National & International</p>
        </a> 
      </li>
    </ul>
  </li>
- <!--Seksyen B End-->
- 
- <!--Seksyen C Start-->
- <li class="nav-item">
+<!--Seksyen B End-->
+<!--Seksyen C Start-->
+<li class="nav-item">
    <a href="#" class="nav-link">
      <i class="nav-icon fas fa-graduation-cap icon"></i>
-     <p>C. Quantity & Quality Of Researchs 
+     <p>Quantity & Quality Of Researchs 
        <i class="fas fa-angle-left right"></i>
      </p>
    </a>
@@ -198,7 +202,7 @@
      <li class="nav-item">
        <a href="#" class="nav-link">
          <i class="far fa-circle nav-icon"></i>
-         <p>C1 Publications
+         <p>Publications
            <i class="fas fa-angle-left right"></i>
          </p>
        </a>
@@ -268,7 +272,7 @@
     <li class="nav-item">
          <a href="../LectC/Research_Grant.php" class="nav-link">
             <i class="far fa-circle nav-icon"></i>
-              <p>C2 Research Grants
+              <p>Research Grants
                 
              </p>
          </a>  
@@ -277,7 +281,7 @@
    <li class="nav-item">
      <a href="../LectC/Research_Project.php" class="nav-link">
         <i class="far fa-circle nav-icon"></i>
-          <p>C3 Research Project <br>Performance</br>
+          <p>Research Project <br>Performance</br>
             
          </p>
      </a>  
@@ -286,195 +290,142 @@
  </li>
  <!--Seksyen C End-->
  <!--Seksyen D Start-->
- <!-- <li class="nav-header">Section D</li> -->
- <li class="nav-item">
-   <a href="#" class="nav-link">
-     <i class="nav-icon fas fa-lightbulb icon"></i>
-     <p>D. Quantity & Quality Postgraduate
-       <i class="fas fa-angle-left right"></i>
-     </p>
-   </a>
-   <ul class="nav nav-treeview">
-     </li>
-     <li class="nav-item">
-       <a href="../LectD/PhDs_Graduated.php" class="nav-link">
-         <i class="far fa-circle nav-icon"></i>
-         <p>D1 PhDs Graduate
-           
-         </p>
-       </a>
- </li>
- <!--D2-->
-    <li class="nav-item">
-         <a href="../LectD/Master_Graduated.php" class="nav-link">
-            <i class="far fa-circle nav-icon"></i>
-              <p>D2 Master Graduated
-                
-             </p>
-         </a>  
-     </li>
- <!--D3-->
- <li class="nav-item">
-         <a href="../LectD/PhDs_Enrollment.php" class="nav-link">
-            <i class="far fa-circle nav-icon"></i>
-              <p>D3 PhDs Enrollment
-                
-             </p>
-         </a>  
-     </li>
-   <!--D5-->
-   <li class="nav-item">
-     <a href="../LectD/Internal_PhDs.php" class="nav-link">
-        <i class="far fa-circle nav-icon"></i>
-          <p>D4 International Postgraduate</br>
-            
-         </p>
-     </a>  
- </li>
- <!--D6-->
- <li class="nav-item">
-   <a href="../LectD/Qualification_Postgraduate.php" class="nav-link">
-      <i class="far fa-circle nav-icon"></i>
-        <p>D5 Qualitification Level Postgraduate </br>
-          
-       </p>
-   </a>  
- </li>
- <!--D7-->
- <li class="nav-item">
-   <a href="../LectD/Felllowship_Grant.php" class="nav-link">
-      <i class="far fa-circle nav-icon"></i>
-        <p>D6 Total Fellowship <br>Grant Awards</br>
-          
-       </p>
-   </a>  
- </li>
- <!--D8-->
- <li class="nav-item">
-   <a href="../LectD/Post_Doctoral.php" class="nav-link">
-      <i class="far fa-circle nav-icon"></i>
-        <p>D7 Post-Doctoral Appointments</br>
-          
-       </p>
-   </a>  
- </li>
-    </ul>  
- </li>
  <!--Seksyen D End-->
- <!--Seksyen E Start-->
+  <!--Seksyen E Start-->
  <!-- <li class="nav-header">Section E</li> -->
  <li class="nav-item">
    <a href="#" class="nav-link">
      <i class="nav-icon fas fa-file-alt icon"></i>
-     <p>E. innovation
+     <p>Innovation
        <i class="fas fa-angle-left right"></i>
      </p>
    </a>
    <ul class="nav nav-treeview">
      </li>
      <li class="nav-item">
-       <a href="../LectE/Patent.php" class="nav-link">
+     <a href="#" class="nav-link">
          <i class="far fa-circle nav-icon"></i>
-         <p>E1 Patent
-           
+         <p>Patent
+           <i class="fas fa-angle-left right"></i>
          </p>
        </a>
- </li>
+       <ul class="nav nav-treeview">
+         <li class="nav-item">
+           <a href="../LectE/Patent.php" class="nav-link">
+             <i class="far fa-circle nav-icon"></i>
+             <p>(a) patent Granted</p>
+           </a>
+         </li>
+         <li class="nav-item">
+         <a href="../LectE/Patent_Filled.php" class="nav-link">
+             <i class="far fa-circle nav-icon"></i>
+             <p>(b) Patent Filed</p>
+           </a>
+         </li>
+         <li class="nav-item">
+         <a href="../LectE/Patent_InvGrant.php" class="nav-link">
+             <i class="far fa-circle nav-icon"></i>
+             <p>(c) Invention Granted</p>
+           </a>
+         </li>
+         <li class="nav-item">
+         <a href="../LectE/Patent_InvFil.php" class="nav-link">
+             <i class="far fa-circle nav-icon"></i>
+             <p>(d) Invention Filed</p>
+           </a>
+         </li>
+       </ul>
+     </li>
  <!--E2-->
     <li class="nav-item">
          <a href="../LectE/Commercial.php" class="nav-link">
             <i class="far fa-circle nav-icon"></i>
-              <p>E2 Commercial
-                
-             </p>
+              <p>Commercial</p>
          </a>  
      </li>
    <!--E3-->
    <li class="nav-item">
      <a href="../LectE/Technology.php" class="nav-link">
         <i class="far fa-circle nav-icon"></i>
-          <p>E3 Technology</br>
-            
-         </p>
+          <p>Technology</br></p>
      </a>  
  </li>
  <!--E4-->
  <li class="nav-item">
    <a href="../LectE/IPRs.php" class="nav-link">
       <i class="far fa-circle nav-icon"></i>
-        <p>E4 IPRs</br>
+        <p>IPRs</br>
           
        </p>
    </a>  
  </li>
  <!--E5-->
  <li class="nav-item">
-   <a href="../LectE/Startup.php" class="nav-link">
-      <i class="far fa-circle nav-icon"></i>
-        <p>E5 Startup</br>
-          
-       </p>
-   </a>  
- </li>
+ <a href="#" class="nav-link">
+         <i class="far fa-circle nav-icon"></i>
+         <p>Startup
+           <i class="fas fa-angle-left right"></i>
+         </p>
+       </a>
+       <ul class="nav nav-treeview">
+         <li class="nav-item">
+           <a href="../LectE/Startup.php" class="nav-link">
+             <i class="far fa-circle nav-icon"></i>
+             <p>(a) Spinn off Companies</p>
+           </a>
+         </li>
+         <li class="nav-item">
+         <a href="../LectE/StartupNew.php" class="nav-link">
+             <i class="far fa-circle nav-icon"></i>
+             <p>(b) New Spin Off Companies</p>
+           </a>
+         </li>     
+       </ul>
+     </li>
     </ul>  
  </li>
  <!--Seksyen E End-->
- <!--Seksyen F Start-->
+<!--Seksyen F Start-->
  <!-- <li class="nav-header">Section F</li> -->
  <li class="nav-item">
    <a href="#" class="nav-link">
      <i class="nav-icon fas fa-handshake icon"></i>
-     <p>F. Professional Service & Gifts
+     <p>Professional Service & Gifts
        <i class="fas fa-angle-left right"></i>
      </p>
    </a>
    <ul class="nav nav-treeview">
       </li>
-      <li class="nav-item">
-        <a href="#" class="nav-link">
-          <i class="far fa-circle nav-icon"></i>
-          <p>F1 Gross Income
-            <i class="fas fa-angle-left right"></i>
-          </p>
-        </a>
-        <ul class="nav nav-treeview">
-        <!--a-->
-                <li class="nav-item">
-                  <a href="../LectF/Training_Course.php" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>(a) Training Course</p>
-                  </a>
-                </li>
-           <!--b-->
-                <li class="nav-item">
-                  <a href="../LectF/Post_Fees.php" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>(b) Postgraduate Fee</p>
-                  </a>
-                </li>
-          </ul>
-  </li>
- <!--F2-->
-    <li class="nav-item">
-         <a href="../LectF/Orga_Seminar.php" class="nav-link">
-            <i class="far fa-circle nav-icon"></i>
-              <p>F2 Gross Organising, Seminar & Knowledge Program</p>
-         </a>  
-     </li>
    <!--F3-->
    <li class="nav-item">
-     <a href="../LectF/Product_Technology.php" class="nav-link">
+     <a href="#" class="nav-link">
         <i class="far fa-circle nav-icon"></i>
-          <p>F3 Gross products commercialization/technology know-how licensing/outright
-          
+          <p>Gross products commercialization/technology know-how licensing/outright
+            <i class="fas fa-angle-left right"></i>
          </p>
      </a>  
- </li>
+     <ul class="nav nav-treeview">
+       <!--a-->
+               <li class="nav-item">
+                 <a href="../LectF/Product.php" class="nav-link">
+                   <i class="far fa-circle nav-icon"></i>
+                   <p>(a) Product Commercial</p>
+                 </a>
+               </li>
+          <!--b-->
+               <li class="nav-item">
+                 <a href="../LectF/Technology.php" class="nav-link">
+                   <i class="far fa-circle nav-icon"></i>
+                   <p>(b) Technology Know-How Licensing/Sold outright Sale </p>
+                 </a>
+               </li>
+         </ul>
+     </li>
    <!--F4-->
    <li class="nav-item">
      <a href="#" class="nav-link">
         <i class="far fa-circle nav-icon"></i>
-          <p>F4 Financial transaction
+          <p>Financial transaction
             <i class="fas fa-angle-left right"></i>
          </p>
      </a>  
@@ -503,22 +454,13 @@
            </li>
          </ul>
      </li>
-      <!--F6-->
-      <li class="nav-item">
-       <a href="../LectF/Gift_Donation.php" class="nav-link">
-          <i class="far fa-circle nav-icon"></i>
-          <p> F5 Gifts/Donation</p>
-      </a>  
-   </li>
-    </ul>  
- </li>
  <!--Seksyen F End-->
  <!--Seksyen G Start-->
  <!-- <li class="nav-header">Section G</li> -->
  <li class="nav-item">
    <a href="#" class="nav-link">
      <i class="nav-icon fas fa-network-wired icon"></i>
-     <p>G. Networing & Linkages
+     <p>Networing & Linkages
        <i class="fas fa-angle-left right"></i>
      </p>
    </a>
@@ -527,7 +469,7 @@
      <li class="nav-item">
        <a href="#" class="nav-link">
          <i class="far fa-circle nav-icon"></i>
-         <p>G1 Participation international inter-Institution
+         <p>Participation international inter-Institution
            <i class="fas fa-angle-left right"></i>
          </p>
        </a>
@@ -553,7 +495,7 @@
     <li class="nav-item">
          <a href="../LectG/Abroad.php" class="nav-link">
             <i class="far fa-circle nav-icon"></i>
-              <p>G2 Staff Sent Abroad For Research Activities
+              <p>Staff Sent Abroad For Research Activities
                 
              </p>
          </a>  
@@ -562,7 +504,7 @@
    <li class="nav-item">
      <a href="../LectG/International.php" class="nav-link">
         <i class="far fa-circle nav-icon"></i>
-          <p> G3 Membership in International Academic/Professional bodies/Associations/NGOs</br>
+          <p>Membership in International Academic/Professional bodies/Associations/NGOs</br>
          </p>
      </a>  
  </li>
@@ -570,7 +512,7 @@
  <li class="nav-item">
    <a href="#" class="nav-link">
       <i class="far fa-circle nav-icon"></i>
-        <p>G4 Participation in National Inter-Institution research related activities under MoA</br>
+        <p>Participation in National Inter-Institution research related activities under MoA</br>
            <i class="fas fa-angle-left right"></i>
        </p>
    </a>  
@@ -591,70 +533,16 @@
              </li>
           </ul>
       </li>
- 
  <!--G5-->
  <li class="nav-item">
    <a href="../LectG/Membership.php" class="nav-link">
       <i class="far fa-circle nav-icon"></i>
-      <p> G5 Membership in national Academic/ Professional Bodies/Associations/NGOs</p>
+      <p>Membership in national Academic/ Professional Bodies/Associations/NGOs</p>
   </a>  
  </li>
-
     </ul>  
  </li>
  <!--Seksyen G End-->
- <!--Seksyen H Start-->
- <li class="nav-item">
-   <a href="#" class="nav-link">
-     <i class="nav-icon fas fa-tools icon"></i>
-     <p>H. Support Facilities
-       <i class="fas fa-angle-left right"></i>
-     </p>
-   </a>
-   <ul class="nav nav-treeview">
-     </li>
-     <li class="nav-item">
-       <a href="../LectH/Laboratory.php" class="nav-link">
-         <i class="far fa-circle nav-icon"></i>
-         <p>H1 Laboratory/Research facilities
-           
-         </p>
-       </a>
- </li>
- <!--H2-->
-    <li class="nav-item">
-         <a href="#" class="nav-link">
-            <i class="far fa-circle nav-icon"></i>
-              <p>H2 Library Facilities
-                <i class="fas fa-angle-left right"></i>
-             </p>
-         </a>  
-         <ul class="nav nav-treeview">
-           <!--a-->
-                   <li class="nav-item">
-                     <a href="../LectH/TittleBook.php" class="nav-link">
-                       <i class="far fa-circle nav-icon"></i>
-                       <p>(a) Titles of Book</p>
-                     </a>
-                   </li>
-              <!--b-->
-                   <li class="nav-item">
-                     <a href="../LectH/OnlineBook.php" class="nav-link">
-                       <i class="far fa-circle nav-icon"></i>
-                       <p>(b)  Online Titles of Books</p>
-                     </a>
-                   </li>
-             <!--c-->
-             <li class="nav-item">
-               <a href="../LectH/Journal_Subscribe.php" class="nav-link">
-                 <i class="far fa-circle nav-icon"></i>
-                 <p>(c)Journal Subscribe </p>
-               </a>
-             </li>
-             </ul>
-           </li> 
-         </ul>
-       </li>
  <!--Seksyen H End-->
         </ul>
       </nav>
@@ -727,8 +615,6 @@
     </div>
 </div> 
 <!--Main Content-->
-<!--Main Content-->
-
 <!-- Add this script to initialize the DataTable and adjust its properties -->
 <script>
     $(document).ready(function() {
