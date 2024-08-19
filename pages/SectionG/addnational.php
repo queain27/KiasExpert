@@ -1,40 +1,30 @@
 <?php
-session_start(); // Mulakan sesi
-
-if(!isset($_SESSION['user_id']))
-
-{
-    header('Location: pages/examples/login.php'); 
-    exit;
-}
-
 include "../examples/config.php";
-if(isset($_POST ['submit']))
 
-{
+// Check if form is submitted
+if (isset($_POST['submit'])) {
+    // Fetch and sanitize POST data
     $organisation_name = mysqli_real_escape_string($conn, $_POST['organisation_name']);
-    $country = mysqli_real_escape_string($conn, $_POST['country']);
-    $programme_title = mysqli_real_escape_string($conn, $_POST['programme_title']);
     $type = mysqli_real_escape_string($conn, $_POST['type']);
-    $activity = mysqli_real_escape_string($conn, $_POST['activity']);
     $category = mysqli_real_escape_string($conn, $_POST['category']);
     $amount = mysqli_real_escape_string($conn, $_POST['amount']);
     $start_date = mysqli_real_escape_string($conn, $_POST['start_date']);
-    $expiry_date = mysqli_real_escape_string($conn, $_POST['expiry_date']);
+    $end_date = mysqli_real_escape_string($conn, $_POST['end_date']);
     $period = mysqli_real_escape_string($conn, $_POST['period']);
+    $programme_title = mysqli_real_escape_string($conn, $_POST['programme_title']);
     $link_evidence = mysqli_real_escape_string($conn, $_POST['link_evidence']);
     $remarks = mysqli_real_escape_string($conn, $_POST['remarks']);
 
     // Prepare SQL query
-    $sql = "INSERT INTO `organisation` 
-        (`organisation_name`,`country`, `programme_title`, `type`, `activity`, `category`, `amount`, `start_date`, `expiry_date`, `period`, `link_evidence`, `remarks`) 
+    $sql = "INSERT INTO `nationalorganisation` 
+        (`organisation_name`, `type`, `category`, `amount`, `start_date`, `end_date`, `period`,`programme_title`, `link_evidence`, `remarks`) 
         VALUES 
-        ('$organisation_name','$country', '$programme_title', '$type', '$activity', '$category', '$amount', '$start_date', '$expiry_date', '$period', '$link_evidence', '$remarks')";
+        ('$organisation_name', '$type',  '$category', '$amount', '$start_date', '$end_date', '$period','$programme_title','$link_evidence', '$remarks')";
 
     // Execute the query and check for success
     if (mysqli_query($conn, $sql)) {
         echo "<script>alert('New record successfully added');</script>";
-        echo "<script>document.location='InternationalMoa.php';</script>";
+        echo "<script>document.location='National.php';</script>";
     } else {
         echo "<script>alert('Error: " . mysqli_error($conn) . "');</script>";
     }
@@ -48,7 +38,7 @@ mysqli_close($conn);
 <!DOCTYPE html>
 <html lang="en">
 <head><meta charset="utf-8">
-  <title>Add New Staff Academic</title>
+  <title>Add New Staff</title>
   <link rel="stylesheet" href="../../bootstrap/css/bootstrap.min.css">
   <script src="../../bootstrap/js/jquery.min.js"></script>
   <script src="../../bootstrap/js/bootstrap.min.js"></script>
@@ -56,6 +46,9 @@ mysqli_close($conn);
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="../../css/navbar.css">
   <link rel="shortcut icon" href="../../images/Logo2.png" type="image/x-icon">
+  <script src="../../bootstrap/js/jquery.min.js"></script>
+    <script src="../../bootstrap/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <style>
         .hidden {
             display: none;
@@ -78,36 +71,18 @@ mysqli_close($conn);
                             <label class="form-label">ORGANISATION/COLLABORATOR NAME:</label>
                             <input type="text" class="form-control" name="organisation_name" placeholder="Organisation/Collaborator Name" required>
                         </div>
-                        <div class="col-md-6 mb-3">
-                            <label class="form-label">COUNTRY:</label>
-                            <input type="text" class="form-control" name="country" placeholder="Country" required>
-                        </div>
-                        <!-- Programme Title -->
-                        <div class="col-md-6 mb-3">
-                            <label class="form-label">PROGRAMME TITLE:</label>
-                            <input type="text" class="form-control" name="programme_title" placeholder="Programme Title" required>
-                        </div>
-
-                        <!-- Type Dropdown -->
-                        <div class="col-md-6 mb-3">
+                         <!-- Type Dropdown -->
+                         <div class="col-md-6 mb-3">
                             <label class="form-label">TYPE:</label>
-                            <select class="form-control" id="typeDropdown" name="type" required>
-                                <option value="" disabled selected>Choose Position</option>
+                            <select class="form-control"  name="type" required>
+                                <option value="" disabled selected>Choose Type</option>
                                 <option value="MoA">MoA</option>
-                                <option value="MoU">MoU</option>
                                 <option value="LoA">LoA</option>
                                 <option value="RA">RA</option>
                             </select>
                         </div>
-
-                        <!-- Activities Field -->
-                        <div class="col-md-6 mb-3 hidden" id="activityField">
-                            <label class="form-label">Activities (IF MoU):</label>
-                            <input type="text" class="form-control" name="activity">
-                        </div>
-
-                        <!-- Category -->
-                        <div class="col-md-6 mb-3">
+                          <!-- Category -->
+                          <div class="col-md-6 mb-3">
                             <label class="form-label">CATEGORY:</label>
                             <select class="form-control" name="category" required>
                                 <option value="" disabled selected>Choose Category</option>
@@ -117,13 +92,19 @@ mysqli_close($conn);
                                 <option value="Agency">Agency</option>
                             </select>
                         </div>
-
-                        <!-- Amount -->
-                        <div class="col-md-6 mb-3">
-                            <label class="form-label">AMOUNT (If Applicable):</label>
+                           <!-- Amount -->
+                           <div class="col-md-6 mb-3">
+                            <label class="form-label">AMOUNT:</label>
                             <input type="text" class="form-control" name="amount" placeholder="Amount (If Applicable)" >
                         </div>
 
+                        <!-- Programme Title -->
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">PROGRAMME TITLE:</label>
+                            <input type="text" class="form-control" name="programme_title" placeholder="Programme Title" required>
+                        </div>
+
+                       
                         <!-- Start Date -->
                         <div class="col-md-6 mb-3">
                             <label class="form-label">START DATE:</label>
@@ -132,8 +113,8 @@ mysqli_close($conn);
 
                         <!-- Expiry Date -->
                         <div class="col-md-6 mb-3">
-                            <label class="form-label">EXPIRY DATE:</label>
-                            <input type="date" class="form-control" id="expiry_date" name="expiry_date" required>
+                            <label class="form-label">END DATE:</label>
+                            <input type="date" class="form-control" id="end_date" name="end_date" required>
                         </div>
 
                         <!-- Period -->
@@ -157,7 +138,7 @@ mysqli_close($conn);
                         <!-- Button -->
                         <div class="col-md-12 mb-3 text-center">
                             <button type="submit" class="btn btn-primary" name="submit">ADD</button>
-                            <a href="InternationalMoa.php" class="btn btn-success">View Organisation</a>
+                            <a href="Staff_International.php" class="btn btn-success">View Organisation</a>
                         </div>
                     </div>
                 </form>
@@ -166,49 +147,30 @@ mysqli_close($conn);
     </div>
     
     <script>
-        // JavaScript to toggle activity field visibility based on type selection
-        document.addEventListener('DOMContentLoaded', function() {
-            const typeDropdown = document.getElementById('typeDropdown');
-            const activityField = document.getElementById('activityField');
+        $(document).ready(function() {
+            // Date Period Calculation
+            const startDateInput = $('#start_date');
+            const endDateInput = $('#end_date');
+            const periodInput = $('#period');
 
-            // Initial check on page load
-            if (typeDropdown.value === 'MoU') {
-                activityField.classList.remove('hidden');
-            } else {
-                activityField.classList.add('hidden');
+            function calculatePeriod() {
+                const startDate = new Date(startDateInput.val());
+                const endDate = new Date(endDateInput.val());
+
+                if (startDate && endDate && startDate <= endDate) {
+                    const timeDiff = endDate - startDate;
+                    const daysDiff = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+                    periodInput.val(`${daysDiff} days`);
+                } else {
+                    periodInput.val('');
+                }
             }
 
-            // Add event listener to toggle field visibility
-            typeDropdown.addEventListener('change', function() {
-                if (typeDropdown.value === 'MoU') {
-                    activityField.classList.remove('hidden');
-                } else {
-                    activityField.classList.add('hidden');
-                }
-            });
-
-            // Date Period Calculation
-                const startDateInput = document.getElementById('start_date');
-                const expiryDateInput = document.getElementById('expiry_date');
-                const periodInput = document.getElementById('period');
-
-                function calculatePeriod() {
-                    const startDate = new Date(startDateInput.value);
-                    const expiryDate = new Date(expiryDateInput.value);
-
-                    if (startDate && expiryDate && startDate <= expiryDate) {
-                        const timeDiff = expiryDate - startDate;
-                        const daysDiff = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
-                        periodInput.value = `${daysDiff} days`;
-                    } else {
-                        periodInput.value = '';
-                    }
-                }
-
-                startDateInput.addEventListener('change', calculatePeriod);
-                expiryDateInput.addEventListener('change', calculatePeriod);
+            startDateInput.on('change', calculatePeriod);
+            endDateInput.on('change', calculatePeriod);
         });
-    </script>
+        </script>
+
 </body>
 </html>
 

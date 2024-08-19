@@ -853,9 +853,9 @@ include "../examples/config.php";
             <thead>
             <tr>
             <th>No.</th>
+            <th>Program Tittle</th>
             <th>Staff ID</th>
             <th>Staff Name</th>
-            <th>Program Tittle</th>
             <th>Faculty</th>
             <th>Link To Evidence</th>
             <th>Remarks</th>
@@ -893,9 +893,9 @@ include "../examples/config.php";
     ?>
             <tr>
                 <td style="text-align: center"><?php echo $count;?></td>
+                <td style="text-align: center"><?php echo $row['programme_title']; ?></td>
                 <td style="text-align: center"><?php echo $row['staff_id']; ?></td>
                 <td style="text-align: center"><?php echo $row['staff_name']; ?></td>
-                <td style="text-align: center"><?php echo $row['programme_title']; ?></td>
                 <td style="text-align: center"><?php echo $row['faculty']; ?></td>
                 <td style="text-align: center"><a href="<?php echo $row['link_evidence']; ?>" target="_blank"><?php echo $row['link_evidence']; ?>
                 <td style="text-align: center"><?php echo $row['remarks']; ?></td>
@@ -931,9 +931,9 @@ include "../examples/config.php";
     <tfoot>
         <tr>
            <th>No.</th>
+           <th>Program Tittle</th>
             <th>Staff ID</th>
             <th>Staff Name</th>
-            <th>Program Tittle</th>
             <th>Faculty</th>
             <th>Link To Evidence</th>
             <th>Remarks</th>

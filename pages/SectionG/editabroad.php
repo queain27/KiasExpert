@@ -89,6 +89,7 @@ if (isset($_POST['submit'])) {
     <link rel="stylesheet" href="../../css/navbar.css">
     <link rel="shortcut icon" href="../../images/Logo2.png" type="image/x-icon">
     <title>Update Staff Abroad</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <style>
         body {
             background-repeat: no-repeat;
@@ -100,6 +101,31 @@ if (isset($_POST['submit'])) {
         }
       
     </style>
+  <script>
+$(document).ready(function() {
+    // Date Period Calculation
+    const startDateInput = $('#start_date');
+    const endDateInput = $('#end_date');
+    const nodaysInput = $('#nodays');
+
+    function calculatePeriod() {
+        const startDate = new Date(startDateInput.val());
+        const endDate = new Date(endDateInput.val());
+
+        if (startDate && endDate && startDate <= endDate) {
+            const timeDiff = endDate - startDate;
+            const daysDiff = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+           nodaysInput.val(`${daysDiff} days`);
+        } else {
+            nodaysInput.val('');
+        }
+    }
+
+    startDateInput.on('change', calculatePeriod);
+    endDateInput.on('change', calculatePeriod);
+});
+</script>
+
 
 
 
@@ -163,15 +189,15 @@ if (isset($_POST['submit'])) {
                     </div>
                     <div class="col-md-6 mb-3">
                         <label class="form-label">START DATE :</label>
-                        <input type="date" class="form-control" name="start_date" value="<?php echo $row['start_date']?>">
+                        <input type="date" class="form-control" id="start_date" name="start_date" value="<?php echo $row['start_date']?>">
                     </div>
                     <div class="col-md-6 mb-3">
                         <label class="form-label">END DATE :</label>
-                        <input type="date" class="form-control" name="end_date" value="<?php echo $row['end_date']?>">
+                        <input type="date" class="form-control" id="end_date" name="end_date" value="<?php echo $row['end_date']?>">
                     </div>
                     <div class="col-md-6 mb-3">
                         <label class="form-label">NO. DAYS :</label>
-                        <input type="text" class="form-control" name="no_days" value="<?php echo $row['no_days']?>">
+                        <input type="text" class="form-control"  id="nodays" name="no_days" value="<?php echo $row['no_days']?>">
                     </div>
                     <div class="col-md-6 mb-3">
                         <label class="form-label">LINK EVIDENCE:</label>

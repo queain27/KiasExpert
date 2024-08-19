@@ -1,13 +1,6 @@
 <?php
-session_start();
+include "../examples/config.php"; // Ensure this file connects to your database and creates $conn
 
-if(!isset($_SESSION['user_id']))
-
-{
-    header('Location: ../examples/login.php'); 
-    exit;
-}
-include "../examples/config.php";
 // Ensure $staff_id is properly sanitized and validated
 $staff_id = isset($_GET['ID']) ? mysqli_real_escape_string($conn, $_GET['ID']) : '';
 
@@ -22,7 +15,7 @@ if (isset($_POST['submit'])) {
     $link_evidence = mysqli_real_escape_string($conn, $_POST['link_evidence']);
     $remarks = mysqli_real_escape_string($conn, $_POST['remarks']);
 
-    $stmt = $conn->prepare("UPDATE `membership` 
+    $stmt = $conn->prepare("UPDATE `membershipnational` 
                             SET `staff_name` = ?, 
                                 `faculty` = ?, 
                                 `organisation_name` = ?, 
@@ -53,7 +46,7 @@ if (isset($_POST['submit'])) {
     // Execute the statement
     if ($stmt->execute()) {
         echo "<script>alert('Record updated successfully');</script>";
-        echo "<script>window.location.href='International.php';</script>"; // Redirect to avoid resubmission
+        echo "<script>window.location.href='Membership.php';</script>"; // Redirect to avoid resubmission
     } else {
         echo "<script>alert('Error updating record: " . htmlspecialchars($stmt->error) . "');</script>";
     }
@@ -103,7 +96,7 @@ if (isset($_POST['submit'])) {
 
        
         <?php 
-        $sql = "SELECT * FROM `membership` WHERE staff_id= $staff_id LIMIT 1";
+        $sql = "SELECT * FROM `membershipnational` WHERE staff_id= $staff_id LIMIT 1";
         $result = mysqli_query($conn, $sql);
         $row = mysqli_fetch_assoc($result);
         ?>
@@ -164,7 +157,7 @@ if (isset($_POST['submit'])) {
                <div>
                <center>
                        <button type ="submit" class="btn btn-success" name="submit">UPDATE</button>
-                       <a href="International.php" class="btn btn-danger">Cancel</a>
+                       <a href="Membership.php" class="btn btn-danger">Cancel</a>
               </div>
                  </center>
           </form>

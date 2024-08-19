@@ -1,56 +1,43 @@
 <?php
-session_start();
+include "../examples/config.php"; // Ensure this file connects to your database and creates $conn
 
-if(!isset($_SESSION['user_id']))
-
-{
-    header('Location: ../examples/login.php'); 
-    exit;
-}
-include "../examples/config.php";
 $id = $_GET['ID'];
 
 if (isset($_POST['submit'])) {
     // Collect POST data
     $organisation_name = $_POST['organisation_name'];
-    $country = $_POST['country'];
-    $programme_title = $_POST['programme_title'];
     $type = $_POST['type'];
-    $activity = $_POST['activity'];
     $category = $_POST['category'];
     $amount = $_POST['amount'];
     $start_date = $_POST['start_date'];
-    $expiry_date = $_POST['expiry_date'];
+    $end_date = $_POST['end_date'];
     $period = $_POST['period'];
+    $programme_title = $_POST['programme_title'];
     $link_evidence = $_POST['link_evidence'];
     $remarks = $_POST['remarks'];
 
     // Prepare the SQL statement
-    $stmt = $conn->prepare("UPDATE `organisation` 
+    $stmt = $conn->prepare("UPDATE `nationalorganisation` 
                             SET `organisation_name` = ?, 
-                                `country` = ?, 
-                                `programme_title` = ?, 
-                                `type` = ?, 
-                                `activity` = ?, 
+                                `type` = ?,
                                 `category` = ?, 
                                 `amount` = ?, 
                                 `start_date` = ?, 
-                                `expiry_date` = ?, 
+                                `end_date` = ?, 
                                 `period` = ?, 
+                                `programme_title` = ?, 
                                 `link_evidence` = ?, 
                                 `remarks` = ? 
                             WHERE `id` = ?");
-                            $stmt->bind_param('ssssssisssssi', 
+                            $stmt->bind_param('sssissssssi', 
                                 $organisation_name, 
-                                $country, 
-                                $programme_title, 
                                 $type, 
-                                $activity, 
                                 $category, 
                                 $amount, 
                                 $start_date, 
-                                $expiry_date, 
-                                $period, 
+                                $end_date, 
+                                $period,
+                                $programme_title,
                                 $link_evidence, 
                                 $remarks, 
                                 $id
@@ -59,7 +46,7 @@ if (isset($_POST['submit'])) {
     // Execute the prepared statement
     if ($stmt->execute()) {
         echo "<script>alert('Record successfully updated');</script>";
-        echo "<script>window.location.href='InternationalMoa.php';</script>";
+        echo "<script>window.location.href='National.php';</script>";
     } else {
         echo "<script>alert('Error updating record: " . $stmt->error . "');</script>";
     }
@@ -76,7 +63,7 @@ if (isset($_POST['submit'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Update International MoA</title>
+    <title>Update National</title>
     <style>
         body {
             background-repeat: no-repeat;
@@ -95,6 +82,9 @@ if (isset($_POST['submit'])) {
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="../../css/navbar.css">
     <link rel="shortcut icon" href="../../images/Logo2.png" type="image/x-icon">
+    <script src="../../bootstrap/js/jquery.min.js"></script>
+    <script src="../../bootstrap/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
     <div class="container">
@@ -104,7 +94,7 @@ if (isset($_POST['submit'])) {
 
        
         <?php 
-        $sql = "SELECT * FROM `organisation` WHERE id= $id LIMIT 1";
+        $sql = "SELECT * FROM `nationalorganisation` WHERE id= $id LIMIT 1";
         $result = mysqli_query($conn, $sql);
         $row = mysqli_fetch_assoc($result);
         ?>
@@ -119,35 +109,17 @@ if (isset($_POST['submit'])) {
                         <input type="text" class="form-control" name="organisation_name" value="<?php echo $row['organisation_name']?>" >
                     </div>
 
-                    <!-- Name -->
-                    <div class="col-md-6 mb-3">
-                        <label class="form-label">COUNTRY:</label>
-                        <input type="text" class="form-control" name="country" value="<?php echo $row['country']?>" >
-                    </div>
-
-                 <div class="col-md-6 mb-3">
-                        <label class="form-label">PROGRAMME TITLE:</label>
-                        <input type="text" class="form-control" name="programme_title" value="<?php echo $row['programme_title']?>">
-                    </div>
-
-                
 
                     <div class="col-md-6 mb-3">
                     <label class="form-label">TYPE:</label>
                     <select class="form-control" id="typeDropdown" name="type" required>
                             <option value="" disabled selected>Choose</option>
                             <option value="MoA" <?php if ($row['type'] == 'MoA') echo 'selected'; ?>>MoA</option>
-                            <option value="MoU" <?php if ($row['type'] == 'MoU') echo 'selected'; ?>>MoU</option>
                             <option value="LoA" <?php if ($row['type'] == 'LoA') echo 'selected'; ?>>LoA</option>
                             <option value="RA" <?php if ($row['type'] == 'RA') echo 'selected'; ?>>RA</option>
                     </select>
                     </div>
-                         
-                    <div class="col-md-6 mb-3 <?php echo empty($row['activity']) ? 'hidden' : ''; ?>" id="activityField">
-                        <label class="form-label">ACTIVITY:</label>
-                        <input type="text" class="form-control" name="activity" value="<?php echo htmlspecialchars($row['activity']); ?>">
-                    </div>
-
+                        
                     <div class="col-md-6 mb-3">
                     <label class="form-label">CATEGORY:</label>
                     <select class="form-control" name="category" required>
@@ -170,13 +142,18 @@ if (isset($_POST['submit'])) {
                     </div>
                     
                     <div class="col-md-6 mb-3">
-                        <label class="form-label">EXPIRY DATE:</label>
-                        <input type="date" class="form-control" id="expiry_date" name="expiry_date" value="<?php echo $row['expiry_date']?>">
+                        <label class="form-label">END DATE:</label>
+                        <input type="date" class="form-control" id="end_date" name="end_date" value="<?php echo $row['end_date']?>">
                     </div>
                     <div class="col-md-6 mb-3">
                         <label class="form-label">PERIOD :</label>
                         <input type="text" class="form-control" id="period" name="period" value="<?php echo $row['period']?>">
                     </div>
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">PROGRAMME TITLE:</label>
+                        <input type="text" class="form-control" name="programme_title" value="<?php echo $row['programme_title']?>">
+                    </div>
+
                     <div class="col-md-6 mb-3">
                         <label class="form-label">LINK EVIDENCE:</label>
                         <input type="text" class="form-control" name="link_evidence" value="<?php echo $row['link_evidence']?>">
@@ -189,56 +166,38 @@ if (isset($_POST['submit'])) {
                <div>
                <center>
                        <button type ="submit" class="btn btn-success" name="submit">UPDATE</button>
-                       <a href="InternationalMoa.php" class="btn btn-danger">Cancel</a>
+                       <a href="National.php" class="btn btn-danger">Cancel</a>
               </div>
                  </center>
           </form>
      </div>
 </div>
+ 
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const typeDropdown = document.getElementById('typeDropdown');
-        const activityField = document.getElementById('activityField');
-  
-        // Function to update field visibility
-        function updateFieldsVisibility() {
-            if (typeDropdown.value === 'MoU') {
-                activityField.classList.remove('hidden');
-          
-            } else {
-              
-                activityField.classList.add('hidden');
-            }
-        }
-
-        // Initial check on page load
-        updateFieldsVisibility();
-
-        // Add event listener to toggle field visibility
-        typeDropdown.addEventListener('change', updateFieldsVisibility);
-        
+        $(document).ready(function() {
             // Date Period Calculation
-            const startDateInput = document.getElementById('start_date');
-                const expiryDateInput = document.getElementById('expiry_date');
-                const periodInput = document.getElementById('period');
+            const startDateInput = $('#start_date');
+            const endDateInput = $('#end_date');
+            const periodInput = $('#period');
 
-                function calculatePeriod() {
-                    const startDate = new Date(startDateInput.value);
-                    const expiryDate = new Date(expiryDateInput.value);
+            function calculatePeriod() {
+                const startDate = new Date(startDateInput.val());
+                const endDate = new Date(endDateInput.val());
 
-                    if (startDate && expiryDate && startDate <= expiryDate) {
-                        const timeDiff = expiryDate - startDate;
-                        const daysDiff = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
-                        periodInput.value = `${daysDiff} days`;
-                    } else {
-                        periodInput.value = '';
-                    }
+                if (startDate && endDate && startDate <= endDate) {
+                    const timeDiff = endDate - startDate;
+                    const daysDiff = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+                    periodInput.val(`${daysDiff} days`);
+                } else {
+                    periodInput.val('');
                 }
+            }
 
-                startDateInput.addEventListener('change', calculatePeriod);
-                expiryDateInput.addEventListener('change', calculatePeriod);
-    });
+            startDateInput.on('change', calculatePeriod);
+            endDateInput.on('change', calculatePeriod);
+        });
 </script>
+
  <!--Boostrap-->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
  <!--Boostrap-->

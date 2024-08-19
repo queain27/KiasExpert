@@ -88,52 +88,75 @@ if(isset($_POST ['submit']))
     <script src="../../bootstrap/js/bootstrap.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
-    $(document).ready(function() {
-        $('input[name="staff_id"]').on('change', function() {
-            var staff_id = $(this).val();
-            if (staff_id) {
-                $.ajax({
-                    type: 'POST',
-                    url: '../SectionB/fetchstaffname.php',
-                    data: { staff_id: staff_id },
-                    success: function(response) {
-                        try {
-                            var data = JSON.parse(response);
-                            if (data.status === "Active") {
-                                $('input[name="staff_name"]').val(data.staff_name);
-                                $('input[name="faculty"]').val(data.faculty);
-                                $('#staff-id-error').hide();
-                                $('button[name="submit"]').prop('disabled', false);
-                            } else {
-                                $('#staff-id-error').text("Staff ID is not active or does not exist").show();
-                                $('input[name="staff_name"]').val('');
-                                $('input[name="faculty"]').val('');
-                                $('button[name="submit"]').prop('disabled', true);
-                            }
-                        } catch (e) {
-                            console.error("Parsing error:", e);
-                            $('#staff-id-error').text("An error occurred while fetching staff information").show();
+$(document).ready(function() {
+    // Staff ID Validation
+    $('input[name="staff_id"]').on('change', function() {
+        var staff_id = $(this).val();
+        if (staff_id) {
+            $.ajax({
+                type: 'POST',
+                url: '../SectionB/fetchstaffname.php',
+                data: { staff_id: staff_id },
+                success: function(response) {
+                    try {
+                        var data = JSON.parse(response);
+                        if (data.status === "Active") {
+                            $('input[name="staff_name"]').val(data.staff_name);
+                            $('input[name="faculty"]').val(data.faculty);
+                            $('#staff-id-error').hide();
+                            $('button[name="submit"]').prop('disabled', false);
+                        } else {
+                            $('#staff-id-error').text("Staff ID is not active or does not exist").show();
+                            $('input[name="staff_name"]').val('');
+                            $('input[name="faculty"]').val('');
+                            $('button[name="submit"]').prop('disabled', true);
                         }
-                    },
-                    error: function(xhr, status, error) {
-                        console.error("AJAX Error:", status, error);
+                    } catch (e) {
+                        console.error("Parsing error:", e);
                         $('#staff-id-error').text("An error occurred while fetching staff information").show();
                     }
-                });
-            } else {
-                $('input[name="staff_name"]').val('');
-                $('input[name="faculty"]').val('');
-                $('#staff-id-error').hide();
-                $('button[name="submit"]').prop('disabled', true);
-            }
-        });
-
-        // Disable the submit button initially if staff_id is empty
-        if (!$('input[name="staff_id"]').val()) {
+                },
+                error: function(xhr, status, error) {
+                    console.error("AJAX Error:", status, error);
+                    $('#staff-id-error').text("An error occurred while fetching staff information").show();
+                }
+            });
+        } else {
+            $('input[name="staff_name"]').val('');
+            $('input[name="faculty"]').val('');
+            $('#staff-id-error').hide();
             $('button[name="submit"]').prop('disabled', true);
         }
     });
-    </script>
+
+    // Disable the submit button initially if staff_id is empty
+    if (!$('input[name="staff_id"]').val()) {
+        $('button[name="submit"]').prop('disabled', true);
+    }
+
+    // Date Period Calculation
+    const startDateInput = document.getElementById('start_date');
+    const endDateInput = document.getElementById('end_date');
+    const nodaysInput = document.getElementById('nodays');
+
+    function calculatePeriod() {
+        const startDate = new Date(startDateInput.value);
+        const endDate = new Date(endDateInput.value);
+
+        if (startDate && endDate && startDate <= endDate) {
+            const timeDiff = endDate - startDate;
+            const daysDiff = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+           nodaysInput.value = `${daysDiff} days`;
+        } else {
+            nodaysInput.value = '';
+        }
+    }
+
+    startDateInput.addEventListener('change', calculatePeriod);
+    endDateInput.addEventListener('change', calculatePeriod);
+});
+</script>
+
 </head>
 <body>
     <div class="container-fluid">
@@ -188,23 +211,19 @@ if(isset($_POST ['submit']))
                     <!-- Start Date -->
                     <div class="col-md-6 mb-3">
                         <label class="form-label">START DATE:</label>
-                        <input type="date" class="form-control" name="start_date" required>
+                        <input type="date" id="start_date" class="form-control" name="start_date" required>
                     </div>
                     <!-- End Date -->
                     <div class="col-md-6 mb-3">
                         <label class="form-label">END DATE:</label>
-                        <input type="date" class="form-control" name="end_date" required>
+                        <input type="date" id="end_date" class="form-control" name="end_date" required>
                     </div>
                     <!-- No Days -->
                     <div class="col-md-6 mb-3">
                         <label class="form-label">NO DAYS:</label>
-                        <input type="text" class="form-control" name="no_days"  placeholder="No. Days"  required>
+                        <input type="text"  id="nodays" class="form-control" name="no_days"  placeholder="No. Days"  required>
                     </div>
-                    <!-- Period -->
-                    <div class="col-md-6 mb-3">
-                        <label class="form-label">PERIOD:</label>
-                        <input type="text" class="form-control" name="period" placeholder="Period" required>
-                    </div>
+               
                     <!-- Link Evidence -->
                     <div class="col-md-6 mb-3">
                         <label class="form-label">LINK EVIDENCE:</label>
