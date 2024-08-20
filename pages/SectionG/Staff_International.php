@@ -6,6 +6,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">  
   <!-- Font Awesome -->
   <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <!-- Ionicons -->
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <!-- Tempusdominus Bootstrap 4 -->
@@ -29,6 +30,9 @@
   <script defer src="https://cdn.datatables.net/2.0.3/js/dataTables.js"></script>
   <script defer src="https://cdn.datatables.net/2.0.3/js/dataTables.bootstrap5.js"></script>
   <script defer src="script.js"></script>
+  <!--Icon Image--> 
+  <link rel="shortcut icon" href="../../images/Logo2.png" type="image/x-icon">
+  <script defer src="script.js"></script> 
     <script>
         $(document).ready(function(){
             $('#example').DataTable();
@@ -67,14 +71,14 @@
         <table id="example" class="table table-striped" style="width:200%">
             <thead>
             <tr>
-            <th>No.</th>
-            <th>Program Tittle</th>
-            <th>Staff ID</th>
-            <th>Staff Name</th>
-            <th>Faculty</th>
-            <th>Link To Evidence</th>
-            <th>Remarks</th>
-            <th>Action</th>
+            <th style="text-align: center">No.</th>
+            <th style="text-align: center">Program Tittle</th>
+            <th style="text-align: center">Staff ID</th>
+            <th style="text-align: center">Staff Name</th>
+            <th style="text-align: center">Faculty</th>
+            <th style="text-align: center">Link To Evidence</th>
+            <th style="text-align: center">Remarks</th>
+            <th style="text-align: center">Action</th>
             
         </tr>
     </thead>
@@ -145,14 +149,14 @@
     </tbody>
     <tfoot>
         <tr>
-           <th>No.</th>
-           <th>Program Tittle</th>
-            <th>Staff ID</th>
-            <th>Staff Name</th>
-            <th>Faculty</th>
-            <th>Link To Evidence</th>
-            <th>Remarks</th>
-            <th>Action</th>
+        <th style="text-align: center">No.</th>
+            <th style="text-align: center">Program Tittle</th>
+            <th style="text-align: center">Staff ID</th>
+            <th style="text-align: center">Staff Name</th>
+            <th style="text-align: center">Faculty</th>
+            <th style="text-align: center">Link To Evidence</th>
+            <th style="text-align: center">Remarks</th>
+            <th style="text-align: center">Action</th>
         </tr>
             </tfoot>
         </table>

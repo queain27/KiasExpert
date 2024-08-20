@@ -68,29 +68,30 @@
         <table id="example" class="table table-striped" style="width:250%">
             <thead>
                 <tr>
-                    <th>No.</th>
-                    <th>Project ID</th>
-                    <th>Staff ID</th>
-                    <th>Staff Name</th>     
-                    <th>Faculty</th>              
-                    <th>S&T</th>
-                    <th>Status Staff</th>
-                    <th>Research Title</th>
-                    <th>Start Date</th>
-                    <th>End Date</th>
-                    <th>Page End</th>
-                    <th>Duration Project(Month)</th>
-                    <th>Status Project</th>   
-                    <th>Project Extension</th>   
-                    <th>If Project Extend Insert Complete</th>     
-                    <th>Sponsor (Mohemostietic)</th>
-                    <th>Sponsor Category</th>
-                    <th>Grant Name</th>
-                    <th>Amount Pledge</th>
-                    <th>Amonut Receive</th>
-                    <th>Amount Spent in Year</th>
-                    <th>Link Evidence</th>
-                    <th>Remarks</th>
+                <th style="text-align: center">No.</th>
+                <th style="text-align: center">Project ID</th>
+                <th style="text-align: center">Staff ID</th>
+                <th style="text-align: center">Staff Name</th>     
+                <th style="text-align: center">Faculty</th>              
+                <th style="text-align: center">S&T</th>
+                <th style="text-align: center">Status Staff</th>
+                <th style="text-align: center">Research Title</th>
+                <th style="text-align: center">Start Date</th>
+                <th style="text-align: center">End Date</th>
+                <th style="text-align: center">Page End</th>
+                <th style="text-align: center">Duration Project(Month)</th>
+                <th style="text-align: center">Status Project</th>   
+                <th style="text-align: center">Project Extension</th>   
+                <th style="text-align: center">If Project Extend Insert Complete</th>     
+                <th style="text-align: center">Sponsor (Mohemostietic)</th>
+                <th style="text-align: center">Sponsor Category</th>
+                <th style="text-align: center">Grant Name</th>
+                <th style="text-align: center">Amount Pledge</th>
+                <th style="text-align: center">Amonut Receive</th>
+                <th style="text-align: center">Amount Spent in Year</th>
+                <th style="text-align: center">Link Evidence</th>
+                <th style="text-align: center">Remarks</th>
+                <th style="text-align: center">Action</th>
 
                 </tr>
             </thead>
@@ -181,29 +182,30 @@
             
             <tfoot>
                 <tr>
-                    <th></th>
-                    <th>Project ID</th>
-                    <th>Staff ID</th>
-                    <th>Staff Name</th>     
-                    <th>Faculty</th>              
-                    <th>S&T</th>
-                    <th>Status Staff</th>
-                    <th>Research Title</th>
-                    <th>Start Date</th>
-                    <th>End Date</th>
-                    <th>Page End</th>
-                    <th>Duration Project(Month)</th>
-                    <th>Status Project</th>   
-                    <th>Project Extension</th>   
-                    <th>If Project Extend Insert Complete</th>     
-                    <th>Sponsor (Mohemostietic)</th>
-                    <th>Sponsor Category</th>
-                    <th>Grant Name</th>
-                    <th>Amount Pledge</th>
-                    <th>Amonut Receive</th>
-                    <th>Amount Spent in Year</th>
-                    <th>Link Evidence</th>
-                    <th>Remarks</th>
+                <th style="text-align: center">No.</th>
+                <th style="text-align: center">Project ID</th>
+                <th style="text-align: center">Staff ID</th>
+                <th style="text-align: center">Staff Name</th>     
+                <th style="text-align: center">Faculty</th>              
+                <th style="text-align: center">S&T</th>
+                <th style="text-align: center">Status Staff</th>
+                <th style="text-align: center">Research Title</th>
+                <th style="text-align: center">Start Date</th>
+                <th style="text-align: center">End Date</th>
+                <th style="text-align: center">Page End</th>
+                <th style="text-align: center">Duration Project(Month)</th>
+                <th style="text-align: center">Status Project</th>   
+                <th style="text-align: center">Project Extension</th>   
+                <th style="text-align: center">If Project Extend Insert Complete</th>     
+                <th style="text-align: center">Sponsor (Mohemostietic)</th>
+                <th style="text-align: center">Sponsor Category</th>
+                <th style="text-align: center">Grant Name</th>
+                <th style="text-align: center">Amount Pledge</th>
+                <th style="text-align: center">Amonut Receive</th>
+                <th style="text-align: center">Amount Spent in Year</th>
+                <th style="text-align: center">Link Evidence</th>
+                <th style="text-align: center">Remarks</th>
+                <th style="text-align: center">Action</th>
                 </tr>
             </tfoot>
         </table>

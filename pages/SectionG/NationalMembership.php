@@ -64,17 +64,17 @@
         <table id="example" class="table table-striped" style="width:200%">
             <thead>
             <tr>
-            <th>No.</th>
-            <th>Staff ID</th>
-            <th>Staff Name</th>
-            <th>Faculty</th>
-            <th>Academic/Professional Bodies/Associatons/NGOs</th>
-            <th>Appointment Member Of Committee Member</th>
-            <th>Start Date</th>
-            <th>End Date</th>
-            <th>Link Evidence</th>
-            <th>Remarks</th>
-            <th>Action</th>
+            <th style="text-align: center">No.</th>
+            <th style="text-align: center">Staff ID</th>
+            <th style="text-align: center">Staff Name</th>
+            <th style="text-align: center">Faculty</th>
+            <th style="text-align: center">Academic/Professional Bodies/Associatons/NGOs</th>
+            <th style="text-align: center">Appointment Member Of Committee Member</th>
+            <th style="text-align: center">Start Date</th>
+            <th style="text-align: center">End Date</th>
+            <th style="text-align: center">Link Evidence</th>
+            <th style="text-align: center">Remarks</th>
+            <th style="text-align: center">Action</th>
         </tr>
     </thead>
     <tbody>
@@ -148,17 +148,17 @@
     </tbody>
     <tfoot>
         <tr>
-            <th></th>
-            <th>Staff ID</th>
-            <th>Staff Name</th>
-            <th>Faculty</th>
-            <th>Academic/Professional Bodies/Associatons/NGOs</th>
-            <th>Appointment Member Of Committee Member</th>
-            <th>Start Date</th>
-            <th>End Date</th>
-            <th>Link Evidence</th>
-            <th>Remarks</th>
-            <th>Action</th>
+        <th style="text-align: center">No.</th>
+            <th style="text-align: center">Staff ID</th>
+            <th style="text-align: center">Staff Name</th>
+            <th style="text-align: center">Faculty</th>
+            <th style="text-align: center">Academic/Professional Bodies/Associatons/NGOs</th>
+            <th style="text-align: center">Appointment Member Of Committee Member</th>
+            <th style="text-align: center">Start Date</th>
+            <th style="text-align: center">End Date</th>
+            <th style="text-align: center">Link Evidence</th>
+            <th style="text-align: center">Remarks</th>
+            <th style="text-align: center">Action</th>
         </tr>
             </tfoot>
         </table>

@@ -33,11 +33,7 @@
   <script defer src="script.js"></script>
   <!--Icon Image--> 
   <link rel="shortcut icon" href="../../images/Logo2.png" type="image/x-icon">
-  <script defer src="script.js"></script>
-        $(document).ready(function(){
-            $('#example').DataTable();
-        });
-       </script>
+ 
     
 </head>
  <!-- Paste the content of sidebar.php here -->

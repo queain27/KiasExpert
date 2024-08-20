@@ -67,18 +67,18 @@
         <table id="example" class="table table-striped" style="width:200%">
             <thead>
             <tr>
-            <th>No.</th>
-            <th>Staff ID</th>
-            <th>Staff Name</th>
-            <th>Faculty</th>
-            <th>Program Tittle</th>
-            <th>Project Leader/Member</th>
-            <th>Collaborator</th>
-            <th>Start Date</th>
-            <th>Expiry Date</th>
-            <th>Link Evidence</th>
-            <th>Remarks</th>
-            <th>Action</th>
+            <th style="text-align: center">No.</th>
+            <th style="text-align: center">Staff ID</th>
+            <th style="text-align: center">Staff Name</th>
+            <th style="text-align: center">Faculty</th>
+            <th style="text-align: center">Program Tittle</th>
+            <th style="text-align: center">Project Leader/Member</th>
+            <th style="text-align: center">Collaborator</th>
+            <th style="text-align: center">Start Date</th>
+            <th style="text-align: center">Expiry Date</th>
+            <th style="text-align: center">Link Evidence</th>
+            <th style="text-align: center">Remarks</th>
+            <th style="text-align: center">Action</th>
         </tr>
     </thead>
     <tbody>
@@ -151,18 +151,18 @@
     </tbody>
     <tfoot>
         <tr>
-            <th></th>
-            <th>Staff ID</th>
-            <th>Staff Name</th>
-            <th>Faculty</th>
-            <th>Program Tittle</th>
-            <th>Project Leader/Member</th>
-            <th>Collaborator</th>
-            <th>Start Date</th>
-            <th>Expiry Date</th>
-            <th>Link Evidence</th>
-            <th>Remarks</th>
-            <th>Action</th>
+        <th style="text-align: center">No.</th>
+            <th style="text-align: center">Staff ID</th>
+            <th style="text-align: center">Staff Name</th>
+            <th style="text-align: center">Faculty</th>
+            <th style="text-align: center">Program Tittle</th>
+            <th style="text-align: center">Project Leader/Member</th>
+            <th style="text-align: center">Collaborator</th>
+            <th style="text-align: center">Start Date</th>
+            <th style="text-align: center">Expiry Date</th>
+            <th style="text-align: center">Link Evidence</th>
+            <th style="text-align: center">Remarks</th>
+            <th style="text-align: center">Action</th>
         </tr>
             </tfoot>
         </table>

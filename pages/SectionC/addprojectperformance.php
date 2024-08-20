@@ -287,7 +287,7 @@ $(document).ready(function() {
           <!--Button-->
           <div class="col-md-12 mb-3 text-center">
             <button type="submit" class="btn btn-primary" name="submit">ADD</button>
-            <a href="Research_Project.php" class="btn btn-success">View Research Grant</a>
+            <a href="Research_Project.php" class="btn btn-success">View Project Performance</a>
           </div>
         </div>
       </form>

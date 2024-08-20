@@ -71,20 +71,20 @@
         <table id="example" class="table table-striped" style="width:200%">
             <thead>
             <tr>
-            <th>No.</th>
-            <th>Organisation/Collaborator</th>
-            <th>Country</th>
-            <th>Program Title</th>
-            <th>Type (MoA,MoU,LoA,RA)</th>
-            <th>Activities (IF MoU)</th>
-            <th>Category (Industry/Community/University/Agency)</th>
-            <th>Amount (If Applicable)</th>
-            <th>Start Date</th>
-            <th>Expiry Date</th>
-            <th>Period</th>
-            <th>Link evidence</th>
-            <th>Remarks</th>
-            <th>Action</th>
+            <th style="text-align: center">No.</th>
+            <th style="text-align: center">Organisation/Collaborator</th>
+            <th style="text-align: center">Country</th>
+            <th style="text-align: center">Program Title</th>
+            <th style="text-align: center">Type (MoA,MoU,LoA,RA)</th>
+            <th style="text-align: center">Activities (IF MoU)</th>
+            <th style="text-align: center">Category (Industry/Community/University/Agency)</th>
+            <th style="text-align: center">Amount (If Applicable)</th>
+            <th style="text-align: center">Start Date</th>
+            <th style="text-align: center">Expiry Date</th>
+            <th style="text-align: center">Period</th>
+            <th style="text-align: center">Link evidence</th>
+            <th style="text-align: center">Remarks</th>
+            <th style="text-align: center">Action</th>
         </tr>
     </thead>
     <tbody>
@@ -159,20 +159,20 @@
     </tbody>
     <tfoot>
         <tr>
-        <th>No.</th>
-            <th>Organisation/Collaborator</th>
-            <th>Country</th>
-            <th>Program Title</th>
-            <th>Type (MoA,MoU,LoA,RA)</th>
-            <th>Activities (IF MoU)</th>
-            <th>Category (Industry/Community/University/Agency)</th>
-            <th>Amount (If Applicable)</th>
-            <th>Start Date</th>
-            <th>Expiry Date</th>
-            <th>Period</th>
-            <th>Link evidence</th>
-            <th>Remarks</th>
-            <th>Action</th>
+        <th style="text-align: center">No.</th>
+            <th style="text-align: center">Organisation/Collaborator</th>
+            <th style="text-align: center">Country</th>
+            <th style="text-align: center">Program Title</th>
+            <th style="text-align: center">Type (MoA,MoU,LoA,RA)</th>
+            <th style="text-align: center">Activities (IF MoU)</th>
+            <th style="text-align: center">Category (Industry/Community/University/Agency)</th>
+            <th style="text-align: center">Amount (If Applicable)</th>
+            <th style="text-align: center">Start Date</th>
+            <th style="text-align: center">Expiry Date</th>
+            <th style="text-align: center">Period</th>
+            <th style="text-align: center">Link evidence</th>
+            <th style="text-align: center">Remarks</th>
+            <th style="text-align: center">Action</th>
         </tr>
             </tfoot>
         </table>

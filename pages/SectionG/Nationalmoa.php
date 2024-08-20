@@ -70,18 +70,18 @@
         <table id="example" class="table table-striped" style="width:200%">
             <thead>
             <tr>
-            <th>No.</th>
-            <th>Organisation Collaborator</th>
-            <th>Type (MoA,LoA,RA)</th>
-            <th>Category(Industry/Community/Univeristy/Agency)</th>
-            <th>Amount</th>
-            <th>Start Date</th>
-            <th>End Date</th>
-            <th>Period</th>
-            <th>Program Tittle</th>
-            <th>Link Evidence</th>
-            <th>Remarks</th>
-            <th>Action</th>
+            <th style="text-align: center">No.</th>
+            <th style="text-align: center">Organisation Collaborator</th>
+            <th style="text-align: center">Type (MoA,LoA,RA)</th>
+            <th style="text-align: center">Category(Industry/Community/Univeristy/Agency)</th>
+            <th style="text-align: center">Amount</th>
+            <th style="text-align: center">Start Date</th>
+            <th style="text-align: center">End Date</th>
+            <th style="text-align: center">Period</th>
+            <th style="text-align: center">Program Tittle</th>
+            <th style="text-align: center">Link Evidence</th>
+            <th style="text-align: center">Remarks</th>
+            <th style="text-align: center">Action</th>
         </tr>
     </thead>
     <tbody>
@@ -154,18 +154,18 @@
     </tbody>
     <tfoot>
         <tr>
-        <th>No.</th>
-            <th>Organisation Collaborator</th>
-            <th>Type (MoA,LoA,RA)</th>
-            <th>Category(Industry/Community/Univeristy/Agency)</th>
-            <th>Amount</th>
-            <th>Start Date</th>
-            <th>End Date</th>
-            <th>Period</th>
-            <th>Program Tittle</th>
-            <th>Link Evidence</th>
-            <th>Remarks</th>
-            <th>Action</th>
+        <th style="text-align: center">No.</th>
+            <th style="text-align: center">Organisation Collaborator</th>
+            <th style="text-align: center">Type (MoA,LoA,RA)</th>
+            <th style="text-align: center">Category(Industry/Community/Univeristy/Agency)</th>
+            <th style="text-align: center">Amount</th>
+            <th style="text-align: center">Start Date</th>
+            <th style="text-align: center">End Date</th>
+            <th style="text-align: center">Period</th>
+            <th style="text-align: center">Program Tittle</th>
+            <th style="text-align: center">Link Evidence</th>
+            <th style="text-align: center">Remarks</th>
+            <th style="text-align: center">Action</th>
         </tr>
             </tfoot>
         </table>

@@ -618,7 +618,7 @@
      </li>
    <!--G3-->
    <li class="nav-item">
-     <a href="../sectionG/Internationalmemberhsip.php" class="nav-link">
+     <a href="../sectionG/Internationalmembership.php" class="nav-link">
         <i class="far fa-circle nav-icon"></i>
           <p> G3 Membership in International Academic/Professional bodies/Associations/NGOs</br>
          </p>
