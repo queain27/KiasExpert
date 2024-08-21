@@ -1,3 +1,23 @@
+<?php
+session_start();
+
+if(!isset($_SESSION['user_id']))
+
+{
+    header('Location: ../examples/login.php'); 
+    exit;
+}
+
+include "../examples/config.php";
+
+if(isset($_GET['delid']))
+{
+  $staff_id =intval($_GET['delid']);
+  $sql =mysqli_query($conn,"DELETE FROM staff WHERE staff_id='$staff_id'");
+  echo"<script>alert('Record has been succesfully Deleted!!');</script>";
+  echo"<script>window.location='Staff.php?';</script>";
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
