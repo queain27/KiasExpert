@@ -18,6 +18,7 @@ include "../examples/config.php";
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">  
   <!-- Font Awesome -->
   <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <!-- Ionicons -->
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <!-- Tempusdominus Bootstrap 4 -->
@@ -41,6 +42,9 @@ include "../examples/config.php";
   <script defer src="https://cdn.datatables.net/2.0.3/js/dataTables.js"></script>
   <script defer src="https://cdn.datatables.net/2.0.3/js/dataTables.bootstrap5.js"></script>
   <script defer src="script.js"></script>
+  <!--Icon Image--> 
+  <link rel="shortcut icon" href="../../images/Logo2.png" type="image/x-icon">
+  <script defer src="script.js"></script> 
     <script>
         $(document).ready(function(){
             $('#example').DataTable();
@@ -79,45 +83,45 @@ include "../examples/config.php";
         <table id="example" class="table table-striped" style="width:200%">
             <thead>
             <tr>
-            <th>No.</th>
-            <th>Program Tittle</th>
-            <th>Staff ID</th>
-            <th>Staff Name</th>
-            <th>Faculty</th>
-            <th>Link To Evidence</th>
-            <th>Remarks</th>
-            <th>Action</th>
+            <th style="text-align: center">No.</th>
+            <th style="text-align: center">Program Tittle</th>
+            <th style="text-align: center">Staff ID</th>
+            <th style="text-align: center">Staff Name</th>
+            <th style="text-align: center">Faculty</th>
+            <th style="text-align: center">Link To Evidence</th>
+            <th style="text-align: center">Remarks</th>
+            <th style="text-align: center">Action</th>
             
         </tr>
     </thead>
     <tbody>
 
-        <tr>
-          <?php
-          require_once "../examples/config.php"; // Ensure this path is correct
+                <tr>
+                  <?php
+                  require_once "../examples/config.php"; // Ensure this path is correct
 
-        if (isset($_GET['delid'])) {
-        $id = mysqli_real_escape_string($conn, $_GET['delid']);
-        $query = "DELETE FROM staffinternational  WHERE staff_id = '$id'";
-        $result = mysqli_query($conn, $query);
+                if (isset($_GET['delid'])) {
+                $id = mysqli_real_escape_string($conn, $_GET['delid']);
+                $query = "DELETE FROM staffinternational  WHERE staff_id = '$id'";
+                $result = mysqli_query($conn, $query);
 
-        if ($result) {
-          echo "<script>alert('Record deleted successfully');</script>";
-          echo "<script>window.location.href='Staff_International.php';</script>"; // Redirect to avoid resubmission
-        } else {
-        echo "<script>alert('Error deleting record');</script>";
-        }
-        } 
-       ?>
-    <?php
-    require_once "../examples/config.php";
-    $query = "SELECT * FROM staffinternational";
-    $count =1;
-    $result = mysqli_query($conn, $query);
+                if ($result) {
+                  echo "<script>alert('Record deleted successfully');</script>";
+                  echo "<script>window.location.href='Staff_International.php';</script>"; // Redirect to avoid resubmission
+                } else {
+                echo "<script>alert('Error deleting record');</script>";
+                }
+                } 
+                ?>
+            <?php
+            require_once "../examples/config.php";
+            $query = "SELECT * FROM staffinternational";
+            $count =1;
+            $result = mysqli_query($conn, $query);
 
-    if ($result) {
-        while ($row = mysqli_fetch_assoc($result)) {
-    ?>
+            if ($result) {
+                while ($row = mysqli_fetch_assoc($result)) {
+            ?>
             <tr>
                 <td style="text-align: center"><?php echo $count;?></td>
                 <td style="text-align: center"><?php echo $row['programme_title']; ?></td>
@@ -157,14 +161,14 @@ include "../examples/config.php";
     </tbody>
     <tfoot>
         <tr>
-           <th>No.</th>
-           <th>Program Tittle</th>
-            <th>Staff ID</th>
-            <th>Staff Name</th>
-            <th>Faculty</th>
-            <th>Link To Evidence</th>
-            <th>Remarks</th>
-            <th>Action</th>
+        <th style="text-align: center">No.</th>
+            <th style="text-align: center">Program Tittle</th>
+            <th style="text-align: center">Staff ID</th>
+            <th style="text-align: center">Staff Name</th>
+            <th style="text-align: center">Faculty</th>
+            <th style="text-align: center">Link To Evidence</th>
+            <th style="text-align: center">Remarks</th>
+            <th style="text-align: center">Action</th>
         </tr>
             </tfoot>
         </table>

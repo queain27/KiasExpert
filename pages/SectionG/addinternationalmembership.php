@@ -30,14 +30,14 @@ if(isset($_POST ['submit']))
 
     if ($check_staff_result->num_rows > 0) {
         // Staff is active, check for duplicates
-        $check_duplicate_sql = $conn->prepare("SELECT * FROM `membership` WHERE `staff_id` = ?");
+        $check_duplicate_sql = $conn->prepare("SELECT * FROM `membershipinternational` WHERE `staff_id` = ?");
         $check_duplicate_sql->bind_param('s', $staff_id);
         $check_duplicate_sql->execute();
         $check_duplicate_result = $check_duplicate_sql->get_result();
 
         if ($check_duplicate_result->num_rows == 0) {
             // No duplicates, proceed with the insertion
-            $insert_sql = $conn->prepare("INSERT INTO `membership` 
+            $insert_sql = $conn->prepare("INSERT INTO `membershipinternational` 
             (`staff_id`, `staff_name`, `faculty`, `organisation_name`, `type_member`, `start_date`, `end_date`, `link_evidence`, `remarks`) 
             VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
         
@@ -51,7 +51,7 @@ if(isset($_POST ['submit']))
 
             if ($insert_sql->execute()) {
                 echo "<script>alert('New record successfully added');</script>";
-                echo "<script>document.location='International.php';</script>";
+                echo "<script>document.location='Internationalmembership.php';</script>";
             } else {
                 echo "<script>alert('Failed to add new record');</script>";
             }
@@ -196,7 +196,7 @@ if(isset($_POST ['submit']))
                     <!-- Buttons -->
                     <div class="col-md-12 mb-3 text-center">
                         <button type="submit" class="btn btn-primary" name="submit">ADD</button>
-                        <a href="International.php" class="btn btn-success">View </a>
+                        <a href="Internationalmembership.php" class="btn btn-success">View </a>
                     </div>
                 </div>
             </form>

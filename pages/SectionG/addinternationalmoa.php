@@ -26,7 +26,7 @@ if(isset($_POST ['submit']))
     $remarks = mysqli_real_escape_string($conn, $_POST['remarks']);
 
     // Prepare SQL query
-    $sql = "INSERT INTO `organisation` 
+    $sql = "INSERT INTO `internationalmoa` 
         (`organisation_name`,`country`, `programme_title`, `type`, `activity`, `category`, `amount`, `start_date`, `expiry_date`, `period`, `link_evidence`, `remarks`) 
         VALUES 
         ('$organisation_name','$country', '$programme_title', '$type', '$activity', '$category', '$amount', '$start_date', '$expiry_date', '$period', '$link_evidence', '$remarks')";

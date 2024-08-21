@@ -124,7 +124,7 @@ if (isset($_POST['submit'])) {
                     <select class="form-control" name="programme_title" required>
                         <?php
                         // Fetch data from the organisation table
-                        $sql = "SELECT programme_title FROM organisation WHERE type = 'MoA'";
+                        $sql = "SELECT programme_title FROM internationalmoa WHERE type = 'MoA'";
                         $optionsResult = $conn->query($sql);
 
                         if ($optionsResult->num_rows > 0) {

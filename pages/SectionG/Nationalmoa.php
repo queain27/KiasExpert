@@ -1,23 +1,9 @@
-<?php
-session_start();
-
-if(!isset($_SESSION['user_id']))
-
-{
-    header('Location: ../examples/login.php'); 
-    exit;
-}
-
-include "../examples/config.php";
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="../../images/Logo2.png" type="image/x-icon">
-    <title>International MoAs</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">  
+  
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">  
   <!-- Font Awesome -->
   <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -46,72 +32,71 @@ include "../examples/config.php";
   <script defer src="script.js"></script>
   <!--Icon Image--> 
   <link rel="shortcut icon" href="../../images/Logo2.png" type="image/x-icon">
-  <script defer src="script.js"></script>
-    <script>
+  <script>
         $(document).ready(function(){
             $('#example').DataTable();
         });
        </script>
 
-
-</head>
-  <!-- Paste the content of sidebar.php here -->
-  <body class="hold-transition sidebar-mini layout-fixed">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../../images/Logo2.png" type="image/x-icon">
+    <title>National MoAs</title>
+ </head>
+<!-- Paste the content of sidebar.php here -->
+<body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
 
 <body class="hold-transition sidebar-mini layout-fixed">
   <div class="wrapper">
   <div class="preloader flex-column justify-content-center align-items-center">
   </div> 
+
   <?php
      
      include '../../header.php';
      include '../../SideBarAdmin.php';
      ?>
     </div>
-     
-  </body>
+<body>
 <!--Main Content-->
 <!--TableStart-->  
-<h3><center><font color="" face="Cambria Math">Total Number of International MoAs Signed & Stamped<font><br></center></h3>
+<h3><center><font color="" face="Cambria Math">Total Number National MoAs Signed and Stamped<font><br></center></h3>
 <br><br>
 <div class="container pt-50">
 <div class="text-right mb-3">
-        <a href="../sectionG/addinternationalmoa.php" class="btn btn-success">+Add New </a>
+        <a href="../sectionG/addnationalmoa.php" class="btn btn-success">+Add New </a>
       </div>
     <div class="table-responsive">
         <table id="example" class="table table-striped" style="width:200%">
             <thead>
             <tr>
             <th style="text-align: center">No.</th>
-            <th style="text-align: center">Organisation/Collaborator</th>
-            <th style="text-align: center">Country</th>
-            <th style="text-align: center">Program Title</th>
-            <th style="text-align: center">Type (MoA,MoU,LoA,RA)</th>
-            <th style="text-align: center">Activities (IF MoU)</th>
-            <th style="text-align: center">Category (Industry/Community/University/Agency)</th>
-            <th style="text-align: center">Amount (If Applicable)</th>
+            <th style="text-align: center">Organisation Collaborator</th>
+            <th style="text-align: center">Type (MoA,LoA,RA)</th>
+            <th style="text-align: center">Category(Industry/Community/Univeristy/Agency)</th>
+            <th style="text-align: center">Amount</th>
             <th style="text-align: center">Start Date</th>
-            <th style="text-align: center">Expiry Date</th>
+            <th style="text-align: center">End Date</th>
             <th style="text-align: center">Period</th>
-            <th style="text-align: center">Link evidence</th>
+            <th style="text-align: center">Program Tittle</th>
+            <th style="text-align: center">Link Evidence</th>
             <th style="text-align: center">Remarks</th>
             <th style="text-align: center">Action</th>
         </tr>
     </thead>
     <tbody>
-        <tr>
+    <tr>
         <?php
             require_once "../examples/config.php"; // Ensure this path is correct
 
            if (isset($_GET['delid'])) {
            $id = mysqli_real_escape_string($conn, $_GET['delid']);
-           $query = "DELETE FROM internationalmoa WHERE  id = '$id'";
+           $query = "DELETE FROM nationalmoa WHERE  id = '$id'";
            $result = mysqli_query($conn, $query);
 
            if ($result) {
             echo "<script>alert('Record deleted successfully');</script>";
-            echo "<script>window.location.href='InternationalMoa.php';</script>"; // Redirect to avoid resubmission
+            echo "<script>window.location.href='Nationalmoa.php';</script>"; // Redirect to avoid resubmission
            } else {
            echo "<script>alert('Error deleting record');</script>";
           }
@@ -119,7 +104,7 @@ include "../examples/config.php";
        ?>
     <?php
     require_once "../examples/config.php";
-    $query = "SELECT * FROM internationalmoa";
+    $query = "SELECT * FROM nationalmoa";
     $count =1;
     $result = mysqli_query($conn, $query);
 
@@ -129,22 +114,20 @@ include "../examples/config.php";
             <tr>
                 <td style="text-align: center"><?php echo $count;?></td>
                 <td style="text-align: center"><?php echo $row['organisation_name']; ?></td>
-                <td style="text-align: center"><?php echo $row['country']; ?></td>
-                <td style="text-align: center"><?php echo $row['programme_title']; ?></td>
                 <td style="text-align: center"><?php echo $row['type']; ?></td>
-                <td style="text-align: center"><?php echo $row['activity']; ?></td>
                 <td style="text-align: center"><?php echo $row['category']; ?></td>
                 <td style="text-align: center"><?php echo $row['amount']; ?></td>
                 <td style="text-align: center"><?php echo $row['start_date']; ?></td>
-                <td style="text-align: center"><?php echo $row['expiry_date']; ?></td>
+                <td style="text-align: center"><?php echo $row['end_date']; ?></td>
                 <td style="text-align: center"><?php echo $row['period']; ?></td>
+                <td style="text-align: center"><?php echo $row['programme_title']; ?></td>
                 <td style="text-align: center"><a href="<?php echo $row['link_evidence']; ?>" target="_blank"><?php echo $row['link_evidence']; ?>
                 <td style="text-align: center"><?php echo $row['remarks']; ?></td>
                 <td style="text-align: center;">
-                    <a href="editinternationalmoa.php?ID=<?php echo $row['id']; ?>" class="btn btn-primary btn-sm">
+                    <a href="editnationalmoa.php?ID=<?php echo $row['id']; ?>" class="btn btn-primary btn-sm">
                         <i class="fa-solid fa-pen-to-square fs-5 me-3"></i>
                     </a>
-                    <a href="InternationalMoa.php?delid=<?php echo urlencode($row['id']); ?>" 
+                    <a href="Nationalmoa.php?delid=<?php echo urlencode($row['id']); ?>" 
                     onClick="return confirm('Do you really want to remove this Record?');" 
                     class="btn btn-danger btn-sm">
                      <i class="fa-solid fa-trash fs-5 me-3"></i>
@@ -172,17 +155,15 @@ include "../examples/config.php";
     <tfoot>
         <tr>
         <th style="text-align: center">No.</th>
-            <th style="text-align: center">Organisation/Collaborator</th>
-            <th style="text-align: center">Country</th>
-            <th style="text-align: center">Program Title</th>
-            <th style="text-align: center">Type (MoA,MoU,LoA,RA)</th>
-            <th style="text-align: center">Activities (IF MoU)</th>
-            <th style="text-align: center">Category (Industry/Community/University/Agency)</th>
-            <th style="text-align: center">Amount (If Applicable)</th>
+            <th style="text-align: center">Organisation Collaborator</th>
+            <th style="text-align: center">Type (MoA,LoA,RA)</th>
+            <th style="text-align: center">Category(Industry/Community/Univeristy/Agency)</th>
+            <th style="text-align: center">Amount</th>
             <th style="text-align: center">Start Date</th>
-            <th style="text-align: center">Expiry Date</th>
+            <th style="text-align: center">End Date</th>
             <th style="text-align: center">Period</th>
-            <th style="text-align: center">Link evidence</th>
+            <th style="text-align: center">Program Tittle</th>
+            <th style="text-align: center">Link Evidence</th>
             <th style="text-align: center">Remarks</th>
             <th style="text-align: center">Action</th>
         </tr>

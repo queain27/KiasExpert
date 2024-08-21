@@ -22,7 +22,7 @@ if (isset($_POST['submit'])) {
     $link_evidence = mysqli_real_escape_string($conn, $_POST['link_evidence']);
     $remarks = mysqli_real_escape_string($conn, $_POST['remarks']);
 
-    $stmt = $conn->prepare("UPDATE `membership` 
+    $stmt = $conn->prepare("UPDATE `membershipinternational` 
                             SET `staff_name` = ?, 
                                 `faculty` = ?, 
                                 `organisation_name` = ?, 
@@ -53,7 +53,7 @@ if (isset($_POST['submit'])) {
     // Execute the statement
     if ($stmt->execute()) {
         echo "<script>alert('Record updated successfully');</script>";
-        echo "<script>window.location.href='International.php';</script>"; // Redirect to avoid resubmission
+        echo "<script>window.location.href='Internationalmembership.php';</script>"; // Redirect to avoid resubmission
     } else {
         echo "<script>alert('Error updating record: " . htmlspecialchars($stmt->error) . "');</script>";
     }
@@ -103,7 +103,7 @@ if (isset($_POST['submit'])) {
 
        
         <?php 
-        $sql = "SELECT * FROM `membership` WHERE staff_id= $staff_id LIMIT 1";
+        $sql = "SELECT * FROM `membershipinternational` WHERE staff_id= $staff_id LIMIT 1";
         $result = mysqli_query($conn, $sql);
         $row = mysqli_fetch_assoc($result);
         ?>
@@ -164,7 +164,7 @@ if (isset($_POST['submit'])) {
                <div>
                <center>
                        <button type ="submit" class="btn btn-success" name="submit">UPDATE</button>
-                       <a href="International.php" class="btn btn-danger">Cancel</a>
+                       <a href="Internationalmembership.php" class="btn btn-danger">Cancel</a>
               </div>
                  </center>
           </form>

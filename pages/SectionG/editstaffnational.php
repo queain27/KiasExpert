@@ -13,7 +13,7 @@ if (isset($_POST['submit'])) {
     $type = mysqli_real_escape_string($conn, $_POST['type']);
     $organisation_name = mysqli_real_escape_string($conn, $_POST['organisation_name']);
     $start_date = mysqli_real_escape_string($conn, $_POST['start_date']);
-    $end_date = mysqli_real_escape_string($conn, $_POST['end_date']);
+    $expiry_date = mysqli_real_escape_string($conn, $_POST['expiry_date']);
     $link_evidence = mysqli_real_escape_string($conn, $_POST['link_evidence']);
     $remarks = mysqli_real_escape_string($conn, $_POST['remarks']);
 
@@ -25,7 +25,7 @@ if (isset($_POST['submit'])) {
                                 `type` = ?, 
                                 `organisation_name` = ?, 
                                 `start_date` = ?, 
-                                 `end_date` = ?, 
+                                 `expiry_date` = ?, 
                                 `link_evidence` = ?, 
                                 `remarks` = ? 
                             WHERE `staff_id` = ?");
@@ -38,7 +38,7 @@ if (isset($_POST['submit'])) {
                        $type,
                        $organisation_name,
                        $start_date,
-                       $end_date,
+                       $expiry_date,
                        $link_evidence, 
                        $remarks, 
                        $staff_id
@@ -47,7 +47,7 @@ if (isset($_POST['submit'])) {
     // Execute the prepared statement
     if ($stmt->execute()) {
         echo "<script>alert('Record successfully updated');</script>";
-        echo "<script>window.location.href='Staff_Research.php';</script>";
+        echo "<script>window.location.href='Staff_National.php';</script>";
     } else {
         echo "<script>alert('Error updating record: " . $stmt->error . "');</script>";
     }
@@ -114,7 +114,7 @@ $stmt->close();
 $programme_titles = [];
 $organisations = [];
 
-$prog_stmt = $conn->prepare("SELECT programme_title FROM nationalorganisation");
+$prog_stmt = $conn->prepare("SELECT programme_title FROM nationalmoa");
 $prog_stmt->execute();
 $prog_result = $prog_stmt->get_result();
 while ($prog_row = $prog_result->fetch_assoc()) {
@@ -122,7 +122,7 @@ while ($prog_row = $prog_result->fetch_assoc()) {
 }
 $prog_stmt->close();
 
-$org_stmt = $conn->prepare("SELECT organisation_name FROM nationalorganisation");
+$org_stmt = $conn->prepare("SELECT organisation_name FROM nationalmoa");
 $org_stmt->execute();
 $org_result = $org_stmt->get_result();
 while ($org_row = $org_result->fetch_assoc()) {
@@ -191,8 +191,8 @@ $conn->close();
             </div>
             
             <div class="col-md-6 mb-3">
-                <label class="form-label">END DATE:</label>
-                <input type="date" class="form-control" name="end_date" value="<?php echo htmlspecialchars($row['end_date']); ?>">
+                <label class="form-label">EXPIRY DATE:</label>
+                <input type="date" class="form-control" name="expiry_date" value="<?php echo htmlspecialchars($row['expiry_date']); ?>">
             </div>
 
             <div class="col-md-6 mb-3">
@@ -208,7 +208,7 @@ $conn->close();
 
             <div class="col-12 text-center">
                 <button type="submit" class="btn btn-success" name="submit">UPDATE</button>
-                <a href="Staff_Research.php" class="btn btn-danger">Cancel</a>
+                <a href="Staff_National.php" class="btn btn-danger">Cancel</a>
             </div>
         </div>
     </form>

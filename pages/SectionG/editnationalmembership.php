@@ -46,7 +46,7 @@ if (isset($_POST['submit'])) {
     // Execute the statement
     if ($stmt->execute()) {
         echo "<script>alert('Record updated successfully');</script>";
-        echo "<script>window.location.href='Membership.php';</script>"; // Redirect to avoid resubmission
+        echo "<script>window.location.href='NationalMembership.php';</script>"; // Redirect to avoid resubmission
     } else {
         echo "<script>alert('Error updating record: " . htmlspecialchars($stmt->error) . "');</script>";
     }
@@ -157,7 +157,7 @@ if (isset($_POST['submit'])) {
                <div>
                <center>
                        <button type ="submit" class="btn btn-success" name="submit">UPDATE</button>
-                       <a href="Membership.php" class="btn btn-danger">Cancel</a>
+                       <a href="NationalMembership.php" class="btn btn-danger">Cancel</a>
               </div>
                  </center>
           </form>

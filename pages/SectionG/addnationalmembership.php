@@ -43,7 +43,7 @@ if (isset($_POST['submit'])) {
 
             if ($insert_sql->execute()) {
                 echo "<script>alert('New record successfully added');</script>";
-                echo "<script>document.location='Membership.php';</script>";
+                echo "<script>document.location='NationalMembership.php';</script>";
             } else {
                 echo "<script>alert('Failed to add new record');</script>";
             }
@@ -188,7 +188,7 @@ if (isset($_POST['submit'])) {
                     <!-- Buttons -->
                     <div class="col-md-12 mb-3 text-center">
                         <button type="submit" class="btn btn-primary" name="submit">ADD</button>
-                        <a href="Membership.php" class="btn btn-success">View </a>
+                        <a href="NationalMembership.php" class="btn btn-success">View </a>
                     </div>
                 </div>
             </form>

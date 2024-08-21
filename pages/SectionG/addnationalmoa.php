@@ -16,7 +16,7 @@ if (isset($_POST['submit'])) {
     $remarks = mysqli_real_escape_string($conn, $_POST['remarks']);
 
     // Prepare SQL query
-    $sql = "INSERT INTO `nationalorganisation` 
+    $sql = "INSERT INTO `nationalmoa` 
         (`organisation_name`, `type`, `category`, `amount`, `start_date`, `end_date`, `period`,`programme_title`, `link_evidence`, `remarks`) 
         VALUES 
         ('$organisation_name', '$type',  '$category', '$amount', '$start_date', '$end_date', '$period','$programme_title','$link_evidence', '$remarks')";
@@ -24,7 +24,7 @@ if (isset($_POST['submit'])) {
     // Execute the query and check for success
     if (mysqli_query($conn, $sql)) {
         echo "<script>alert('New record successfully added');</script>";
-        echo "<script>document.location='National.php';</script>";
+        echo "<script>document.location='Nationalmoa.php';</script>";
     } else {
         echo "<script>alert('Error: " . mysqli_error($conn) . "');</script>";
     }
@@ -38,7 +38,7 @@ mysqli_close($conn);
 <!DOCTYPE html>
 <html lang="en">
 <head><meta charset="utf-8">
-  <title>Add New Staff</title>
+  <title>Add New </title>
   <link rel="stylesheet" href="../../bootstrap/css/bootstrap.min.css">
   <script src="../../bootstrap/js/jquery.min.js"></script>
   <script src="../../bootstrap/js/bootstrap.min.js"></script>
@@ -138,7 +138,7 @@ mysqli_close($conn);
                         <!-- Button -->
                         <div class="col-md-12 mb-3 text-center">
                             <button type="submit" class="btn btn-primary" name="submit">ADD</button>
-                            <a href="Staff_International.php" class="btn btn-success">View Organisation</a>
+                            <a href="Nationalmoa.php" class="btn btn-success">View Organisation</a>
                         </div>
                     </div>
                 </form>
