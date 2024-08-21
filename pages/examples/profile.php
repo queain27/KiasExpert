@@ -5,13 +5,13 @@ session_start();
 $user_id = $_SESSION['user_id'];
 
 if(!isset($user_id)){
-   header('location:../login.php');
+   header('location:login.php');
 };
 
 if(isset($_GET['logout'])){
    unset($user_id);
    session_destroy();
-   header('location:../login.php');
+   header('location:login.php');
 }
 
 ?>
@@ -92,7 +92,7 @@ if(isset($_GET['logout'])){
       </li>
        <!-- logout -->
        <li class="nav-item">
-        <a class="nav-link" data-widget="logout" href="../../index.php" role="button">
+        <a class="nav-link" data-widget="logout" href="logout.php" role="button">
           <i class="fas fa-power-off"></i>
         </a>
       </li>

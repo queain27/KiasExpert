@@ -1,3 +1,15 @@
+<?php
+session_start();
+
+if(!isset($_SESSION['user_id']))
+
+{
+    header('Location: ../examples/login.php'); 
+    exit;
+}
+
+include "../examples/config.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -56,7 +68,7 @@
      ?>
 <body>
 <!--Main Content-->
-<!--TableStart-->  
+<!--TableStart-->    
 <h3><center><font color="" face="Cambria Math">Policy Papers<font><br></center></h3>
 <br><br>
 <div class="container pt-50">

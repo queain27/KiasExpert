@@ -1,3 +1,31 @@
+<?php
+session_start();
+
+if(!isset($_SESSION['user_id']))
+
+{
+    header('Location: ../examples/login.php'); 
+    exit;
+}
+
+include "../examples/config.php";
+
+if (isset($_GET['delid'])) {
+    $reference_no = $_GET['delid'];
+    $stmt = $conn->prepare("DELETE FROM consultancies WHERE reference_no = ?");
+    $stmt->bind_param("s", $reference_no);
+
+    if ($stmt->execute()) {
+        echo "<script>alert('Record successfully deleted');</script>";
+        echo "<script>document.location='Consultancies.php';</script>";
+    } else {
+        echo "<script>alert('Something went wrong');</script>";
+    }
+
+    $stmt->close();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -57,7 +85,7 @@
      ?>
 <body>
 <!--Main Content-->
-<!--TableStart-->  
+<!--TableStart-->   
 <h3><center><font color="" face="Cambria Math">Consultancies (Excluding Contract Research)<font><br></center></h3>
 <br><br>
 <div class="container pt-50">

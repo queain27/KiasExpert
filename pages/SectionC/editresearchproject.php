@@ -1,6 +1,13 @@
 <?php
-include "../examples/config.php";
+session_start();
 
+if(!isset($_SESSION['user_id']))
+
+{
+    header('Location: ../examples/login.php'); 
+    exit;
+}
+include "../examples/config.php";
 $project_id = $_GET['ID'] ?? null;
 
 if (isset($_POST['submit'])) {

@@ -1,7 +1,17 @@
 <?php
-include "../examples/config.php";
+session_start(); // Mulakan sesi
 
-if (isset($_POST['submit'])) {
+if(!isset($_SESSION['user_id']))
+
+{
+    header('Location: pages/examples/login.php'); 
+    exit;
+}
+
+include "../examples/config.php";
+if(isset($_POST ['submit']))
+
+{
     $staff_id = $_POST['staff_id'];
     $staff_name = $_POST['staff_name'];
     $document_type = $_POST['document_type'];
@@ -158,7 +168,7 @@ $(document).ready(function() {
           <!--Staff Name-->
           <div class="col-md-6 mb-3">
             <label class="form-label">STAFF NAME:</label>
-            <input type="text" class="form-control" name="staff_name" placeholder="Staff Name" readonly required>
+            <input type="text" class="form-control" name="staff_name" placeholder="Staff Name" readonly>
           </div>
       
     

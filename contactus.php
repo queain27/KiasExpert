@@ -1,3 +1,15 @@
+<?php
+session_start();
+
+if(!isset($_SESSION['user_id']))
+
+{
+    header('Location:pages/examples/login.php'); 
+    exit;
+}
+
+include "pages/examples/config.php";
+?>
 
 <!DOCTYPE html>
 <html lang="en">

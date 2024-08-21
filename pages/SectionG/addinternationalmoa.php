@@ -1,9 +1,17 @@
 <?php
-include "../examples/config.php";
+session_start(); // Mulakan sesi
 
-// Check if form is submitted
-if (isset($_POST['submit'])) {
-    // Fetch and sanitize POST data
+if(!isset($_SESSION['user_id']))
+
+{
+    header('Location: pages/examples/login.php'); 
+    exit;
+}
+
+include "../examples/config.php";
+if(isset($_POST ['submit']))
+
+{
     $organisation_name = mysqli_real_escape_string($conn, $_POST['organisation_name']);
     $country = mysqli_real_escape_string($conn, $_POST['country']);
     $programme_title = mysqli_real_escape_string($conn, $_POST['programme_title']);
