@@ -5,13 +5,13 @@ session_start();
 $user_id = $_SESSION['user_id'];
 
 if(!isset($user_id)){
-   header('location:../login.php');
+   header('location:login.php');
 };
 
 if(isset($_GET['logout'])){
    unset($user_id);
    session_destroy();
-   header('location:../login.php');
+   header('location:login.php');
 }
 
 ?>
@@ -64,7 +64,7 @@ if(isset($_GET['logout'])){
       </li>
        <!-- logout -->
        <li class="nav-item">
-        <a class="nav-link" data-widget="logout" href="../../../index.php" role="button">
+        <a class="nav-link" data-widget="logout" href="../Auth/logout.php" role="button">
           <i class="fas fa-power-off"></i>
         </a>
       </li>
@@ -104,93 +104,100 @@ if(isset($_GET['logout'])){
                 <p>Profile</p>
               </a>
         </li>
- <!--Seksyen A Start-->
- <li class="nav-header">Section MyRA</li>
+<!--Seksyen A Start-->
+<li class="nav-header">Section MyRA</li>
  <li class="nav-item">
    <a href="#" class="nav-link">
      <i class="nav-icon fas fa-info-circle icon"></i>
-     <p>A. General Information
+     <p>General Information
        <i class="fas fa-angle-left right"></i>
      </p>
    </a>
    <ul class="nav nav-treeview">
-     <li class="nav-item">
-       <a href="../LectA/staff.php" class="nav-link">
-         <i class="far fa-circle nav-icon"></i>
-         <p>A1 Staff Academic</p>
-       </a> 
-     </li>
-     <!-- <li class="nav-item">
+   <li class="nav-item">
        <a href="#" class="nav-link">
          <i class="far fa-circle nav-icon"></i>
-         <p>A2 Student Information
+         <p>Staff Information
            <i class="fas fa-angle-left right"></i>
          </p>
        </a>
        <ul class="nav nav-treeview">
          <li class="nav-item">
-           <a href="#" class="nav-link">
+           <a href="../Lecture/LectA/Staff.php" class="nav-link">
              <i class="far fa-circle nav-icon"></i>
-             <p>Student Undergraduate</p>
+             <p>(a) Staff</p>
            </a>
          </li>
          <li class="nav-item">
-         <a href="#" class="nav-link">
+         <a href="../Lecture/LectA/Staff_Active.php" class="nav-link">
              <i class="far fa-circle nav-icon"></i>
-             <p>Student Postgraduate</p>
+             <p>(b) Staff Active</p>
+           </a>
+         </li>
+         <li class="nav-item">
+         <a href="../Lecture/LectA/Staff_Foreign.php" class="nav-link">
+             <i class="far fa-circle nav-icon"></i>
+             <p>(c) Staff Foreign</p>
+           </a>
+         </li>
+         <li class="nav-item">
+         <a href="../Lecture/LectA/Staff_ST.php" class="nav-link">
+             <i class="far fa-circle nav-icon"></i>
+             <p>(d) Staff S&T</p>
+           </a>
+         </li>
+         <li class="nav-item">
+         <a href="../Lecture/LectA/Staff_NONST.php" class="nav-link">
+             <i class="far fa-circle nav-icon"></i>
+             <p>(e) Staff Non S&T</p>
            </a>
          </li>
        </ul>
-     </li> -->
+     </li>
    </ul>
  </li>
  <!--Seksyen A End-->
- 
  <!--Seksyen B Start-->
  <li class="nav-item">
    <a href="#" class="nav-link">
      <i class="nav-icon fas fa-chart-bar icon"></i>
-     <p>B. Quantity & Quality Of Researchs 
+     <p>Quantity & Quality Of Researchs 
        <i class="fas fa-angle-left right"></i>
      </p>
    </a>
    <ul class="nav nav-treeview">
      <li class="nav-item">
-     <a href="../LectB/CriticalMass.php"class="nav-link">
+     <a href="../Lecture/LectB/CriticalMass.php"class="nav-link">
          <i class="far fa-circle nav-icon"></i>
-         <p> B1  Critical Mass</p>
+         <p>Critical Mass</p>
        </a> 
      </li>
- 
      <li class="nav-item">
-       <a href="../LectB/PhDsPQ.php"class="nav-link">
+       <a href="../Lecture/LectB/PhDsPQ.php"class="nav-link">
          <i class="far fa-circle nav-icon"></i>
-         <p> B2 Total Number Staff Phd or Professional</p>
+         <p>Total Number Staff Phd or Professional</p>
        </a> 
      </li>
- 
      <li class="nav-item">
-       <a href="../LectB/ResearchCohort.php" class="nav-link">
+       <a href="../Lecture/LectB/ResearchCohort.php" class="nav-link">
          <i class="far fa-circle nav-icon"></i>
-         <p> B3 Research Experience <br>3 Cohorts</p>
+         <p>Research Experience <br>3 Cohorts</p>
        </a> 
      </li>
- 
      <li class="nav-item">
-       <a href="../LectB/Award.php" class="nav-link">
+       <a href="../Lecture/LectB/Award.php" class="nav-link">
          <i class="far fa-circle nav-icon"></i>
-         <p>B4 Awards National & International</p>
+         <p>Awards National & International</p>
        </a> 
      </li>
    </ul>
  </li>
- <!--Seksyen B End-->
- 
- <!--Seksyen C Start-->
- <li class="nav-item">
+<!--Seksyen B End-->
+<!--Seksyen C Start-->
+<li class="nav-item">
    <a href="#" class="nav-link">
      <i class="nav-icon fas fa-graduation-cap icon"></i>
-     <p>C. Quantity & Quality Of Researchs 
+     <p>Quantity & Quality Of Researchs 
        <i class="fas fa-angle-left right"></i>
      </p>
    </a>
@@ -199,28 +206,28 @@ if(isset($_GET['logout'])){
      <li class="nav-item">
        <a href="#" class="nav-link">
          <i class="far fa-circle nav-icon"></i>
-         <p>C1 Publications
+         <p>Publications
            <i class="fas fa-angle-left right"></i>
          </p>
        </a>
        <ul class="nav nav-treeview">
  <!--Indexed (Articel)-->
          <li class="nav-item">
-           <a href="../LectC/IndexJournalArticle.php" class="nav-link">
+           <a href="../Lecture/LectC/IndexJournalArticle.php" class="nav-link">
              <i class="far fa-circle nav-icon"></i>
              <p>(a) Total Number Publication Indexed Journal</p>
            </a>
          </li>
         <!--Impact Journal-->
         <li class="nav-item">
-            <a href="../LectC/ImpactJournal.php" class="nav-link">
+            <a href="../Lecture/LectC/ImpactJournal.php" class="nav-link">
               <i class="far fa-circle nav-icon"></i>
               <p>(b) Total Number Impact Journal</p>
             </a>
           </li>
   <!--Publication other Journal MyCite-->
          <li class="nav-item">
-           <a href="../LectC/PublicationOtherJournal.php" class="nav-link">
+           <a href="../Lecture/LectC/PublicationOtherJournal.php" class="nav-link">
              <i class="far fa-circle nav-icon"></i>
            <p>(C) Total Publication Other Journal</p>
           </a>
@@ -235,14 +242,14 @@ if(isset($_GET['logout'])){
   <ul class="nav nav-treeview">
         <!--i-->
                 <li class="nav-item">
-                  <a href="../LectC/ResearchBookIndex.php" class="nav-link">
+                  <a href="../Lecture/LectC/ResearchBookIndex.php" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>(i) Index Book</p>
                   </a>
                 </li>
            <!--ii-->
                 <li class="nav-item">
-                  <a href="../LectC/ResearchBookNoIndex.php" class="nav-link">
+                  <a href="../Lecture/LectC/ResearchBookNoIndex.php" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>(ii) No Index Book</p>
                   </a>
@@ -251,14 +258,14 @@ if(isset($_GET['logout'])){
  </li>
 <!--Policy Paper-->
 <li class="nav-item">
-    <a href="../LectC/Policy.php" class="nav-link">
+    <a href="../Lecture/LectC/Policy.php" class="nav-link">
       <i class="far fa-circle nav-icon"></i>
     <p>(e) Policy Paper</p>
    </a>
   </li>
     <!--Other Publications-->
     <li class="nav-item">
-        <a href="../LectC/OtherPub.php" class="nav-link">
+        <a href="../Lecture/LectC/OtherPub.php" class="nav-link">
          <i class="far fa-circle nav-icon"></i>
          <p>(f) Other Publications</p>
        </a>
@@ -267,18 +274,18 @@ if(isset($_GET['logout'])){
   </li>
  <!--C2-->
     <li class="nav-item">
-         <a href="../LectC/Research_Grant.php" class="nav-link">
+         <a href="../Lecture/LectC/Research_Grant.php" class="nav-link">
             <i class="far fa-circle nav-icon"></i>
-              <p>C2 Research Grants
+              <p>Research Grants
                 
              </p>
          </a>  
      </li>
    <!--C3-->
    <li class="nav-item">
-     <a href="../LectC/Research_Project.php" class="nav-link">
+     <a href="../Lecture/LectC/Research_Project.php" class="nav-link">
         <i class="far fa-circle nav-icon"></i>
-          <p>C3 Research Project <br>Performance</br>
+          <p>Research Project <br>Performance</br>
             
          </p>
      </a>  
@@ -286,210 +293,160 @@ if(isset($_GET['logout'])){
     </ul>  
  </li>
  <!--Seksyen C End-->
+
  <!--Seksyen D Start-->
  <!-- <li class="nav-header">Section D</li> -->
- <li class="nav-item">
-   <a href="#" class="nav-link">
-     <i class="nav-icon fas fa-lightbulb icon"></i>
-     <p>D. Quantity & Quality Postgraduate
-       <i class="fas fa-angle-left right"></i>
-     </p>
-   </a>
-   <ul class="nav nav-treeview">
-     </li>
-     <li class="nav-item">
-       <a href="../LectD/PhDs_Graduated.php" class="nav-link">
-         <i class="far fa-circle nav-icon"></i>
-         <p>D1 PhDs Graduate
-           
-         </p>
-       </a>
- </li>
- <!--D2-->
-    <li class="nav-item">
-         <a href="../LectD/Master_Graduated.php" class="nav-link">
-            <i class="far fa-circle nav-icon"></i>
-              <p>D2 Master Graduated
-                
-             </p>
-         </a>  
-     </li>
- <!--D3-->
- <li class="nav-item">
-         <a href="../LectD/PhDs_Enrollment.php" class="nav-link">
-            <i class="far fa-circle nav-icon"></i>
-              <p>D3 PhDs Enrollment
-                
-             </p>
-         </a>  
-     </li>
-   <!--D5-->
-   <li class="nav-item">
-     <a href="../LectD/Internal_PhDs.php" class="nav-link">
-        <i class="far fa-circle nav-icon"></i>
-          <p>D4 International Postgraduate</br>
-            
-         </p>
-     </a>  
- </li>
- <!--D6-->
- <li class="nav-item">
-   <a href="../LectD/Qualification_Postgraduate.php" class="nav-link">
-      <i class="far fa-circle nav-icon"></i>
-        <p>D5 Qualitification Level Postgraduate </br>
-          
-       </p>
-   </a>  
- </li>
- <!--D7-->
- <li class="nav-item">
-   <a href="../LectD/Felllowship_Grant.php" class="nav-link">
-      <i class="far fa-circle nav-icon"></i>
-        <p>D6 Total Fellowship <br>Grant Awards</br>
-          
-       </p>
-   </a>  
- </li>
- <!--D8-->
- <li class="nav-item">
-   <a href="../LectD/Post_Doctoral.php" class="nav-link">
-      <i class="far fa-circle nav-icon"></i>
-        <p>D7 Post-Doctoral Appointments</br>
-          
-       </p>
-   </a>  
- </li>
-    </ul>  
- </li>
  <!--Seksyen D End-->
+
  <!--Seksyen E Start-->
  <!-- <li class="nav-header">Section E</li> -->
  <li class="nav-item">
    <a href="#" class="nav-link">
      <i class="nav-icon fas fa-file-alt icon"></i>
-     <p>E. innovation
+     <p>Innovation
        <i class="fas fa-angle-left right"></i>
      </p>
    </a>
    <ul class="nav nav-treeview">
      </li>
      <li class="nav-item">
-       <a href="../LectE/Patent.php" class="nav-link">
+     <a href="#" class="nav-link">
          <i class="far fa-circle nav-icon"></i>
-         <p>E1 Patent
-           
+         <p>Patent
+           <i class="fas fa-angle-left right"></i>
          </p>
        </a>
- </li>
+       <ul class="nav nav-treeview">
+         <li class="nav-item">
+           <a href="../Lecture/LectE/Patent.php" class="nav-link">
+             <i class="far fa-circle nav-icon"></i>
+             <p>(a) patent Granted</p>
+           </a>
+         </li>
+         <li class="nav-item">
+         <a href="../Lecture/LectE/Patent_Filled.php" class="nav-link">
+             <i class="far fa-circle nav-icon"></i>
+             <p>(b) Patent Filed</p>
+           </a>
+         </li>
+         <li class="nav-item">
+         <a href="../Lecture/LectE/Patent_InvGrant.php" class="nav-link">
+             <i class="far fa-circle nav-icon"></i>
+             <p>(c) Invention Granted</p>
+           </a>
+         </li>
+         <li class="nav-item">
+         <a href="../Lecture/LectE/Patent_InvFil.php" class="nav-link">
+             <i class="far fa-circle nav-icon"></i>
+             <p>(d) Invention Filed</p>
+           </a>
+         </li>
+       </ul>
+     </li>
  <!--E2-->
     <li class="nav-item">
-         <a href="../LectE/Commercial.php" class="nav-link">
+         <a href="../Lecture/LectE/Commercial.php" class="nav-link">
             <i class="far fa-circle nav-icon"></i>
-              <p>E2 Commercial
-                
-             </p>
+              <p>Commercial</p>
          </a>  
      </li>
    <!--E3-->
    <li class="nav-item">
-     <a href="../LectE/Technology.php" class="nav-link">
+     <a href="../Lecture/LectE/Technology.php" class="nav-link">
         <i class="far fa-circle nav-icon"></i>
-          <p>E3 Technology</br>
-            
-         </p>
+          <p>Technology</br></p>
      </a>  
  </li>
  <!--E4-->
  <li class="nav-item">
-   <a href="../LectE/IPRs.php" class="nav-link">
+   <a href="../Lecture/LectE/IPRs.php" class="nav-link">
       <i class="far fa-circle nav-icon"></i>
-        <p>E4 IPRs</br>
+        <p>IPRs</br>
           
        </p>
    </a>  
  </li>
  <!--E5-->
  <li class="nav-item">
-   <a href="../LectE/Startup.php" class="nav-link">
-      <i class="far fa-circle nav-icon"></i>
-        <p>E5 Startup</br>
-          
-       </p>
-   </a>  
- </li>
+ <a href="#" class="nav-link">
+         <i class="far fa-circle nav-icon"></i>
+         <p>Startup
+           <i class="fas fa-angle-left right"></i>
+         </p>
+       </a>
+       <ul class="nav nav-treeview">
+         <li class="nav-item">
+           <a href="../Lecture/LectE/Startup.php" class="nav-link">
+             <i class="far fa-circle nav-icon"></i>
+             <p>(a) Spinn off Companies</p>
+           </a>
+         </li>
+         <li class="nav-item">
+         <a href="../Lecture/LectE/StartupNew.php" class="nav-link">
+             <i class="far fa-circle nav-icon"></i>
+             <p>(b) New Spin Off Companies</p>
+           </a>
+         </li>     
+       </ul>
+     </li>
     </ul>  
  </li>
  <!--Seksyen E End-->
- <!--Seksyen F Start-->
+<!--Seksyen F Start-->
  <!-- <li class="nav-header">Section F</li> -->
  <li class="nav-item">
    <a href="#" class="nav-link">
      <i class="nav-icon fas fa-handshake icon"></i>
-     <p>F. Professional Service & Gifts
+     <p>Professional Service & Gifts
        <i class="fas fa-angle-left right"></i>
      </p>
    </a>
    <ul class="nav nav-treeview">
       </li>
-      <li class="nav-item">
-        <a href="#" class="nav-link">
-          <i class="far fa-circle nav-icon"></i>
-          <p>F1 Gross Income
-            <i class="fas fa-angle-left right"></i>
-          </p>
-        </a>
-        <ul class="nav nav-treeview">
-        <!--a-->
-                <li class="nav-item">
-                  <a href="../LectF/Training_Course.php" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>(a) Training Course</p>
-                  </a>
-                </li>
-           <!--b-->
-                <li class="nav-item">
-                  <a href="../LectF/Post_Fees.php" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>(b) Postgraduate Fee</p>
-                  </a>
-                </li>
-          </ul>
-  </li>
- <!--F2-->
-    <li class="nav-item">
-         <a href="../LectF/Orga_Seminar.php" class="nav-link">
-            <i class="far fa-circle nav-icon"></i>
-              <p>F2 Gross Organising, Seminar & Knowledge Program</p>
-         </a>  
-     </li>
    <!--F3-->
-   <li class="nav-item">
-     <a href="../LectF/Product_Technology.php" class="nav-link">
-        <i class="far fa-circle nav-icon"></i>
-          <p>F3 Gross products commercialization/technology know-how licensing/outright
-          
-         </p>
-     </a>  
- </li>
-   <!--F4-->
    <li class="nav-item">
      <a href="#" class="nav-link">
         <i class="far fa-circle nav-icon"></i>
-          <p>F4 Financial transaction
+          <p>Gross products commercialization/technology know-how licensing/outright
             <i class="fas fa-angle-left right"></i>
          </p>
      </a>  
      <ul class="nav nav-treeview">
        <!--a-->
                <li class="nav-item">
-                 <a href="../LectF/Consultancies.php" class="nav-link">
+                 <a href="../Lecture/LectF/Product.php" class="nav-link">
+                   <i class="far fa-circle nav-icon"></i>
+                   <p>(a) Product Commercial</p>
+                 </a>
+               </li>
+          <!--b-->
+               <li class="nav-item">
+                 <a href="../Lecture/LectF/Technology.php" class="nav-link">
+                   <i class="far fa-circle nav-icon"></i>
+                   <p>(b) Technology Know-How Licensing/Sold outright Sale </p>
+                 </a>
+               </li>
+         </ul>
+     </li>
+   <!--F4-->
+   <li class="nav-item">
+     <a href="#" class="nav-link">
+        <i class="far fa-circle nav-icon"></i>
+          <p>Financial transaction
+            <i class="fas fa-angle-left right"></i>
+         </p>
+     </a>  
+     <ul class="nav nav-treeview">
+       <!--a-->
+               <li class="nav-item">
+                 <a href="../Lecture/LectF/Consultancies.php" class="nav-link">
                    <i class="far fa-circle nav-icon"></i>
                    <p>(a) Consultancies</p>
                  </a>
                </li>
           <!--b-->
                <li class="nav-item">
-                 <a href="../LectF/Hospital.php" class="nav-link">
+                 <a href="../Lecture/LectF/Hospital.php" class="nav-link">
                    <i class="far fa-circle nav-icon"></i>
                    <p>(b) Hospitality</p>
                  </a>
@@ -497,22 +454,13 @@ if(isset($_GET['logout'])){
  
            <!--c-->
            <li class="nav-item">
-             <a href="../LectF/Lab_Service.php" class="nav-link">
+             <a href="../Lecture/LectF/Lab_Service.php" class="nav-link">
                <i class="far fa-circle nav-icon"></i>
                <p>(c) Lab Services Fee</p>
              </a>
            </li>
          </ul>
      </li>
-      <!--F6-->
-      <li class="nav-item">
-       <a href="../LectF/Gift_Donation.php" class="nav-link">
-          <i class="far fa-circle nav-icon"></i>
-          <p> F5 Gifts/Donation</p>
-      </a>  
-   </li>
-    </ul>  
- </li>
  <!--Seksyen F End-->
  <!--Seksyen G Start-->
  <!-- <li class="nav-header">Section G</li> -->
@@ -536,14 +484,14 @@ if(isset($_GET['logout'])){
        <ul class="nav nav-treeview">
          <!--Indexed (Articel)-->
                  <li class="nav-item">
-                   <a href="../LectG/InternationalMoa.php" class="nav-link">
+                   <a href="../Lecture/LectG/InternationalMoa.php" class="nav-link">
                      <i class="far fa-circle nav-icon"></i>
                      <p>(a) Total International MoA Signed & Stamped</p>
                    </a>
                  </li>
             <!--Impact Journal-->
                  <li class="nav-item">
-                   <a href="../LectG/Staff_International.php" class="nav-link">
+                   <a href="../Lecture/LectG/Staff_International.php" class="nav-link">
                      <i class="far fa-circle nav-icon"></i>
                      <p>(b) Total Staff Involved In Joint Research Project Under International MoA</p>
                    </a>
@@ -552,7 +500,7 @@ if(isset($_GET['logout'])){
       </li>
  <!--G2-->
     <li class="nav-item">
-         <a href="../LectG/Abroad.php" class="nav-link">
+         <a href="../Lecture/LectG/Abroad.php" class="nav-link">
             <i class="far fa-circle nav-icon"></i>
               <p>G2 Staff Sent Abroad For Research Activities
                 
@@ -561,7 +509,7 @@ if(isset($_GET['logout'])){
      </li>
    <!--G3-->
    <li class="nav-item">
-     <a href="../LectG/International.php" class="nav-link">
+     <a href="../Lecture/LectG/International.php" class="nav-link">
         <i class="far fa-circle nav-icon"></i>
           <p> G3 Membership in International Academic/Professional bodies/Associations/NGOs</br>
          </p>
@@ -578,86 +526,32 @@ if(isset($_GET['logout'])){
    <ul class="nav nav-treeview">
      <!--a-->
              <li class="nav-item">
-               <a href="../LectG/National.php" class="nav-link">
+               <a href="../Lecture/LectG/National.php" class="nav-link">
                  <i class="far fa-circle nav-icon"></i>
                  <p>(a) Total Number National MoAs Signed & Stamped</p>
                </a>
              </li>
         <!--b-->
              <li class="nav-item">
-               <a href="../LectG/Staff_Research.php" class="nav-link">
+               <a href="../Lecture/LectG/Staff_Research.php" class="nav-link">
                  <i class="far fa-circle nav-icon"></i>
                  <p>(b) Total Number Staff Involved Joint Research Project Under MoA</p>
                </a>
              </li>
           </ul>
       </li>
- 
  <!--G5-->
  <li class="nav-item">
-   <a href="../LectG/Membership.php" class="nav-link">
+   <a href="../Lecture/LectG/Membership.php" class="nav-link">
       <i class="far fa-circle nav-icon"></i>
       <p> G5 Membership in national Academic/ Professional Bodies/Associations/NGOs</p>
   </a>  
  </li>
-
     </ul>  
  </li>
  <!--Seksyen G End-->
  <!--Seksyen H Start-->
- <li class="nav-item">
-   <a href="#" class="nav-link">
-     <i class="nav-icon fas fa-tools icon"></i>
-     <p>H. Support Facilities
-       <i class="fas fa-angle-left right"></i>
-     </p>
-   </a>
-   <ul class="nav nav-treeview">
-     </li>
-     <li class="nav-item">
-       <a href="../LectH/Laboratory.php" class="nav-link">
-         <i class="far fa-circle nav-icon"></i>
-         <p>H1 Laboratory/Research facilities
-           
-         </p>
-       </a>
- </li>
- <!--H2-->
-    <li class="nav-item">
-         <a href="#" class="nav-link">
-            <i class="far fa-circle nav-icon"></i>
-              <p>H2 Library Facilities
-                <i class="fas fa-angle-left right"></i>
-             </p>
-         </a>  
-         <ul class="nav nav-treeview">
-           <!--a-->
-                   <li class="nav-item">
-                     <a href="../LectH/TittleBook.php" class="nav-link">
-                       <i class="far fa-circle nav-icon"></i>
-                       <p>(a) Titles of Book</p>
-                     </a>
-                   </li>
-              <!--b-->
-                   <li class="nav-item">
-                     <a href="../LectH/OnlineBook.php" class="nav-link">
-                       <i class="far fa-circle nav-icon"></i>
-                       <p>(b)  Online Titles of Books</p>
-                     </a>
-                   </li>
-             <!--c-->
-             <li class="nav-item">
-               <a href="../LectH/Journal_Subscribe.php" class="nav-link">
-                 <i class="far fa-circle nav-icon"></i>
-                 <p>(c)Journal Subscribe </p>
-               </a>
-             </li>
-             </ul>
-           </li> 
-         </ul>
-       </li>
  <!--Seksyen H End-->
-      <!--Extra Compactment Start-->
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

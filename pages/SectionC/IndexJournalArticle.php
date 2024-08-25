@@ -1,3 +1,15 @@
+<?php
+session_start();
+
+if(!isset($_SESSION['user_id']))
+
+{
+    header('Location: ../examples/login.php'); 
+    exit;
+}
+
+include "../examples/config.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -57,7 +69,7 @@
      ?>
       </body>
 <h3><center><font color="" face="Cambria Math">Total Indexed Journal Articel<font><br></center></h3>
-<br><br>  
+<br><br>   
 <div class="container pt-50">
 <div class="text-right mb-3">
         <a href="../sectionC/addindexjournal.php" class="btn btn-success">+Add New Index Journal</a>

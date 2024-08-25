@@ -1,3 +1,16 @@
+<?php
+session_start();
+
+if(!isset($_SESSION['user_id']))
+
+{
+    header('Location:pages/examples/login.php'); 
+    exit;
+}
+
+include "pages/examples/config.php";
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,18 +37,6 @@
   <!-- summernote -->
   <link rel="stylesheet" href="plugins/summernote/summernote-bs4.min.css">
   <link rel="shortcut icon" href="images/Logo2.png" type="image/x-icon">
-
-   <!-- including side navigations -->
-   <!--bg image -->
-   <!-- <style>
-    body {
-      background-image: url('images/logiin.png');
-      background-repeat: no-repeat;
-      background-size: cover;
-    }
-  </style> -->
-   <!--bg image -->
-
 </head>
 
 <!-- Paste the content of sidebar.php here -->
@@ -46,9 +47,7 @@
   <div class="wrapper">
     <!-- Preloader -->
     <div class="preloader flex-column justify-content-center align-items-center">
-      <!-- <img class="animation__shake" src="images/Logo2.pn" alt="Logo" height="60" width="60"> -->
     </div>
-  
     <!-- Navbar -->
     <nav class="main-header navbar navbar-expand navbar-white navbar-light">
       <!-- Left navbar links -->
@@ -101,7 +100,7 @@
       </li>
        <!-- logout -->
        <li class="nav-item">
-        <a class="nav-link" data-widget="logout" href="index.php" role="button">
+        <a class="nav-link" data-widget="logout" href="pages/examples/logout.php" role="button">
           <i class="fas fa-power-off"></i>
         </a>
       </li>
@@ -230,7 +229,6 @@
    </ul>
  </li>
  <!--Seksyen A End-->
-  
   <!--Seksyen B Start-->
   <!-- <li class="nav-header">Section B</li> -->
   <li class="nav-item">
@@ -271,7 +269,6 @@
     </ul>
   </li>
   <!--Seksyen B End-->
-  
   <!--Seksyen C Start-->
   <!-- <li class="nav-header">Section C</li> -->
   <li class="nav-item">
@@ -357,7 +354,6 @@
           <a href="pages/sectionC/Research_Grant.php" class="nav-link">
              <i class="far fa-circle nav-icon"></i>
                <p>C2 Research Grants
-                 
               </p>
           </a>  
       </li>
@@ -388,7 +384,6 @@
         <a href="pages/sectionD/PhDs_Graduated.php" class="nav-link">
           <i class="far fa-circle nav-icon"></i>
           <p>D1 PhDs Graduate
-            
           </p>
         </a>
   </li>
@@ -828,122 +823,13 @@
           </ul>
         </li>
   <!--Seksyen H End-->
-  <!--Extra Compactment Start-->
-            <!-- <li class="nav-header">Extra Informatin</li>
-            <li class="nav-item">
-              <a href="pages/calendar.php" class="nav-link">
-                <i class="nav-icon far fa-calendar-alt"></i>
-                <p>
-                  Calendar
-                </p>
-              </a>
-            </li>
-           
-            <li class="nav-item">
-              <a href="#" class="nav-link">
-                <i class="nav-icon far fa-envelope"></i>
-                <p>
-                  Mailbox
-                  <i class="fas fa-angle-left right"></i>
-                </p>
-              </a>
-              <ul class="nav nav-treeview">
-                <li class="nav-item">
-                  <a href="pages/mailbox/mailbox.php" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Inbox</p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="pages/mailbox/compose.php" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Compose</p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="pages/mailbox/read-mail.php" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Read</p>
-                  </a>
-                </li>
-              </ul>
-            </li> -->
-           
-            <!-- <li class="nav-item">
-              <a href="#" class="nav-link">
-                <i class="nav-icon far fa-plus-square"></i>
-                <p>
-                  Extras
-                  <i class="fas fa-angle-left right"></i>
-                </p>
-              </a>
-              <ul class="nav nav-treeview">
-                <li class="nav-item">
-                  <a href="#" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>
-                      Login & Register
-                      <i class="fas fa-angle-left right"></i>
-                    </p>
-                  </a>
-                  <ul class="nav nav-treeview">
-                    <li class="nav-item">
-                      <a href="pages/examples/login.php" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Login</p>
-                      </a>
-                    </li>
-                    <li class="nav-item">
-                      <a href="pages/examples/register.php" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Register</p>
-                      </a>
-                    </li>
-                    <li class="nav-item">
-                      <a href="pages/examples/forgot-password.php" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Forgot Password</p>
-                      </a>
-                    </li>
-                    <li class="nav-item">
-                      <a href="pages/examples/recover-password.php" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Recover Password</p>
-                      </a>
-                    </li>
-                  </ul>
-                </li> -->
-  
-            <!-- <li class="nav-item">
-              <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-search"></i>
-                <p>
-                  Search
-                  <i class="fas fa-angle-left right"></i>
-                </p>
-              </a>
-              <ul class="nav nav-treeview">
-                <li class="nav-item">
-                  <a href="pages/search/simple.php" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Simple Search</p>
-                  </a>
-                </li>
-                
-              </ul>
-            </li> -->
           </li>         
           </ul>
         </nav>
-  <!-- /.sidebar-menu -->
       </div>
    <!-- /.sidebar -->
     </aside>
   </div>
-  <!-- ./wrapper -->
-  <!--Extra Compactment End-->
-  <!-- Paste the content of sidebar.php here -->
-  
   <!-- Preloader -->
   <div class="preloader flex-column justify-content-center align-items-center">
     <img class="animation__shake" src="Logo2.png" alt="Logo" height="60" width="60">

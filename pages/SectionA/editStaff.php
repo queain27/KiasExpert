@@ -1,5 +1,14 @@
 <?php
+session_start();
+
+if(!isset($_SESSION['user_id']))
+
+{
+    header('Location: ../examples/login.php'); 
+    exit;
+}
 include "../examples/config.php";
+
 $staff_id =$_GET['ID'];
 
 if(isset($_POST ['submit']))
@@ -217,7 +226,7 @@ if(isset($_POST ['submit']))
                     <div class="col-md-6 mb-3">
                         <label class="form-label">FACULTY:</label>
                         <select class="form-control" name="faculty">
-                            <option value="" disabled selected>Choose Faculty</option>
+                            <option value="" disabled selected>Faculty</option>
                             <option value="Al-Quran & Hadis" <?php if ($row['faculty'] == 'Al-Quran & Hadis') echo 'selected'; ?>>Al-Quran & Hadis</option>
                             <option value="Dakwah & Pembangunan Insan" <?php if ($row['faculty'] == 'Dakwah & Pembangunan Insan') echo 'selected'; ?>>Dakwah & Pembangunan Insan</option>
                             <option value="Pengurusan Al-Syariah" <?php if ($row['faculty'] == 'Pengurusan Al-Syariah') echo 'selected'; ?>>Pengurusan Al-Syariah</option>

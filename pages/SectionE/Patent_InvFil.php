@@ -1,4 +1,13 @@
 <?php
+session_start();
+
+if(!isset($_SESSION['user_id']))
+
+{
+    header('Location: ../examples/login.php'); 
+    exit;
+}
+
 include "../examples/config.php";
 
 if (isset($_GET['delid'])) {
@@ -23,7 +32,7 @@ if (isset($_GET['delid'])) {
 
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Inventions Granted Patents</title>
+  <title>Inventions Filled Patents</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">  
   <!-- Font Awesome -->
   <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
@@ -75,7 +84,7 @@ if (isset($_GET['delid'])) {
      ?>
 <body>
 <!--Main Content-->
-<!--TableStart-->  
+<!--TableStart--> 
 <h3><center><font color="" face="Cambria Math"> Inventions Filled Patents<font><br></center></h3>
 <br><br>
 <div class="container pt-50">

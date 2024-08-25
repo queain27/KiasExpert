@@ -1,6 +1,16 @@
 <?php
+session_start(); // Mulakan sesi
+
+if(!isset($_SESSION['user_id']))
+
+{
+    header('Location: pages/examples/login.php'); 
+    exit;
+}
+
 include "../examples/config.php";
 if(isset($_POST ['submit']))
+
 {
    $matric_no = $_POST['matric_no'];
    $student_name = $_POST['student_name'];
