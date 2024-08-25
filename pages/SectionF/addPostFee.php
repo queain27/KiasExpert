@@ -117,8 +117,8 @@ $(document).ready(function() {
 </head>
 <body>  <div class="container-fluid">
     <div class="container">
-      <?php
-        require "../header.php";
+         <?php
+        require "../../crudheader.php";
         createHeader('fa fa-briefcase', 'Add New Postgraduate Fees', 'Add Postgraduate Fees');
       ?>
       <div class="container">

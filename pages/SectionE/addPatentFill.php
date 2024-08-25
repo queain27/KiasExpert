@@ -110,8 +110,8 @@ $(document).ready(function() {
 <body>
 <div class="container-fluid">
     <div class="container">
-      <?php
-        require "../header.php";
+         <?php
+        require "../../crudheader.php";
         createHeader('fa fa-briefcase', 'Add New Patent Filled', 'Add Patent Filled');
       ?>
       <div class="container">

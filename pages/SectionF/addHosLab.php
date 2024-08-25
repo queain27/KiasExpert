@@ -61,8 +61,8 @@ if(isset($_POST ['submit']))
 
   <div class="container-fluid">
     <div class="container">
-      <?php
-        require "../header.php";
+         <?php
+        require "../../crudheader.php";
         createHeader('fa fa-briefcase', 'Add New Hospital and Lab Service', 'Add Hospital and Lab Service');
       ?>
       <div class="container">
