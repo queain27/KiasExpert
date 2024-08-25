@@ -4,6 +4,7 @@ include "../examples/config.php";
 if (isset($_POST['submit'])) {
     $staff_id = $_POST['staff_id'];
     $staff_name = $_POST['staff_name'];
+    $authors = $_POST['authors'];
     $document_type = $_POST['document_type'];
     $document_title = $_POST['document_title'];
     $source_title = $_POST['source_title'];
@@ -37,13 +38,12 @@ if (isset($_POST['submit'])) {
 
         if ($check_duplicate_result->num_rows == 0) {
             // No duplicates, proceed with the insertion
-            $insert_sql = $conn->prepare("INSERT INTO `other_publication` (`staff_id`, `staff_name`, `document_type`, `document_title`, `source_title`, `volume`, `issue`, `page_start`, `page_end`, `year`, `issn_isbn`, `link_evidence`, `remarks`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+            $insert_sql = $conn->prepare("INSERT INTO `other_publication` (`staff_id`, `staff_name`,`authors`, `document_type`, `document_title`, `source_title`, `volume`, `issue`, `page_start`, `page_end`, `year`, `issn_isbn`, `link_evidence`, `remarks`) VALUES (?,?,?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
             if ($insert_sql === false) {
                 die("Prepare failed: " . htmlspecialchars($conn->error));
             }
             $insert_sql->bind_param(
-                'issssssiiisss',
-                $staff_id, $staff_name, $document_type, $document_title, $source_title, $volume, $issue, $page_start, $page_end, $year, $issn_isbn, $link_evidence, $remarks
+                'isssssssiiisss', $staff_id, $staff_name, $authors, $document_type, $document_title, $source_title, $volume, $issue, $page_start, $page_end, $year, $issn_isbn, $link_evidence, $remarks
             );
 
             if ($insert_sql->execute()) {
@@ -160,7 +160,11 @@ $(document).ready(function() {
             <label class="form-label">STAFF NAME:</label>
             <input type="text" class="form-control" name="staff_name" placeholder="Staff Name" readonly required>
           </div>
-      
+
+          <div class="col-md-6 mb-3">
+            <label class="form-label">AUTHORS :</label>
+            <input type="text" class="form-control" name="authors" placeholder="Authors"  required>
+          </div>
     
           <div class="col-md-6 mb-3">
             <label class="form-label">DOCUMENT TYPE:</label>
@@ -219,7 +223,7 @@ $(document).ready(function() {
           <!--Remarks-->
           <div class="col-md-6 mb-3">
             <label class="form-label">REMARKS:</label>
-            <input type="text" class="form-control" name="remarks" placeholder="Remarks" required>
+            <input type="text" class="form-control" name="remarks" placeholder="Remarks">
           </div>
       
           <!--Button-->

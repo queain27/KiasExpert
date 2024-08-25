@@ -87,10 +87,25 @@
             </thead>
 
             <tbody>
-                
+                    <?php
+                    require_once "../examples/config.php"; // Ensure this path is correct
+
+                    if (isset($_GET['delid'])) {
+                    $id = mysqli_real_escape_string($conn, $_GET['delid']);
+                    $query = "DELETE FROM staff WHERE staff_id = '$id'";
+                    $result = mysqli_query($conn, $query);
+
+                    if ($result) {
+                    echo "<script>alert('Record deleted successfully');</script>";
+                    echo "<script>window.location.href='PhDsPQ.php';</script>"; // Redirect to avoid resubmission
+                    } else {
+                    echo "<script>alert('Error deleting record');</script>";
+                    }
+                } 
+                ?>
                <?php
                 require_once "../examples/config.php";
-                $query = "SELECT * FROM staff where aca_qua ='phd'";
+                $query = "SELECT * FROM staff WHERE aca_qua IN ('phd', 'master')";
                 $count =1;
                $result = mysqli_query($conn, $query);
 
@@ -101,8 +116,8 @@
                 <td style="text-align: center"><?php echo $count;?></td>
                 <td style="text-align: center"><?php echo $row['staff_id']; ?></td>
                 <td style="text-align: center"><?php echo $row['staff_name']; ?></td>
-                <td style="text-align: center"><?php echo $row['grade']; ?></td>
                 <td style="text-align: center"><?php echo $row['position']; ?></td>
+                <td style="text-align: center"><?php echo $row['grade']; ?></td>
                 <td style="text-align: center"><?php echo $row['first_appointment']; ?></td>
                 <td style="text-align: center"><?php echo $row['current_appointment']; ?></td>
                 <td style="text-align: center"><?php echo $row['serve_date']; ?></td>
@@ -116,10 +131,10 @@
                 <td style="text-align: center"><?php echo $row['st']; ?></td>
                 <td style="text-align: center"><?php echo $row['status']; ?></td>
                 <td style="text-align: center;">
-                    <a href="editstaff.php?ID=<?php echo $row['staff_id']; ?>" class="btn btn-primary btn-sm">
+                    <a href="editstaffphd.php?ID=<?php echo $row['staff_id']; ?>" class="btn btn-primary btn-sm">
                         <i class="fa-solid fa-pen-to-square fs-5 me-3"></i>
                     </a>
-                    <a href="Staff.php?delid=<?php echo htmlentities($row['staff_id']); ?>" 
+                    <a href="PhDsPQ.php?delid=<?php echo htmlentities($row['staff_id']); ?>" 
                        onClick="return confirm('Do you really want to remove this Record?');" 
                        class="btn btn-danger btn-sm">
                         <i class="fa-solid fa-trash fs-5 me-3"></i>

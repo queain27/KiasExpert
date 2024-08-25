@@ -6,6 +6,7 @@ if (isset($_POST['submit'])) {
     $staff_id = $_POST['staff_id'];
     $staff_name = $_POST['staff_name'];
     $authors = $_POST['authors'];
+    $co_authors = $_POST['co_authors'];
     $industrial = $_POST['industrial'];
     $international = $_POST['international'];
     $national = $_POST['national'];
@@ -39,8 +40,8 @@ if (isset($_POST['submit'])) {
 
         if ($check_duplicate_result->num_rows == 0) {
             // No duplicates, proceed with the insertion
-            $sql = mysqli_query($conn, "INSERT INTO `impact_journal` (`article_no`, `staff_id`, `staff_name`, `authors`, `industrial`, `international`, `national`, `document_title`, `source_title`, `document_type`, `volume`, `issue`, `page_start`, `page_end`, `year`, `issn_isbn`, `link_evidence`, `remarks`, `quartile1`, `quartile2`) 
-      VALUES ('$article_no', '$staff_id', '$staff_name', '$authors', '$industrial', '$international', '$national', '$document_title', '$source_title', '$document_type', '$volume', '$issue', '$page_start', '$page_end', '$year', '$issn_isbn', '$link_evidence', '$remarks', '$quartile1','$quartile2')");
+            $sql = mysqli_query($conn, "INSERT INTO `impact_journal` (`article_no`, `staff_id`, `staff_name`, `authors`,`co_authors`,`industrial`, `international`, `national`, `document_title`, `source_title`, `document_type`, `volume`, `issue`, `page_start`, `page_end`, `year`, `issn_isbn`, `link_evidence`, `remarks`, `quartile1`, `quartile2`) 
+      VALUES ('$article_no', '$staff_id', '$staff_name', '$authors','$co_authors', '$industrial', '$international', '$national', '$document_title', '$source_title', '$document_type', '$volume', '$issue', '$page_start', '$page_end', '$year', '$issn_isbn', '$link_evidence', '$remarks', '$quartile1','$quartile2')");
       
             if ($sql) {
                 echo "<script>alert('New record successfully added');</script>";
@@ -163,10 +164,15 @@ $(document).ready(function() {
             <input type="text" class="form-control" name="authors" placeholder="Authors" required>
           </div>
 
+          <div class="col-md-6 mb-3">
+            <label class="form-label">CO-AUTHORS:</label>
+            <input type="text" class="form-control" name="co_authors" placeholder="Co-Authors" >
+          </div>
+
 
           <div class="col-md-6 mb-3">
             <label class="form-label">INDUSTRIAL:</label>
-            <select class="form-control" name="industrial" required>
+            <select class="form-control" name="industrial">
               <option value="" disabled selected>Choose</option>
               <option value="Y">YES</option>
               <option value="N">NO</option>
@@ -175,7 +181,7 @@ $(document).ready(function() {
 
           <div class="col-md-6 mb-3">
             <label class="form-label">INTERNATIONAL:</label>
-            <select class="form-control" name="international" required>
+            <select class="form-control" name="international" >
               <option value="" disabled selected>Choose</option>
               <option value="Y">YES</option>
               <option value="N">NO</option>
@@ -183,7 +189,7 @@ $(document).ready(function() {
           </div>
           <div class="col-md-6 mb-3">
             <label class="form-label">NATIONAL:</label>
-            <select class="form-control" name="national" required>
+            <select class="form-control" name="national" >
               <option value="" disabled selected>Choose</option>
               <option value="Y">YES</option>
               <option value="N">NO</option>
@@ -242,7 +248,7 @@ $(document).ready(function() {
           <!--Remarks-->
           <div class="col-md-6 mb-3">
             <label class="form-label">REMARKS:</label>
-            <input type="text" class="form-control" name="remarks" placeholder="Remarks" required>
+            <input type="text" class="form-control" name="remarks" placeholder="Remarks" >
           </div>
       
             <div class="col-md-6 mb-3">

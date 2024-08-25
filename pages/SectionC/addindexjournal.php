@@ -165,7 +165,7 @@ $(document).ready(function() {
 
           <div class="col-md-6 mb-3">
             <label class="form-label">INDUSTRIAL:</label>
-            <select class="form-control" name="industrial" required>
+            <select class="form-control" name="industrial" >
               <option value="" disabled selected>Choose</option>
               <option value="Y">YES</option>
               <option value="N">NO</option>
@@ -174,7 +174,7 @@ $(document).ready(function() {
 
           <div class="col-md-6 mb-3">
             <label class="form-label">INTERNATIONAL:</label>
-            <select class="form-control" name="international" required>
+            <select class="form-control" name="international" >
               <option value="" disabled selected>Choose</option>
               <option value="Y">YES</option>
               <option value="N">NO</option>
@@ -182,7 +182,7 @@ $(document).ready(function() {
           </div>
           <div class="col-md-6 mb-3">
             <label class="form-label">NATIONAL:</label>
-            <select class="form-control" name="national" required>
+            <select class="form-control" name="national">
               <option value="" disabled selected>Choose</option>
               <option value="Y">YES</option>
               <option value="N">NO</option>
@@ -241,7 +241,7 @@ $(document).ready(function() {
           <!--Remarks-->
           <div class="col-md-6 mb-3">
             <label class="form-label">REMARKS:</label>
-            <input type="text" class="form-control" name="remarks" placeholder="Remarks" required>
+            <input type="text" class="form-control" name="remarks" placeholder="Remarks">
           </div>
       
           <!--Button-->

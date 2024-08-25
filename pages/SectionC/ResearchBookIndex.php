@@ -103,7 +103,7 @@
        ?>
             <?php
             require_once "../examples/config.php";
-             $query = "SELECT * FROM book";
+             $query = "SELECT * FROM book  WHERE book_status ='INDEX' ";
             $count =1;
             $result = mysqli_query($conn, $query);
 

@@ -4,7 +4,6 @@ $staff_id =$_GET['ID'];
 
 if(isset($_POST ['submit']))
 {
-
   $staff_name = $_POST['staff_name']; 
   $grade = $_POST['grade'];
   $position = $_POST['position'];
@@ -21,21 +20,15 @@ if(isset($_POST ['submit']))
   $faculty = $_POST['faculty'];
   $st = $_POST['st'];
   $status = $_POST['status'];
-  $status_contract= $_POST['status_contract'];
-  $status_time = $_POST['status_time'];
-  $citizen = $_POST['citizen'];
-  $country = $_POST['country'];
-  $link_evidence = $_POST['link_evidence'];
-  $remarks = $_POST['remarks'];
 
    $sql = mysqli_query($conn, "UPDATE `staff` SET `staff_name`='$staff_name',`grade`='$grade',`position`='$position',
-   `first_appointment`='$first_appointment' ,`current_appointment`='$current_appointment',`serve_date`='$serve_date',`dob`='$dob',`age`='$age',`cohort`='$cohort',`aca_qua`='$aca_qua',`name_prof`='$name_prof',`prof_qual`='$prof_qual',`regis_prof`='$regis_prof',`faculty`='$faculty',`st`='$st',`status`='$status',`status_contract`='$status_contract',
-   `status_time`='$status_time',`citizen`='$citizen',`country`='$country',`link_evidence`='$link_evidence',`remarks`='$remarks' WHERE staff_id=$staff_id");
+   `first_appointment`='$first_appointment' ,`current_appointment`='$current_appointment',`serve_date`='$serve_date',`dob`='$dob',`age`='$age',`cohort`='$cohort',`aca_qua`='$aca_qua',`name_prof`='$name_prof',`prof_qual`='$prof_qual',`regis_prof`='$regis_prof',`faculty`='$faculty',`st`='$st',`status`='$status'
+ WHERE staff_id=$staff_id");
 
       
    if($sql){
     echo "<script>alert('New record successsfully update');</script>";
-    echo "<script>document.location='Staff.php';</script>";
+    echo "<script>document.location='PhDsPQ.php';</script>";
  }
 
  else
@@ -69,7 +62,6 @@ if(isset($_POST ['submit']))
     <link rel="shortcut icon" href="../../images/Logo2.png" type="image/x-icon">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
-
 <body>
 <script>
   document.addEventListener('DOMContentLoaded', function() {
@@ -99,7 +91,6 @@ if(isset($_POST ['submit']))
     ageInput.addEventListener('input', updateCohort);
   });
 </script>
-
     <div class="container">
         <div class="text-center mb-4">
             <b><p>Click Update After Finish Changing Information</p></b>
@@ -132,8 +123,8 @@ if(isset($_POST ['submit']))
                         <input type="text" class="form-control" name="grade" value="<?php echo $row['grade']?>">
                     </div>
 
-                    <!-- Position Staff -->
-                    <div class="col-md-6 mb-3">
+                   <!-- Position Staff -->
+                   <div class="col-md-6 mb-3">
                         <label class="form-label">POSITION STAFF:</label>
                         <select class="form-control" name="position">
                             <option value="" disabled selected>Choose Position</option>
@@ -169,33 +160,29 @@ if(isset($_POST ['submit']))
                         <input type="date" class="form-control" name="dob" value="<?php echo $row['dob']?>">
                     </div>
 
-                                    <!--Age-->
-                    <div class="col-md-6 mb-3">
+                                       <!--Age-->
+                   <div class="col-md-6 mb-3">
                         <label class="form-label">AGE:</label>
-                        <input type="text" class="form-control" id="ageInput" name="age" placeholder="AGE" required>
+                        <input type="text" class="form-control" id="ageInput" name="age" placeholder="AGE" value="<?php echo $row['age']?>" required>
                     </div>
                     
                     <!-- Cohort -->
                     <div class="col-md-6 mb-3">
                         <label class="form-label">COHORT:</label>
-                        <input type="text" class="form-control" id="cohortInput" name="cohort" readonly required>
+                        <input type="text" class="form-control" id="cohortInput" name="cohort"  value="<?php echo $row['cohort']?>" readonly required>
                     </div>
+
                     <!-- Academic Qualification -->
                     <div class="col-md-6 mb-3">
                         <label class="form-label">ACADEMIC QUALIFICATION:</label>
                         <input type="text" class="form-control" name="aca_qua" value="<?php echo $row['aca_qua']?>">
                     </div>
 
-                    <!-- Name of Professional Qualification/Awarding Body -->
-                    <div class="col-md-6 mb-3">
-                        <label class="form-label">NAME OF PROFESSIONAL QUALIFICATION/AWARDING BODY:</label>
-                        <input type="text" class="form-control" name="name_prof" value="<?php echo $row['name_prof']?>">
-                    </div>
-
+    
                     <!-- Professional Qualification -->
                     <div class="col-md-6 mb-3">
                         <label class="form-label">PROFESSIONAL QUALIFICATION:</label>
-                        <select class="form-control" name="prof_qual" required>
+                        <select class="form-control" name="prof_qual">
                             <option value="" disabled selected>Choose</option>
                             <option value="IR" <?php if ($row['prof_qual'] == 'IR') echo 'selected'; ?>>IR</option>
                             <option value="AR" <?php if ($row['prof_qual'] == 'AR') echo 'selected'; ?>>AR</option>
@@ -255,57 +242,10 @@ if(isset($_POST ['submit']))
                         </select>
                     </div>
 
-                    <!-- Status Contract -->
-                    <div class="col-md-6 mb-3">
-                        <label class="form-label">STATUS CONTRACT:</label>
-                        <select class="form-control" name="status_contract" required>
-                            <option value="" disabled selected>Choose Status contract</option>
-                            <option value="Permanent" <?php if ($row['status_contract'] == 'Permanent') echo 'selected'; ?>>Permanent</option>
-                            <option value="Contract" <?php if ($row['status_contract'] == 'Contract') echo 'selected'; ?>>Contract</option>
-                        </select>
-                    </div>
-
-                    <!-- Status Time -->
-                    <div class="col-md-6 mb-3">
-                        <label class="form-label">STATUS TIME:</label>
-                        <select class="form-control" name="status_time" required>
-                            <option value="" disabled selected>Choose Status time</option>
-                            <option value="Full-Time" <?php if ($row['status_time'] == 'Full-Time') echo 'selected'; ?>>Full-Time</option>
-                            <option value="Part-Time" <?php if ($row['status_time'] == 'Part-Time') echo 'selected'; ?>>Part-Time</option>
-                        </select>
-                    </div>
-
-                    <!-- Citizenship -->
-                    <div class="col-md-6 mb-3">
-                        <label class="form-label">CITIZENSHIP:</label>
-                        <select class="form-control" name="citizen" required>
-                            <option value="" disabled selected>Choose Citizenship</option>
-                            <option value="Local" <?php if ($row['citizen'] == 'Local') echo 'selected'; ?>>Local</option>
-                            <option value="Foreign" <?php if ($row['citizen'] == 'Foreign') echo 'selected'; ?>>Foreign</option>
-                        </select>
-                    </div>
-
-                    <!-- Country -->
-                    <div class="col-md-6 mb-3">
-                        <label class="form-label">COUNTRY:</label>
-                        <input type="text" class="form-control" name="country" value="<?php echo $row['country']?>">
-                    </div>
-
-                    <!-- Link Evidence -->
-                    <div class="col-md-6 mb-3">
-                        <label class="form-label">LINK EVIDENCE:</label>
-                        <input type="text" class="form-control" name="link_evidence" value="<?php echo $row['link_evidence']?>">
-                    </div>
-
-                    <!-- Remarks -->
-                    <div class="col-md-6 mb-3">
-                        <label class="form-label">REMARKS:</label>
-                        <input type="text" class="form-control" name="remarks" value="<?php echo $row['remarks']?>">
-                    </div>         
-               <div>
+               
                   <center>
                        <button type ="submit" class="btn btn-success" name="submit">UPDATE</button>
-                       <a href="staff.php" class="btn btn-danger">Cancel</a>
+                       <a href="PhDsPQ.php" class="btn btn-danger">Cancel</a>
               </div>
                  </center>
           </form>

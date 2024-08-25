@@ -143,7 +143,7 @@ mysqli_close($conn);
                         <!-- Remarks -->
                         <div class="col-md-6 mb-3">
                             <label class="form-label">REMARKS:</label>
-                            <input type="text" class="form-control" name="remarks" placeholder="Remarks" required>
+                            <input type="text" class="form-control" name="remarks" placeholder="Remarks" >
                         </div>
 
                         <!-- Button -->

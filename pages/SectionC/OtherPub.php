@@ -69,7 +69,8 @@
                 <tr>
                 <th style="text-align: center">No.</th>
                 <th style="text-align: center">Staff ID</th>
-                <th style="text-align: center">Staff Name</th>     
+                <th style="text-align: center">Staff Name</th>  
+                <th style="text-align: center">Authors</th>       
                 <th style="text-align: center">Document Type</th>              
                 <th style="text-align: center">Document Title</th>
                 <th style="text-align: center">Source Title</th>
@@ -116,6 +117,7 @@
                 <td style="text-align: center"><?php echo $count;?></td>
                 <td style="text-align: center"><?php echo $row['staff_id']; ?></td>
                 <td style="text-align: center"><?php echo $row['staff_name']; ?></td>
+                <td style="text-align: center"><?php echo $row['authors']; ?></td>
                 <td style="text-align: center"><?php echo $row['document_type']; ?></td>
                 <td style="text-align: center"><?php echo $row['document_title']; ?></td>
                 <td style="text-align: center"><?php echo $row['source_title']; ?></td>
@@ -162,7 +164,8 @@
                 <tr>
                 <th style="text-align: center">No.</th>
                 <th style="text-align: center">Staff ID</th>
-                <th style="text-align: center">Staff Name</th>     
+                <th style="text-align: center">Staff Name</th>  
+                <th style="text-align: center">Authors</th>       
                 <th style="text-align: center">Document Type</th>              
                 <th style="text-align: center">Document Title</th>
                 <th style="text-align: center">Source Title</th>
@@ -174,7 +177,7 @@
                 <th style="text-align: center">Issn/Isbn</th>   
                 <th style="text-align: center">Link Evidence</th>   
                 <th style="text-align: center">Remarks</th>
-                <th style="text-align: center">Action</th>   
+                <th style="text-align: center">Action</th>     
                 </tr>
             </tfoot>
         </table>

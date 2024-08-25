@@ -7,6 +7,7 @@ if(isset($_POST ['submit']))
 
   $staff_id = $_POST['staff_id'];
   $staff_name = $_POST['staff_name'];
+  $authors = $_POST['authors'];
   $document_type= $_POST['document_type'];
   $document_title = $_POST['document_title'];
   $source_title= $_POST['source_title'];
@@ -22,6 +23,7 @@ if(isset($_POST ['submit']))
 $stmt = $conn->prepare("UPDATE other_publication SET 
 staff_id = ?, 
 staff_name = ?, 
+authors = ?, 
 document_type = ?, 
 document_title = ?, 
 source_title =?,
@@ -36,9 +38,10 @@ remarks = ?
 WHERE staff_id= ?");
 
 // Bind the parameters
-$stmt->bind_param("issssssiiiissi",
+$stmt->bind_param("isssssssiiiissi",
 $staff_id,
 $staff_name,
+$authors,
 $document_type,
 $document_title,
 $source_title,
@@ -57,7 +60,7 @@ $staff_id
 
     if($stmt->execute()) {
         echo "<script>alert('New record successfully updated');</script>";
-        echo "<script>document.location='PublicationOtherJournal.php';</script>";
+        echo "<script>document.location='OtherPub.php';</script>";
     } else {
         echo "<script>alert('Something went wrong');</script>";
     }
@@ -118,7 +121,12 @@ $staff_id
                         <input type="text" class="form-control" name="staff_name" value="<?php echo $row['staff_name']?>" readonly>
                     </div>
 
-            
+              <!-- Name -->
+                     <div class="col-md-6 mb-3">
+                        <label class="form-label">AUTHORS:</label>
+                        <input type="text" class="form-control" name="authors" value="<?php echo $row['authors']?>" >
+                    </div>
+
           <div class="col-md-6 mb-3">
                     <label class="form-label">DOCUMENT TYPE:</label>
                     <select class="form-control" name="document_type" required>
@@ -180,7 +188,7 @@ $staff_id
                <div>
                <center>
                        <button type ="submit" class="btn btn-success" name="submit">UPDATE</button>
-                       <a href="PublicationOtherJournal.php" class="btn btn-danger">Cancel</a>
+                       <a href="OtherPub.php" class="btn btn-danger">Cancel</a>
               </div>
                  </center>
           </form>
