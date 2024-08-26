@@ -37,32 +37,14 @@ if (isset($_POST['submit'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Update Organiser Information</title>
+    <title>Update Staff Information</title>
     <style>
         body {
-            background-repeat: no-repeat;
+            background-repeat:            no-repeat;
             background-attachment: fixed;
             background-size: cover;
         }
-        .container {
-            margin-top: 50px;
-        }
-        .form-container {
-            width: 50vw;
-            min-width: 300px;
-            margin: auto;
-            padding: 20px;
-            background-color: white;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            border-radius: 10px;
-        }
-        .form-label {
-            font-weight: bold;
-        }
-        .text-center p {
-            font-weight: bold;
-        }
-</style>
+        </style>
 <link rel="stylesheet" href="../../../bootstrap/css/bootstrap.min.css">
 <script src="../../../bootstrap/js/jquery.min.js"></script>
 <script src="../../../bootstrap/js/bootstrap.min.js"></script>
@@ -73,8 +55,8 @@ if (isset($_POST['submit'])) {
 </head>
 <body>
     <div class="container">
-        <div class="text-center mb-4">
-            <p>Click Update After Finish Changing Information</p>
+        <div class="text-center mb-4"><br><br><br><br>
+            <b><p>Click Update After Finish Changing Information</p></b>
         </div>
 
         <?php 
@@ -82,11 +64,9 @@ if (isset($_POST['submit'])) {
         $result = mysqli_query($conn, $sql);
         $row = mysqli_fetch_assoc($result);
         ?>
-
-        <div class="form-container">
-            <form action="" method="post">
+ <div class="container d-flex justify-content-center">
+            <form action="" method="post" style="width:50vw; min-width:300px;">
                 <div class="row">
-
                     <!-- Name -->
                     <div class="col-md-6 mb-3">
                         <label class="form-label">NAME OF COORDINATOR:</label>
