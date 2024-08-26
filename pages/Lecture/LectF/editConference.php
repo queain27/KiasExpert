@@ -62,8 +62,8 @@ if (isset($_POST['submit'])) {
         .text-center p {
             font-weight: bold;
         }
-    </style>
-   <link rel="stylesheet" href="../../../bootstrap/css/bootstrap.min.css">
+</style>
+<link rel="stylesheet" href="../../../bootstrap/css/bootstrap.min.css">
 <script src="../../../bootstrap/js/jquery.min.js"></script>
 <script src="../../../bootstrap/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" crossorigin="anonymous">

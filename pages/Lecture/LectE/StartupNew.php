@@ -14,9 +14,9 @@ if(!isset($_SESSION['user_id']))
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Product Commercial</title>
-  <!-- Google Font: Source Sans Pro -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <title> New Spin Off Startup Companies</title>
+   <!-- Google Font: Source Sans Pro -->
+   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
  <!-- Font Awesome -->
  <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
 <!-- Icon Font-->
@@ -60,81 +60,82 @@ if(!isset($_SESSION['user_id']))
 <body>
 <!--Main Content-->
 <!--TableStart-->  
-<h3><center><font color="" face="Cambria Math">Product Commercial<font><br></center></h3>
+<h3><center><font color="" face="Cambria Math">New Spinn-Off or Start-Up Companies<font><br></center></h3>
 <br><br>
 <div class="container pt-50">
     <div class="table-responsive">
         <table id="example" class="table table-striped" style="width:200%">
             <thead>
-          <tr>
-             <th style="text-align: center">No.</th>
-             <th style="text-align: center">Staff ID</th>
-             <th style="text-align: center">Staff Name</th>
-             <th style="text-align: center">Product Name</th>
-             <th style="text-align: center">Product Commercial</th>
-             <th style="text-align: center">Faculty/Centre</th>
-             <th style="text-align: center">Year Commercialized</th>
-             <th style="text-align: center">Company/Publisher Name</th>
-             <th style="text-align: center">Refference No.</th>
-             <th style="text-align: center">Gross Income Generated (RM)</th>
-             <th style="text-align: center">Link Evidence</th>
-             <th style="text-align: center">Remarks</th>
-             <th style="text-align: center">Action</th>
+            <tr>
+            <th style="text-align: center">No.</th>
+            <th style="text-align: center">Staff ID</th>
+            <th style="text-align: center">Staff Name</th>
+            <th style="text-align: center">Project ID</th>
+            <th style="text-align: center">Company Registartion</th>
+            <th style="text-align: center">Company Name</th>
+            <th style="text-align: center">Date Incorporated</th>
+            <th style="text-align: center">Equity</th>
+            <th style="text-align: center">Description Research</th>
+            <th style="text-align: center">Link Evidence</th>
+            <th style="text-align: center">Remarks</th>
+            <th style="text-align: center">Action</th>
         </tr>
     </thead>
     <tbody id="myTable">
-    <?php
-        require_once "../Auth/config.php";
-        $query = "SELECT * FROM prod_tech where Type ='product commercial'";
-        $count =1;
-        $result = mysqli_query($conn, $query);
 
-    if ($result) {
-        while ($row = mysqli_fetch_assoc($result)) {
-    ?>
-        <tr>
-            <td style="text-align: center"><?php echo $count;?></td>
-            <td style="text-align: center"><?php echo $row['staff_id']; ?></td>
-            <td style="text-align: center"><?php echo $row['staff_name']; ?></td>
-            <td style="text-align: center"><?php echo $row['prod_name']; ?></td>
-            <td style="text-align: center"><?php echo $row['Type']; ?></td>
-            <td style="text-align: center"><?php echo $row['faculty']; ?></td>
-            <td style="text-align: center"><?php echo $row['year']; ?></td>
-            <td style="text-align: center"><?php echo $row['comp_name']; ?></td>
-            <td style="text-align: center"><?php echo $row['reference_no']; ?></td>
-            <td style="text-align: center"><?php echo $row['gross_income']; ?></td>
-            <td style="text-align: center"><a href="<?php echo $row['link']; ?>" target="_blank"><?php echo $row['link']; ?></a>
-            <td style="text-align: center"><?php echo $row['remarks']; ?></td>
-            <td style="text-align: center;">
-            <a href="editProduct.php?ID=<?php echo $row['staff_id']; ?>" class="btn btn-primary btn-sm"><i class="fa-solid fa-pen-to-square fs-5 me-3"></i></a>
-            </td>
-        </tr>
-        <?php
-          $count = $count+1;
-              }
-            } 
-            else 
-            
-            {
-              echo "Error: " . mysqli_error($conn);
-             }
-          ?>
-    </tbody>
+    <?php
+require_once "../Auth/config.php";
+
+// Query to get the most recent  spinn_off for each staff member
+$query = " SELECT * FROM spinn_off WHERE date (date_corp) = (SELECT MAX(date(date_corp)) FROM spinn_off )ORDER BY date_corp DESC; ";
+
+// Execute the query
+$result = mysqli_query($conn, $query);
+
+if ($result) {
+    $count = 1;
+    while ($row = mysqli_fetch_assoc($result)) {
+        ?>
+ <tr>
+         <td style="text-align: center"><?php echo $count;?></td>
+         <td style="text-align: center"><?php echo $row['staff_id']; ?></td>
+         <td style="text-align: center"><?php echo $row['staff_name']; ?></td>
+         <td style="text-align: center"><?php echo $row['project_id']; ?></td>
+         <td style="text-align: center"><?php echo $row['regis_comp']; ?></td>
+         <td style="text-align: center"><?php echo $row['comp_name']; ?></td>
+         <td style="text-align: center"><?php echo $row['date_corp']; ?></td>
+         <td style="text-align: center"><?php echo $row['equity']; ?></td>
+         <td style="text-align: center"><?php echo $row['desc_research']; ?></td>
+         <td style="text-align: center"><a href="<?php echo $row['link']; ?>" target="_blank"><?php echo $row['link']; ?></a>
+         <td style="text-align: center"><?php echo $row['remarks']; ?></td>
+         <td style="text-align: center;"><a href="editStartup.php?ID=<?php echo $row['project_id']; ?>" class="btn btn-primary btn-sm"><i class="fa-solid fa-pen-to-square fs-5 me-3"></i></a>
+         </td>
+ </tr>
+ <?php 
+   $count = $count+1;
+       }
+     } 
+     else 
+     
+     {
+       echo "Error: " . mysqli_error($conn);
+     }
+ ?>
+</tbody>
     <tfoot>
         <tr>
-             <th style="text-align: center">No.</th>
-             <th style="text-align: center">Staff ID</th>
-             <th style="text-align: center">Staff Name</th>
-             <th style="text-align: center">Product Name</th>
-             <th style="text-align: center">Product Commercial</th>
-             <th style="text-align: center">Faculty/Centre</th>
-             <th style="text-align: center">Year Commercialized</th>
-             <th style="text-align: center">Company/Publisher Name</th>
-             <th style="text-align: center">Refference No.</th>
-             <th style="text-align: center">Gross Income Generated (RM)</th>
-             <th style="text-align: center">Link Evidence</th>
-             <th style="text-align: center">Remarks</th>
-             <th style="text-align: center">Action</th>
+            <th style="text-align: center">No.</th>
+            <th style="text-align: center">Staff ID</th>
+            <th style="text-align: center">Staff Name</th>
+            <th style="text-align: center">Project ID</th>
+            <th style="text-align: center">Company Registartion</th>
+            <th style="text-align: center">Company Name</th>
+            <th style="text-align: center">Date Incorporated</th>
+            <th style="text-align: center">Equity</th>
+            <th style="text-align: center">Description Research</th>
+            <th style="text-align: center">Link Evidence</th>
+            <th style="text-align: center">Remarks</th>
+            <th style="text-align: center">Action</th>
         </tr>
             </tfoot>
         </table>

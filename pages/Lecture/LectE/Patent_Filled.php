@@ -12,11 +12,11 @@ if(!isset($_SESSION['user_id']))
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Technolgy</title>  
-    <!-- Google Font: Source Sans Pro -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Patent Filed</title>
+   <!-- Google Font: Source Sans Pro -->
+   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
  <!-- Font Awesome -->
  <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
 <!-- Icon Font-->
@@ -59,93 +59,85 @@ if(!isset($_SESSION['user_id']))
     ?>
 <body>
 <!--Main Content-->
-<!--TableStart-->   
-<h3><center><font color="" face="Cambria Math">Technology Know-How Licensing/ Sold Outright<font><br></center></h3>
+<!--TableStart-->  
+<h3><center><font color="" face="Cambria Math">Patents Filed<font><br></center></h3>
 <br><br>
 <div class="container pt-50">
-<div class="table-responsive">
+    <div class="table-responsive">
         <table id="example" class="table table-striped" style="width:200%">
             <thead>
             <tr>
-            <th style="text-align: center"> No.</th>
-            <th style="text-align: center"> Staff ID</th>
-            <th style="text-align: center"> Staff Name</th>
-            <th style="text-align: center"> Technology ID/ No.</th>
-            <th style="text-align: center"> Technology Name</th>
-            <th style="text-align: center"> Type</th>
-            <th style="text-align: center"> Start Date</th>
-            <th style="text-align: center"> End Date</th>
-            <th style="text-align: center"> Date Archieve</th>
-            <th style="text-align: center"> License</th>
-            <th style="text-align: center"> Gross Income</th>
-            <th style="text-align: center"> Link Evidence</th>
-            <th style="text-align: center"> Remarks</th>
-            <th style="text-align: center">Action</th>
-        </tr>
-    </thead>
-    <tbody id="myTable">
+            <th>No.</th>
+            <th>Staff ID</th>
+            <th>Staff Name</th>
+            <th>Filing ID / NO.</th>
+            <th>Filling Name</th>
+            <th>Date Filled</th>
+            <th>Faculty</th>
+            <th>Country</th>
+            <th>Link Evidence</th>
+            <th>Remarks</th>
+            <th>Action</th>
+          </tr>
+        </thead>
 
-       <?php
-           require_once "../Auth/config.php";
-           $query = "SELECT * FROM know_licen";
-           $count =1;
-           $result = mysqli_query($conn, $query);
+<tbody id="myTable">
+<?php
+require_once "../Auth/config.php";
 
-         if ($result) 
-         {
-              while ($row = mysqli_fetch_assoc($result)) 
-              {
-      ?>
-        <tr>
-                <td style="text-align: center"><?php echo $count;?></td>
+    $query = "SELECT * FROM patent_filed";
+    $count =1;
+    $result = mysqli_query($conn, $query);
+
+    $result = mysqli_query($conn, $query);
+
+    if ($result) {
+        $count = 1;
+        while ($row = mysqli_fetch_assoc($result)) {
+            ?>
+            <tr>
+                <td style="text-align: center"><?php echo $count; ?></td>
                 <td style="text-align: center"><?php echo $row['staff_id']; ?></td>
                 <td style="text-align: center"><?php echo $row['staff_name']; ?></td>
-                <td style="text-align: center"><?php echo $row['tech_id']; ?></td>
-                <td style="text-align: center"><?php echo $row['tech_name']; ?></td>
-                <td style="text-align: center"><?php echo $row['type']; ?></td>
-                <td style="text-align: center"><?php echo $row['start_date']; ?></td>
-                <td style="text-align: center"><?php echo $row['end_date']; ?></td>
-                <td style="text-align: center"><?php echo $row['date_achv']; ?></td>
-                <td style="text-align: center"><?php echo $row['licensing']; ?></td>
-                <td style="text-align: center"><?php echo $row['gross_incom']; ?></td>
-                <td style="text-align: center"><a href="<?php echo $row['link']; ?>" target="_blank"><?php echo $row['link']; ?></a>
+                <td style="text-align: center"><?php echo $row['fill_id']; ?></td>
+                <td style="text-align: center"><?php echo $row['fill_name']; ?></td>
+                <td style="text-align: center"><?php echo $row['date_filed']; ?></td>
+                <td style="text-align: center"><?php echo $row['faculty']; ?></td>
+                <td style="text-align: center"><?php echo $row['country']; ?></td>
+                <td style="text-align: center"><a href="<?php echo $row['link']; ?>" target="_blank"><?php echo $row['link']; ?></a></td>
                 <td style="text-align: center"><?php echo $row['remarks']; ?></td>
-                <td style="text-align: center;"><a href="editTech.php?ID=<?php echo $row['tech_id']; ?>" class="btn btn-primary btn-sm"><i class="fa-solid fa-pen-to-square fs-5 me-3"></i></a>
+                <td style="text-align: center;">
+                    <a href="editFill.php?ID=<?php echo $row['fill_id']; ?>" class="btn btn-primary btn-sm"><i class="fa-solid fa-pen-to-square fs-5 me-3"></i></a>
                 </td>
-        </tr>
-        <?php 
-          $count = $count+1;
-              }
-            } 
-            else 
-            
-            {
-              echo "Error: " . mysqli_error($conn);
-            }
-        ?>
+            </tr>
+            <?php
+            $count++;
+        }
+    } else {
+        echo "Error: " . mysqli_error($conn);
+    }
+    ?>
+    
     </tbody>
-    <tfoot>
-        <tr>
-        <th style="text-align: center"> No.</th>
-            <th style="text-align: center"> Staff ID</th>
-            <th style="text-align: center"> Staff Name</th>
-            <th style="text-align: center"> Technology ID/ No.</th>
-            <th > Technology Name</th>
-            <th style="text-align: center"> Type</th>
-            <th style="text-align: center"> Start Date</th>
-            <th style="text-align: center"> End Date</th>
-            <th style="text-align: center"> Date Archieve</th>
-            <th style="text-align: center"> License</th>
-            <th style="text-align: center"> Gross Income</th>
-            <th style="text-align: center"> Link Evidence</th>
-            <th style="text-align: center"> Remarks</th>
-            <th style="text-align: center">Action</th>
-        </tr>
-            </tfoot>
-        </table>
-    </div>
-</div> 
-<!--Main Content-->
+        <tfoot>
+            <tr>
+                <th>No.</th>
+                <th>Staff ID</th>
+                <th>Staff Name</th>
+                <th>Filing ID / NO.</th>
+                <th>Filling Name</th>
+                <th>Date Filled</th>
+                <th>Faculty</th>
+                <th>Country</th>
+                <th>Link Evidence</th>
+                <th>Remarks</th>
+                <th>Action</th>
+            </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div> 
+ <!--Main Content-->
 <script>
     $(document).ready(function() {
         $('#example').DataTable({
