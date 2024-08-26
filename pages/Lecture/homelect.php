@@ -85,54 +85,13 @@
 <!--Seksyen A Start-->
 <li class="nav-header">Section MyRA</li>
  <li class="nav-item">
-   <a href="#" class="nav-link">
+ <a href="../Lecture/LectA/Staff.php" class="nav-link">
      <i class="nav-icon fas fa-info-circle icon"></i>
-     <p>General Information
-       <i class="fas fa-angle-left right"></i>
+        <p>General Information
+       <!-- <i class="fas fa-angle-left right"></i> -->
      </p>
    </a>
-   <ul class="nav nav-treeview">
-   <li class="nav-item">
-       <a href="#" class="nav-link">
-         <i class="far fa-circle nav-icon"></i>
-         <p>Staff Information
-           <i class="fas fa-angle-left right"></i>
-         </p>
-       </a>
-       <ul class="nav nav-treeview">
-         <li class="nav-item">
-           <a href="../Lecture/LectA/Staff.php" class="nav-link">
-             <i class="far fa-circle nav-icon"></i>
-             <p>(a) Staff</p>
-           </a>
-         </li>
-         <li class="nav-item">
-         <a href="../Lecture/LectA/Staff_Active.php" class="nav-link">
-             <i class="far fa-circle nav-icon"></i>
-             <p>(b) Staff Active</p>
-           </a>
-         </li>
-         <li class="nav-item">
-         <a href="../Lecture/LectA/Staff_Foreign.php" class="nav-link">
-             <i class="far fa-circle nav-icon"></i>
-             <p>(c) Staff Foreign</p>
-           </a>
-         </li>
-         <li class="nav-item">
-         <a href="../Lecture/LectA/Staff_ST.php" class="nav-link">
-             <i class="far fa-circle nav-icon"></i>
-             <p>(d) Staff S&T</p>
-           </a>
-         </li>
-         <li class="nav-item">
-         <a href="../Lecture/LectA/Staff_NONST.php" class="nav-link">
-             <i class="far fa-circle nav-icon"></i>
-             <p>(e) Staff Non S&T</p>
-           </a>
-         </li>
-       </ul>
-     </li>
-   </ul>
+   
  </li>
  <!--Seksyen A End-->
  <!--Seksyen B Start-->
