@@ -7,8 +7,8 @@ if(!isset($_SESSION['user_id']))
     header('Location: ../Auth/login.php'); 
     exit;
 }
-
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -60,49 +60,56 @@ if(!isset($_SESSION['user_id']))
 <body>
 <!--Main Content-->
 <!--TableStart-->  
-<h3><center><font color="" face="Cambria Math">Organising Conference,Seminars & Knowledge-Sharing Programmes in The Field Expertise<font><br></center></h3>
+<h3><center><font color="" face="Cambria Math">Product Commercial<font><br></center></h3>
 <br><br>
 <div class="container pt-50">
     <div class="table-responsive">
         <table id="example" class="table table-striped" style="width:200%">
             <thead>
-           <tr>
-            <th style="text-align: center">No.</th>
-            <th style="text-align: center">Name Of Coordinator</th>
-            <th style="text-align: center">Name Of Conference/ Seminars/ Knowledge-Sharing Programmes</th>
-            <th style="text-align: center">Start Date</th>
-            <th style="text-align: center">End Date</th>
-            <th style="text-align: center">Gross Income Generate (RM)</th>
-            <th style="text-align: center">Link To evidence</th>
-            <th style="text-align: center">Remarks</th>
-            <th style="text-align: center">Action</th>
-   
+          <tr>
+             <th style="text-align: center">No.</th>
+             <th style="text-align: center">Staff ID</th>
+             <th style="text-align: center">Staff Name</th>
+             <th style="text-align: center">Product Name</th>
+             <th style="text-align: center">Product Commercial</th>
+             <th style="text-align: center">Faculty/Centre</th>
+             <th style="text-align: center">Year Commercialized</th>
+             <th style="text-align: center">Company/Publisher Name</th>
+             <th style="text-align: center">Refference No.</th>
+             <th style="text-align: center">Gross Income Generated (RM)</th>
+             <th style="text-align: center">Link Evidence</th>
+             <th style="text-align: center">Remarks</th>
+             <th style="text-align: center">Action</th>
         </tr>
-        </thead>
+    </thead>
+    <tbody id="myTable">
+    <?php
+        require_once "../Auth/config.php";
+        $query = "SELECT * FROM prod_tech where Type ='product commercial'";
+        $count =1;
+        $result = mysqli_query($conn, $query);
 
-       <tbody id="myTable">
-      <?php
-          require_once "../Auth/config.php";
-         $query = "SELECT * FROM conference";
-         $count =1;
-         $result = mysqli_query($conn, $query);
-
-          if ($result) {
-            while ($row = mysqli_fetch_assoc($result)) {
-        ?>
+    if ($result) {
+        while ($row = mysqli_fetch_assoc($result)) {
+    ?>
         <tr>
             <td style="text-align: center"><?php echo $count;?></td>
-            <td style="text-align: center"><?php echo $row['name_organizer'];?></td>
-            <td style="text-align: center"><?php echo $row['name_title'];?></td>
-            <td style="text-align: center"><?php echo $row['start_date'];?></td>
-            <td style="text-align: center"><?php echo $row['end_date'];?></td>
-            <td style="text-align: center"><?php echo $row['gross_income'];?></td>
-            <td style="text-align: center"><a href="<?php echo $row['link']; ?>" target="_blank"><?php echo $row['link']; ?>
-            <td style="text-align: center"><?php echo $row['remark']; ?>
-            <td style="text-align: center;"><a href="editConference.php?ID=<?php echo $row['id']; ?>" class="btn btn-primary btn-sm"><i class="fa-solid fa-pen-to-square fs-5 me-3"></i></a>
+            <td style="text-align: center"><?php echo $row['staff_id']; ?></td>
+            <td style="text-align: center"><?php echo $row['staff_name']; ?></td>
+            <td style="text-align: center"><?php echo $row['prod_name']; ?></td>
+            <td style="text-align: center"><?php echo $row['Type']; ?></td>
+            <td style="text-align: center"><?php echo $row['faculty']; ?></td>
+            <td style="text-align: center"><?php echo $row['year']; ?></td>
+            <td style="text-align: center"><?php echo $row['comp_name']; ?></td>
+            <td style="text-align: center"><?php echo $row['reference_no']; ?></td>
+            <td style="text-align: center"><?php echo $row['gross_income']; ?></td>
+            <td style="text-align: center"><a href="<?php echo $row['link']; ?>" target="_blank"><?php echo $row['link']; ?></a>
+            <td style="text-align: center"><?php echo $row['remarks']; ?></td>
+            <td style="text-align: center;">
+            <a href="editProduct.php?ID=<?php echo $row['staff_id']; ?>" class="btn btn-primary btn-sm"><i class="fa-solid fa-pen-to-square fs-5 me-3"></i></a>
+            </td>
         </tr>
         <?php
-          
           $count = $count+1;
               }
             } 
@@ -112,18 +119,22 @@ if(!isset($_SESSION['user_id']))
               echo "Error: " . mysqli_error($conn);
              }
           ?>
-</tbody>
+    </tbody>
     <tfoot>
-       <tr>
-            <th style="text-align: center">No.</th>
-            <th style="text-align: center">Name Of Coordinator</th>
-            <th style="text-align: center">Name Of Conference/ Seminars/ Knowledge-Sharing Programmes</th>
-            <th style="text-align: center">Start Date</th>
-            <th style="text-align: center">End Date</th>
-            <th style="text-align: center">Gross Income Generate (RM)</th>
-            <th style="text-align: center">Link To evidence</th>
-            <th style="text-align: center">Remarks</th>
-            <th style="text-align: center">Action</th>
+        <tr>
+             <th style="text-align: center">No.</th>
+             <th style="text-align: center">Staff ID</th>
+             <th style="text-align: center">Staff Name</th>
+             <th style="text-align: center">Product Name</th>
+             <th style="text-align: center">Product Commercial</th>
+             <th style="text-align: center">Faculty/Centre</th>
+             <th style="text-align: center">Year Commercialized</th>
+             <th style="text-align: center">Company/Publisher Name</th>
+             <th style="text-align: center">Refference No.</th>
+             <th style="text-align: center">Gross Income Generated (RM)</th>
+             <th style="text-align: center">Link Evidence</th>
+             <th style="text-align: center">Remarks</th>
+             <th style="text-align: center">Action</th>
         </tr>
             </tfoot>
         </table>

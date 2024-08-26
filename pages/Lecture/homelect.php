@@ -372,12 +372,20 @@
  <li class="nav-item">
    <a href="#" class="nav-link">
      <i class="nav-icon fas fa-handshake icon"></i>
-     <p>Professional Service & Gifts
+     <p>F. Professional Service & Gifts
        <i class="fas fa-angle-left right"></i>
      </p>
    </a>
    <ul class="nav nav-treeview">
       </li>
+      
+ <!--F2-->
+    <li class="nav-item">
+         <a href="../Lecture/LectF/Orga_Seminar.php" class="nav-link">
+            <i class="far fa-circle nav-icon"></i>
+              <p>Gross Organising, Seminar & Knowledge Program</p>
+         </a>  
+     </li>
    <!--F3-->
    <li class="nav-item">
      <a href="#" class="nav-link">
@@ -403,41 +411,11 @@
                </li>
          </ul>
      </li>
-   <!--F4-->
-   <li class="nav-item">
-     <a href="#" class="nav-link">
-        <i class="far fa-circle nav-icon"></i>
-          <p>Financial transaction
-            <i class="fas fa-angle-left right"></i>
-         </p>
-     </a>  
-     <ul class="nav nav-treeview">
-       <!--a-->
-               <li class="nav-item">
-                 <a href="../Lecture/LectF/Consultancies.php" class="nav-link">
-                   <i class="far fa-circle nav-icon"></i>
-                   <p>(a) Consultancies</p>
-                 </a>
-               </li>
-          <!--b-->
-               <li class="nav-item">
-                 <a href="../Lecture/LectF/Hospital.php" class="nav-link">
-                   <i class="far fa-circle nav-icon"></i>
-                   <p>(b) Hospitality</p>
-                 </a>
-               </li>
- 
-           <!--c-->
-           <li class="nav-item">
-             <a href="../Lecture/LectF/Lab_Service.php" class="nav-link">
-               <i class="far fa-circle nav-icon"></i>
-               <p>(c) Lab Services Fee</p>
-             </a>
-           </li>
-         </ul>
-     </li>
+
+    </ul>  
+ </li>
  <!--Seksyen F End-->
- <!--Seksyen G Start-->
+<!--Seksyen G Start-->
  <!-- <li class="nav-header">Section G</li> -->
  <li class="nav-item">
    <a href="#" class="nav-link">
@@ -525,12 +503,13 @@
     </ul>  
  </li>
  <!--Seksyen G End-->
- <!--Seksyen H Start-->
- <!--Seksyen H End-->
-        </ul>
-      </nav>
-    </div>
-  </aside>
+  <!--Seksyen H Start-->
+          </li>         
+          </ul>
+        </nav>
+      </div>
+   <!-- /.sidebar -->
+    </aside>
   <!-- Paste the content of sidebar.php here -->
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">

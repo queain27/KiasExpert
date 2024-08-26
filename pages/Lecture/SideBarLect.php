@@ -1,76 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Product Technology</title>   
-  <!-- Google Font: Source Sans Pro -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="../../../plugins/fontawesome-free/css/all.min.css">
-  <!-- Theme style -->
-  <link rel="stylesheet" href="../../../dist/css/adminlte.min.css">
-  <link rel="shortcut icon" href="../../../images/Logo2.png" type="image/x-icon">
-  <link rel="stylesheet" href="css/style.css">
-
-
-  <!--Data Table-->
-  <link rel="stylesheet" href="https://cdn.datatables.net/2.0.3/css/dataTables.bootstrap5.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
-  <!--link Javascript Data Table-->
-  <script defer src="https://code.jquery.com/jquery-3.7.1.js"></script>
-  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
-  <script defer src="https://cdn.datatables.net/2.0.3/js/dataTables.js"></script>
-  <script defer src="https://cdn.datatables.net/2.0.3/js/dataTables.bootstrap5.js"></script>
-  <script defer src="script.js"></script>
-  <!--Icon Image--> 
-  <link rel="shortcut icon" href="../../../images/Logo2.png" type="image/x-icon">
-    <script>
-        $(document).ready(function(){
-            $('#example').DataTable();
-        });
-       </script>
-</head>
- <!-- Paste the content of sidebar.php here -->
- <nav class="main-header navbar navbar-expand navbar-white navbar-light">
-    <!-- Left navbar links -->
-    <ul class="navbar-nav">
-      <li class="nav-item">
-        <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
-      </li>
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="../../Lecture/homelect.php" class="nav-link">Home</a>
-      </li>
-      <!-- <li class="nav-item d-none d-sm-inline-block">
-        <a href="../../contactus.php" class="nav-link">Contact</a>
-      </li> -->
-    </ul>
-        <!-- Right navbar links -->
-        <ul class="navbar-nav ml-auto">
-      <!-- Notifications -->
-      <li class="nav-item dropdown">
-        <a class="nav-link" data-toggle="dropdown" href="#">
-          <i class="far fa-bell"></i>
-        </a>
-        
-      </li>
-        <!-- fullscreen -->
-      <li class="nav-item">
-        <a class="nav-link" data-widget="fullscreen" href="#" role="button">
-          <i class="fas fa-expand-arrows-alt"></i>
-        </a>
-      </li>
-       <!-- logout -->
-       <li class="nav-item">
-        <a class="nav-link" data-widget="logout" href="../../../index.php" role="button">
-          <i class="fas fa-power-off"></i>
-        </a>
-      </li>
-    </ul>
-  </nav>
-  <!-- /.navbar -->
-  <!-- Main Sidebar Container -->
-  <aside class="main-sidebar sidebar-dark-primary elevation-4">
+<!-- Main Sidebar Container -->
+<aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="../../Lecture/homelect.php" class="brand-link">
       <img src="../../../images/Logo1.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
@@ -105,54 +34,13 @@
 <!--Seksyen A Start-->
 <li class="nav-header">Section MyRA</li>
  <li class="nav-item">
-   <a href="#" class="nav-link">
+ <a href="../LectA/Staff.php" class="nav-link">
      <i class="nav-icon fas fa-info-circle icon"></i>
-     <p>General Information
-       <i class="fas fa-angle-left right"></i>
+        <p>General Information
+       <!-- <i class="fas fa-angle-left right"></i> -->
      </p>
    </a>
-   <ul class="nav nav-treeview">
-   <li class="nav-item">
-       <a href="#" class="nav-link">
-         <i class="far fa-circle nav-icon"></i>
-         <p>Staff Information
-           <i class="fas fa-angle-left right"></i>
-         </p>
-       </a>
-       <ul class="nav nav-treeview">
-         <li class="nav-item">
-           <a href="../LectA/Staff.php" class="nav-link">
-             <i class="far fa-circle nav-icon"></i>
-             <p>(a) Staff</p>
-           </a>
-         </li>
-         <li class="nav-item">
-         <a href="../LectA/Staff_Active.php" class="nav-link">
-             <i class="far fa-circle nav-icon"></i>
-             <p>(b) Staff Active</p>
-           </a>
-         </li>
-         <li class="nav-item">
-         <a href="../LectA/Staff_Foreign.php" class="nav-link">
-             <i class="far fa-circle nav-icon"></i>
-             <p>(c) Staff Foreign</p>
-           </a>
-         </li>
-         <li class="nav-item">
-         <a href="../LectA/Staff_ST.php" class="nav-link">
-             <i class="far fa-circle nav-icon"></i>
-             <p>(d) Staff S&T</p>
-           </a>
-         </li>
-         <li class="nav-item">
-         <a href="../LectA/Staff_NONST.php" class="nav-link">
-             <i class="far fa-circle nav-icon"></i>
-             <p>(e) Staff Non S&T</p>
-           </a>
-         </li>
-       </ul>
-     </li>
-   </ul>
+   
  </li>
  <!--Seksyen A End-->
  <!--Seksyen B Start-->
@@ -392,12 +280,20 @@
  <li class="nav-item">
    <a href="#" class="nav-link">
      <i class="nav-icon fas fa-handshake icon"></i>
-     <p>Professional Service & Gifts
+     <p>F. Professional Service & Gifts
        <i class="fas fa-angle-left right"></i>
      </p>
    </a>
    <ul class="nav nav-treeview">
       </li>
+      
+ <!--F2-->
+    <li class="nav-item">
+         <a href="../LectF/Orga_Seminar.php" class="nav-link">
+            <i class="far fa-circle nav-icon"></i>
+              <p>Gross Organising, Seminar & Knowledge Program</p>
+         </a>  
+     </li>
    <!--F3-->
    <li class="nav-item">
      <a href="#" class="nav-link">
@@ -423,39 +319,9 @@
                </li>
          </ul>
      </li>
-   <!--F4-->
-   <li class="nav-item">
-     <a href="#" class="nav-link">
-        <i class="far fa-circle nav-icon"></i>
-          <p>Financial transaction
-            <i class="fas fa-angle-left right"></i>
-         </p>
-     </a>  
-     <ul class="nav nav-treeview">
-       <!--a-->
-               <li class="nav-item">
-                 <a href="../LectF/Consultancies.php" class="nav-link">
-                   <i class="far fa-circle nav-icon"></i>
-                   <p>(a) Consultancies</p>
-                 </a>
-               </li>
-          <!--b-->
-               <li class="nav-item">
-                 <a href="../LectF/Hospital.php" class="nav-link">
-                   <i class="far fa-circle nav-icon"></i>
-                   <p>(b) Hospitality</p>
-                 </a>
-               </li>
- 
-           <!--c-->
-           <li class="nav-item">
-             <a href="../LectF/Lab_Service.php" class="nav-link">
-               <i class="far fa-circle nav-icon"></i>
-               <p>(c) Lab Services Fee</p>
-             </a>
-           </li>
-         </ul>
-     </li>
+
+    </ul>  
+ </li>
  <!--Seksyen F End-->
  <!--Seksyen G Start-->
  <!-- <li class="nav-header">Section G</li> -->
@@ -552,92 +418,3 @@
     </div>
   </aside>
   <!-- Paste the content of sidebar.php here -->
-<body>
-<!--Main Content-->
-<!--TableStart-->  
-<h3><center><font color="" face="Cambria Math">Product Commercial Or Technology Know-How Licensing/Sold outright Sale<font><br></center></h3>
-<br><br>
-<div class="container pt-50">
-    <div class="table-responsive">
-        <table id="example" class="table table-striped" style="width:200%">
-            <thead>
-            <tr>
-            <th>No.</th>
-            <th>Staff ID</th>
-            <th>Staff Name</th>
-            <th>Product Name</th>
-            <th>Product Commercial[3a] or Technology Know-How Licensing/Sold outright Sale [3b]</th>
-            <th>Faculty/Centre</th>
-            <th>Year Commercialized</th>
-            <th>Company/Publisher Name</th>
-            <th>Refference No.</th>
-            <th>Gross Income Generated (RM)</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-
-    </tbody>
-    <tfoot>
-        <tr>
-            <th></th>
-            <th>Staff ID</th>
-            <th>Staff Name</th>
-            <th>Product Name</th>
-            <th>Product Commercial[3a] or Technology Know-How Licensing/Outright Sale [3b]</th>
-            <th>Faculty/Centre</th>
-            <th>Year Commercialized</th>
-            <th>Company/Publisher Name</th>
-            <th>Refference No.</th>
-            <th>Gross Income Generated (RM)</th>
-        </tr>
-            </tfoot>
-        </table>
-    </div>
-</div> 
-<!--Main Content-->
-<script>
-    $(document).ready(function() {
-        $('#example').DataTable({
-            "scrollX": true, // Enable horizontal scrolling
-            "scrollY": 200, // Set a fixed height for vertical scrolling
-            "paging": false, // Disable pagination
-            "searching": true, // Enable searching
-            "ordering": true, // Enable sorting
-            "info": false, // Disable showing information
-            "search": {
-                "search": "", // Search box content
-                "placeholder": "Search", // Placeholder text for search box
-                "className": "form-control mr-sm-2", // Bootstrap class for search box
-                "container": "#example_wrapper .col-md-6:eq(0)", // Container to which the search box should be appended
-                "position": "append" // Position of search box in the container
-                <!-- jQuery -->
-<script src="../../../plugins/jquery/jquery.min.js"></script>
-<!-- Bootstrap 4 -->
-<script src="../../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- AdminLTE App -->
-<script src="../../../dist/js/adminlte.min.js"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="../../../dist/js/demo.js"></script>
-<!-- Page specific script -->
-<script>
-  $(function () {
-    //Add text editor
-    $('#compose-textarea').summernote()
-  })
-</script>
-    });
-</script>
-<!--TableEnd --> 
-
-</body>
-</html>
