@@ -20,7 +20,6 @@ if (isset($_POST['submit'])) {
     $research_title = $_POST['research_title'];
     $start_date = $_POST['start_date'];
     $end_date = $_POST['end_date'];
-    $page_end = $_POST['page_end'];
     $duration_project = $_POST['duration_project'];
     $status_project = $_POST['status_project'];
     $project_extension = $_POST['project_extension'];
@@ -44,7 +43,6 @@ if (isset($_POST['submit'])) {
         research_title = ?, 
         start_date = ?, 
         end_date = ?, 
-        page_end = ?, 
         duration_project = ?, 
         status_project = ?, 
         project_extension = ?, 
@@ -64,9 +62,9 @@ if (isset($_POST['submit'])) {
     }
 
     // Bind parameters
-    if (!$stmt->bind_param("isssssssiissssssiiissi", 
+    if (!$stmt->bind_param("isssssssissssssiiissi", 
         $staff_id, $staff_name, $faculty, $st, $staff_status, $research_title, 
-        $start_date, $end_date, $page_end, $duration_project, $status_project, 
+        $start_date, $end_date, $duration_project, $status_project, 
         $project_extension, $project_extend, $sponsor_cat, $sponsor, $grant_name, 
         $amt_pledge, $amt_rec, $amt_spent, $link_evidence, $remarks, $project_id)) {
         die('Bind failed: ' . htmlspecialchars($stmt->error));
@@ -97,6 +95,9 @@ if (isset($_POST['submit'])) {
             background-attachment: fixed;
             background-size: cover;
         }
+        .hidden {
+            display: none;
+        }
     </style>
     <link rel="stylesheet" href="../../bootstrap/css/bootstrap.min.css">
     <script src="../../bootstrap/js/jquery.min.js"></script>
@@ -106,6 +107,57 @@ if (isset($_POST['submit'])) {
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="../../css/navbar.css">
     <link rel="shortcut icon" href="../../images/Logo2.png" type="image/x-icon">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+    $(document).ready(function() {
+        
+    /// Function to manage visibility and clear data of project extend field based on statusDropdown value
+    function manageProjectExtendFieldVisibility() {
+        var statusDropdownValue = $('#statusDropdown').val();
+        if (statusDropdownValue === 'YES') {
+            $('#projectextendField').removeClass('hidden');
+        } else {
+            $('#projectextendField').addClass('hidden');
+            $('input[name="project_extend"]').val(''); // Clear the input field
+        }
+    }
+
+    // Initial check to set visibility and clear data based on the current value of statusDropdown
+    manageProjectExtendFieldVisibility();
+
+    // Listen for changes to the status dropdown to update visibility and clear data dynamically
+    $('#statusDropdown').on('change', manageProjectExtendFieldVisibility);
+    // Date Period Calculation
+    const startDateInput = document.getElementById('start_date');
+    const endDateInput = document.getElementById('end_date');
+    const durationProjectInput = document.getElementById('duration_project');
+
+    function calculatePeriod() {
+    const startDate = new Date(startDateInput.value);
+    const endDate = new Date(endDateInput.value);
+
+    if (startDate && endDate && startDate <= endDate) {
+        const startYear = startDate.getFullYear();
+        const startMonth = startDate.getMonth();
+        const endYear = endDate.getFullYear();
+        const endMonth = endDate.getMonth();
+
+        // Calculate the total months difference
+        const monthsDiff = (endYear - startYear) * 12 + (endMonth - startMonth);
+
+        // Set the value in the input field
+        durationProjectInput.value = `${monthsDiff} months`;
+    } else {
+      durationProjectInput.value = '';
+    }
+}
+
+startDateInput.addEventListener('change', calculatePeriod);
+endDateInput.addEventListener('change', calculatePeriod);
+
+});
+ 
+</script>
 </head>
 <body>
     <div class="container">
@@ -175,21 +227,18 @@ if (isset($_POST['submit'])) {
                     </div>
                     <div class="col-md-6 mb-3">
                         <label class="form-label"> START DATE :</label>
-                        <input type="date" class="form-control" name="start_date" value="<?php echo $row['start_date']?>">
+                        <input type="date" class="form-control" id="start_date" name="start_date" value="<?php echo $row['start_date']?>">
                     </div>
                     <div class="col-md-6 mb-3">
                         <label class="form-label">END DATE:</label>
-                        <input type="date" class="form-control" name="end_date" value="<?php echo $row['end_date']?>">
+                        <input type="date" class="form-control"  id="end_date" name="end_date" value="<?php echo $row['end_date']?>">
                     </div>
 
                     <div class="col-md-6 mb-3">
-                        <label class="form-label">PAGE END:</label>
-                        <input type="text" class="form-control" name="page_end" value="<?php echo $row['page_end']?>">
-                    </div>
-                    <div class="col-md-6 mb-3">
                         <label class="form-label">DURATION PROJECT:</label>
-                        <input type="text" class="form-control" name="duration_project" value="<?php echo $row['duration_project']?>">
+                        <input type="text" class="form-control" id="duration_project" name="duration_project" value="<?php echo $row['duration_project']?>">
                     </div>
+
 
                     <div class="col-md-6 mb-3">
                     <label class="form-label">STATUS PROJECT:</label>
@@ -199,19 +248,20 @@ if (isset($_POST['submit'])) {
                             <option value="ONGOING" <?php if ($row['status_project'] == 'ONGOING') echo 'selected'; ?>>ONGOING</option>
                     </select>
                     </div>
-
                     <div class="col-md-6 mb-3">
-                    <label class="form-label">PROJECT WITH EXTENSION:</label>
-                    <select class="form-control" name="project_extension" required>
+                        <label class="form-label">PROJECT WITH EXTENSION:</label>
+                        <select class="form-control" id="statusDropdown" name="project_extension" required>
                             <option value="" disabled selected>Choose</option>
                             <option value="YES" <?php if ($row['project_extension'] == 'YES') echo 'selected'; ?>>YES</option>
                             <option value="NO" <?php if ($row['project_extension'] == 'NO') echo 'selected'; ?>>NO</option>
-                    </select>
-                    </div>
-                    <div class="col-md-6 mb-3">
-                        <label class="form-label">IF PROJECT EXTEND INSERT COMPLETE:</label>
-                        <input type="text" class="form-control" name="project_extend" value="<?php echo $row['project_extend']?>">
-                    </div>
+                        </select>
+                         </div>
+
+                        <div class="col-md-6 mb-3 hidden" id="projectextendField">
+                        <label class="form-label">IF PROJECT EXTENDED INSERT COMPLETE:</label>
+                        <input type="text" class="form-control" name="project_extend" value="<?php echo htmlspecialchars($row['project_extend']); ?>">
+                         </div>
+
  
                     <div class="col-md-6 mb-3">
                     <label class="form-label">SPONSOR CATEGORY:</label>
