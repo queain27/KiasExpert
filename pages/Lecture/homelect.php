@@ -42,7 +42,7 @@
       </li>
        <!-- logout -->
        <li class="nav-item">
-        <a class="nav-link" data-widget="logout" href="../../../index.php" role="button">
+        <a class="nav-link" data-widget="logout" href="../Lecture/Auth/logout.php" role="button">
           <i class="fas fa-power-off"></i>
         </a>
       </li>

@@ -59,15 +59,42 @@ if(isset($_POST ['submit']))
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="../../css/navbar.css">
   <link rel="shortcut icon" href="../../images/Logo2.png" type="image/x-icon">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  
 </head>
 <body>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const ageInput = document.getElementById('ageInput');
+    const cohortInput = document.getElementById('cohortInput'); // Change this line
+
+    function updateCohort() {
+      const age = parseInt(ageInput.value, 10);
+      let cohort;
+
+      if (isNaN(age)) {
+        cohortInput.value = ""; // Change this line
+        return;
+      }
+
+      if (age > 50) {
+        cohort = 'A';
+      } else if (age >= 40) {
+        cohort = 'B';
+      } else {
+        cohort = 'C';
+      }
+
+      cohortInput.value = cohort; // Change this line
+    }
+
+    ageInput.addEventListener('input', updateCohort);
+  });
+</script>
 
 <div class="container-fluid">
   <div class="container">
-      <?php
-        require "../../crudheader.php";
-    createHeader('fa fa-briefcase', 'Add New Staff', 'Add Staff Academic');
-    ?>
+   
     <div class="container">
       <div class="row">
         <div class="col-sm-12">
@@ -126,17 +153,13 @@ if(isset($_POST ['submit']))
           <!--Age-->
           <div class="col-md-6 mb-3">
             <label class="form-label">AGE:</label>
-            <input type="text" class="form-control" name="age" placeholder="AGE" required>
+            <input type="text" class="form-control" id="ageInput" name="age" placeholder="AGE" required>
           </div>
-          <!--Cohort-->
+        
+          <!-- Cohort -->
           <div class="col-md-6 mb-3">
             <label class="form-label">COHORT:</label>
-            <select class="form-control" name="cohort" required>
-              <option value="" disabled selected>Choose</option>
-              <option value="A">A</option>
-              <option value="B">B</option>
-              <option value="C">C</option>
-            </select>
+            <input type="text" class="form-control" id="cohortInput" name="cohort" readonly required>
           </div>
           <!--Academic Qualification-->
           <div class="col-md-6 mb-3">

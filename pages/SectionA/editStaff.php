@@ -76,8 +76,39 @@ if(isset($_POST ['submit']))
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="../../css/navbar.css">
     <link rel="shortcut icon" href="../../images/Logo2.png" type="image/x-icon">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
+
 <body>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const ageInput = document.getElementById('ageInput');
+    const cohortInput = document.getElementById('cohortInput'); // Change this line
+
+    function updateCohort() {
+      const age = parseInt(ageInput.value, 10);
+      let cohort;
+
+      if (isNaN(age)) {
+        cohortInput.value = ""; // Change this line
+        return;
+      }
+
+      if (age > 50) {
+        cohort = 'A';
+      } else if (age >= 40) {
+        cohort = 'B';
+      } else {
+        cohort = 'C';
+      }
+
+      cohortInput.value = cohort; // Change this line
+    }
+
+    ageInput.addEventListener('input', updateCohort);
+  });
+</script>
+
     <div class="container">
         <div class="text-center mb-4">
             <b><p>Click Update After Finish Changing Information</p></b>
@@ -147,23 +178,17 @@ if(isset($_POST ['submit']))
                         <input type="date" class="form-control" name="dob" value="<?php echo $row['dob']?>">
                     </div>
 
-                    <!-- Age -->
+                                    <!--Age-->
                     <div class="col-md-6 mb-3">
                         <label class="form-label">AGE:</label>
-                        <input type="text" class="form-control" name="age" value="<?php echo $row['age']?>">
+                        <input type="text" class="form-control" id="ageInput" name="age" placeholder="AGE" required>
                     </div>
-
+                    
                     <!-- Cohort -->
                     <div class="col-md-6 mb-3">
-                        <label class="form-label">COHORT (A = More 50, B = 40-50, C = Less 40):</label>
-                        <select class="form-control" name="cohort" required>
-                            <option value="" disabled selected>Choose</option>
-                            <option value="A" <?php if ($row['cohort'] == 'A') echo 'selected'; ?>>A</option>
-                            <option value="B" <?php if ($row['cohort'] == 'B') echo 'selected'; ?>>B</option>
-                            <option value="C" <?php if ($row['cohort'] == 'C') echo 'selected'; ?>>C</option>
-                        </select>
+                        <label class="form-label">COHORT:</label>
+                        <input type="text" class="form-control" id="cohortInput" name="cohort" readonly required>
                     </div>
-
                     <!-- Academic Qualification -->
                     <div class="col-md-6 mb-3">
                         <label class="form-label">ACADEMIC QUALIFICATION:</label>
