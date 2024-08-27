@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 14, 2024 at 03:28 AM
+-- Generation Time: Aug 27, 2024 at 01:39 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -22,6 +22,7 @@ SET time_zone = "+00:00";
 --
 
 -- --------------------------------------------------------
+
 --
 -- Table structure for table `abroad`
 --
@@ -49,6 +50,7 @@ INSERT INTO `abroad` (`staff_id`, `staff_name`, `faculty`, `organisation`, `coun
 (1067, 'AMRAN BIN AYOB                          ', 'Teknologi Maklumat & Multimedia', 'asdd', 'USA ', 'Research', 'hdjhdh', '2024-08-14', '2024-08-29', '15 days', 'FD', 'addk');
 
 -- --------------------------------------------------------
+
 --
 -- Table structure for table `admin_form`
 --
@@ -154,7 +156,7 @@ CREATE TABLE `commercial` (
 --
 
 INSERT INTO `commercial` (`product_id`, `staff_id`, `staff_name`, `product_name`, `date_com`, `date_ach`, `comp_name`, `gross_income`, `link_licen`, `link_com`, `remarks`) VALUES
-('P001', 11234, 'ROBERT', 'PRODUCT X', '2014-07-07', '2016-09-15', 'SYKT ABC', '24000', 'Hyperlink', 'Hyperlink', 'No'),
+('P001', 11234, 'ROBERT', 'PRODUCT X', '2014-07-07', '2016-09-15', 'SYARIKAT ABC', '24000', 'Hyperlink', 'Hyperlink', 'No'),
 ('P002', 1274, 'HAMDANI BIN AHMAD                       ', 'SYKT ABC', '2015-02-02', '2015-02-02', 'SYKT ABC', '12000', 'Hyperlink', 'Hyperlink', 'STAFF');
 
 -- --------------------------------------------------------
@@ -207,7 +209,7 @@ CREATE TABLE `consultancies` (
 --
 
 INSERT INTO `consultancies` (`reference_no`, `staff_id`, `staff_name`, `faculty`, `tittle`, `client_name`, `start_date`, `end_date`, `gross_income`, `link`, `remarks`) VALUES
-('VR1234', 1274, 'HAMDANI BIN AHMAD                       ', 'Dakwah & Pembangunan Insan', 'PROJEK EIA DI LABUAN ', 'AMSTEEL MILLS SDN. BHD.', '2016-01-19', '2018-01-20', '', 'HYPERLINK', 'No');
+('VR1234', 1274, 'HAMDANI BIN AHMAD                       ', 'Dakwah & Pembangunan Insan', 'PROJEK EIAD DI LABUAN ', 'AMSTEEL MILLS SDN. BHD.', '2016-01-19', '2018-01-20', '', 'HYPERLINK', 'No');
 
 -- --------------------------------------------------------
 
@@ -282,7 +284,7 @@ CREATE TABLE `hosp_lab` (
 --
 
 INSERT INTO `hosp_lab` (`reference_no`, `name`, `type`, `gross_income`, `link`, `remarks`) VALUES
-('INV00100', 'Clinical Services', 'Hospital', '25000', 'HYPERLINK', 'no'),
+('INV00100', 'Clinical Services', 'Hospital', '25000', 'HYPERLINK', 'No'),
 ('kew10/2018', 'Clinical Services', 'Hospital', '1,007.00', 'HYPERLINK', 'no'),
 ('RJ201601089736', 'INSTITUT BAHAN KIMIA', 'Lab Service', '6260.00', 'HYPERLINK', 'No');
 
@@ -357,6 +359,7 @@ INSERT INTO `index_journal` (`article_no`, `staff_id`, `staff_name`, `authors`, 
 (123, 1067, 'AMRAN BIN AYOB                          ', 'dg', 'Y', 'N', 'N', 'dcfgh', 'dfgh', 'sdfg', '12345', '12', 456, 234, 2024, 245, 'fbhkg', 'fghlk');
 
 -- --------------------------------------------------------
+
 --
 -- Table structure for table `iprs`
 --
@@ -429,7 +432,8 @@ CREATE TABLE `laboratory` (
 --
 
 INSERT INTO `laboratory` (`regis_no`, `facility`, `faculty`, `type`, `awarding`, `start_date`, `end_date`, `link`, `remarks`) VALUES
-('IEC 17025', 'Pusat Ujian Sampel ', 'Teknologi Maklumat & Multimedia', 'ISO/IEC 17025 International Standard for Laboratories', 'World Anti-Doping Agency (WADA)', '2011-01-01', '2016-12-31', 'HYPERLINK', 'No');
+('IEC 17025', 'Pusat Ujian Sampel ', 'Teknologi Maklumat & Multimedia', 'ISO/IEC 17025 International Standard for Laboratories', 'World Anti-Doping Agency (WADA)', '2011-01-01', '2016-12-31', 'HYPERLINK', 'No'),
+('IEC 17028', 'Pusat Ujian Sampel ', 'Pengurusan Al-Syariah', 'Penggajian penyelidik / pengurusan penyelidikan (Tidak termasuk gaji staf akademik)', 'MAIK', '2016-12-14', '2016-12-15', 'HYPERLINK', '-');
 
 -- --------------------------------------------------------
 
@@ -546,6 +550,7 @@ CREATE TABLE `nationalorganisation` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
+
 --
 -- Table structure for table `oe`
 --
@@ -662,6 +667,7 @@ INSERT INTO `other_publication` (`staff_id`, `staff_name`, `document_type`, `doc
 (958, 'JALIL BIN OMAR                          ', 'OTHER JOURNALS', 'hn', 'ghh', '124', 'ghjy', 234, 12445, 23456, 32, 'dsd', 'ghkl');
 
 -- --------------------------------------------------------
+
 --
 -- Table structure for table `patent`
 --
@@ -1081,6 +1087,7 @@ INSERT INTO `staffnational` (`staff_id`, `staff_name`, `faculty`, `programme_tit
 (1067, 'AMRAN BIN AYOB                          ', 'Teknologi Maklumat & Multimedia', 'Research Collaboration', 'Member', 'SIRIM', '2024-08-18', '2024-08-31', 'fbhk', 'DSJDSH');
 
 -- --------------------------------------------------------
+
 --
 -- Table structure for table `training_courses`
 --
@@ -1276,6 +1283,7 @@ ALTER TABLE `other_journal`
 --
 ALTER TABLE `other_publication`
   ADD PRIMARY KEY (`staff_id`);
+
 --
 -- Indexes for table `patent`
 --
@@ -1329,7 +1337,6 @@ ALTER TABLE `research_grant`
 --
 ALTER TABLE `research_project`
   ADD PRIMARY KEY (`project_id`);
-
 
 --
 -- Indexes for table `spinn_off`
@@ -1411,7 +1418,7 @@ ALTER TABLE `nationalorganisation`
 -- AUTO_INCREMENT for table `organisation`
 --
 ALTER TABLE `organisation`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `staff`
