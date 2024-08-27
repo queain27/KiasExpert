@@ -337,14 +337,6 @@
    </a>
    <ul class="nav nav-treeview">
       </li>
-      
- <!--F2-->
-    <li class="nav-item">
-         <a href="../Lecture/LectF/Orga_Seminar.php" class="nav-link">
-            <i class="far fa-circle nav-icon"></i>
-              <p>Gross Organising, Seminar & Knowledge Program</p>
-         </a>  
-     </li>
    <!--F3-->
    <li class="nav-item">
      <a href="#" class="nav-link">
