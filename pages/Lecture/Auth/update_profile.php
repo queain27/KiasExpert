@@ -19,7 +19,7 @@ if(isset($_POST['update_profile'])){
    $update_name = mysqli_real_escape_string($conn, $_POST['update_name']);
    $update_staffid = mysqli_real_escape_string($conn, $_POST['update_staffid']);
 
-   mysqli_query($conn, "UPDATE `lect_form` SET name = '$update_name', staffid = '$update_staffid' WHERE id = '$user_id'") or die('query failed');
+   mysqli_query($conn, "UPDATE `lect_form` SET name = '$update_name', staffid = '$update_staffid' WHERE staffid= '$user_id'") or die('query failed');
 
    $old_pass = $_POST['old_pass'];
    $update_pass = mysqli_real_escape_string($conn, ($_POST['update_pass']));
@@ -56,38 +56,34 @@ if(isset($_POST['update_profile'])){
 
 }
 ?>
+<title>Update Profile</title>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Profile</title>
- 
-  <!-- Google Font: Source Sans Pro -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="../../../plugins/fontawesome-free/css/all.min.css">
-  <!-- Theme style -->
-  <link rel="stylesheet" href="../../../dist/css/adminlte.min.css">
-  <link rel="shortcut icon" href="../../images/Logo2.png" type="image/x-icon">
-  <link rel="stylesheet" href="css/style.css">
+<!-- Google Font: Source Sans Pro -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+<!-- Font Awesome -->
+<link rel="stylesheet" href="../../../plugins/fontawesome-free/css/all.min.css">
+<!-- Theme style -->
+<link rel="stylesheet" href="../../../dist/css/adminlte.min.css">
+<link rel="shortcut icon" href="../../../images/Logo2.png" type="image/x-icon">
+<link rel="stylesheet" href="css/style.css">
+</head>
+
 <!-- Paste the content of sidebar.php here -->
- <body class="hold-transition sidebar-mini layout-fixed">
+<body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
 
 <body class="hold-transition sidebar-mini layout-fixed">
-  <div class="wrapper">
-  <div class="preloader flex-column justify-content-center align-items-center">
-  </div> 
-    <?php 
-     include '../header.php';
-     include '../SideBarLect.php';
-    ?>
+<div class="wrapper">
+<div class="preloader flex-column justify-content-center align-items-center">
+</div> 
+  <?php 
+   include '../header.php';
+   include '../SideBarLect.php';
+  ?>
 <body>
 <!--Main Content-->
-  <div class="content-wrapper">
-  <!-- Main content -->
+<div class="content-wrapper">
+<div class="container">
   <div class="update-profile">
 <?php
    $select = mysqli_query($conn, "SELECT * FROM `lect_form` WHERE staffid = '$user_id'") or die('query failed');

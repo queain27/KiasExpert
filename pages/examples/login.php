@@ -12,7 +12,7 @@ if(isset($_POST['submit'])){
 
    if(mysqli_num_rows($select) > 0){
       $row = mysqli_fetch_assoc($select);
-      $_SESSION['user_id'] = $row['id']; // Set sesi user_id
+      $_SESSION['user_id'] = $row['adminid']; // Set sesi user_id
       header('Location: ../../home.php'); // Arahkan ke halaman home.php
       exit;
    }else{

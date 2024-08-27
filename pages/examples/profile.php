@@ -54,7 +54,7 @@ if(isset($_GET['logout'])){
 
 <div class="profile">
    <?php
-      $select = mysqli_query($conn, "SELECT * FROM `admin_form` WHERE id = '$user_id'") or die('query failed');
+      $select = mysqli_query($conn, "SELECT * FROM `admin_form` WHERE adminid = '$user_id'") or die('query failed');
       if(mysqli_num_rows($select) > 0){
          $fetch = mysqli_fetch_assoc($select);
       }
