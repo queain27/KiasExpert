@@ -142,10 +142,10 @@ if (isset($_POST['submit'])) {
                     <div class="col-md-6 mb-3">
                     <label class="form-label">LEVEL:</label>
                     <select class="form-control" name="level" required>
-                            <option value="" disabled selected>Choose</option>
                             <option value="STATE GOVERNMENT" <?php if ($row['level'] == 'STATE GOVERNMENT') echo 'selected'; ?>>STATE GOVERNMENT</option>
-                            <option value="FEDERAL GOVERNMENT" <?php if ($row['level'] == 'FEDERAL GOVERNMENT') echo 'selected'; ?>>FEDERAL GOVERNMENT</option>
+                            <option value="FEDERAL GOVERNMENT" <?php if ($row['level'] == 'FEDERAL GOVERNMENT') echo 'selected'; ?>>FEDERAL GOVERNMENT</option>  
                             <option value="INTERNATIONAL GOVERNMENT" <?php if ($row['level'] == 'INTERNATIONAL GOVERNMENT') echo 'selected'; ?>>INTERNATIONAL GOVERNMENT</option>
+                    </select>
                     </select>
                     </div>
 

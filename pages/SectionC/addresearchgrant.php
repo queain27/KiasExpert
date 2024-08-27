@@ -21,7 +21,6 @@ if(isset($_POST ['submit']))
     $research_title = $_POST['research_title'];
     $start_date = $_POST['start_date'];
     $end_date = $_POST['end_date'];
-    $page_end = $_POST['page_end'];
     $duration_project = $_POST['duration_project'];
     $status_project = $_POST['status_project'];
     $project_extension = $_POST['project_extension'];
@@ -56,14 +55,14 @@ if(isset($_POST ['submit']))
 
         if ($check_duplicate_result->num_rows == 0) {
             // No duplicates, proceed with the insertion
-            $insert_sql = $conn->prepare("INSERT INTO `research_grant` (`project_id`, `staff_id`, `staff_name`, `faculty`, `st`, `staff_status`, `research_title`, `start_date`, `end_date`, `page_end`, `duration_project`, `status_project`, `project_extension`, `project_extend`, `sponsor_cat`, `sponsor`, `grant_name`, `amt_pledge`, `amt_rec`, `amt_spent`, `link_evidence`, `remarks`) 
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+            $insert_sql = $conn->prepare("INSERT INTO `research_grant` (`project_id`, `staff_id`, `staff_name`, `faculty`, `st`, `staff_status`, `research_title`, `start_date`, `end_date`, `duration_project`, `status_project`, `project_extension`, `project_extend`, `sponsor_cat`, `sponsor`, `grant_name`, `amt_pledge`, `amt_rec`, `amt_spent`, `link_evidence`, `remarks`) 
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
             if ($insert_sql === false) {
                 die("Prepare failed: " . $conn->error);
             }
-            $insert_sql->bind_param('iisssssiiiissssssiiiss', 
+            $insert_sql->bind_param('iissssssssssssssiiiss', 
                 $project_id, $staff_id, $staff_name, $faculty, $st, $staff_status, $research_title, 
-                $start_date, $end_date, $page_end, $duration_project, $status_project, $project_extension, 
+                $start_date, $end_date,$duration_project, $status_project, $project_extension, 
                 $project_extend, $sponsor_cat, $sponsor, $grant_name, $amt_pledge, $amt_rec, $amt_spent, 
                 $link_evidence, $remarks
             );
@@ -106,9 +105,14 @@ if(isset($_POST ['submit']))
   <link rel="stylesheet" href="../../css/navbar.css">
   <link rel="shortcut icon" href="../../images/Logo2.png" type="image/x-icon">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  
-  <script>
+  <style>
+        .hidden {
+            display: none;
+        }
+    </style>
+<script>
 $(document).ready(function() {
+    // Handle staff ID input change
     $('input[name="staff_id"]').on('change', function() {
         var staff_id = $(this).val();
         if (staff_id) {
@@ -137,22 +141,68 @@ $(document).ready(function() {
                 },
                 error: function(xhr, status, error) {
                     console.error("AJAX Error:", status, error);
+                    $('#staff-id-error').text("An error occurred while fetching staff information").show();
                 }
             });
         } else {
             $('input[name="staff_name"]').val('');
             $('input[name="faculty"]').val('');
             $('#staff-id-error').hide();
-            $('button[name="submit"]').prop('disabled', false);
+            $('button[name="submit"]').prop('disabled', true); // Disable submit button if staff_id is empty
         }
     });
 
-    // Optionally, you can also disable the submit button initially if staff_id is empty
+    // Optionally, disable the submit button initially if staff_id is empty
     if (!$('input[name="staff_id"]').val()) {
         $('button[name="submit"]').prop('disabled', true);
     }
+
+    // Function to manage visibility of project extend field based on statusDropdown value
+    function manageProjectExtendFieldVisibility() {
+        var statusDropdownValue = $('#statusDropdown').val();
+        if (statusDropdownValue === 'YES') {
+            $('#projectextendField').removeClass('hidden');
+        } else {
+            $('#projectextendField').addClass('hidden');
+        }
+    }
+
+    // Initial check to set visibility based on the current value of statusDropdown
+    manageProjectExtendFieldVisibility();
+
+    // Listen for changes to the status dropdown to update visibility dynamically
+    $('#statusDropdown').on('change', manageProjectExtendFieldVisibility);
+
+    // Date Period Calculation
+    const startDateInput = document.getElementById('start_date');
+    const endDateInput = document.getElementById('end_date');
+    const durationProjectInput = document.getElementById('duration_project');
+
+    function calculatePeriod() {
+        const startDate = new Date(startDateInput.value);
+        const endDate = new Date(endDateInput.value);
+
+        if (startDate && endDate && startDate <= endDate) {
+            const startYear = startDate.getFullYear();
+            const startMonth = startDate.getMonth();
+            const endYear = endDate.getFullYear();
+            const endMonth = endDate.getMonth();
+
+            // Calculate the total months difference
+            const monthsDiff = (endYear - startYear) * 12 + (endMonth - startMonth);
+
+            // Set the value in the input field
+            durationProjectInput.value = `${monthsDiff} months`;
+        } else {
+            durationProjectInput.value = '';
+        }
+    }
+
+    startDateInput.addEventListener('change', calculatePeriod);
+    endDateInput.addEventListener('change', calculatePeriod);
 });
 </script>
+
 
 
 
@@ -214,19 +264,16 @@ $(document).ready(function() {
           </div>
           <div class="col-md-6 mb-3">
             <label class="form-label">START DATE:</label>
-            <input type="date" class="form-control" name="start_date" placeholder="Start Date" required>
+            <input type="date" class="form-control" id="start_date" name="start_date" placeholder="Start Date" required>
           </div>
           <div class="col-md-6 mb-3">
             <label class="form-label">END DATE:</label>
-            <input type="date" class="form-control" name="end_date" placeholder="End Date" required>
+            <input type="date" class="form-control" id="end_date"  name="end_date" placeholder="End Date" required>
           </div>
-          <div class="col-md-6 mb-3">
-            <label class="form-label">PAGE END:</label>
-            <input type="text" class="form-control" name="page_end" placeholder="Page End"required>
-          </div>
+        
           <div class="col-md-6 mb-3">
             <label class="form-label">DURATION OF PROJECT:</label>
-            <input type="text" class="form-control" name="duration_project" placeholder="Duration Project" required>
+            <input type="text" class="form-control" id="duration_project" name="duration_project" placeholder="Duration Project" readonly required>
           </div>
           <div class="col-md-6 mb-3">
             <label class="form-label">STATUS PROJECT:</label>
@@ -238,16 +285,16 @@ $(document).ready(function() {
           </div>
           <div class="col-md-6 mb-3">
             <label class="form-label">PROJECT WITH EXTENSION:</label>
-            <select class="form-control" name="project_extension" required>
+            <select class="form-control" id="statusDropdown" name="project_extension" required>
               <option value="" disabled selected>Choose</option>
               <option value="YES">YES</option>
               <option value="NO">NO</option>
             </select>
           </div>
 
-          <div class="col-md-6 mb-3">
+          <div class="col-md-6 mb-3"  id="projectextendField">
             <label class="form-label">IF PROJECT EXTENDED INSERT COMPLETE:</label>
-            <input type="text" class="form-control" name="project_extend" placeholder="Project Extend" required>
+            <input type="text" class="form-control" name="project_extend" placeholder="Project Extend">
           </div>
           <div class="col-md-6 mb-3">
             <label class="form-label">SPONSOR CATEGORY:</label>
@@ -276,7 +323,7 @@ $(document).ready(function() {
 
           <div class="col-md-6 mb-3">
             <label class="form-label">AMOUNT RECEIVED IN THE YEAR:</label>
-            <input type="text" class="form-control" name="amt_rec" placeholder="Amount Received" required>
+            <input type="text" class="form-control" name="amt_rec" placeholder="Amount Received" >
           </div>
           <div class="col-md-6 mb-3">
             <label class="form-label">AMOUNT SPENT IN THE YEAR:</label>
@@ -291,7 +338,7 @@ $(document).ready(function() {
           <!--Remarks-->
           <div class="col-md-6 mb-3">
             <label class="form-label">REMARKS:</label>
-            <input type="text" class="form-control" name="remarks" placeholder="Remarks" required>
+            <input type="text" class="form-control" name="remarks" placeholder="Remarks">
           </div>
       
           <!--Button-->

@@ -145,7 +145,7 @@ $(document).ready(function() {
           <!--Research Title-->
           <div class="col-md-6 mb-3">
             <label class="form-label">FACULTY:</label>
-            <input type="text" class="form-control" name="faculty" placeholder="Faculty" required>
+            <input type="text" class="form-control" name="faculty" placeholder="Faculty"  readonly required>
           </div>
           <!--Start Date-->
           <div class="col-md-6 mb-3">
@@ -177,12 +177,12 @@ $(document).ready(function() {
           <!--Title Of Invention-->
           <div class="col-md-6 mb-3">
             <label class="form-label">TITLE OF INVENTION:</label>
-            <input type="text" class="form-control" name="title_invention" placeholder="Title of Invention" required>
+            <input type="text" class="form-control" name="title_invention" placeholder="Title of Invention" >
           </div>
           <!--Amount Pledged (Approved) For New Project In The Year-->
           <div class="col-md-6 mb-3">
             <label class="form-label">EVENT:</label>
-            <input type="text" class="form-control" name="event" placeholder="Event" required>
+            <input type="text" class="form-control" name="event" placeholder="Event" >
           </div>
           <!--Amount Received-->
           <div class="col-md-6 mb-3">
@@ -192,7 +192,7 @@ $(document).ready(function() {
           <!--Remarks-->
           <div class="col-md-6 mb-3">
             <label class="form-label">LINK:</label>
-            <input type="text" class="form-control" name="link_award" placeholder="link_award" required>
+            <input type="text" class="form-control" name="link_award" placeholder="Link Award" required>
           </div>
           <!--Button-->
           <div class="col-md-12 mb-3 text-center">

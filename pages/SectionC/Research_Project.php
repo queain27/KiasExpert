@@ -88,7 +88,6 @@ include "../examples/config.php";
                     <th style="text-align: center">Research Title</th>
                     <th style="text-align: center">Start Date</th>
                     <th style="text-align: center">End Date</th>
-                    <th style="text-align: center">Page End</th>
                     <th style="text-align: center">Duration Project (Month)</th>
                     <th style="text-align: center">Status Project</th>   
                     <th style="text-align: center">Project Extension</th>   
@@ -144,7 +143,6 @@ include "../examples/config.php";
                 <td style="text-align: center"><?php echo $row['research_title']; ?></td>
                 <td style="text-align: center"><?php echo $row['start_date']; ?></td>
                 <td style="text-align: center"><?php echo $row['end_date']; ?></td>
-                <td style="text-align: center"><?php echo $row['page_end']; ?></td>
                 <td style="text-align: center"><?php echo $row['duration_project']; ?></td>
                 <td style="text-align: center"><?php echo $row['status_project']; ?></td>
                 <td style="text-align: center"><?php echo $row['project_extension']; ?></td>
@@ -202,7 +200,6 @@ include "../examples/config.php";
                     <th style="text-align: center">Research Title</th>
                     <th style="text-align: center">Start Date</th>
                     <th style="text-align: center">End Date</th>
-                    <th style="text-align: center">Page End</th>
                     <th style="text-align: center">Duration Project (Month)</th>
                     <th style="text-align: center">Status Project</th>   
                     <th style="text-align: center">Project Extension</th>   

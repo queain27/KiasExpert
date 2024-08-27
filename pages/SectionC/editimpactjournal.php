@@ -16,6 +16,7 @@ if(isset($_POST ['submit']))
   $staff_id = $_POST['staff_id'];
   $staff_name = $_POST['staff_name'];
   $authors = $_POST['authors'];
+  $co_authors = $_POST['co_authors'];
   $industrial= $_POST['industrial'];
   $international = $_POST['international'];
   $national = $_POST['national'];
@@ -39,6 +40,7 @@ article_no = ?,
 staff_id = ?, 
 staff_name = ?, 
 authors = ?,
+co_authors = ?,
 industrial = ?,  
 international = ?, 
 national = ?, 
@@ -64,11 +66,12 @@ die('Prepare failed: ' . htmlspecialchars($conn->error));
 
 // Bind the parameters
 // Assuming all fields are strings except for the `staff_id` which is an integer
-$stmt->bind_param("iissssssssssiiiissssi", 
+$stmt->bind_param("iisssssssssssiiiissssi", 
 $article_no, 
 $staff_id , 
 $staff_name, 
 $authors,
+$co_authors,
 $industrial,  
 $international, 
 $national, 
@@ -161,6 +164,11 @@ $article_no
                  <div class="col-md-6 mb-3">
                         <label class="form-label">AUTHORS:</label>
                         <input type="text" class="form-control" name="authors" value="<?php echo $row['authors']?>">
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">CO-AUTHORS:</label>
+                        <input type="text" class="form-control" name="co_authors" value="<?php echo $row['co_authors']?>">
                     </div>
 
 
