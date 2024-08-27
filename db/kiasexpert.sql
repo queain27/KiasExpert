@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 27, 2024 at 02:35 AM
+-- Generation Time: Aug 27, 2024 at 11:29 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -56,9 +56,8 @@ INSERT INTO `abroad` (`staff_id`, `staff_name`, `faculty`, `organisation`, `coun
 --
 
 CREATE TABLE `admin_form` (
-  `id` int(100) NOT NULL,
-  `name` varchar(100) NOT NULL,
   `adminid` varchar(100) NOT NULL,
+  `name` varchar(100) NOT NULL,
   `password` varchar(100) NOT NULL,
   `image` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -67,10 +66,8 @@ CREATE TABLE `admin_form` (
 -- Dumping data for table `admin_form`
 --
 
-INSERT INTO `admin_form` (`id`, `name`, `adminid`, `password`, `image`) VALUES
-(1, 'Admin', '111', '1111', 'user3.jpg'),
-(2, 'Admin', '123', '123', 'Logo2.png'),
-(3, 'Admin', '1234', '1234', 'photo_2020-03-03_21-41-31.jpg');
+INSERT INTO `admin_form` (`adminid`, `name`, `password`, `image`) VALUES
+('111', 'Admin', '1111', 'user3.jpg');
 
 -- --------------------------------------------------------
 
@@ -442,9 +439,8 @@ INSERT INTO `laboratory` (`regis_no`, `facility`, `faculty`, `type`, `awarding`,
 --
 
 CREATE TABLE `lect_form` (
-  `id` int(100) NOT NULL,
-  `name` varchar(100) NOT NULL,
   `staffid` varchar(100) NOT NULL,
+  `name` varchar(100) NOT NULL,
   `password` varchar(100) NOT NULL,
   `image` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -453,14 +449,14 @@ CREATE TABLE `lect_form` (
 -- Dumping data for table `lect_form`
 --
 
-INSERT INTO `lect_form` (`id`, `name`, `staffid`, `password`, `image`) VALUES
-(1, 'ALI BIN AHMAD', '743', '743', 'user1.jpg'),
-(2, 'Hannan Binti Zulkafli', '12345', '12345', 'user3.jpg'),
-(3, 'HAMDANI BIN AHMAD ', '1274', '1274', 'user1.jpg'),
-(4, 'AMRAN BIN AYOB ', '992', '992', 'user.jpg'),
-(5, 'JALIL BIN OMAR', '958', '958', ''),
-(6, 'ROBERT', '11234', '11234', 'user1.jpg'),
-(7, 'ANIE BTE ATTAN', '992', '760702031234', 'IMG_20230107_003037.jpg');
+INSERT INTO `lect_form` (`staffid`, `name`, `password`, `image`) VALUES
+('11234', 'ROBERT', '11234', 'user1.jpg'),
+('12345', 'Hannan Binti Zulkafli', '12345', 'user3.jpg'),
+('1274', 'HAMDANI BIN AHMAD ', '1274', 'photo_2020-03-03_21-41-31.jpg'),
+('743', 'ALI BIN AHMAD', '743', 'user1.jpg'),
+('760702031234', 'ANIE BTE ATTAN', '760702031234', 'IMG_20230107_003037.jpg'),
+('958', 'JALIL BIN OMAR', '958', ''),
+('992', 'AMRAN BIN AYOB ', '992', 'user.jpg');
 
 -- --------------------------------------------------------
 
@@ -1150,7 +1146,7 @@ ALTER TABLE `abroad`
 -- Indexes for table `admin_form`
 --
 ALTER TABLE `admin_form`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`adminid`);
 
 --
 -- Indexes for table `awarding`
@@ -1234,7 +1230,7 @@ ALTER TABLE `laboratory`
 -- Indexes for table `lect_form`
 --
 ALTER TABLE `lect_form`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`staffid`);
 
 --
 -- Indexes for table `library`
@@ -1379,12 +1375,6 @@ ALTER TABLE `ug_student`
 --
 
 --
--- AUTO_INCREMENT for table `admin_form`
---
-ALTER TABLE `admin_form`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
 -- AUTO_INCREMENT for table `conference`
 --
 ALTER TABLE `conference`
@@ -1395,12 +1385,6 @@ ALTER TABLE `conference`
 --
 ALTER TABLE `endownment`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT for table `lect_form`
---
-ALTER TABLE `lect_form`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `library`
