@@ -178,16 +178,17 @@ if(isset($_POST ['submit']))
                         <input type="date" class="form-control" name="dob" value="<?php echo $row['dob']?>">
                     </div>
 
-                                    <!--Age-->
+                    <!--Age-->
                     <div class="col-md-6 mb-3">
                         <label class="form-label">AGE:</label>
-                        <input type="text" class="form-control" id="ageInput" name="age" placeholder="AGE" required>
+                        <input type="text" class="form-control" id="ageInput" name="age" value="<?php echo $row['age']?>">
                     </div>
                     
                     <!-- Cohort -->
                     <div class="col-md-6 mb-3">
                         <label class="form-label">COHORT:</label>
-                        <input type="text" class="form-control" id="cohortInput" name="cohort" readonly required>
+                        <input type="text" class="form-control" id="cohortInput" name="cohort" value="<?php echo $row['cohort']?>"readonly required>
+
                     </div>
                     <!-- Academic Qualification -->
                     <div class="col-md-6 mb-3">

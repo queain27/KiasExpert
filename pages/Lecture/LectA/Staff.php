@@ -98,8 +98,11 @@ if(!isset($_SESSION['user_id']))
             <tbody id="myTable">
     <?php
     require_once "../Auth/config.php";
-    $query = "SELECT * FROM staff";
-    $count =1;
+     // Ambil user_id dari session
+     $user_id = $_SESSION['user_id'];
+     // Tarik maklumat yang berkaitan dengan pengguna 
+      $query = "SELECT * FROM staff WHERE staff_id = '$user_id'";
+      $count =1;
     $result = mysqli_query($conn, $query);
 
     if ($result) {
