@@ -63,9 +63,6 @@ if(!isset($_SESSION['user_id']))
 <h3><center><font color="" face="Cambria Math">Technology Know-How Licensing/Sold outright Sale<font><br></center></h3>
 <br><br>
 <div class="container pt-50">
-   <div class="text-right mb-3">
-        <a href="../sectionF/addProduc.php" class="btn btn-success">+Add New</a>
-    </div>
     <div class="table-responsive">
         <table id="example" class="table table-striped" style="width:200%">
             <thead>
@@ -88,7 +85,14 @@ if(!isset($_SESSION['user_id']))
     <tbody id="myTable">
     <?php
         require_once "../Auth/config.php";
-         $query = "SELECT * FROM prod_tech WHERE Type = 'licensing' OR Type = 'sold outright'";
+        // Ambil user_id dari session
+        $user_id = $_SESSION['user_id'];
+        // Tarik maklumat yang berkaitan dengan pengguna 
+         $query = "SELECT * 
+FROM prod_tech 
+WHERE staff_id = '$user_id' 
+  AND (Type = 'licensing' OR Type = 'sold outright');
+";
          $count =1;
          $result = mysqli_query($conn, $query);
 

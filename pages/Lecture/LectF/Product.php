@@ -85,7 +85,11 @@ if(!isset($_SESSION['user_id']))
     <tbody id="myTable">
     <?php
         require_once "../Auth/config.php";
-        $query = "SELECT * FROM prod_tech where Type ='product commercial'";
+
+        // Ambil user_id dari session
+        $user_id = $_SESSION['user_id'];
+        // Tarik maklumat yang berkaitan dengan pengguna 
+         $query = "SELECT * FROM prod_tech WHERE staff_id = '$user_id' AND Type ='product commercial'";
         $count =1;
         $result = mysqli_query($conn, $query);
 

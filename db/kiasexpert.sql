@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 28, 2024 at 02:03 AM
+-- Generation Time: Aug 28, 2024 at 03:19 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -154,7 +154,7 @@ CREATE TABLE `commercial` (
 
 INSERT INTO `commercial` (`product_id`, `staff_id`, `staff_name`, `product_name`, `date_com`, `date_ach`, `comp_name`, `gross_income`, `link_licen`, `link_com`, `remarks`) VALUES
 ('P001', 11234, 'ROBERT', 'PRODUCT X', '2014-07-07', '2016-09-15', 'SYARIKAT ABC', '24000', 'Hyperlink', 'Hyperlink', 'No'),
-('P002', 1274, 'HAMDANI BIN AHMAD                       ', 'SYKT ABC', '2015-02-02', '2015-02-02', 'SYKT ABC', '12000', 'Hyperlink', 'Hyperlink', 'STAFF');
+('P002', 1274, 'HAMDANI BIN AHMAD                       ', 'SYKT ABC', '2015-02-02', '2015-02-02', 'SYARIKAT EMPIRE', '12000', 'https://encr.pw/DS9Ws', 'https://encr.pw/DS9Ws', 'ACTIVE');
 
 -- --------------------------------------------------------
 
@@ -690,8 +690,9 @@ CREATE TABLE `patent` (
 --
 
 INSERT INTO `patent` (`staff_id`, `staff_name`, `patent_id`, `patent_name`, `date_filed`, `date_granted`, `faculty`, `country`, `expiry_date`, `link`, `remarks`) VALUES
-(1274, 'HAMDANI BIN AHMAD                       ', 'EU999', 'PRODUK AAA', '2015-01-01', '2024-02-04', 'Dakwah & Pembangunan Insan', 'MALAYSIA', '2030-01-30', 'no', 'done'),
-(11234, 'ROBERT', 'MY2016-001', 'PRODUK AAA', '2009-02-02', '2016-12-30', 'Pengurusan Al-Syariah', 'INDIA', '2020-05-20', 'HYPERLINK', 'no');
+(1274, 'HAMDANI BIN AHMAD                       ', 'EU999', 'PRODUK AAA', '2015-01-01', '2024-02-04', 'Dakwah & Pembangunan Insan', 'MALAYSIA', '2030-01-30', 'https://encr.pw/DS9Ws', 'done'),
+(11234, 'ROBERT', 'MY2016-001', 'PRODUK AAA', '2009-02-02', '2016-12-30', 'Pengurusan Al-Syariah', 'INDIA', '2020-05-20', 'HYPERLINK', 'no'),
+(1274, 'HAMDANI BIN AHMAD                       ', 'MY999', 'PRODUK MYRA', '2023-01-01', '2024-01-01', 'Dakwah & Pembangunan Insan', 'MALAYSIA', '2024-01-31', 'https://encr.pw/DS9Ws', 'Active');
 
 -- --------------------------------------------------------
 
@@ -716,9 +717,10 @@ CREATE TABLE `patent_filed` (
 --
 
 INSERT INTO `patent_filed` (`fill_id`, `fill_name`, `staff_id`, `staff_name`, `date_filed`, `country`, `faculty`, `link`, `remarks`) VALUES
-('P11416987', 'PRODUCT XYZ', 1274, 'HAMDANI BIN AHMAD                       ', '2023-01-01', 'MALAYSIA', 'Dakwah & Pembangunan Insan', 'HYPERLINK', '-'),
+('P11416987', 'PRODUCT XYZ', 1274, 'HAMDANI BIN AHMAD                       ', '2023-01-01', 'MALAYSIA', 'Dakwah & Pembangunan Insan', 'https://encr.pw/DS9Ws', 'Active'),
 ('P12016987', 'SYSTEM Q', 1067, 'AMRAN BIN AYOB                          ', '2016-09-03', 'MALAYSIA', 'Teknologi Maklumat & Multimedia', 'No', 'Active'),
-('PI2016111', 'PRODUCT XYZ', 958, 'JALIL BIN OMAR                          ', '2016-01-05', 'MALAYSIA', 'Pengajian Bahasa Arab', 'No', 'No');
+('PI2016111', 'PRODUCT XYZ', 958, 'JALIL BIN OMAR                          ', '2016-01-05', 'MALAYSIA', 'Pengajian Bahasa Arab', 'No', 'No'),
+('PI20231231', 'SETARA', 1274, 'HAMDANI BIN AHMAD                       ', '2023-12-31', 'MALAYSIA', 'Dakwah & Pembangunan Insan', 'https://encr.pw/DS9Ws', 'Active');
 
 -- --------------------------------------------------------
 
@@ -856,7 +858,8 @@ CREATE TABLE `prod_tech` (
 INSERT INTO `prod_tech` (`staff_id`, `staff_name`, `prod_name`, `Type`, `faculty`, `year`, `comp_name`, `reference_no`, `gross_income`, `link`, `remarks`) VALUES
 (124, 'Ahmad Roslan', 'Tongkat Ali Phyto Plus ', 'product commercial', 'Al-Quran & Hadis', '2009', 'Phyto Biznet Sdn.Bhd.', 'A12298', '93011.12', 'Hyperlink', 'No'),
 (958, 'Ali', 'Tongkat Ali Phyto Plus ', 'licensing', 'Pengajian Bahasa Arab', '2010', 'SYKT ABC', 'JB1806178', '9,000.00', 'HYPERLINK', 'No'),
-(1274, 'HAMDANI BIN AHMAD', 'KIAS EXPERT', 'product commercial', 'Dakwah & Pembangunan Insan', '2023', 'SHE EMPIRES SDN BHD', 'INV00124', '10000', 'https://www.kias.edu.my/info-kias/', 'Active');
+(1274, 'HAMDANI BIN AHMAD', 'KIAS EXPERT', 'product commercial', 'Dakwah & Pembangunan Insan', '2023', 'SHE EMPIRES SDN BHD', 'INV00124', '10000', 'https://www.kias.edu.my/info-kias/', 'Active'),
+(12345, 'Hannan Binti Zulkafli', 'KIAS EXPERT', 'sold outright', 'Pengajian Muamalat', '2023', 'CSNANO TECHNOLOGIES SDN. BHD.', 'INV02024', '50.00', 'https://encr.pw/DS9Ws', 'Active');
 
 -- --------------------------------------------------------
 
@@ -992,7 +995,8 @@ CREATE TABLE `spinn_off` (
 
 INSERT INTO `spinn_off` (`project_id`, `staff_id`, `staff_name`, `regis_comp`, `comp_name`, `date_corp`, `equity`, `desc_research`, `link`, `remarks`) VALUES
 ('1J192', 1274, 'HAMDANI BIN AHMAD                       ', 'RE566', 'SHE EMPIRES SDN BHD', '2016-12-01', 2, 'Providing cosmestic natural product and service', 'HYPERLINK', 'No'),
-('4H300', 11234, 'ROBERT', 'MX123', 'CSNANO TECHNOLOGIES SDN. BHD.', '2016-05-04', 1, 'Providing lab equipment service and maintenance', 'HYPERLINK', 'no');
+('4H300', 11234, 'ROBERT', 'MX123', 'CSNANO TECHNOLOGIES SDN. BHD.', '2016-05-04', 1, 'Providing lab equipment service and maintenance', 'HYPERLINK', 'no'),
+('MY20231231', 1274, 'HAMDANI BIN AHMAD                       ', 'KIAS03', 'SYARIKAT KIAS', '2024-12-31', 50, 'Providing', 'https://encr.pw/DS9Ws', 'Active');
 
 -- --------------------------------------------------------
 
