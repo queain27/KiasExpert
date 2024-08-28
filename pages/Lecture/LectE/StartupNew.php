@@ -86,9 +86,11 @@ if(!isset($_SESSION['user_id']))
     <?php
 require_once "../Auth/config.php";
 
-// Query to get the most recent  spinn_off for each staff member
-$query = " SELECT * FROM spinn_off WHERE date (date_corp) = (SELECT MAX(date(date_corp)) FROM spinn_off )ORDER BY date_corp DESC; ";
-
+// Ambil user_id dari session
+$user_id = $_SESSION['user_id'];
+// Tarik maklumat yang berkaitan dengan pengguna 
+$query = " SELECT * FROM spinn_off WHERE staff_id = '$user_id' AND date(date_corp) = (SELECT MAX(date(date_corp)) 
+          FROM spinn_off WHERE staff_id = '$user_id') ORDER BY date_corp DESC;";
 // Execute the query
 $result = mysqli_query($conn, $query);
 

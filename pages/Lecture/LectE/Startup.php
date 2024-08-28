@@ -63,9 +63,6 @@ if(!isset($_SESSION['user_id']))
 <h3><center><font color="" face="Cambria Math">Spinn-Off or Start-Up Companies<font><br></center></h3>
 <br><br>
 <div class="container pt-50">
-    <div class="text-right mb-3">
-        <a href="../sectionE/addStartup.php" class="btn btn-success">+Add New StartUp</a>
-      </div>
     <div class="table-responsive">
         <table id="example" class="table table-striped" style="width:200%">
             <thead>
@@ -88,7 +85,10 @@ if(!isset($_SESSION['user_id']))
 
 <?php
     require_once "../Auth/config.php";
-    $query = "SELECT * FROM spinn_off";
+    // Ambil user_id dari session
+    $user_id = $_SESSION['user_id'];
+    // Tarik maklumat yang berkaitan dengan pengguna 
+     $query = "SELECT * FROM spinn_off WHERE staff_id = '$user_id'";
     $count =1;
     $result = mysqli_query($conn, $query);
 

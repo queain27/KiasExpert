@@ -87,7 +87,10 @@ if(!isset($_SESSION['user_id']))
 
        <?php
            require_once "../Auth/config.php";
-           $query = "SELECT * FROM know_licen";
+           // Ambil user_id dari session
+           $user_id = $_SESSION['user_id'];
+          // Tarik maklumat yang berkaitan dengan pengguna 
+           $query = "SELECT * FROM know_licen WHERE staff_id = '$user_id'";
            $count =1;
            $result = mysqli_query($conn, $query);
 

@@ -87,9 +87,11 @@ if(!isset($_SESSION['user_id']))
 <?php
 require_once "../Auth/config.php";
 
-// Query to get the most recent patent for each staff member
-$query = " SELECT * FROM patent WHERE date (date_granted) = (SELECT MAX(date(date_granted)) FROM patent )ORDER BY date_granted DESC; ";
-
+// Ambil user_id dari session
+$user_id = $_SESSION['user_id'];
+// Tarik maklumat yang berkaitan dengan pengguna 
+$query = " SELECT * FROM patent WHERE staff_id = '$user_id' AND date(date_granted) = (SELECT MAX(date(date_granted)) 
+          FROM patent WHERE staff_id = '$user_id') ORDER BY date_granted DESC;";
 // Execute the query
 $result = mysqli_query($conn, $query);
 

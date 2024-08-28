@@ -83,7 +83,10 @@ if(!isset($_SESSION['user_id']))
 
        <?php
            require_once "../Auth/config.php";
-           $query = "SELECT * FROM iprs";
+           // Ambil user_id dari session
+           $user_id = $_SESSION['user_id'];
+          // Tarik maklumat yang berkaitan dengan pengguna 
+           $query = "SELECT * FROM iprs WHERE staff_id = '$user_id'";          //  $query = "SELECT * FROM iprs";
            $count =1;
            $result = mysqli_query($conn, $query);
 

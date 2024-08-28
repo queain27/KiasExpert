@@ -84,11 +84,12 @@ if(!isset($_SESSION['user_id']))
 <tbody id="myTable">
 <?php
 require_once "../Auth/config.php";
+// Ambil user_id dari session
+$user_id = $_SESSION['user_id'];
+// Tarik maklumat yang berkaitan dengan pengguna 
+$query = " SELECT * FROM patent_filed WHERE staff_id = '$user_id' AND date(date_filed) = (SELECT MAX(date(date_filed)) 
+          FROM patent_filed WHERE staff_id = '$user_id') ORDER BY date_filed DESC;";
 
-// Query to get the most recent  patent_filed for each staff member
-$query = " SELECT * FROM patent_filed WHERE date (date_filed) = (SELECT MAX(date(date_filed)) FROM patent_filed )ORDER BY date_filed DESC; ";
-
-// Execute the query
 $result = mysqli_query($conn, $query);
 
 if ($result) {

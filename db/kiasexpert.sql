@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 27, 2024 at 11:29 AM
+-- Generation Time: Aug 28, 2024 at 02:03 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -376,7 +376,8 @@ CREATE TABLE `iprs` (
 --
 
 INSERT INTO `iprs` (`ip_id`, `staff_id`, `staff_name`, `ip_name`, `type`, `link`, `remarks`) VALUES
-('IP/CR/2016/0001', 11234, 'ROBERT', 'Documents and guideline of the implementation of Iskandar Malaysia Ecolife Challenge', 'Copyright', 'HYPERLINK', 'No');
+('IP/CR/2016/0001', 11234, 'ROBERT', 'Documents and guideline of the implementation of Iskandar Malaysia Ecolife Challenge', 'Copyright', 'HYPERLINK', 'No'),
+('IP/CR/2023/0001', 1274, 'HAMDANI BIN AHMAD                       ', 'Documents MYRA SETARA', 'Industrial Design', 'https://www.kias.edu.my/info-kias/', 'Active');
 
 -- --------------------------------------------------------
 
@@ -404,7 +405,9 @@ CREATE TABLE `know_licen` (
 --
 
 INSERT INTO `know_licen` (`tech_id`, `staff_id`, `staff_name`, `tech_name`, `type`, `start_date`, `end_date`, `date_achv`, `licensing`, `gross_incom`, `link`, `remarks`) VALUES
-('C002', 11234, 'ROBERT', 'TECHNOLOGY A', 'Outright', '2016-10-22', '2017-10-22', '2016-10-22', 'UTM HOLDING', '15', 'HYPERLINK', 'No');
+('C002', 11234, 'ROBERT', 'TECHNOLOGY A', 'Outright', '2016-10-22', '2017-10-22', '2016-10-22', 'UTM HOLDING', '15', 'HYPERLINK', 'No'),
+('C003', 1274, 'HAMDANI BIN AHMAD                       ', 'TECHNOLOGY IT', 'Licensed', '2023-08-28', '2024-08-28', '2024-01-01', 'KIAS HOLDING', '15000', 'https://www.kias.edu.my/info-kias/', 'No'),
+('C004', 1274, 'HAMDANI BIN AHMAD                       ', 'TECHNOLOGY MYRA', 'Outright', '2023-08-27', '2024-08-27', '2024-02-01', 'KIAS HOLDING', '10000', 'https://www.kias.edu.my/info-kias/', 'No');
 
 -- --------------------------------------------------------
 
@@ -713,6 +716,7 @@ CREATE TABLE `patent_filed` (
 --
 
 INSERT INTO `patent_filed` (`fill_id`, `fill_name`, `staff_id`, `staff_name`, `date_filed`, `country`, `faculty`, `link`, `remarks`) VALUES
+('P11416987', 'PRODUCT XYZ', 1274, 'HAMDANI BIN AHMAD                       ', '2023-01-01', 'MALAYSIA', 'Dakwah & Pembangunan Insan', 'HYPERLINK', '-'),
 ('P12016987', 'SYSTEM Q', 1067, 'AMRAN BIN AYOB                          ', '2016-09-03', 'MALAYSIA', 'Teknologi Maklumat & Multimedia', 'No', 'Active'),
 ('PI2016111', 'PRODUCT XYZ', 958, 'JALIL BIN OMAR                          ', '2016-01-05', 'MALAYSIA', 'Pengajian Bahasa Arab', 'No', 'No');
 
@@ -851,7 +855,8 @@ CREATE TABLE `prod_tech` (
 
 INSERT INTO `prod_tech` (`staff_id`, `staff_name`, `prod_name`, `Type`, `faculty`, `year`, `comp_name`, `reference_no`, `gross_income`, `link`, `remarks`) VALUES
 (124, 'Ahmad Roslan', 'Tongkat Ali Phyto Plus ', 'product commercial', 'Al-Quran & Hadis', '2009', 'Phyto Biznet Sdn.Bhd.', 'A12298', '93011.12', 'Hyperlink', 'No'),
-(958, 'Ali', 'Tongkat Ali Phyto Plus ', 'licensing', 'Pengajian Bahasa Arab', '2010', 'SYKT ABC', 'JB1806178', '9,000.00', 'HYPERLINK', 'No');
+(958, 'Ali', 'Tongkat Ali Phyto Plus ', 'licensing', 'Pengajian Bahasa Arab', '2010', 'SYKT ABC', 'JB1806178', '9,000.00', 'HYPERLINK', 'No'),
+(1274, 'HAMDANI BIN AHMAD', 'KIAS EXPERT', 'product commercial', 'Dakwah & Pembangunan Insan', '2023', 'SHE EMPIRES SDN BHD', 'INV00124', '10000', 'https://www.kias.edu.my/info-kias/', 'Active');
 
 -- --------------------------------------------------------
 
@@ -1030,7 +1035,7 @@ INSERT INTO `staff` (`staff_id`, `staff_name`, `grade`, `position`, `first_appoi
 (958, 'JALIL BIN OMAR                          ', 'DS52', 'SENIOR LECTURER', '26-APR-76', '', '12-JUL-15', '12-Jul-55', 3, 'A', 'PHD', '', '', '', 'Pengajian Bahasa Arab', '', 'ACTIVE', 'PERMANENT', 'FULL TIME', 'LOCAL', 'MALAYSIA', 'HYPERLINK', ''),
 (992, 'ANIE BTE ATTAN                          ', 'KQ54', 'Professor', '2024-07-04', '2024-07-10', '2024-07-04', '2024-07-10', 55, 'A', 'PHD', '', 'ETC', '', 'Al-Quran & Hadis', 'NON S&T', 'Sabbatical', 'Contract', 'Full-Time', 'Local', 'MALAYSIA', 'HYPERLINK', 'STAF DILANTIK SEMULA'),
 (1067, 'AMRAN BIN AYOB                          ', 'DS53', 'ASSOCIATE PROFESSOR', '03-Sep-76', '', '10-Oct-16', '11-Oct-52', 0, 'A', 'PHD', '', '', '', 'Teknologi Maklumat & Multimedia', '', 'ACTIVE', 'CONTRACT', 'FULL TIME', 'LOCAL', 'MALAYSIA', 'HYPERLINK', ''),
-(1274, 'HAMDANI BIN AHMAD                       ', 'VK05', '', '', '', '', '', 44, 'B', 'PHD', 'A', 'ETC', 'BEM 123', 'Dakwah & Pembangunan Insan', 'NON S&T', 'Active', 'Permanent', 'Full-Time', 'Local', 'MALAYSIA', 'HYPERLINK', 'no'),
+(1274, 'HAMDANI BIN AHMAD                       ', 'VK05', 'Professor', '1997-05-09', '2016-01-01', '2016-02-06', '1997-01-28', 49, 'B', 'PHD', 'A', 'ETC', 'BEM 123', 'Dakwah & Pembangunan Insan', 'NON S&T', 'Active', 'Contract', 'Full-Time', 'Local', 'MALAYSIA', 'HYPERLINK', 'No'),
 (11234, 'ROBERT', 'VK06', 'PROFESSOR', '01-Nov-74', '', '10-Oct-16', '09-Oct-52', 0, 'A', 'PHD', '', 'IR', 'BEM 123', 'J23-FAKULTI KEJURUTERAAN ELEKTRIK ', 'S&T', 'ACTIVE', 'CONTRACT', 'FULL TIME', 'FOREIGN', 'INDIA', 'HYPERLINK', ''),
 (12345, 'Hannan Binti Zulkafli', 'VK09', 'Professor', '2024-07-04', '2024-07-18', '2024-07-11', '2024-07-17', 55, 'A', 'PHD', 'u', 'ACCA', 'BEM 123', 'Pengajian Muamalat', 'S&T', 'Leaves', 'Permanent', 'Full-Time', 'Foreign', 'Indonesia', 'LINK', 'STAFF');
 
