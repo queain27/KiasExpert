@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 28, 2024 at 03:19 AM
+-- Generation Time: Aug 28, 2024 at 07:31 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -483,7 +483,12 @@ CREATE TABLE `library` (
 INSERT INTO `library` (`id`, `type`, `name`, `title`, `volume`, `link`) VALUES
 (1, 'Online Book', 'Online Database', '81', '81', 'No'),
 (2, 'Online Book', 'Online Database 2', '100', '100', 'No'),
-(3, 'Physical Book', 'Book', '125', '1000', '- ');
+(3, 'Physical Book', 'Book', '125', '1000', 'https://encr.pw/DS9Ws'),
+(4, 'Physical Book', 'INSTITUT BAHAN KIMIA', '123', '123', 'HYPERLINK'),
+(5, 'Journal Subscribed', 'Journal', '1000', '123', 'https://encr.pw/DS9Ws'),
+(6, 'Journal Subscribed', 'Journal Database 2', '2000', '1000', 'https://encr.pw/DS9Ws'),
+(7, 'Physical Book', 'Data', '100', '1000', 'https://encr.pw/DS9Ws'),
+(8, 'Online Book', 'Online Database 3', '1234', '1000', 'https://encr.pw/DS9Ws');
 
 -- --------------------------------------------------------
 
@@ -838,6 +843,7 @@ INSERT INTO `post_fee` (`reference_no`, `matric_no`, `student_name`, `faculty`, 
 --
 
 CREATE TABLE `prod_tech` (
+  `reference_no` varchar(255) NOT NULL,
   `staff_id` int(50) NOT NULL,
   `staff_name` varchar(255) NOT NULL,
   `prod_name` varchar(255) NOT NULL,
@@ -845,7 +851,6 @@ CREATE TABLE `prod_tech` (
   `faculty` varchar(255) NOT NULL,
   `year` varchar(50) NOT NULL,
   `comp_name` varchar(255) NOT NULL,
-  `reference_no` varchar(255) NOT NULL,
   `gross_income` varchar(255) NOT NULL,
   `link` varchar(255) NOT NULL,
   `remarks` varchar(255) NOT NULL
@@ -855,11 +860,13 @@ CREATE TABLE `prod_tech` (
 -- Dumping data for table `prod_tech`
 --
 
-INSERT INTO `prod_tech` (`staff_id`, `staff_name`, `prod_name`, `Type`, `faculty`, `year`, `comp_name`, `reference_no`, `gross_income`, `link`, `remarks`) VALUES
-(124, 'Ahmad Roslan', 'Tongkat Ali Phyto Plus ', 'product commercial', 'Al-Quran & Hadis', '2009', 'Phyto Biznet Sdn.Bhd.', 'A12298', '93011.12', 'Hyperlink', 'No'),
-(958, 'Ali', 'Tongkat Ali Phyto Plus ', 'licensing', 'Pengajian Bahasa Arab', '2010', 'SYKT ABC', 'JB1806178', '9,000.00', 'HYPERLINK', 'No'),
-(1274, 'HAMDANI BIN AHMAD', 'KIAS EXPERT', 'product commercial', 'Dakwah & Pembangunan Insan', '2023', 'SHE EMPIRES SDN BHD', 'INV00124', '10000', 'https://www.kias.edu.my/info-kias/', 'Active'),
-(12345, 'Hannan Binti Zulkafli', 'KIAS EXPERT', 'sold outright', 'Pengajian Muamalat', '2023', 'CSNANO TECHNOLOGIES SDN. BHD.', 'INV02024', '50.00', 'https://encr.pw/DS9Ws', 'Active');
+INSERT INTO `prod_tech` (`reference_no`, `staff_id`, `staff_name`, `prod_name`, `Type`, `faculty`, `year`, `comp_name`, `gross_income`, `link`, `remarks`) VALUES
+('A12298', 124, 'Ahmad Roslan', 'Tongkat Ali Phyto Plus ', 'product commercial', 'Al-Quran & Hadis', '2009 ', 'Phyto Biznet Sdn.Bhd.', ' 5000', 'HYPERLINK', 'No'),
+('INV00100', 1274, 'HAMDANI BIN AHMAD                       ', 'KIAS EXPERT', 'product commercial', 'Dakwah & Pembangunan Insan', '2023', 'SYKT ABC', '5000', 'No', 'Active'),
+('INV00101', 1274, 'HAMDANI BIN AHMAD                       ', 'KIAS EXPERT LICENSING', 'product commercial', 'Dakwah & Pembangunan Insan', '2023', 'SYARIKAT EMPIRE', '1000', 'https://encr.pw/DS9Ws', 'Active'),
+('INV00102', 1274, 'HAMDANI BIN AHMAD                       ', 'KIAS EXPERT', 'licensing', 'Dakwah & Pembangunan Insan', '2018', 'Phyto Biznet Sdn.Bhd.', '1000', 'https://encr.pw/DS9Ws', 'Active'),
+('INV02024', 12345, 'Hannan Binti Zulkafli', 'KIAS EXPERT', 'sold outright', 'Pengajian Muamalat', '2015', 'CSNANO TECHNOLOGIES SDN. BHD.', '10000', 'Hyperlink', 'Active'),
+('JB1806178', 958, 'Ali', 'Tongkat Ali Phyto Plus ', 'licensing', 'Pengajian Bahasa Arab', '2010', 'SYKT ABC', '9,000.00', 'HYPERLINK', 'No');
 
 -- --------------------------------------------------------
 
@@ -1323,7 +1330,7 @@ ALTER TABLE `post_fee`
 -- Indexes for table `prod_tech`
 --
 ALTER TABLE `prod_tech`
-  ADD PRIMARY KEY (`staff_id`);
+  ADD PRIMARY KEY (`reference_no`);
 
 --
 -- Indexes for table `research`
@@ -1399,7 +1406,7 @@ ALTER TABLE `endownment`
 -- AUTO_INCREMENT for table `library`
 --
 ALTER TABLE `library`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `nationalorganisation`

@@ -110,7 +110,7 @@ if(!isset($_SESSION['user_id']))
             <td style="text-align: center"><a href="<?php echo $row['link']; ?>" target="_blank"><?php echo $row['link']; ?></a>
             <td style="text-align: center"><?php echo $row['remarks']; ?></td>
             <td style="text-align: center;">
-            <a href="editProduct.php?ID=<?php echo $row['staff_id']; ?>" class="btn btn-primary btn-sm"><i class="fa-solid fa-pen-to-square fs-5 me-3"></i></a>
+            <a href="editProduct.php?ID=<?php echo $row['reference_no']; ?>" class="btn btn-primary btn-sm"><i class="fa-solid fa-pen-to-square fs-5 me-3"></i></a>
             </td>
         </tr>
         <?php

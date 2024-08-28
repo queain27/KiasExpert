@@ -8,38 +8,36 @@ if(!isset($_SESSION['user_id']))
     exit;
 }
 include "../examples/config.php";
-$staff_id =$_GET['ID'];
+$reference_no =$_GET['ID'];
 
 if(isset($_POST ['submit']))
 {
 
   $staff_name = $_POST['staff_name']; 
+  $staff_id = $_POST['staff_id'];
   $prod_name = $_POST['prod_name'];
   $comp_name = $_POST['comp_name'];
   $faculty = $_POST['faculty'];
   $Type= $_POST['Type'];
   $year= $_POST['year'];
-  $reference_no = $_POST['reference_no'];
   $gross_income = $_POST['gross_income'];
   $link = $_POST['link'];
   $remarks = $_POST['remarks'];
 
-   $sql = mysqli_query($conn, "UPDATE `prod_tech` SET `staff_name`='$staff_name',`prod_name`='$prod_name',`comp_name`='$comp_name',`faculty`='$faculty',`Type`='$Type',`year`='$year',`reference_no`='$reference_no',`gross_income`='$gross_income',`link`='$link',`remarks`='$remarks' WHERE staff_id=$staff_id");
-
+$stmt = $conn->prepare("UPDATE prod_tech SET staff_id=?,staff_name=?, prod_name=?,  Type=?, faculty=?, year=?, comp_name=?,gross_income=?, link=?, remarks=? WHERE reference_no=?");
+$stmt->bind_param("sssssssssss",  $staff_id, $staff_name, $prod_name, $Type, $faculty, $year, $comp_name, $gross_income,$link, $remarks, $reference_no);
       
-   if($sql){
-    echo "<script>alert('New record successsfully update');</script>";
+if ($stmt->execute()) {
+    echo "<script>alert('New record successfully updated');</script>";
     echo "<script>document.location='Product.php';</script>";
- }
-
- else
- { 
-    echo "<script>alert('Something Wrong or Reference Number Already Exists );</script>";
-
- }
+} else {
+    echo "<script>alert('Something went wrong');</script>";
 }
 
+$stmt->close();
+}
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -63,21 +61,27 @@ if(isset($_POST ['submit']))
     <link rel="shortcut icon" href="../../imcomp_names/Logo2.png" type="imcomp_name/x-icon">
 </head>
 <body>
-    <div class="container">
-        <div class="text-center mb-4">
-            <b><p>Click Update After Finish Changing Information</p></b>
-        </div>
+<div class="container">
+       <div class="text-center mb-5"><br><br><br><br>
+        <b><p>Click Update After Finish Changing Information</p></b>
+    </div>
+    <?php 
+        $reference_no = mysqli_real_escape_string($conn, $reference_no); // Sanitize the input to prevent SQL injection
+        $stmt = $conn->prepare("SELECT * FROM prod_tech WHERE reference_no = ? LIMIT 1");
+        $stmt->bind_param("s", $reference_no);
+        $stmt->execute();
+        $result = $stmt->get_result();
 
-        <?php 
-        $sql = "SELECT * FROM `prod_tech` WHERE staff_id = $staff_id LIMIT 1";
-        $result = mysqli_query($conn, $sql);
-        $row = mysqli_fetch_assoc($result);
-        ?>
-
-        <div class="container d-flex justify-content-center">
-            <form action="" method="post" style="width:50vw; min-width:300px;">
-                <div class="row">
-
+        if ($result) {
+            $row = $result->fetch_assoc();
+        } else {
+            echo "Error: " . mysqli_error($conn);
+        }
+        $stmt->close();
+    ?>
+    <div class="container d-flex justify-content-center">
+        <form action="" method="post" style="width:50vw; min-width:300px;">
+            <div class="row">
                     <!-- Staff ID -->
                     <div class="col-md-6 mb-3">
                         <label class="form-label">STAFF ID:</label>
@@ -159,12 +163,12 @@ if(isset($_POST ['submit']))
                         <label class="form-label">REMARKS:</label>
                         <input type="text" class="form-control" name="remarks" value="<?php echo $row['remarks']?>">
                     </div>         
-               <div>
-                  <center>
-                       <button type ="submit" class="btn btn-success" name="submit">UPDATE</button>
-                       <a href="Product.php" class="btn btn-danger">Cancel</a>
-              </div>
-                 </center>
+               
+            <!-- Button -->
+            <div class="text-center">
+                <button type="submit" class="btn btn-success" name="submit">UPDATE</button>
+                <a href="Product.php" class="btn btn-danger">Cancel</a>
+            </div>
           </form>
      </div>
 </div>

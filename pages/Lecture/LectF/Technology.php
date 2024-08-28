@@ -88,10 +88,7 @@ if(!isset($_SESSION['user_id']))
         // Ambil user_id dari session
         $user_id = $_SESSION['user_id'];
         // Tarik maklumat yang berkaitan dengan pengguna 
-         $query = "SELECT * 
-FROM prod_tech 
-WHERE staff_id = '$user_id' 
-  AND (Type = 'licensing' OR Type = 'sold outright');
+         $query = "SELECT * FROM prod_tech  WHERE staff_id = '$user_id' AND (Type = 'licensing' OR Type = 'sold outright');
 ";
          $count =1;
          $result = mysqli_query($conn, $query);
@@ -113,7 +110,7 @@ WHERE staff_id = '$user_id'
             <td style="text-align: center"><a href="<?php echo $row['link']; ?>" target="_blank"><?php echo $row['link']; ?></a>
             <td style="text-align: center"><?php echo $row['remarks']; ?></td>
             <td style="text-align: center;">
-            <a href="editProduct.php?ID=<?php echo $row['staff_id']; ?>" class="btn btn-primary btn-sm"><i class="fa-solid fa-pen-to-square fs-5 me-3"></i></a>            </td>
+            <a href="editProduct.php?ID=<?php echo $row['reference_no']; ?>" class="btn btn-primary btn-sm"><i class="fa-solid fa-pen-to-square fs-5 me-3"></i></a>            </td>
         </tr>
         <?php
           $count = $count+1;

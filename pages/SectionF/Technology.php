@@ -11,9 +11,9 @@ if(!isset($_SESSION['user_id']))
 include "../examples/config.php";
 
 if (isset($_GET['delid'])) {
-    $staff_id = $_GET['delid'];
-    $stmt = $conn->prepare("DELETE FROM prod_tech WHERE staff_id = ?");
-    $stmt->bind_param("s", $staff_id);
+    $reference_no = $_GET['delid'];
+    $stmt = $conn->prepare("DELETE FROM prod_tech WHERE reference_no = ?");
+    $stmt->bind_param("s", $reference_no);
 
     if ($stmt->execute()) {
         echo "<script>alert('Record successfully deleted');</script>";
@@ -135,8 +135,8 @@ if (isset($_GET['delid'])) {
             <td style="text-align: center"><a href="<?php echo $row['link']; ?>" target="_blank"><?php echo $row['link']; ?></a>
             <td style="text-align: center"><?php echo $row['remarks']; ?></td>
             <td style="text-align: center;">
-            <a href="../sectionF/editProduct.php?ID=<?php echo $row['staff_id']; ?>" class="btn btn-primary btn-sm"><i class="fa-solid fa-pen-to-square fs-5 me-3"></i></a>
-            <a href="Technology.php?delid=<?php echo htmlentities($row['staff_id']); ?>" onClick="return confirm('Do you really want to remove this Record?');" class="btn btn-danger btn-sm"><i class="fa-solid fa-trash fs-5 me-3"></i></a>
+            <a href="../sectionF/editProduct.php?ID=<?php echo $row['reference_no']; ?>" class="btn btn-primary btn-sm"><i class="fa-solid fa-pen-to-square fs-5 me-3"></i></a>
+            <a href="Technology.php?delid=<?php echo htmlentities($row['reference_no']); ?>" onClick="return confirm('Do you really want to remove this Record?');" class="btn btn-danger btn-sm"><i class="fa-solid fa-trash fs-5 me-3"></i></a>
             </td>
         </tr>
         <?php

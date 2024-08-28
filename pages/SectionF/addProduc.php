@@ -12,6 +12,7 @@ include "../examples/config.php";
 if(isset($_POST ['submit']))
 
 {
+   $reference_no = $_POST['reference_no'];
    $staff_id = $_POST['staff_id'];
    $staff_name = $_POST['staff_name']; 
    $prod_name = $_POST['prod_name'];
@@ -19,18 +20,19 @@ if(isset($_POST ['submit']))
    $faculty = $_POST['faculty'];
    $year= $_POST['year'];
    $comp_name = $_POST['comp_name'];
-   $reference_no = $_POST['reference_no'];
    $gross_income = $_POST['gross_income'];
    $link = $_POST['link'];
    $remarks = $_POST['remarks'];
 
-   $sql = mysqli_query($conn, "INSERT INTO `prod_tech` (`staff_id`, `staff_name`, `prod_name`, `Type`,`faculty`, `year`,`comp_name`, `reference_no`, `gross_income`, `link`, `remarks`) VALUES ('$staff_id', '$staff_name', '$prod_name',  '$Type','$faculty',  '$year','$comp_name', '$reference_no', '$gross_income',  '$link', '$remarks')");
+
+   $sql = mysqli_query($conn, "INSERT INTO prod_tech (reference_no,staff_id,staff_name,prod_name,Type,faculty,year,comp_name,gross_income,link,remarks)
+        VALUES ('$reference_no','$staff_id', '$staff_name', '$prod_name',  '$Type','$faculty',  '$year','$comp_name', '$gross_income','$link','$remarks')");
 
    if($sql) {
        echo "<script>alert('New record successfully added');</script>";
        echo "<script>document.location='Product.php';</script>";
    } else {
-       echo "<script>alert('Staff ID Already Exists');</script>";
+       echo "<script>alert('Reference Number Already Exists');</script>";
    }
 }
 ?>

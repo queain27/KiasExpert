@@ -162,7 +162,7 @@ if (isset($_POST['submit'])) {
             <!-- Button -->
             <div class="text-center">
                 <button type="submit" class="btn btn-success" name="submit">UPDATE</button>
-                <a href="patent.php" class="btn btn-danger">Cancel</a>
+                <a href="Patent.php" class="btn btn-danger">Cancel</a>
             </div>
         </form>
     </div>

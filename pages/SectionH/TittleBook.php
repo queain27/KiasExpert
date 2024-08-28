@@ -115,7 +115,7 @@ if(isset($_GET['delid']))
             <td style="text-align: center"><?php echo $row ['name']?></td>
             <td style="text-align: center"><?php echo $row ['title']?></td><?php $AmtTitle += $row["title"];?>
             <td style="text-align: center"><?php echo $row ['volume']?></td><?php $TotVolume += $row["volume"];?>
-            <td style="text-align: center"><?php echo $row ['link']?></td>
+            <td style="text-align: center"><a href="<?php echo $row['link']; ?>" target="_blank"><?php echo $row['link']; ?></a>
             <td style="text-align: center;"><a href="editLibrary.php?ID=<?php echo $row['id']; ?>" class="btn btn-primary btn-sm"><i class="fa-solid fa-pen-to-square fs-5 me-3"></i></a>
             <a href="TittleBook.php?delid=<?php echo htmlentities($row['id']); ?>" onClick="return confirm('Do you really want to remove this Record?');" class="btn btn-danger btn-sm"><i class="fa-solid fa-trash fs-5 me-3"></i></a></td>
          <?php

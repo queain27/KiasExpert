@@ -331,7 +331,7 @@
  <li class="nav-item">
    <a href="#" class="nav-link">
      <i class="nav-icon fas fa-handshake icon"></i>
-     <p>F. Professional Service & Gifts
+     <p>Professional Service & Gifts
        <i class="fas fa-angle-left right"></i>
      </p>
    </a>

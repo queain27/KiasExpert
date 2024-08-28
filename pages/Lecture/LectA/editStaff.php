@@ -76,6 +76,8 @@ if(isset($_POST ['submit']))
 <link rel="stylesheet" href="../../../css/navbar.css">
 <link rel="shortcut icon" href="../../../images/Logo2.png" type="image/x-icon">
 </head>
+
+<body>
 <script>
   document.addEventListener('DOMContentLoaded', function() {
     const ageInput = document.getElementById('ageInput');
@@ -174,8 +176,8 @@ if(isset($_POST ['submit']))
                         <input type="date" class="form-control" name="dob" value="<?php echo $row['dob']?>">
                     </div>
 
-                   <!--Age-->
-                     <div class="col-md-6 mb-3">
+                    <!--Age-->
+                    <div class="col-md-6 mb-3">
                         <label class="form-label">AGE:</label>
                         <input type="text" class="form-control" id="ageInput" name="age" value="<?php echo $row['age']?>">
                     </div>
@@ -185,6 +187,7 @@ if(isset($_POST ['submit']))
                         <label class="form-label">COHORT:</label>
                         <input type="text" class="form-control" id="cohortInput" name="cohort" value="<?php echo $row['cohort']?>"readonly required>
 
+                    </div>
                     <!-- Academic Qualification -->
                     <div class="col-md-6 mb-3">
                         <label class="form-label">ACADEMIC QUALIFICATION:</label>
@@ -321,4 +324,3 @@ if(isset($_POST ['submit']))
  <!--Boostrap-->
 </body>
 </html>
-
