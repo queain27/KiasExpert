@@ -359,10 +359,26 @@
                    <i class="far fa-circle nav-icon"></i>
                    <p>(b) Technology Know-How Licensing/Sold outright Sale </p>
                  </a>
+                 </ul>
+     </li>
+<!--F4-->
+<li class="nav-item">
+     <a href="#" class="nav-link">
+        <i class="far fa-circle nav-icon"></i>
+          <p>Financial transaction
+            <i class="fas fa-angle-left right"></i>
+         </p>
+     </a>  
+     <ul class="nav nav-treeview">
+       <!--a-->
+               <li class="nav-item">
+                 <a href="../Lecture/LectF/Consultancies.php" class="nav-link">
+                   <i class="far fa-circle nav-icon"></i>
+                   <p>Consultancies</p>
+                 </a>
                </li>
          </ul>
      </li>
-
     </ul>  
  </li>
  <!--Seksyen F End-->

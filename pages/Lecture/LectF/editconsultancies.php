@@ -4,10 +4,10 @@ session_start();
 if(!isset($_SESSION['user_id']))
 
 {
-    header('Location: ../examples/login.php'); 
+    header('Location: ../Auth/login.php'); 
     exit;
 }
-include "../examples/config.php";
+include "../Auth/config.php";
 $reference_no= ($_GET['ID']); // Ensure the REFERENCE NO. is an integer
 
 if (isset($_POST['submit'])) {
@@ -47,13 +47,13 @@ if (isset($_POST['submit'])) {
         background-size: cover;
     }
 </style>
-<link rel="stylesheet" href="../../bootstrap/css/bootstrap.min.css">
-<script src="../../bootstrap/js/jquery.min.js"></script>
-<script src="../../bootstrap/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="../../../bootstrap/css/bootstrap.min.css">
+<script src="../../../bootstrap/js/jquery.min.js"></script>
+<script src="../../../bootstrap/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="../../css/navbar.css">
-<link rel="shortcut icon" href="../../images/Logo2.png" type="image/x-icon">
+<link rel="stylesheet" href="../../../css/navbar.css">
+<link rel="shortcut icon" href="../../../images/Logo2.png" type="image/x-icon">
 </head>
 
 <body>
