@@ -13,7 +13,7 @@ $staff_id =$_GET['ID'];
 
 if(isset($_POST ['submit']))
 {
-
+  $icnumber = $_POST['icnumber']; 
   $staff_name = $_POST['staff_name']; 
   $grade = $_POST['grade'];
   $position = $_POST['position'];
@@ -37,7 +37,7 @@ if(isset($_POST ['submit']))
   $link_evidence = $_POST['link_evidence'];
   $remarks = $_POST['remarks'];
 
-   $sql = mysqli_query($conn, "UPDATE `staff` SET `staff_name`='$staff_name',`grade`='$grade',`position`='$position',
+   $sql = mysqli_query($conn, "UPDATE `staff` SET `icnumber`='$icnumber',`staff_name`='$staff_name',`grade`='$grade',`position`='$position',
    `first_appointment`='$first_appointment' ,`current_appointment`='$current_appointment',`serve_date`='$serve_date',`dob`='$dob',`age`='$age',`cohort`='$cohort',`aca_qua`='$aca_qua',`name_prof`='$name_prof',`prof_qual`='$prof_qual',`regis_prof`='$regis_prof',`faculty`='$faculty',`st`='$st',`status`='$status',`status_contract`='$status_contract',
    `status_time`='$status_time',`citizen`='$citizen',`country`='$country',`link_evidence`='$link_evidence',`remarks`='$remarks' WHERE staff_id=$staff_id");
 
@@ -129,6 +129,10 @@ if(isset($_POST ['submit']))
                         <input type="text" class="form-control" name="staff_id" value="<?php echo $row['staff_id']?>" readonly>
                     </div>
 
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">IC NUMBER:</label>
+                        <input type="text" class="form-control" name="icnumber" value="<?php echo $row['icnumber']?>">
+                    </div>
                     <!-- Name -->
                     <div class="col-md-6 mb-3">
                         <label class="form-label">STAFF NAME:</label>
@@ -181,13 +185,13 @@ if(isset($_POST ['submit']))
                                     <!--Age-->
                     <div class="col-md-6 mb-3">
                         <label class="form-label">AGE:</label>
-                        <input type="text" class="form-control" id="ageInput" name="age" placeholder="AGE" required>
+                        <input type="text" class="form-control" id="ageInput" name="age" placeholder="AGE" value="<?php echo $row['age']?>" required>
                     </div>
                     
                     <!-- Cohort -->
                     <div class="col-md-6 mb-3">
                         <label class="form-label">COHORT:</label>
-                        <input type="text" class="form-control" id="cohortInput" name="cohort" readonly required>
+                        <input type="text" class="form-control" id="cohortInput" name="cohort" value="<?php echo $row['cohort']?>"  readonly required>
                     </div>
                     <!-- Academic Qualification -->
                     <div class="col-md-6 mb-3">

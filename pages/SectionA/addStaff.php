@@ -13,6 +13,7 @@ if(isset($_POST ['submit']))
 
 {
    $staff_id = $_POST['staff_id'];
+   $icnumber = $_POST['icnumber'];
    $staff_name = $_POST['staff_name'];
    $grade = $_POST['grade'];
    $position = $_POST['position'];
@@ -36,7 +37,7 @@ if(isset($_POST ['submit']))
    $link_evidence = $_POST['link_evidence'];
    $remarks = $_POST['remarks'];
 
-   $sql = mysqli_query($conn, "INSERT INTO `staff` (`staff_id`, `staff_name`, `grade`, `position`, `first_appointment`, `current_appointment`, `serve_date`, `dob`, `age`, `cohort`, `aca_qua`, `name_prof`, `prof_qual`, `regis_prof`, `faculty`, `st`, `status`, `status_contract`, `status_time`, `citizen`, `country`, `link_evidence`, `remarks`) VALUES ('$staff_id', '$staff_name', '$grade', '$position', '$first_appointment', '$current_appointment', '$serve_date', '$dob', '$age', '$cohort', '$aca_qua', '$name_prof', '$prof_qual', '$regis_prof', '$faculty', '$st', '$status', '$status_contract', '$status_time', '$citizen', '$country', '$link_evidence', '$remarks')");
+   $sql = mysqli_query($conn, "INSERT INTO `staff` (`staff_id`, `icnumber`,`staff_name`, `grade`, `position`, `first_appointment`, `current_appointment`, `serve_date`, `dob`, `age`, `cohort`, `aca_qua`, `name_prof`, `prof_qual`, `regis_prof`, `faculty`, `st`, `status`, `status_contract`, `status_time`, `citizen`, `country`, `link_evidence`, `remarks`) VALUES ('$staff_id','$icnumber','$staff_name', '$grade', '$position', '$first_appointment', '$current_appointment', '$serve_date', '$dob', '$age', '$cohort', '$aca_qua', '$name_prof', '$prof_qual', '$regis_prof', '$faculty', '$st', '$status', '$status_contract', '$status_time', '$citizen', '$country', '$link_evidence', '$remarks')");
 
    if($sql) {
        echo "<script>alert('New record successfully added');</script>";
@@ -107,6 +108,11 @@ if(isset($_POST ['submit']))
           <div class="col-md-6 mb-3">
             <label class="form-label">STAFF ID:</label>
             <input type="text" class="form-control" name="staff_id" placeholder="Staff ID" required>
+          </div>
+        
+          <div class="col-md-6 mb-3">
+            <label class="form-label">IC NUMBER:</label>
+            <input type="text" class="form-control" name="icnumber" placeholder="Ic Number" required>
           </div>
           <!--Name-->
           <div class="col-md-6 mb-3">

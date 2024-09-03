@@ -128,30 +128,20 @@ mysqli_close($conn);
 
       <main id="main" class="main">
 
-      <style>
-    .portrait-img {
-        width: 200px; /* Set the desired width */
-        height: 200px; /* Set the desired height */
-        object-fit: cover; /* Maintains aspect ratio and covers the specified area */
-        border-radius: 8px; /* Optional: For rounded corners */
-    }
-</style>
-
+     
 
 <section class="section profile">
     <div class="row">
     <div class="col-xl-4">
-        <div class="card">
-            <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
+    <div class="card">
+        <div class="card-body profile-card pt-4 d-flex flex-column justify-content-center align-items-center text-center">
             <img src="<?php echo empty($image) ? 'uploads/default.jpg' : 'uploads/' . $image; ?>" alt="Profile" id="previewAndUpdateImage" class="portrait-img">
-
-
             <h2><?php echo $staff_name; ?></h2>
             <br>
             <h2><?php echo $staff_id; ?></h2>
-            </div>
         </div>
     </div>
+</div>
 
 
 <div class="col-xl-8">
