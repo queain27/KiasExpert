@@ -107,6 +107,8 @@ mysqli_close($conn);
         .hidden {
             display: none;
         }
+ 
+
     </style>
    
   
@@ -135,10 +137,11 @@ mysqli_close($conn);
     <div class="col-xl-4">
     <div class="card">
         <div class="card-body profile-card pt-4 d-flex flex-column justify-content-center align-items-center text-center">
-            <img src="<?php echo empty($image) ? 'uploads/default.jpg' : 'uploads/' . $image; ?>" alt="Profile" id="previewAndUpdateImage" class="portrait-img">
-            <h2><?php echo $staff_name; ?></h2>
-            <br>
-            <h2><?php echo $staff_id; ?></h2>
+            <img src="<?php echo empty($image) ? 'uploads/default.jpg' : 'uploads/' . $image; ?>" alt="Profile" id="previewAndUpdateImage" style="max-width: 100%; width: 700px;">
+            
+        
+            <h2 class="text-center"><?php echo $staff_name; ?></h2>
+          
         </div>
     </div>
 </div>
@@ -273,10 +276,7 @@ mysqli_close($conn);
                 <div class="row">
                     <!-- Staff ID -->
                      <br>
-                    <div class="col-md-6 mb-3">
-                        <label class="form-label">STAFF ID:</label>
-                        <input type="text" class="form-control" name="staff_id" value="<?php echo $row['staff_id']?>" readonly>
-                    </div><div class="row mb-3">
+                    <div class="row mb-3">
                 <label for="profileImage" class="col-md-4 col-lg-3 col-form-label">PROFILE IMAGE</label>
                 <div class="col-md-8 col-lg-9">
                     <img src="<?php echo empty($image) ? 'uploads/default.jpg' : 'uploads/' . $image; ?>" alt="Profile" id="previewImage">
