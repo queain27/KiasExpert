@@ -90,7 +90,10 @@ if(isset($_POST ['submit']))
 
   <div class="container-fluid">
     <div class="container">
-     
+         <?php
+        require "../../crudheader.php";
+        createHeader('fa fa-briefcase', 'Add New Student', 'Add Student');
+      ?>
       <div class="container">
         <div class="row">
           <div class="col-sm-12">
