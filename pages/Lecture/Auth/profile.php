@@ -62,7 +62,7 @@ if ($stmt) {
         $country = $row['country'];
         $link_evidence = $row['link_evidence'];
         $remarks = $row['remarks'];
-       $imageSrc = !empty($image) ? 'uploads/' . $image : 'uploads/default.jpg';
+      // $imageSrc = !empty($image) ? 'uploads/' . $image : 'uploads/default.jpg';
 
     } else {
         // Handle the case when no data is found for the given ID
@@ -121,7 +121,7 @@ mysqli_close($conn);
 <?php
     // Example PHP code to get the image from the database
     // Replace with your actual database fetching code
-    $image = null; // Simulating a null image from the database
+   // $image = null; // Simulating a null image from the database
     // Display the profile image
     ?>
       
@@ -135,7 +135,7 @@ mysqli_close($conn);
     <div class="col-xl-4">
         <div class="card">
             <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
-            <img src="<?php echo htmlspecialchars($imageSrc); ?>" alt="Profile" id="profileImage" width="150">
+            <img src="<?php echo empty($image) ? 'uploads/default.jpg' : 'uploads/' . $image; ?>" alt="Profile" id="previewAndUpdateImage()" width="150">
 
             <h2><?php echo $staff_name; ?></h2>
             <br>
@@ -278,93 +278,49 @@ mysqli_close($conn);
                         <label class="form-label">STAFF ID:</label>
                         <input type="text" class="form-control" name="staff_id" value="<?php echo $row['staff_id']?>" readonly>
                     </div>
-                    <!---image--->
-                    <div class="row mb-3">
-                    <label for="profileImage" class="col-md-4 col-lg-3 col-form-label">Gambar Profile</label>
-                    <div class="col-md-8 col-lg-9">
-                        <img src="<?php echo empty($image) ? 'uploads/default.jpg' : 'uploads/' . $image; ?>" alt="Profile" id="previewImage" style="max-width: 100px; max-height: 100px;">
-                        <div class="pt-2">
-                            <label for="image" class="btn btn-primary btn-sm" title="Upload new profile image">
-                                <i class="bi bi-upload"></i> Upload
-                                <input type="file" id="image" name="image" style="display: none;" accept="image/*" onchange="previewAndUpdateImage()">
-                            </label>
-                            <input type="hidden" name="currentImage" value="<?php echo htmlspecialchars($image); ?>">
-                            <a href="#" class="btn btn-danger btn-sm" title="Remove my profile image" id="removeImageButton">
-                                <i class="bi bi-trash"></i> Remove
-                            </a>
-                        </div>
-                    </div>
-                </div>
+                                             <div class="row mb-3">
+                                            <label for="profileImage" class="col-md-4 col-lg-3 col-form-label">Gambar Profile</label>
+                                            <div class="col-md-8 col-lg-9">
+                                                <img src="<?php echo empty($image) ? 'uploads/default.jpg' : 'uploads/' . $image; ?>" alt="Profile" id="previewImage">
+                                                <div class="pt-2">
+                                                    <label for="image" class="btn btn-primary btn-sm" title="Upload new profile image">
+                                                        <i class="bi bi-upload"></i> Upload
+                                                        <input type="file" id="image" name="image" style="display: none;" accept="uploads/*" onchange="previewAndUpdateImage()">
+                                                    </label>
+                                                    <input type="hidden" name="currentImage" value="<?php echo $image; ?>">
+                                                    <a href="#" class="btn btn-danger btn-sm" title="Remove my profile image" onclick="removeProfileImage()">
+                                                        <i class="bi bi-trash"></i> Remove
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <script>
+                                            function previewAndUpdateImage() {
+                                                const input = document.getElementById('image');
+                                                const preview = document.getElementById('previewImage');
 
-                                <script>
-                document.addEventListener('DOMContentLoaded', function() {
-                    // Handle cohort calculation based on age input
-                    const ageInput = document.getElementById('ageInput');
-                    const cohortInput = document.getElementById('cohortInput');
+                                                if (input.files && input.files[0]) {
+                                                    const reader = new FileReader();
 
-                    function updateCohort() {
-                        const age = parseInt(ageInput.value, 10);
-                        let cohort;
+                                                    reader.onload = function (e) {
+                                                        preview.src = e.target.result;
+                                                    };
 
-                        if (isNaN(age)) {
-                            cohortInput.value = "";
-                            return;
-                        }
+                                                    reader.readAsDataURL(input.files[0]);
+                                                }
+                                            }
 
-                        if (age > 50) {
-                            cohort = 'A';
-                        } else if (age >= 40) {
-                            cohort = 'B';
-                        } else {
-                            cohort = 'C';
-                        }
+                                            function removeProfileImage() {
+                                                const preview = document.getElementById('previewImage');
+                                                const currentImage = document.getElementById('currentImage').value;
 
-                        cohortInput.value = cohort;
-                    }
+                                                // Set the 'src' attribute of the image to the current image path
+                                                preview.src = currentImage;
 
-                    ageInput.addEventListener('input', updateCohort);
-
-
-                    // Handle image preview
-                    function previewAndUpdateImage() {
-                        const input = document.getElementById('image');
-                        const preview = document.getElementById('previewImage');
-
-                        if (input.files && input.files[0]) {
-                            const reader = new FileReader();
-
-                            reader.onload = function(e) {
-                                preview.src = e.target.result; // Set the preview image to the uploaded file
-                            };
-
-                            reader.readAsDataURL(input.files[0]);
-                        }
-                    }
-
-                    // Handle image removal
-                    function removeProfileImage() {
-                        const preview = document.getElementById('previewImage');
-                        const currentImage = document.getElementsByName('currentImage')[0].value;
-
-                        // Reset the preview image to the default image
-                        preview.src = 'uploads/default.jpg';
-
-                        // Clear the file input
-                        document.getElementById('image').value = '';
-
-                        // Optionally, handle backend logic to update the image path in the server/database if needed
-                        // Example: You might want to send a request to the server to update the profile image path
-                    }
-
-                    // Bind image input change and removal functions
-                    document.getElementById('image').addEventListener('change', previewAndUpdateImage);
-                    document.getElementById('removeImageButton').addEventListener('click', function(event) {
-                        event.preventDefault();
-                        removeProfileImage();
-                    });
-
-                });
-            </script>
+                                                // Clear the file input
+                                                document.getElementById('image').value = '';
+                                            }
+                                        </script>
 
                         
                     <div class="col-md-6 mb-3">
