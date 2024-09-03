@@ -128,6 +128,14 @@ mysqli_close($conn);
 
       <main id="main" class="main">
 
+      <style>
+    .portrait-img {
+        width: 200px; /* Set the desired width */
+        height: 200px; /* Set the desired height */
+        object-fit: cover; /* Maintains aspect ratio and covers the specified area */
+        border-radius: 8px; /* Optional: For rounded corners */
+    }
+</style>
 
 
 <section class="section profile">
@@ -135,7 +143,8 @@ mysqli_close($conn);
     <div class="col-xl-4">
         <div class="card">
             <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
-            <img src="<?php echo empty($image) ? 'uploads/default.jpg' : 'uploads/' . $image; ?>" alt="Profile" id="previewAndUpdateImage()" width="150">
+            <img src="<?php echo empty($image) ? 'uploads/default.jpg' : 'uploads/' . $image; ?>" alt="Profile" id="previewAndUpdateImage" class="portrait-img">
+
 
             <h2><?php echo $staff_name; ?></h2>
             <br>
@@ -277,50 +286,53 @@ mysqli_close($conn);
                     <div class="col-md-6 mb-3">
                         <label class="form-label">STAFF ID:</label>
                         <input type="text" class="form-control" name="staff_id" value="<?php echo $row['staff_id']?>" readonly>
+                    </div><div class="row mb-3">
+                <label for="profileImage" class="col-md-4 col-lg-3 col-form-label">PROFILE IMAGE</label>
+                <div class="col-md-8 col-lg-9">
+                    <img src="<?php echo empty($image) ? 'uploads/default.jpg' : 'uploads/' . $image; ?>" alt="Profile" id="previewImage">
+                    <div class="pt-2">
+                        <label for="image" class="btn btn-primary btn-sm" title="Upload new profile image">
+                            <i class="bi bi-upload"></i> Upload
+                            <input type="file" id="image" name="image" style="display: none;" accept="uploads/*" onchange="previewAndUpdateImage()">
+                        </label>
+                        <input type="hidden" name="currentImage" id="currentImage" value="<?php echo $image; ?>">
+                        <a href="#" class="btn btn-danger btn-sm" title="Remove my profile image" onclick="removeProfileImage()">
+                            <i class="bi bi-trash"></i> Remove
+                        </a>
                     </div>
-                                             <div class="row mb-3">
-                                            <label for="profileImage" class="col-md-4 col-lg-3 col-form-label">Gambar Profile</label>
-                                            <div class="col-md-8 col-lg-9">
-                                                <img src="<?php echo empty($image) ? 'uploads/default.jpg' : 'uploads/' . $image; ?>" alt="Profile" id="previewImage">
-                                                <div class="pt-2">
-                                                    <label for="image" class="btn btn-primary btn-sm" title="Upload new profile image">
-                                                        <i class="bi bi-upload"></i> Upload
-                                                        <input type="file" id="image" name="image" style="display: none;" accept="uploads/*" onchange="previewAndUpdateImage()">
-                                                    </label>
-                                                    <input type="hidden" name="currentImage" value="<?php echo $image; ?>">
-                                                    <a href="#" class="btn btn-danger btn-sm" title="Remove my profile image" onclick="removeProfileImage()">
-                                                        <i class="bi bi-trash"></i> Remove
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <script>
-                                            function previewAndUpdateImage() {
-                                                const input = document.getElementById('image');
-                                                const preview = document.getElementById('previewImage');
+                </div>
+            </div>
 
-                                                if (input.files && input.files[0]) {
-                                                    const reader = new FileReader();
+<script>
+    function previewAndUpdateImage() {
+        const input = document.getElementById('image');
+        const preview = document.getElementById('previewImage');
 
-                                                    reader.onload = function (e) {
-                                                        preview.src = e.target.result;
-                                                    };
+        if (input.files && input.files[0]) {
+            const reader = new FileReader();
 
-                                                    reader.readAsDataURL(input.files[0]);
-                                                }
-                                            }
+            reader.onload = function (e) {
+                preview.src = e.target.result;
+            };
 
-                                            function removeProfileImage() {
-                                                const preview = document.getElementById('previewImage');
-                                                const currentImage = document.getElementById('currentImage').value;
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
 
-                                                // Set the 'src' attribute of the image to the current image path
-                                                preview.src = currentImage;
+    function removeProfileImage() {
+        const preview = document.getElementById('previewImage');
 
-                                                // Clear the file input
-                                                document.getElementById('image').value = '';
-                                            }
-                                        </script>
+        // Set the 'src' attribute of the image to the default image path
+        preview.src = 'uploads/default.jpg';
+
+        // Clear the file input
+        document.getElementById('image').value = '';
+
+        // Optionally, reset the hidden input value if necessary
+        document.getElementById('currentImage').value = '';
+    }
+</script>
+
 
                         
                     <div class="col-md-6 mb-3">
