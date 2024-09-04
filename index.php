@@ -12,6 +12,7 @@
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
     <link rel="shortcut icon" href="images/Logo2.png" type="image/x-icon">
     <link rel="stylesheet" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
 <section class="header">
@@ -39,49 +40,66 @@
         </p>
         <a href="#" class="hero-btn">Visit Us To Know More</a><br><br>
         <div class="container">
-            <form action="https://www.google.com/search" method="get" class="search-bar">
-                <div class="input-group">
-                    <button type="button" class="btn btn-lg btn-default dropdown-toggle" data-toggle="dropdown">
-                        <span id="search_concept">Name</span>
-                        <span class="caret"></span>
-                    </button>
-                    <ul class="dropdown-menu dropdown-menu-left" role="menu">
-                        <li><a href="#" onclick="changeSearchConcept('Name')">Name</a></li>
-                        <li><a href="#" onclick="changeSearchConcept('Faculty')">Faculty</a></li>
-                        <li><a href="#" onclick="changeSearchConcept('Expertise')">Expertise</a></li>
-                    </ul>
-                </div>
-                <select class="search-bar-select" name="faculty" id="selfac" aria-label="Choose faculty">
-                    <option></option>  
-                    <option value='QH'>Al-Quran & Hadis</option>
-                    <option value='DI'>Dakwah & Pembangunan Insan</option>
-                    <option value='AS'>Pengurusan Al-Syariah</option>
-                    <option value='BA'>Pengajian Bahasa Arab</option>
-                    <option value='IK'>Pengajian Muamalat</option>
-                    <option value='PI'>Pengajian Pendidikan Islam</option>
-                    <option value='PP'>Pusat Pengajian Teras</option>
-                    <option value='US'>Pengurusan Usuluddin</option>
-                    <option value='IT'>Teknologi Maklumat & Multimedia</option>   
-                </select>
-                <input type="text" name="q" class="search-bar-input" placeholder="Search Term..." id="input_item">
-                <button type="submit"><img src="images/search.png" alt="Search"></button>
-            </form>
+        <form action="https://www.google.com/search" method="get" class="search-bar">
+    <div class="input-group">
+        <button type="button" class="btn btn-lg btn-default dropdown-toggle" data-toggle="dropdown">
+            <span id="search_concept">Name</span> <!-- Default concept set to "Name" -->
+            <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu dropdown-menu-left" role="menu">
+            <li><a href="#" onclick="changeSearchConcept('Name')">Name</a></li>
+            <li><a href="#" onclick="changeSearchConcept('Faculty')">Faculty</a></li>
+            <li><a href="#" onclick="changeSearchConcept('Expertise')">Expertise</a></li>
+        </ul>
+    </div>
+    
+    <!-- Faculty Dropdown -->
+    <select class="search-bar-select" name="faculty" id="selfac" aria-label="Choose faculty" style="display:none;">
+        <option></option>  
+        <option value='QH'>Al-Quran & Hadis</option>
+        <option value='DI'>Dakwah & Pembangunan Insan</option>
+        <option value='AS'>Pengurusan Al-Syariah</option>
+        <option value='BA'>Pengajian Bahasa Arab</option>
+        <option value='IK'>Pengajian Muamalat</option>
+        <option value='PI'>Pengajian Pendidikan Islam</option>
+        <option value='PP'>Pusat Pengajian Teras</option>
+        <option value='US'>Pengurusan Usuluddin</option>
+        <option value='IT'>Teknologi Maklumat & Multimedia</option>   
+    </select>
+    
+    <!-- Search Input -->
+    <input type="text" name="q" class="search-bar-input" placeholder="Search Term..." id="input_item" style="display:block;"> <!-- Visible by default -->
+    
+    <button type="submit"><img src="images/search.png" alt="Search"></button>
+</form>
+
+<script>
+    function changeSearchConcept(concept) {
+        document.getElementById('search_concept').textContent = concept;
+
+        // Hide all elements by default
+        document.getElementById('selfac').style.display = 'none';
+        document.getElementById('input_item').style.display = 'none';
+
+        // Show elements based on the chosen concept
+        if (concept === 'Name' || concept === 'Expertise') {
+            document.getElementById('input_item').style.display = 'block';
+        } else if (concept === 'Faculty') {
+            document.getElementById('selfac').style.display = 'block';
+        }
+    }
+
+    // Set default to "Name" if no selection is made
+    document.addEventListener('DOMContentLoaded', function() {
+        changeSearchConcept('Name'); // Initialize default state
+    });
+</script>
+
+
         </div>
     </div>
 </section>
 
-<script>
-    function changeSearchConcept(concept) {
-        document.getElementById('search_concept').innerText = concept;
-        if (concept === 'Faculty') {
-            document.getElementById('input_item').style.display = 'none';
-            document.getElementById('selfac').style.display = 'inline-block';
-        } else {
-            document.getElementById('input_item').style.display = 'inline-block';
-            document.getElementById('selfac').style.display = 'none';
-        }
-    }
-</script>
 <!-- Lecture-->
 <section class="lecture">
     <h1>Lecture Information</h1>
